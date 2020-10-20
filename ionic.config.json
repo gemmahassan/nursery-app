@@ -1,0 +1,7 @@
+{
+  "name": "nursery-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
