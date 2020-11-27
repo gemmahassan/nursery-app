@@ -1,30 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import StaffItem from "./StaffItem";
 
-interface StaffListProps {
-  staff: Staff[];
-}
+const StaffList = () => {
+  const [loadedStaff, setLoadedStaff] = useState([]);
 
-interface Staff {
-  id: string;
-  imageUrl: string;
-  name: string;
-  email: string;
-  nurseryId: string;
-  phone: number;
-}
+  useEffect(() => {
+    const sendRequest = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/staff");
+        const responseData = await response.json();
 
-const StaffList: React.FC<StaffListProps> = ({ staff }) => {
-  if (staff.length === 0) {
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+
+        setLoadedStaff(responseData.staff);
+      } catch (err) {}
+    };
+    sendRequest();
+  }, []);
+
+  if (loadedStaff.length === 0) {
     return <h2>No staff found</h2>;
   }
 
-  console.log("List: ", staff);
-  console.log(staff[0].id);
   return (
     <ul>
-      {staff.map((staff) => (
+      {loadedStaff.map((staff: any) => (
         <StaffItem
           key={staff.id}
           id={staff.id}
