@@ -9,7 +9,7 @@ interface StaffItemProps {
   phone: number;
 }
 
-const StaffItem: React.FC<StaffItemProps> = ({ imageUrl, name, email }) => {
+const StaffItem: React.FC<StaffItemProps> = ({ name, email }) => {
   return (
     <li>
       <h2>{name}</h2>
