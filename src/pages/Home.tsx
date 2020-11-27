@@ -1,25 +1,13 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Home.css';
+import React from "react";
+import { Route, RouteComponentProps } from "react-router-dom";
+import { IonRouterOutlet } from "@ionic/react";
+import NurseryStaff from "../staff/pages/NurseryStaff";
 
-const Home: React.FC = () => {
+const Home: React.FC<RouteComponentProps> = ({ match }) => {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Nursery App</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
-      </IonContent>
-    </IonPage>
+    <IonRouterOutlet>
+      <Route exact path={match.url} component={NurseryStaff} />
+    </IonRouterOutlet>
   );
 };
 
