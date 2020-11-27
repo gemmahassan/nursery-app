@@ -1,0 +1,6 @@
+ionic cap open ios
+ionic cap open android
+ionic serve - web
+
+ionic build - needed before a push to github
+ionic cap copy - updates ios/android after a build
