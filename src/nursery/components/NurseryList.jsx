@@ -8,13 +8,15 @@ const NurseryList = () => {
   useEffect(() => {
     const sendRequest = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/nursery");
+        const response = await fetch(
+          "http://localhost:5000/api/nursery"
+        );
         const responseData = await response.json();
 
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-
+        
         setLoadedNursery(responseData.nurseries);
       } catch (err) {}
     };
@@ -27,7 +29,7 @@ const NurseryList = () => {
 
   return (
     <ul>
-      {loadedNursery.map((nursery: any) => (
+      {loadedNursery.map((nursery) => (
         <NurseryItem
           key={nursery.id}
           id={nursery.id}
