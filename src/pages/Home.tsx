@@ -1,14 +1,9 @@
 import React from "react";
-import { Route, RouteComponentProps } from "react-router-dom";
-import { IonRouterOutlet } from "@ionic/react";
-import StaffList from "../staff/components/StaffList";
+import history from "../history";
+import { IonButton } from "@ionic/react";
 
-const Home: React.FC<RouteComponentProps> = ({ match }) => {
-  return (
-    <IonRouterOutlet>
-      <Route exact path={match.url} component={StaffList} />
-    </IonRouterOutlet>
-  );
+const Home = () => {
+  return <IonButton onClick={() => history.push("/staff")}>Staff</IonButton>;
 };
 
 export default Home;
