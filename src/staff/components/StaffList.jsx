@@ -27,7 +27,7 @@ const StaffList = () => {
 
   return (
     <ul>
-      {loadedStaff.map((staff: any) => (
+      {loadedStaff.map((staff) => (
         <StaffItem
           key={staff.id}
           id={staff.id}
