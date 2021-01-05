@@ -1,44 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
+import NurseryDataService from '../../services/nursery-service';
+import { Link } from 'react-router-dom';
 
 import NurseryItem from "./NurseryItem";
 
 const NurseryList = () => {
-  const [loadedNursery, setLoadedNursery] = useState([]);
+  const [nurseries, setNurseries] = useState([]);
+  const [currentNursery, setCurrentNursery] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(-1);
 
   useEffect(() => {
-    const sendRequest = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:5000/api/nursery"
-        );
-        const responseData = await response.json();
-
-        if (!response.ok) {
-          throw new Error(responseData.message);
-        }
-        
-        setLoadedNursery(responseData.nurseries);
-      } catch (err) {}
-    };
-    sendRequest();
+    getNurseries();
   }, []);
 
-  if (loadedNursery.length === 0) {
-    return <h2>No nurseries found</h2>;
-  }
+  const getNurseries = () => {
+    NurseryDataService.getAll()
+      .then(response => {
+        setNurseries(response.data);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+  //
+  // const refreshList = () => {
+  //   getNurseries();
+  //   setCurrentNursery(null);
+  //   setCurrentIndex(-1);
+  // };
+
+  // const setActiveNursery = (nursery, index) = {
+  //   setCurrentNursery(nursery);
+  //   setCurrentIndex(index);
+  // };
 
   return (
     <ul>
-      {loadedNursery.map((nursery) => (
-        <NurseryItem
-          key={nursery.id}
-          id={nursery.id}
-          imageUrl={nursery.imageUrl}
-          name={nursery.name}
-          address={nursery.address}
-          town={nursery.town}
-          staff={nursery.staff}
-        />
+      {nurseries && nurseries.map(nursery => (
+        // <NurseryItem
+        //   key={nursery.id}
+        //   id={nursery.id}
+        //   name={nursery.name}
+        //   address={nursery.address}
+        // />
+        <li key={nursery.id}>
+          {nursery.name}
+        </li>
       ))}
     </ul>
   );
