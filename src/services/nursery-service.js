@@ -9,6 +9,10 @@ class NurseryDataService {
     return http.get(`nurseries/${id}`);
   }
 
+  getChildren(id) {
+    return http.get(`nurseries/${id}/children`);
+  }
+
   create(data) {
     return http.post('/nurseries', data);
   }
