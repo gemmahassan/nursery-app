@@ -2,7 +2,7 @@ import React from "react";
 import moment from 'moment';
 
 const JournalEntry = ({id, image, text, datetime, type}) => {
-  const time = moment(datetime).format('h:mm');
+  const time = moment(datetime).format('h:mma');
   return (
     <>
       <h2>{`${time} - ${type}`}</h2>
