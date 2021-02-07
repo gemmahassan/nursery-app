@@ -17,7 +17,6 @@ const ChildList = () => {
     NurseryDataService.getChildren(nurseryId)
       .then(response => {
         setChildren(response.data);
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -39,11 +38,10 @@ const ChildList = () => {
     <ul>
       {children && children.map(child => (
         <ChildItem
-          id={child.child_id}
+          id={child.id}
           firstName={child.first_name}
-          lastName={child.last_name}
+          surname={child.surname}
         />
-
       ))}
     </ul>
   );

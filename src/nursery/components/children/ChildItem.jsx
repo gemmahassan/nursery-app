@@ -1,14 +1,15 @@
 import React from "react";
-import history from "../../../history";
+import { useHistory } from "react-router-dom";
 import {IonButton} from "@ionic/react";
 
+const ChildItem = ({id, firstName, surname}) => {
+  const history = useHistory();
 
-const ChildItem = props => {
   return (
-    <li key={props.id}>
+    <li key={id}>
       <IonButton
-        onClick={() => history.push(`/child/${props.id}/journal`)}>
-        {`${props.firstName} ${props.lastName}`}
+        onClick={() => history.push(`/child/${id}/journal`, { firstName })}>
+        {`${firstName} ${surname}`}
       </IonButton>
     </li>
   );

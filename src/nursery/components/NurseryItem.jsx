@@ -1,11 +1,14 @@
 import React from "react";
+import history from "../../history";
+import {IonButton} from "@ionic/react";
 
-const NurseryItem = ({ name, address, town }) => {
+const NurseryItem = ({id, name }) => {
   return (
-    <li>
-      <h2>{name}</h2>
-      <h3>{address}</h3>
-      <h3>{town}</h3>
+    <li key={id}>
+      <IonButton
+        onClick={() => history.push(`nurseries/${id}`)}>
+        {name}
+      </IonButton>
     </li>
   );
 };

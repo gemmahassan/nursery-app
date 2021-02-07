@@ -2,27 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/nursery-app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/AddStaff.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/Nav.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/NurseryHome.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/public/Nav.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/public/signup/NurserySignup.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/child-service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/journal/JournalCalendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/nursery-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/nursery-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/NurseryItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/NurseryList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/theme/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/variables.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,15 +61,13 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,7 +87,8 @@
       <workItem from="1610875979125" duration="11702000" />
       <workItem from="1611856152255" duration="185000" />
       <workItem from="1612525797846" duration="927000" />
-      <workItem from="1612526769471" duration="6907000" />
+      <workItem from="1612526769471" duration="12709000" />
+      <workItem from="1612710058175" duration="11903000" />
     </task>
     <task id="LOCAL-00001" summary="[MP-42] Rename remaining .tsx files to .jsx">
       <created>1609874851247</created>
@@ -128,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609880111982</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="MP45 - Add Child View&#10;Adds Child View&#10;Adds Timeline view">
+      <created>1612537236571</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1612537236571</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

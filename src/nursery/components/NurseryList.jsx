@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import NurseryDataService from '../../services/nursery-service';
-import { Link } from 'react-router-dom';
+
 
 import NurseryItem from "./NurseryItem";
+
 
 const NurseryList = () => {
   const [nurseries, setNurseries] = useState([]);
@@ -38,14 +39,11 @@ const NurseryList = () => {
   return (
     <ul>
       {nurseries && nurseries.map(nursery => (
-        // <NurseryItem
-        //   key={nursery.id}
-        //   id={nursery.id}
-        //   name={nursery.name}
-        //   address={nursery.address}
-        // />
         <li key={nursery.id}>
-          {nursery.name}
+          <NurseryItem
+            id={nursery.id}
+            name={nursery.name}
+          />
         </li>
       ))}
     </ul>
