@@ -9,21 +9,14 @@ import JournalEntry from "./JournalEntry";
 import 'antd/dist/antd.css';
 
 const Journal = () => {
-  const { childId } = useParams();
+  const { childId, date } = useParams();
   const { state } = useLocation();
 
-  const today = moment().format("dddd, MMMM Do YYYY");
-
   const [journal, setJournal] = useState([]);
-  const [activeDate, setActiveDate] = useState(today);
+  const [activeDate, setActiveDate] = useState(date);
 
-  useEffect(() => {
-    getJournal();
-  }, []);
-
-
-  const getJournal = () => {
-    ChildDataService.getJournal(childId)
+  const getJournal = (date) => {
+    ChildDataService.getJournal(date, childId)
       .then(response => {
         setJournal(response.data);
       })
@@ -34,14 +27,20 @@ const Journal = () => {
 
   const onDateChange = (date, dateString) => {
     if (!date) return;
-    const newDate = moment(dateString).format("dddd, MMMM Do YYYY");
-    setActiveDate(newDate);
+    setActiveDate(dateString);
+    getJournal(dateString);
   }
+
+  useEffect(() => {
+    getJournal(activeDate);
+  }, []);
+
+  console.log('activedate: ', activeDate);
 
   return (
     <IonContent>
       <div className="ion-text-center">
-      <h1>{`${state.firstName}'s Day - ${activeDate}`}</h1>
+      <h1>{`${state.firstName}'s Day - ${moment(activeDate).format("dddd, MMMM Do YYYY")}`}</h1>
       <DatePicker disabledDate={d => !d || d.isAfter(moment().format("YYYY-M-D")) } onChange={onDateChange} />
       <Timeline mode="alternate">
         {journal && journal.map(entry => (

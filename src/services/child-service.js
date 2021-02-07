@@ -9,8 +9,8 @@ class ChildDataService {
     return http.get(`/children/${id}`);
   }
 
-  getJournal(id) {
-    return http.get(`/child/${id}/journal`);
+  getJournal(date, id) {
+    return http.get(`/child/${id}/journal/${date}`);
   }
 
   create(data) {
