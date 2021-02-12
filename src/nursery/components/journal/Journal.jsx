@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import ChildDataService from "../../../services/child-service";
+import ChildDataService from "../../../services/child";
 import {useParams, useLocation} from "react-router-dom";
 import { Timeline, DatePicker } from 'antd';
 import { IonContent } from '@ionic/react';
