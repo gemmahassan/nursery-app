@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom"
-import NurseryDataService from '../../../services/nursery-service';
+import NurseryDataService from '../../../services/nursery';
 import ChildItem from "./ChildItem";
 
 const ChildList = () => {

@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/journal-type.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/nursery.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/NurseryHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/NurseryList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/child-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/child-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/nursery-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/journal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +43,13 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/services" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -52,6 +62,21 @@
       <recent name="$PROJECT_DIR$/src/nursery" />
       <recent name="$PROJECT_DIR$/src/public" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -69,6 +94,8 @@
       <workItem from="1612525797846" duration="927000" />
       <workItem from="1612526769471" duration="12709000" />
       <workItem from="1612710058175" duration="12739000" />
+      <workItem from="1612735637804" duration="2820000" />
+      <workItem from="1612952421628" duration="11730000" />
     </task>
     <task id="LOCAL-00001" summary="[MP-42] Rename remaining .tsx files to .jsx">
       <created>1609874851247</created>
@@ -112,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612730106159</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="MP-49">
+      <created>1612735702261</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1612735702261</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +171,11 @@
     <MESSAGE value="[MP-45] Fix routes so that public homepage is displayed on base URL" />
     <MESSAGE value="MP45 - Add Child View&#10;Adds Child View&#10;Adds Timeline view" />
     <MESSAGE value="MP-47 Implement Ant Design Alternate Timeline view" />
-    <option name="LAST_COMMIT_MESSAGE" value="MP-47 Implement Ant Design Alternate Timeline view" />
+    <MESSAGE value="MP-49" />
+    <option name="LAST_COMMIT_MESSAGE" value="MP-49" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

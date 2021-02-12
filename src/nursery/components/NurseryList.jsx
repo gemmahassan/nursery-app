@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from "react";
-import NurseryDataService from '../../services/nursery-service';
-
+import NurseryDataService from '../../services/nursery';
 
 import NurseryItem from "./NurseryItem";
-
 
 const NurseryList = () => {
   const [nurseries, setNurseries] = useState([]);
@@ -24,17 +22,6 @@ const NurseryList = () => {
         console.log(e);
       });
   };
-  //
-  // const refreshList = () => {
-  //   getNurseries();
-  //   setCurrentNursery(null);
-  //   setCurrentIndex(-1);
-  // };
-
-  // const setActiveNursery = (nursery, index) = {
-  //   setCurrentNursery(nursery);
-  //   setCurrentIndex(index);
-  // };
 
   return (
     <ul>

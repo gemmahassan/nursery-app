@@ -14,9 +14,13 @@ import {
   IonMenuToggle,
   IonMenuButton, IonAvatar, IonLabel, IonChip
 } from "@ionic/react";
-import {ellipsisHorizontal, ellipsisVertical, pin, close} from "ionicons/icons";
+
+import history from "../../history";
+import {useParams} from "react-router-dom";
 
 const NurseryHome = () => {
+  const { nurseryId } = useParams();
+
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">
@@ -54,8 +58,21 @@ const NurseryHome = () => {
         <IonContent>
           <ion-grid>
             <ion-row>
-              <ion-col >
-                <IonButton class="ion-float-right ion-padding" size="large" color="medium">3 Kids Checked In</IonButton>
+              <ion-col>
+                <IonButton
+                  class="ion-float-right ion-padding"
+                  size="large"
+                  color="medium"
+                  onClick={() => history.push(`/nurseries/${nurseryId}/children`)}>
+                  3 Kids Checked In
+                </IonButton>
+                <IonButton
+                  class="ion-float-right ion-padding"
+                  size="large"
+                  color="medium"
+                  onClick={() => history.push(`/nurseries/${nurseryId}/journal/add`)}>
+                  Update Journal
+                </IonButton>
               </ion-col>
               <ion-col>
                 <IonButton class="ion-padding" size="large" color="medium">6 Staff Members Checked In</IonButton>

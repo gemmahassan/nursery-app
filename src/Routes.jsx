@@ -7,6 +7,7 @@ import Home from "./public/Home";
 import NurseryHome from "./nursery/components/NurseryHome";
 import ChildList from "./nursery/components/children/ChildList";
 import Journal from "./nursery/components/journal/Journal";
+import AddEntry from "./nursery/components/journal/AddEntry";
 
 
 const Routes = () => {
@@ -19,7 +20,9 @@ const Routes = () => {
         {/*<Route path="/signup" component={NurserySignup} />*/}
         <Route exact path="/nurseries/:nurseryId" component={NurseryHome} />
         <Route exact path="/nurseries/:nurseryId/children" component={ChildList} />
+        <Route exact path="/nurseries/:nurseryId/journal/add" component={AddEntry} />
         <Route exact path="/child/:childId/journal/:date" component={Journal} />
+
       </Switch>
     </Router>
   );
