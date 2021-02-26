@@ -1,15 +1,26 @@
 import React, {useState} from "react";
 import moment from 'moment';
-import {IonButton, IonContent, IonImg, IonModal} from '@ionic/react';
-import history from "../../../history";
+import {IonAlert, IonButton, IonContent, IonImg, IonModal} from '@ionic/react';
 import EditEntry from "./EditEntry";
+import JournalDataService from "../../../services/journal";
 
-const JournalEntry = ({childId, journalId, image, staff, text, timestamp, type, typeId}) => {
+const JournalEntry = ({childId, journalId, image, staffId, text, timestamp, type, typeId}) => {
   const time = moment(timestamp).format('h:mma');
 
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
 
+  const deleteEntry = () => {
+    JournalDataService.delete(childId, journalId)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
   console.log(journalId);
+
   return (
     <>
       <h2>
@@ -21,7 +32,7 @@ const JournalEntry = ({childId, journalId, image, staff, text, timestamp, type, 
         </IonButton>
         <IonButton
           color="danger"
-          onClick={() => history.push(`/child/${childId}/journal/${journalId}/delete`)}>
+          onClick={() => setShowDeleteAlert(true)}>
           delete
         </IonButton>
       </h2>
@@ -32,21 +43,41 @@ const JournalEntry = ({childId, journalId, image, staff, text, timestamp, type, 
       <p>{text}</p>
 
       {showEditModal &&
-      // <IonContent>
-      //   <IonModal>
-      //     isOpen={showEditModal}
-      //   </IonModal>
-      // </IonContent>
       <EditEntry
         showEditModal={showEditModal}
         childId={childId}
         journalId={journalId}
         image={image}
-        staff={staff}
+        staff={staffId}
         text={text}
         timestamp={timestamp}
         type={type}
         typeId={typeId}
+      />
+      }
+
+      {showDeleteAlert &&
+      <IonAlert
+        isOpen={showDeleteAlert}
+        onDidDismiss={() => setShowDeleteAlert(false)}
+        header={'Confirm Deletion'}
+        message={'Are you sure want to delete this journal entry?'}
+        buttons={[
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: blah => {
+              console.log('Confirm Cancel: blah');
+            }
+          },
+          {
+            text: 'Okay',
+            handler: () => {
+              deleteEntry();
+            }
+          }
+        ]}
       />
       }
     </>

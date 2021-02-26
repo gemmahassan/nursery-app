@@ -6,7 +6,11 @@ class JournalDataService {
   }
 
   edit(data, cid, jid) {
-    return http.put(`/child/${cid}/journal/${jid}/edit`, data);
+    return http.put(`/child/${cid}/journal/${jid}`, data);
+  }
+
+  delete(cid, jid) {
+    return http.delete(`/child/${cid}/journal/${jid}`);
   }
 }
 
