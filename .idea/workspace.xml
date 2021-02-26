@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/journal-type.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/nursery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/journal/EditEntry.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/NurseryHome.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/NurseryList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/child-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/nursery-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/journal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/journal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/journal.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +35,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/services" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components/journal" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -54,6 +48,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/nursery/components/journal" />
       <recent name="$PROJECT_DIR$/src/services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -62,21 +57,6 @@
       <recent name="$PROJECT_DIR$/src/nursery" />
       <recent name="$PROJECT_DIR$/src/public" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -95,7 +75,8 @@
       <workItem from="1612526769471" duration="12709000" />
       <workItem from="1612710058175" duration="12739000" />
       <workItem from="1612735637804" duration="2820000" />
-      <workItem from="1612952421628" duration="11730000" />
+      <workItem from="1612952421628" duration="14637000" />
+      <workItem from="1614331160487" duration="6542000" />
     </task>
     <task id="LOCAL-00001" summary="[MP-42] Rename remaining .tsx files to .jsx">
       <created>1609874851247</created>
@@ -146,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612735702261</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="MP-50 Basic Form for updating Journal&#10;MP-52 Pass data from Journal to backend">
+      <created>1613163154778</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1613163154778</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +160,8 @@
     <MESSAGE value="MP45 - Add Child View&#10;Adds Child View&#10;Adds Timeline view" />
     <MESSAGE value="MP-47 Implement Ant Design Alternate Timeline view" />
     <MESSAGE value="MP-49" />
-    <option name="LAST_COMMIT_MESSAGE" value="MP-49" />
+    <MESSAGE value="MP-50 Basic Form for updating Journal&#10;MP-52 Pass data from Journal to backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="MP-50 Basic Form for updating Journal&#10;MP-52 Pass data from Journal to backend" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
