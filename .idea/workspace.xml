@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/journal/EditEntry.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/journal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/journal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/child.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +73,7 @@
       <workItem from="1612710058175" duration="12739000" />
       <workItem from="1612735637804" duration="2820000" />
       <workItem from="1612952421628" duration="14637000" />
-      <workItem from="1614331160487" duration="6542000" />
+      <workItem from="1614331160487" duration="8213000" />
     </task>
     <task id="LOCAL-00001" summary="[MP-42] Rename remaining .tsx files to .jsx">
       <created>1609874851247</created>
@@ -134,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613163154778</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="[MP-56]&#10;&#10;- adds update button to journal entries&#10;- adds update modal display on button click&#10;- connects UI to backend update function">
+      <created>1614344617728</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1614344617729</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +165,8 @@
     <MESSAGE value="MP-47 Implement Ant Design Alternate Timeline view" />
     <MESSAGE value="MP-49" />
     <MESSAGE value="MP-50 Basic Form for updating Journal&#10;MP-52 Pass data from Journal to backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="MP-50 Basic Form for updating Journal&#10;MP-52 Pass data from Journal to backend" />
+    <MESSAGE value="[MP-56]&#10;&#10;- adds update button to journal entries&#10;- adds update modal display on button click&#10;- connects UI to backend update function" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MP-56]&#10;&#10;- adds update button to journal entries&#10;- adds update modal display on button click&#10;- connects UI to backend update function" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
