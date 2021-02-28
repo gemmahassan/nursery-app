@@ -2,9 +2,10 @@ import React, {useEffect, useState} from "react";
 import ChildDataService from "../../../services/child";
 import {useParams, useLocation} from "react-router-dom";
 import {Timeline, DatePicker} from 'antd';
-import {IonContent} from '@ionic/react';
+import {IonButton, IonContent} from '@ionic/react';
 import moment from 'moment';
 import JournalEntry from "./JournalEntry";
+import AddEntry from "./AddEntry";
 
 import 'antd/dist/antd.css';
 
@@ -14,6 +15,7 @@ const Journal = () => {
 
   const [journal, setJournal] = useState([]);
   const [activeDate, setActiveDate] = useState(date);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const getJournal = (date) => {
     ChildDataService.getJournal(date, childId)
@@ -40,7 +42,13 @@ const Journal = () => {
       <div className="ion-text-center">
         <h1>{`${state.firstName}'s Day - ${moment(activeDate).format("dddd, MMMM Do YYYY")}`}</h1>
         <DatePicker disabledDate={d => !d || d.isAfter(moment().format("YYYY-M-D"))} onChange={onDateChange}/>
-
+        <div>
+          <IonButton
+            onClick={() => setShowAddModal(true)}
+            shape="round">
+            +
+          </IonButton>
+        </div>
         <Timeline mode="alternate">
           {journal && journal.map(entry => (
             <Timeline.Item>
@@ -58,6 +66,12 @@ const Journal = () => {
           ))}
         </Timeline>
       </div>
+      {showAddModal && (
+        <AddEntry
+          childId={childId}
+          showAddModal={showAddModal}
+        />
+      )}
     </IonContent>
   );
 }

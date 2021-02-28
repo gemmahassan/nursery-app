@@ -127,37 +127,6 @@ const EditEntry = ({childId, journalId, showEditModal, staffId, text, timestamp,
         </IonButton>
       </IonModal>
     </IonContent>
-    // <IonContent>
-
-    //
-    //     <IonItem>
-    //       <IonLabel>Select Child</IonLabel>
-    //       <IonSelect
-    //         name="child_id"
-    //         onIonChange={handleInputChange}
-    //       >
-    //         {children && children.map(child => (
-    //           <IonSelectOption value={child.id}>{child.first_name} {child.surname}</IonSelectOption>
-    //         ))}
-    //       </IonSelect>
-    //     </IonItem>
-    //
-    //     <IonLabel>Image Upload</IonLabel>
-    //     <IonItem>
-    //       <IonInput
-    //         value={entry.image}
-    //         onIonChange={handleInputChange}
-    //         name="image"
-    //         clearInput
-    //       >
-    //       </IonInput>
-    //     </IonItem>
-    //
-
-    //   </IonList>
-    //
-
-    // </IonContent>
   );
 };
 

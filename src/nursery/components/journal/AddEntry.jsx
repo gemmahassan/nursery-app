@@ -7,15 +7,15 @@ import {
   IonLabel,
   IonList,
   IonSelect,
-  IonSelectOption, IonButton,
+  IonSelectOption, IonButton, IonModal,
 } from '@ionic/react';
 import JournalTypeDataService from "../../../services/journal-type";
 import JournalDataService from "../../../services/journal";
 import NurseryDataService from "../../../services/nursery"
 import {useParams} from "react-router-dom";
 
-const AddEntry = () => {
-  const { nurseryId } = useParams();
+const AddEntry = ({childId, showAddModal}) => {
+  const {nurseryId} = useParams();
   const initialEntryState = {
     id: null,
     child_id: null,
@@ -93,62 +93,65 @@ const AddEntry = () => {
   };
 
   return (
+
     <IonContent>
-      <IonList>
-        <IonItem>
-          <IonLabel>Journal Entry Type</IonLabel>
-          <IonSelect
-            name="type_id"
-            onIonChange={handleInputChange}
-          >
-            {journalTypes && journalTypes.map(type => (
-              <IonSelectOption value={type.id}>{type.type}</IonSelectOption>
-            ))}
-          </IonSelect>
-        </IonItem>
+      <IonModal isOpen={showAddModal}>
+        <IonList>
+          <IonItem>
+            <IonLabel>Journal Entry Type</IonLabel>
+            <IonSelect
+              name="type_id"
+              onIonChange={handleInputChange}
+            >
+              {journalTypes && journalTypes.map(type => (
+                <IonSelectOption value={type.id}>{type.type}</IonSelectOption>
+              ))}
+            </IonSelect>
+          </IonItem>
 
-        <IonItem>
-          <IonLabel>Select Child</IonLabel>
-          <IonSelect
-            name="child_id"
-            onIonChange={handleInputChange}
-          >
-            {children && children.map(child => (
-              <IonSelectOption value={child.id}>{child.first_name} {child.surname}</IonSelectOption>
-            ))}
-          </IonSelect>
-        </IonItem>
+          <IonItem>
+            <IonLabel>Select Child</IonLabel>
+            <IonSelect
+              name="child_id"
+              onIonChange={handleInputChange}
+            >
+              {children && children.map(child => (
+                <IonSelectOption value={child.id}>{child.first_name} {child.surname}</IonSelectOption>
+              ))}
+            </IonSelect>
+          </IonItem>
 
-        <IonLabel>Image Upload</IonLabel>
-        <IonItem>
-          <IonInput
-            value={entry.image}
-            onIonChange={handleInputChange}
-            name="image"
-            clearInput
-          >
-          </IonInput>
-        </IonItem>
+          <IonLabel>Image Upload</IonLabel>
+          <IonItem>
+            <IonInput
+              value={entry.image}
+              onIonChange={handleInputChange}
+              name="image"
+              clearInput
+            >
+            </IonInput>
+          </IonItem>
 
-        <IonLabel>Description</IonLabel>
-        <IonItem>
-          <IonInput
-            value={entry.text}
-            onIonChange={handleInputChange}
-            name="text"
-            clearInput
-          >
-          </IonInput>
-        </IonItem>
-      </IonList>
+          <IonLabel>Description</IonLabel>
+          <IonItem>
+            <IonInput
+              value={entry.text}
+              onIonChange={handleInputChange}
+              name="text"
+              clearInput
+            >
+            </IonInput>
+          </IonItem>
+        </IonList>
 
-      <IonButton
-        class="ion-float-right ion-padding"
-        size="large"
-        color="medium"
-        onClick={saveEntry}>
-        Submit
-      </IonButton>
+        <IonButton
+          class="ion-float-right ion-padding"
+          size="large"
+          color="medium"
+          onClick={saveEntry}>
+          Submit
+        </IonButton>
+      </IonModal>
     </IonContent>
   );
 };

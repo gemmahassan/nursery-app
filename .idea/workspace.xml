@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/child.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614344617729</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="[MP-57]&#10;&#10;- adds delete button to journal entries&#10;- adds delete alert display on button click&#10;- connects UI to backend delete function">
+      <created>1614347008697</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1614347008697</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +173,8 @@
     <MESSAGE value="MP-49" />
     <MESSAGE value="MP-50 Basic Form for updating Journal&#10;MP-52 Pass data from Journal to backend" />
     <MESSAGE value="[MP-56]&#10;&#10;- adds update button to journal entries&#10;- adds update modal display on button click&#10;- connects UI to backend update function" />
-    <option name="LAST_COMMIT_MESSAGE" value="[MP-56]&#10;&#10;- adds update button to journal entries&#10;- adds update modal display on button click&#10;- connects UI to backend update function" />
+    <MESSAGE value="[MP-57]&#10;&#10;- adds delete button to journal entries&#10;- adds delete alert display on button click&#10;- connects UI to backend delete function" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MP-57]&#10;&#10;- adds delete button to journal entries&#10;- adds delete alert display on button click&#10;- connects UI to backend delete function" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
