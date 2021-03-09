@@ -9,6 +9,8 @@ import ChildList from "./nursery/components/children/ChildList";
 import Journal from "./nursery/components/journal/Journal";
 import AddEntry from "./nursery/components/journal/AddEntry";
 import EditEntry from "./nursery/components/journal/EditEntry";
+import Login from "./nursery/components/Login";
+import Profile from "./nursery/components/Profile";
 
 const Routes = () => {
   return (
@@ -17,7 +19,8 @@ const Routes = () => {
         <Route path="/" exact component={Home} />
         <Route path="/staff" component={StaffList} />
         <Route exact path="/nurseries" component={NurseryList} />
-        {/*<Route path="/signup" component={NurserySignup} />*/}
+        <Route path="/login" component={Login} />
+        <Route exact path="/profile" component={Profile} />
         <Route exact path="/nurseries/:nurseryId" component={NurseryHome} />
         <Route exact path="/nurseries/:nurseryId/children" component={ChildList} />
         <Route exact path="/nurseries/:nurseryId/journal/add" component={AddEntry} />

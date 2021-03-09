@@ -19,6 +19,7 @@
     "@types/react-router-dom": "^5.1.3",
     "antd": "^4.12.2",
     "axios": "^0.21.1",
+    "formik": "^2.2.6",
     "ionic": "^5.4.16",
     "ionicons": "^5.0.0",
     "moment": "^2.29.1",
@@ -29,7 +30,9 @@
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
-    "typescript": "3.8.3"
+    "react-validation": "^3.0.7",
+    "typescript": "3.8.3",
+    "validator": "^13.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
