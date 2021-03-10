@@ -11,6 +11,8 @@ import AddEntry from "./nursery/components/journal/AddEntry";
 import EditEntry from "./nursery/components/journal/EditEntry";
 import Login from "./nursery/components/Login";
 import Profile from "./nursery/components/Profile";
+import AdminDashboard from "./nursery/components/dashboard/AdminDashboard";
+import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
 
 const Routes = () => {
   return (
@@ -20,6 +22,7 @@ const Routes = () => {
         <Route path="/staff" component={StaffList} />
         <Route exact path="/nurseries" component={NurseryList} />
         <Route path="/login" component={Login} />
+        <Route path="/dashboard" component={DashboardContainer} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/nurseries/:nurseryId" component={NurseryHome} />
         <Route exact path="/nurseries/:nurseryId/children" component={ChildList} />
