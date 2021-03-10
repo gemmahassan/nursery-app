@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/Login.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/Profile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/auth-header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/AdminDashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/StaffDashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components/journal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components/dashboard" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,6 +58,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/nursery/components/dashboard" />
       <recent name="$PROJECT_DIR$/src/nursery/components/journal" />
       <recent name="$PROJECT_DIR$/src/services" />
     </key>

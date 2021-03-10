@@ -20,7 +20,7 @@ const Login = (props) => {
   const handleLogin = ({username, password}) => {
     AuthService.login(username, password).then(
       () => {
-        props.history.push("/profile");
+        props.history.push("/dashboard");
         window.location.reload();
       },
       (error) => {
