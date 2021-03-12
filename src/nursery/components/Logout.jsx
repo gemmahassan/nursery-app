@@ -1,31 +1,23 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 import AuthService from "../../services/auth";
 import {IonButton} from "@ionic/react";
 
-const Logout = (props) => {
+const Logout = () => {
+  let history = useHistory();
 
   const handleLogout = ({username, password}) => {
-    AuthService.logout(username, password).then(
-      () => {
-        props.history.push("/login");
-        window.location.reload();
-      },
-      (error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-      }
-    );
+    AuthService.logout(username, password);
+    history.push("/");
   };
 
-
   return (
-        <IonButton color="tertiary">
-          Logout
-        </IonButton>
+    <IonButton
+      color="tertiary"
+      onClick={handleLogout}
+    >
+      Logout
+    </IonButton>
 
   );
 };
