@@ -4,13 +4,6 @@ import {
   Form,
   Button,
   Checkbox,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
 } from 'antd';
 import AuthService from "../../services/auth";
 import {IonContent, IonPage} from "@ionic/react";
@@ -19,17 +12,18 @@ const Login = (props) => {
 
   const handleLogin = ({username, password}) => {
     AuthService.login(username, password).then(
-      () => {
+      response => {
+        console.log(response.data);
         props.history.push("/dashboard");
         window.location.reload();
-      },
-      (error) => {
+      })
+      .catch(e => {
         const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
+          (e.response &&
+            e.response.data &&
+            e.response.data.message) ||
+          e.message ||
+          e.toString();
       }
     );
   };

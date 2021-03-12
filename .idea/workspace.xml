@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/AdminDashboard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/StaffDashboard.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useInterval.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/Logout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/AdminDashboard.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/StaffDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/child.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components/dashboard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,6 +60,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/nursery/components" />
       <recent name="$PROJECT_DIR$/src/nursery/components/dashboard" />
       <recent name="$PROJECT_DIR$/src/nursery/components/journal" />
       <recent name="$PROJECT_DIR$/src/services" />
@@ -172,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614347008697</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="?">
+      <created>1615372523681</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1615372523683</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +211,20 @@
     <MESSAGE value="MP-50 Basic Form for updating Journal&#10;MP-52 Pass data from Journal to backend" />
     <MESSAGE value="[MP-56]&#10;&#10;- adds update button to journal entries&#10;- adds update modal display on button click&#10;- connects UI to backend update function" />
     <MESSAGE value="[MP-57]&#10;&#10;- adds delete button to journal entries&#10;- adds delete alert display on button click&#10;- connects UI to backend delete function" />
-    <option name="LAST_COMMIT_MESSAGE" value="[MP-57]&#10;&#10;- adds delete button to journal entries&#10;- adds delete alert display on button click&#10;- connects UI to backend delete function" />
+    <MESSAGE value="?" />
+    <option name="LAST_COMMIT_MESSAGE" value="?" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/nursery/components/NurseryList.jsx</url>
+          <line>31</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

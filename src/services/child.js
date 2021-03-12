@@ -9,6 +9,9 @@ class ChildDataService {
     return http.get(`/children/${id}`);
   }
 
+  getByCarerId(carerId) {
+    return http.get(`/children/${carerId}`)
+  }
   getJournal(date, id) {
     return http.get(`/child/${id}/journal/${date}`);
   }
