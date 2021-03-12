@@ -1,21 +1,24 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import {IonButton} from "@ionic/react";
-import moment from "moment";
+import {IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent} from "@ionic/react";
 
-const ChildItem = ({id, firstName, surname}) => {
-  const history = useHistory();
-
-  const today = moment().format("YYYY-MM-DD");
+const ChildItem = ({id, firstName, image, surname}) => {
 
   return (
     <li key={id}>
-      <IonButton
-        onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}>
-        {`${firstName} ${surname}`}
-      </IonButton>
+      <IonCard style={{borderRadius: '25px'}}>
+        <IonCardHeader>
+          <IonCardTitle>{`${firstName} ${surname}`}</IonCardTitle>
+        </IonCardHeader>
+        <IonCardContent>
+          <img src={`${image}`} alt="child" ></img>
+          </IonCardContent>
+      </IonCard>
     </li>
   );
 }
 
+{/*<IonButton*/}
+{/*  onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}>*/}
+{/*  {`${firstName} ${surname}`}*/}
+{/*</IonButton>*/}
 export default ChildItem;

@@ -11,7 +11,6 @@ import AddEntry from "./nursery/components/journal/AddEntry";
 import EditEntry from "./nursery/components/journal/EditEntry";
 import Login from "./nursery/components/Login";
 import Profile from "./nursery/components/Profile";
-import NurseryDashboard from "./nursery/components/dashboard/NurseryDashboard";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
 
 const Routes = () => {

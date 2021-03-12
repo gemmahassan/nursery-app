@@ -15,6 +15,7 @@ import {
 import ChildDataService from "../../../services/child";
 import Journal from "../journal/Journal";
 import useInterval from "../../../hooks/useInterval"
+import Logout from "../Logout";
 
 const CarerDashboard = ({currentUser, nursery}) => {
   console.log("dashboard nursery: ", nursery);
@@ -58,6 +59,9 @@ const CarerDashboard = ({currentUser, nursery}) => {
           <IonToolbar>
             <IonButtons slot="start">
               <IonMenuButton/>
+            </IonButtons>
+            <IonButtons slot="primary">
+              <Logout />
             </IonButtons>
             <IonTitle>{nursery.name} Carer Dashboard</IonTitle>
             <IonChip slot="secondary">

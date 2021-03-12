@@ -1,19 +1,20 @@
 import React, {useEffect, useState} from "react";
-import { useParams } from "react-router-dom"
 import NurseryDataService from '../../../services/nursery';
 import ChildItem from "./ChildItem";
 
-const ChildList = () => {
-  const { nurseryId } = useParams();
+const ChildList = ({nurseryId}) => {
   const [children, setChildren] = useState([]);
   const [currentNursery, setCurrentNursery] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
 
   useEffect(() => {
-    getChildren();
-  }, []);
+    if (nurseryId) {
+      getChildren();
+    }
+  }, [nurseryId]);
 
   const getChildren = () => {
+    console.log(nurseryId);
     NurseryDataService.getChildren(nurseryId)
       .then(response => {
         setChildren(response.data);
@@ -22,17 +23,6 @@ const ChildList = () => {
         console.log(e);
       });
   };
-  //
-  // const refreshList = () => {
-  //   getNurseries();
-  //   setCurrentNursery(null);
-  //   setCurrentIndex(-1);
-  // };
-
-  // const setActiveNursery = (nursery, index) = {
-  //   setCurrentNursery(nursery);
-  //   setCurrentIndex(index);
-  // };
 
   return (
     <ul>
@@ -41,6 +31,7 @@ const ChildList = () => {
           id={child.id}
           firstName={child.first_name}
           surname={child.surname}
+          image={child.image}
         />
       ))}
     </ul>
