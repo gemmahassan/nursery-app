@@ -1,70 +1,49 @@
 import React, {useEffect, useState} from "react";
 
-import UserService from "../../../services/user";
-import AuthService from "../../../services/auth";
-import AdminDashboard from "./AdminDashboard";
-import StaffDashboard from "./StaffDashboard";
-import CarerDashboard from "./CarerDashboard";
 
+import AuthService from "../../../services/auth";
+import NurseryDashboard from "./NurseryDashboard";
+import CarerDashboard from "./CarerDashboard";
+import NurseryDataService from "../../../services/nursery";
 
 const DashboardContainer = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [isCarer, setIsCarer] = useState(false);
-  const [isStaff, setIsStaff] = useState(false);
+  const currentUser = AuthService.getCurrentUser();
+  console.log("current user: ", currentUser);
+  const [nursery, setNursery] = useState({});
 
   useEffect(() => {
-    UserService.getAdminDashboard().then(
-      response => {
-        console.log(response.data);
-        setIsAdmin(true);
-      },
-      error => {
-        console.log(error);
-        setIsAdmin(false);
-      }
-    );
+    NurseryDataService.get(currentUser.nurseryId)
+      .then(response => {
+        console.log("container response: ", response.data);
+        setNursery(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }, [])
 
-    UserService.getStaffDashboard().then(
-      response => {
-        console.log(response.data);
-        setIsStaff(true);
-      },
-      error => {
-        console.log(error);
-        setIsStaff(false);
-      }
-    );
+  console.log("nursery container: ", nursery);
+  const getLayout = () => {
+    switch (currentUser.role) {
+      case 'admin':
+      case 'staff':
+        return (
+          <NurseryDashboard
+            nursery={nursery}
+            currentUser={currentUser}
+          />)
+      case 'carer':
+        return (
+          <CarerDashboard
+            nursery={nursery}
+            currentUser={currentUser}
+          />)
+    }
+  }
 
-    UserService.getCarerHomepage().then(
-      response => {
-        console.log(response.data);
-        setIsCarer(true);
-      },
-      error => {
-        console.log(error);
-        setIsCarer(false);
-      }
-    );
-  });
-
-  const currentUser = AuthService.getCurrentUser();
-  console.log("currentUser container: ", currentUser);
   return (
     <>
-      {isAdmin &&
-      <AdminDashboard
-        currentUser={currentUser}
-      />}
-      {isStaff &&
-      <StaffDashboard
-        currentUser={currentUser}
-      />
-      }
-      {isCarer &&
-      <CarerDashboard
-        currentUser={currentUser}
-      />
-      }
+      {getLayout()}
     </>
   );
 };

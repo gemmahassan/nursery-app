@@ -1,7 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 
-import UserService from "../../../services/user";
-import AuthService from "../../../services/auth";
 import {
   IonAvatar, IonButton,
   IonButtons, IonChip,
@@ -14,27 +12,9 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/react";
-import history from "../../../history";
+import Logout from "../Logout";
 
-
-const AdminDashboard = ({currentUser}) => {
-  // const [isAdmin, setIsAdmin] = useState(false);
-  //
-  // useEffect(() => {
-  //   console.log("useEffect")
-  //   UserService.getAdminDashboard().then(
-  //     response => {
-  //       console.log('response:', response);
-  //       setIsAdmin(true);
-  //     },
-  //     error => {
-  //       setIsAdmin(false);
-  //     }
-  //   );
-  // });
-  //
-  // const currentUser = AuthService.getCurrentUser();
-
+const NurseryDashboard = ({currentUser}) => {
   return (
       <div>
         <IonMenu side="start" menuId="first" contentId="my-content">
@@ -58,6 +38,9 @@ const AdminDashboard = ({currentUser}) => {
             <IonToolbar>
               <IonButtons slot="start">
                 <IonMenuButton/>
+              </IonButtons>
+              <IonButtons slot="primary">
+                <Logout />
               </IonButtons>
               <IonTitle>Nursery Admin Dashboard</IonTitle>
               <IonChip slot="secondary">
@@ -100,4 +83,4 @@ const AdminDashboard = ({currentUser}) => {
   );
 };
 
-export default AdminDashboard;
+export default NurseryDashboard;
