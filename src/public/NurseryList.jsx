@@ -1,6 +1,18 @@
 import React, {useEffect, useState} from "react";
 import NurseryDataService from '../services/nursery';
-
+import {
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonList,
+  IonMenu,
+  IonRouterOutlet,
+  IonTitle,
+  IonToolbar,
+  IonMenuButton, IonAvatar, IonLabel, IonChip
+} from "@ionic/react";
 import NurseryItem from "./NurseryItem";
 
 const NurseryList = () => {
@@ -24,16 +36,20 @@ const NurseryList = () => {
   };
 
   return (
-    <ul>
-      {nurseries && nurseries.map(nursery => (
-        <li key={nursery.id}>
-          <NurseryItem
-            id={nursery.id}
-            name={nursery.name}
-          />
-        </li>
-      ))}
-    </ul>
+    <IonContent>
+      <ul>
+        {nurseries && nurseries.map(nursery => (
+          <li key={nursery.id}>
+            <NurseryItem
+              id={nursery.id}
+              image={nursery.image}
+              name={nursery.name}
+            />
+          </li>
+        ))}
+      </ul>
+    </IonContent>
+
   );
 };
 

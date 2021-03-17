@@ -3,18 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/NurseryHome.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/NurseryItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/NurseryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/NurseryList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/signup/NurserySignup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/signup/NurserySignup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/nursery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/nursery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/NurseryItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/NurseryItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/NurseryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/NurseryList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +65,21 @@
       <recent name="$PROJECT_DIR$/src/nursery/components/children" />
       <recent name="$PROJECT_DIR$/src/nursery" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -202,18 +209,8 @@
     <MESSAGE value="[MP-56]&#10;&#10;- adds update button to journal entries&#10;- adds update modal display on button click&#10;- connects UI to backend update function" />
     <MESSAGE value="[MP-57]&#10;&#10;- adds delete button to journal entries&#10;- adds delete alert display on button click&#10;- connects UI to backend delete function" />
     <MESSAGE value="?" />
-    <option name="LAST_COMMIT_MESSAGE" value="?" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/public/NurseryList.jsx</url>
-          <line>31</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
