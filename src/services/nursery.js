@@ -13,8 +13,8 @@ class NurseryDataService {
     return http.get(`nurseries/${id}/children`);
   }
 
-  create(data) {
-    return http.post('/nurseries', data);
+  signup(formData) {
+    return http.post('/nursery/signup', (formData));
   }
 
   update(id, data) {

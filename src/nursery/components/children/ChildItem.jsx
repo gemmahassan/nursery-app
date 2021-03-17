@@ -1,24 +1,35 @@
 import React from "react";
-import {IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent} from "@ionic/react";
+import {Card} from "antd";
+import { ReadOutlined } from '@ant-design/icons';
 
 const ChildItem = ({id, firstName, image, surname}) => {
 
   return (
     <li key={id}>
-      <IonCard style={{borderRadius: '25px'}}>
-        <IonCardHeader>
-          <IonCardTitle>{`${firstName} ${surname}`}</IonCardTitle>
-        </IonCardHeader>
-        <IonCardContent>
-          <img src={`${image}`} alt="child" ></img>
-          </IonCardContent>
-      </IonCard>
+      <Card
+        style={{width: 300, borderRadius: '25px'}}
+        cover={
+          <img
+            src={image}
+            alt="child"
+          />
+        }
+        actions={[
+          <ReadOutlined key="journal"/>
+        ]}
+        title={`${firstName} ${surname}`}
+      >
+      </Card>
     </li>
   );
 }
 
-{/*<IonButton*/}
-{/*  onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}>*/}
-{/*  {`${firstName} ${surname}`}*/}
-{/*</IonButton>*/}
+{/*<IonButton*/
+}
+{/*  onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}>*/
+}
+{/*  {`${firstName} ${surname}`}*/
+}
+{/*</IonButton>*/
+}
 export default ChildItem;

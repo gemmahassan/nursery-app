@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import NurseryDataService from '../../services/nursery';
+import NurseryDataService from '../services/nursery';
 
 import NurseryItem from "./NurseryItem";
 

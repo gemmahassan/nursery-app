@@ -2,17 +2,13 @@ import React, {useEffect, useState} from 'react';
 
 import {
   IonContent,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonSelect,
-  IonSelectOption, IonButton, IonModal,
+  IonModal,
 } from '@ionic/react';
 import JournalTypeDataService from "../../../services/journal-type";
 import JournalDataService from "../../../services/journal";
 import NurseryDataService from "../../../services/nursery"
 import {useParams} from "react-router-dom";
+import {Button, Form, Input, Select} from "antd";
 
 const AddEntry = ({childId, showAddModal}) => {
   const {nurseryId} = useParams();
@@ -29,6 +25,7 @@ const AddEntry = ({childId, showAddModal}) => {
   const [journalTypes, setJournalTypes] = useState([]);
   const [children, setChildren] = useState([]);
   const [entry, setEntry] = useState(initialEntryState);
+  const [image, setImage] = useState();
 
   const handleInputChange = event => {
     const {name, value} = event.target;
@@ -62,15 +59,18 @@ const AddEntry = ({childId, showAddModal}) => {
     getChildren();
   }, []);
 
-  const saveEntry = () => {
-    let data = {
-      type_id: entry.type_id,
-      child_id: entry.child_id,
-      image: entry.image,
-      text: entry.text,
-    };
+  const handleAddEntry = ({
+                            type_id,
+                            child_id,
+                            text
+                          }) => {
+    const formData = new FormData();
+    formData.append('type_id', type_id);
+    formData.append('child_id', child_id);
+    formData.append('image', image, image.name);
+    formData.append('text', text);
 
-    JournalDataService.create(data, nurseryId)
+    JournalDataService.create(formData, nurseryId)
       .then(response => {
         setEntry({
           id: response.data.id,
@@ -88,69 +88,72 @@ const AddEntry = ({childId, showAddModal}) => {
       });
   };
 
-  const newEntry = () => {
-    setEntry(initialEntryState);
-  };
+  // const newEntry = () => {
+  //   setEntry(initialEntryState);
+  // };
 
   return (
-
     <IonContent>
       <IonModal isOpen={showAddModal}>
-        <IonList>
-          <IonItem>
-            <IonLabel>Journal Entry Type</IonLabel>
-            <IonSelect
-              name="type_id"
-              onIonChange={handleInputChange}
-            >
+        <Form
+          name="journal"
+          initialValues={{remember: true}}
+          onFinish={handleAddEntry}>
+          <Form.Item
+            label="Entry Type"
+            name="entryType"
+            rules={[{required: true, message: 'Please select the entry type'}]}
+          >
+            <Select name="type_id">
               {journalTypes && journalTypes.map(type => (
-                <IonSelectOption value={type.id}>{type.type}</IonSelectOption>
+                <Select.Option value={type.id}>{type.type}</Select.Option>
               ))}
-            </IonSelect>
-          </IonItem>
+            </Select>
+          </Form.Item>
 
-          <IonItem>
-            <IonLabel>Select Child</IonLabel>
-            <IonSelect
-              name="child_id"
-              onIonChange={handleInputChange}
-            >
+          <Form.Item
+            label="Select Child"
+            name="child"
+            rules={[{required: true, message: 'Please select a child'}]}>
+            <Select name="child_id">
               {children && children.map(child => (
-                <IonSelectOption value={child.id}>{child.first_name} {child.surname}</IonSelectOption>
+                <Select.Option value={child.id}>{child.first_name} {child.surname}</Select.Option>
               ))}
-            </IonSelect>
-          </IonItem>
+            </Select>
+          </Form.Item>
 
-          <IonLabel>Image Upload</IonLabel>
-          <IonItem>
-            <IonInput
-              value={entry.image}
-              onIonChange={handleInputChange}
-              name="image"
-              clearInput
-            >
-            </IonInput>
-          </IonItem>
+          <Form.Item
+            name="image"
+            label="Add an image"
+          >
+            <input
+              name="image" // name of input field or fieldName simply
+              enctype="multipart/form-data"
+              type="file"
+              onChange={(event) => {
+                // setState method with event.target.files[0] as argument
+                setImage(event.target.files[0]);
+              }}
+            />
+          </Form.Item>
 
-          <IonLabel>Description</IonLabel>
-          <IonItem>
-            <IonInput
-              value={entry.text}
-              onIonChange={handleInputChange}
-              name="text"
-              clearInput
-            >
-            </IonInput>
-          </IonItem>
-        </IonList>
+          <Form.Item
+            label="Description"
+            name="text">
+            <Input/>
+          </Form.Item>
 
-        <IonButton
-          class="ion-float-right ion-padding"
-          size="large"
-          color="medium"
-          onClick={saveEntry}>
-          Submit
-        </IonButton>
+          <Form.Item>
+            <Button
+              class="ion-float-right ion-padding"
+              size="large"
+              color="medium"
+              type="primary"
+              htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
       </IonModal>
     </IonContent>
   );

@@ -2,9 +2,9 @@ import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import history from "./history";
 import StaffList from "./staff/components/StaffList";
-import NurseryList from "./nursery/components/NurseryList";
+import NurseryList from "./public/NurseryList";
 import Home from "./public/Home";
-import NurseryHome from "./nursery/components/NurseryHome";
+import NurseryHome from "./public/NurseryHome";
 import ChildList from "./nursery/components/children/ChildList";
 import Journal from "./nursery/components/journal/Journal";
 import AddEntry from "./nursery/components/journal/AddEntry";
@@ -12,6 +12,7 @@ import EditEntry from "./nursery/components/journal/EditEntry";
 import Login from "./nursery/components/Login";
 import Profile from "./nursery/components/Profile";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
+import NurserySignup from "./public/signup/NurserySignup";
 
 const Routes = () => {
   return (
@@ -23,6 +24,7 @@ const Routes = () => {
         <Route path="/login" component={Login} />
         <Route path="/dashboard" component={DashboardContainer} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/signup" component={NurserySignup} />
         <Route exact path="/nurseries/:nurseryId" component={NurseryHome} />
         <Route exact path="/nurseries/:nurseryId/children" component={ChildList} />
         <Route exact path="/nurseries/:nurseryId/journal/add" component={AddEntry} />
