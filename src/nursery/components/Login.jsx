@@ -9,7 +9,6 @@ import AuthService from "../../services/auth";
 import {IonContent, IonPage} from "@ionic/react";
 
 const Login = (props) => {
-
   const handleLogin = ({username, password}) => {
     AuthService.login(username, password).then(
       response => {

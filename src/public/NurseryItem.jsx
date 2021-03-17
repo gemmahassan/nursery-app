@@ -1,5 +1,5 @@
 import React from "react";
-import history from "../../history";
+import history from "../history";
 import {IonButton} from "@ionic/react";
 
 const NurseryItem = ({id, name }) => {

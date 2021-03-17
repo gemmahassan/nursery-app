@@ -4,18 +4,16 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
   IonItem,
   IonList,
   IonMenu,
   IonRouterOutlet,
   IonTitle,
   IonToolbar,
-  IonMenuToggle,
   IonMenuButton, IonAvatar, IonLabel, IonChip
 } from "@ionic/react";
 
-import history from "../../history";
+import history from "../history";
 import {useParams} from "react-router-dom";
 
 const NurseryHome = () => {
@@ -81,8 +79,6 @@ const NurseryHome = () => {
           </ion-grid>
         </IonContent>
       </div>
-
-
     </div>
   );
 };
