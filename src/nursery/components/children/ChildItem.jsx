@@ -3,7 +3,6 @@ import {Card} from "antd";
 import { ReadOutlined } from '@ant-design/icons';
 
 const ChildItem = ({id, firstName, image, surname}) => {
-
   return (
     <li key={id}>
       <Card
@@ -15,7 +14,9 @@ const ChildItem = ({id, firstName, image, surname}) => {
           />
         }
         actions={[
-          <ReadOutlined key="journal"/>
+          <ReadOutlined key="journal"
+          // onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}
+          />
         ]}
         title={`${firstName} ${surname}`}
       >

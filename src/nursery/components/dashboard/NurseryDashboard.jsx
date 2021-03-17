@@ -5,6 +5,7 @@ import {
   IonButtons, IonChip,
   IonContent,
   IonHeader,
+  IonImg,
   IonItem, IonLabel,
   IonList,
   IonMenu, IonMenuButton,
@@ -17,6 +18,7 @@ import ChildList from "../children/ChildList";
 import history from "../../../history";
 
 const NurseryDashboard = ({currentUser, nursery}) => {
+  console.log(nursery.image);
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">
@@ -44,6 +46,7 @@ const NurseryDashboard = ({currentUser, nursery}) => {
             <IonButtons slot="primary">
               <Logout/>
             </IonButtons>
+            <IonImg src={nursery.image} />
             <IonTitle>{`${nursery.name} Staff Dashboard`}</IonTitle>
             <IonChip slot="secondary">
               <IonAvatar>
