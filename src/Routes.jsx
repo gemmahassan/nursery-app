@@ -13,6 +13,7 @@ import Login from "./nursery/components/Login";
 import Profile from "./nursery/components/Profile";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
 import NurserySignup from "./public/signup/NurserySignup";
+import NurseryCalendar from "./nursery/NurseryCalendar";
 
 const Routes = () => {
   return (
@@ -30,6 +31,8 @@ const Routes = () => {
         <Route exact path="/nurseries/:nurseryId/journal/add" component={AddEntry} />
         <Route exact path="/child/:childId/journal/:journalId/edit" component={EditEntry} />
         <Route exact path="/child/:childId/journal/:date" component={Journal} />
+        <Route exact path="/nursery/:nurseryId/calendar" component={NurseryCalendar} />
+
       </Switch>
     </Router>
   );

@@ -18,7 +18,6 @@ import ChildList from "../children/ChildList";
 import history from "../../../history";
 
 const NurseryDashboard = ({currentUser, nursery}) => {
-  console.log(nursery.image);
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">
@@ -29,10 +28,12 @@ const NurseryDashboard = ({currentUser, nursery}) => {
         </IonHeader>
         <IonContent>
           <IonList>
-            <IonItem>Rooms</IonItem>
             <IonItem>Staff</IonItem>
             <IonItem>Kids</IonItem>
-            <IonItem>Info</IonItem>
+            <IonItem
+            onClick={() => history.push(`/nursery/${nursery.id}/calendar`)}>
+            Calendar
+          </IonItem>
           </IonList>
         </IonContent>
       </IonMenu>
