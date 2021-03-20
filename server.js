@@ -1,8 +1,7 @@
-const express = require('express');
-const app = express();
+const connect = require('connect');
+const serveStatic = require('serve-static');
 
-app.use(express.static('build'));
-app.set('port', process.env.PORT || 5000);
-app.listen(app.get('port'), function () {
-  console.log('Express server listening on port ' + app.get('port'));
-});
+const app = connect();
+
+app.use(serveStatic("build"))
+app.listen(process.env.PORT || 8081);
