@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/App/App.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/App/App.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/AddStaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/Nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/Nav.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/NurseryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/NurseryList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/signup/NurserySignup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/nursery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/nursery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/staff/components/StaffItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/StaffItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/staff/components/StaffList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/StaffList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +48,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/public/signup" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -52,16 +61,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/public/signup" />
       <recent name="$PROJECT_DIR$/src/nursery/components" />
       <recent name="$PROJECT_DIR$/src/nursery/components/dashboard" />
       <recent name="$PROJECT_DIR$/src/nursery/components/journal" />
       <recent name="$PROJECT_DIR$/src/services" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/public" />
+      <recent name="$PROJECT_DIR$/src/nursery/components/staff" />
       <recent name="$PROJECT_DIR$/src/nursery/components" />
-      <recent name="$PROJECT_DIR$/src/nursery/components/children" />
       <recent name="$PROJECT_DIR$/src/nursery" />
+      <recent name="$PROJECT_DIR$/src/public" />
+      <recent name="$PROJECT_DIR$/src/nursery/components/children" />
     </key>
   </component>
   <component name="RunManager">

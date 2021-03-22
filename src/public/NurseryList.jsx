@@ -25,7 +25,7 @@ const NurseryList = () => {
   }, []);
 
   const getNurseries = () => {
-    NurseryDataService.getAll()
+    NurseryDataService.getAllConfirmed()
       .then(response => {
         setNurseries(response.data);
         console.log(response.data);

@@ -1,7 +1,7 @@
 import http from '../shared/http-common';
 
 class NurseryDataService {
-  getAll() {
+  getAllConfirmed() {
     return http.get('/nurseries');
   }
 

@@ -15,7 +15,7 @@ const Nav = () => {
           <IonButton onClick={() => history.push('/nurseries')}>Our Nurseries</IonButton>
         </IonButtons>
         <IonButtons slot="secondary">
-          <IonButton onClick={() => history.push('/signup')}>Sign Up</IonButton>
+          <IonButton onClick={() => history.push('/contact')}>Contact Us</IonButton>
         </IonButtons>
         <IonTitle>NURSERY JOURNAL</IonTitle>
       </IonToolbar>

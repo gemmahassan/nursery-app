@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import {IonContent, IonPage} from '@ionic/react';
 import {Button, Form, Input,} from "antd";
-import NurseryDataService from "../../services/nursery";
-import Nav from "../Nav";
+import NurseryDataService from "../services/nursery";
+import Nav from "../public/Nav";
 
 const NurserySignup = () => {
 
