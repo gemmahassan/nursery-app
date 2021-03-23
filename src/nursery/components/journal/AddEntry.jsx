@@ -88,10 +88,6 @@ const AddEntry = ({childId, showAddModal}) => {
       });
   };
 
-  // const newEntry = () => {
-  //   setEntry(initialEntryState);
-  // };
-
   return (
     <IonContent>
       <IonModal isOpen={showAddModal}>

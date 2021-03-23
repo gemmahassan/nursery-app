@@ -27,7 +27,6 @@ const Login = (props) => {
     );
   };
 
-
   return (
     <IonPage>
       <IonContent>

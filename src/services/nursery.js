@@ -2,6 +2,14 @@ import http from '../shared/http-common';
 
 class NurseryDataService {
   getAllConfirmed() {
+    return http.get('/nurseries/confirmed');
+  }
+
+  getAllPending() {
+    return http.get('/nurseries/pending');
+  }
+
+  getAll() {
     return http.get('/nurseries');
   }
 
@@ -13,8 +21,12 @@ class NurseryDataService {
     return http.get(`nurseries/${id}/children`);
   }
 
-  signup(formData) {
-    return http.post('/nursery/signup', (formData));
+  contact(data) {
+    return http.post('/contact', (data));
+  }
+
+  signup(id, data) {
+    return http.put(`/signup/${id}`, (data));
   }
 
   update(id, data) {

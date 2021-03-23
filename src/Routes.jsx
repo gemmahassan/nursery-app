@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Router, Switch, Route } from "react-router-dom";
+import {Link, Router, Switch, Route} from "react-router-dom";
 import history from "./history";
 import StaffList from "./nursery/components/staff/StaffList";
 import NurseryList from "./public/NurseryList";
@@ -16,6 +16,7 @@ import NurseryCalendar from "./nursery/NurseryCalendar";
 import NurseryDataService from "./services/nursery";
 import NurseryContact from "./public/signup/NurseryContact";
 import NurserySignup from "./nursery/NurserySignup";
+import Dashboard from "./admin/Dashboard";
 
 const Routes = () => {
   const [nurseries, setNurseries] = useState([]);
@@ -25,7 +26,7 @@ const Routes = () => {
   }, []);
 
   const getNurseries = () => {
-    NurseryDataService.getAllConfirmed()
+    NurseryDataService.getAllPending()
       .then(response => {
         setNurseries(response.data);
         console.log(response.data);
@@ -37,31 +38,31 @@ const Routes = () => {
 
   return (
     <Router history={history}>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/staff" component={StaffList} />
-        <Route exact path="/nurseries" component={NurseryList} />
-        <Route path="/login" component={Login} />
-        <Route path="/dashboard" component={DashboardContainer} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/contact" component={NurseryContact} />
-        <Route exact path="/nurseries/:nurseryId" component={NurseryHome} />
-        <Route exact path="/nurseries/:nurseryId/children" component={ChildList} />
-        <Route exact path="/nurseries/:nurseryId/journal/add" component={AddEntry} />
-        <Route exact path="/child/:childId/journal/:journalId/edit" component={EditEntry} />
-        <Route exact path="/child/:childId/journal/:date" component={Journal} />
-        <Route exact path="/nursery/:nurseryId/calendar" component={NurseryCalendar} />
+      {/*generate a signup page for each of the registered nurseries based on their unique url*/}
+      <Route exact path={`/signup/:nurseryId`} component={NurserySignup}/>
 
-        {/*generate a signup page for each of the registered nurseries based on their unique url*/}
-        {nurseries.map(nursery => (
-          <Route exact path ={`/nursery/signup/${nursery.url}`} component={NurserySignup} />
-        ))}
+      <Route path="/" exact component={Home}/>
+      <Route path="/staff" component={StaffList}/>
+      <Route path="/admin" component={Dashboard}/>
+      {/*<Route exact path="/admin" component={NurseryApproval}/>*/}
+      <Route exact path="/nurseries" component={NurseryList}/>
+      <Route path="/login" component={Login}/>
+      <Route path="/dashboard" component={DashboardContainer}/>
+      <Route exact path="/profile" component={Profile}/>
+      <Route exact path="/contact" component={NurseryContact}/>
+      <Route exact path="/nurseries/:nurseryId" component={NurseryHome}/>
+      <Route exact path="/nurseries/:nurseryId/children" component={ChildList}/>
+      <Route exact path="/nurseries/:nurseryId/journal/add" component={AddEntry}/>
+      <Route exact path="/child/:childId/journal/:journalId/edit" component={EditEntry}/>
+      <Route exact path="/child/:childId/journal/:date" component={Journal}/>
+      {/*<Route exact path="/signup/:url" component={NurserySignup}/>*/}
+      <Route exact path="/nursery/:nurseryId/calendar" component={NurseryCalendar}/>
 
-        {/*generate a route for each of the registered nurseries based on their unique url*/}
-        {nurseries.map(nursery => (
-          <Route exact path ={`/nursery/${nursery.url}`} component={Login} />
-        ))}
-      </Switch>
+      {/*generate a route for each of the registered nurseries based on their unique url*/}
+      {nurseries.map(nursery => (
+        <Route exact path={`/login/${nursery.id}`} component={Login}/>
+      ))}
+      {/*<Route render={() => <h1>404: page not found</h1>} />*/}
     </Router>
   );
 };

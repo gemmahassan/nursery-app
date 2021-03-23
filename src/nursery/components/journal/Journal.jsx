@@ -49,13 +49,6 @@ const Journal = ({children, role}) => {
     setActiveDate(dateString);
   };
 
-  // useInterval(() => {
-  //   console.log("entered useInterval");
-  //   getData().then(data => {
-  //     setJournal(data);
-  //   });
-  // }, 3000);
-
   useEffect(() => {
     getData().then(data => {
       setJournal(data);
