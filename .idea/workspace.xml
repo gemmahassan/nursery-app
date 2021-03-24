@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Warning.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/admin/Dashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/Dashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/nursery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/nursery.js" afterDir="false" />
     </list>
@@ -75,19 +68,6 @@
       <recent name="$PROJECT_DIR$/src/nursery/components/children" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -112,6 +92,7 @@
       <workItem from="1616147297107" duration="903000" />
       <workItem from="1616413702594" duration="9767000" />
       <workItem from="1616495938184" duration="8572000" />
+      <workItem from="1616580816451" duration="3926000" />
     </task>
     <task id="LOCAL-00001" summary="[MP-42] Rename remaining .tsx files to .jsx">
       <created>1609874851247</created>

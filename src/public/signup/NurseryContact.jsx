@@ -15,26 +15,26 @@ const NurseryContact = () => {
   // only northern ireland postcodes
   const apiKey = 'aDUOicMHl0-6XpwvlhUH4w30713';
 
-  function debounce(func, wait) {
-    let timeout;
-    return function(...args) {
-      const context = this;
-      if (timeout) clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        timeout = null;
-        func.apply(context, args);
-      }, wait);
-    };
-  }
+  // function debounce(func, wait) {
+  //   let timeout;
+  //   return function(...args) {
+  //     const context = this;
+  //     if (timeout) clearTimeout(timeout);
+  //     timeout = setTimeout(() => {
+  //       timeout = null;
+  //       func.apply(context, args);
+  //     }, wait);
+  //   };
+  // }
 
-  const handlePostcodeChange = event => {
-      fetch(`https://api.getAddress.io/find/${event.target.value}?api-key=${apiKey}`)
-        .then(res => res.json())
-        .then(response => {
-          console.log(response);
-        })
-        .catch(console.log)
-  }
+  // const handlePostcodeChange = event => {
+  //     fetch(`https://api.getAddress.io/find/${event.target.value}?api-key=${apiKey}`)
+  //       .then(res => res.json())
+  //       .then(response => {
+  //         console.log(response);
+  //       })
+  //       .catch(console.log)
+  // }
 
   const handleSignup = ({
                           name,
@@ -169,7 +169,8 @@ const NurseryContact = () => {
                     rules={[{required: true, message: 'Please add a postcode!'}]}
                   >
                     <Input placeholder="Postcode"
-                    onChange={debounce=(handlePostcodeChange, 200)}/>
+                    // onChange={debounce=(handlePostcodeChange, 200)}
+                    />
                   </Form.Item>
 
                   <Form.Item>
