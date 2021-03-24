@@ -63,7 +63,6 @@ const Login = (props) => {
               </Button>
               </Form.Item>
             </Form>
-
         </div>
       </IonContent>
     </IonPage>
