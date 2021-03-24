@@ -5,8 +5,7 @@ import {Button, Card, List} from "antd";
 import {CheckOutlined, CloseOutlined, SettingOutlined} from "@ant-design/icons";
 import http from '../shared/http-common';
 
-
-const Dashboard = props => {
+const AdminDashboard = props => {
   // const currentUser = AuthService.getCurrentUser();
   const [nurseries, setNurseries] = useState([]);
   const [admin, setAdmin] = useState(false);
@@ -21,7 +20,7 @@ const Dashboard = props => {
       .catch(e => {
         console.log(e);
       });
-  }, [nurseries])
+  }, []);
 
   const handleApprove = nursery => {
     const name = 'person';
@@ -122,4 +121,4 @@ const Dashboard = props => {
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;
