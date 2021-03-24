@@ -22,19 +22,23 @@ class NurseryDataService {
   }
 
   contact(data) {
-    return http.post('/contact', (data));
+    return http.post('/contact', data);
   }
 
   signup(id, data) {
-    return http.put(`/signup/${id}`, (data));
+    return http.put(`/signup/${id}`, data);
   }
 
   update(id, data) {
     return http.put(`/nurseries/${id}`, data);
   }
 
+  approve(id) {
+    return http.put(`/admin/${id}/approve`);
+  }
+
   delete(id) {
-    return http.delete(`nurseries/${id}`);
+    return http.delete(`admin/${id}/decline`);
   }
 }
 

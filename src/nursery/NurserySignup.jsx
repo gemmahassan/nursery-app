@@ -56,12 +56,11 @@ const NurserySignup = () => {
       return;
     }
 
-    console.log("color: ", color);
     const formData = new FormData();
     formData.append('image', image, image.name);
     formData.append('color', color);
 
-    NurseryDataService.signup(nurseryId, formData)
+    NurseryDataService.approve(nurseryId, formData)
       .then(
         response => {
           setSignupSuccessful(true);
@@ -76,11 +75,7 @@ const NurserySignup = () => {
         }
       );
   };
-
-  const handleColorChange = color => {
-    setColor(color.hex);
-  }
-
+console.log(color);
   const getLayout = () => {
     if (nursery) {
       if (nursery.pending === 2) {
@@ -112,11 +107,10 @@ const NurserySignup = () => {
                   label="Upload an image of your nursery"
                 >
                   <input
-                    name="image" // name of input field or fieldName simply
+                    name="image"
                     enctype="multipart/form-data"
                     type="file"
                     onChange={(event) => {
-                      // setState method with event.target.files[0] as argument
                       setImage(event.target.files[0]);
                     }}
                   />
@@ -124,7 +118,7 @@ const NurserySignup = () => {
                 <Form.Item>
                   <CirclePicker
                     colors={colors}
-                    onChangeComplete={handleColorChange}
+                    onChangeComplete={color => setColor(color.hex)}
                   />
                 </Form.Item>
                 <Form.Item>
