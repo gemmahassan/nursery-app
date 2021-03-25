@@ -13,7 +13,7 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/react";
-import Logout from "../Logout";
+import Logout from "../../../common/Logout";
 import ChildList from "../children/ChildList";
 import history from "../../../history";
 
@@ -70,7 +70,6 @@ const NurseryDashboard = ({currentUser, nursery}) => {
           </ion-grid>
         </IonContent>
       </div>
-
     </div>
   );
 };

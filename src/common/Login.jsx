@@ -5,7 +5,7 @@ import {
   Button,
   Checkbox,
 } from 'antd';
-import AuthService from "../../services/auth";
+import AuthService from "../services/auth";
 import {IonContent, IonPage} from "@ionic/react";
 
 const Login = (props) => {

@@ -15,7 +15,7 @@ import {
 import ChildDataService from "../../../services/child";
 import Journal from "../journal/Journal";
 import useInterval from "../../../hooks/useInterval"
-import Logout from "../Logout";
+import Logout from "../../../common/Logout";
 
 const CarerDashboard = ({currentUser, nursery}) => {
   console.log("dashboard nursery: ", nursery);

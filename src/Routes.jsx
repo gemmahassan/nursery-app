@@ -9,7 +9,7 @@ import ChildList from "./nursery/components/children/ChildList";
 import Journal from "./nursery/components/journal/Journal";
 import AddEntry from "./nursery/components/journal/AddEntry";
 import EditEntry from "./nursery/components/journal/EditEntry";
-import Login from "./nursery/components/Login";
+import Login from "./common/Login";
 import Profile from "./nursery/components/Profile";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
 import NurseryCalendar from "./nursery/NurseryCalendar";
