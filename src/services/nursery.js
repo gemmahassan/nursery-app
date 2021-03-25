@@ -1,4 +1,5 @@
 import http from '../shared/http-common';
+import authHeader from "./auth-header";
 
 class NurseryDataService {
   getAllConfirmed() {
@@ -33,12 +34,12 @@ class NurseryDataService {
     return http.put(`/nurseries/${id}`, data);
   }
 
-  approve(id) {
-    return http.put(`/admin/${id}/approve`);
+  approve(id, data) {
+    return http.put(`/admin/${id}/approve`, data, {headers: authHeader()});
   }
 
   delete(id) {
-    return http.delete(`admin/${id}/decline`);
+    return http.delete(`admin/${id}/decline`, {headers: authHeader()});
   }
 }
 
