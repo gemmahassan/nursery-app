@@ -64,7 +64,9 @@ const Nurseries = () => {
                   onClick={() => handleClick(nursery)}/>
               ]}
               title={nursery.name}
-            >{nursery.town}</Card>
+            >
+              {nursery.town}
+            </Card>
           </List.Item>
         )}
       />
