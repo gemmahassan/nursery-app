@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/staff.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/Nurseries.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/Nurseries.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/child.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/staff/StaffList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/StaffList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +41,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components/children" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/services" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,11 +54,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/services" />
       <recent name="$PROJECT_DIR$/src/nursery/components/children" />
       <recent name="$PROJECT_DIR$/src/admin" />
       <recent name="$PROJECT_DIR$/src/public/signup" />
       <recent name="$PROJECT_DIR$/src/nursery/components" />
-      <recent name="$PROJECT_DIR$/src/nursery/components/dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/common" />
@@ -221,6 +219,17 @@
     <MESSAGE value="?" />
     <MESSAGE value="workspace" />
     <option name="LAST_COMMIT_MESSAGE" value="workspace" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

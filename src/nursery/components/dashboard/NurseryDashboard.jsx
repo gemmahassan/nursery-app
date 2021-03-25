@@ -17,6 +17,7 @@ import Logout from "../../../common/Logout";
 import ChildList from "../children/ChildList";
 import history from "../../../history";
 import {Tabs} from "antd";
+import StaffList from "../staff/StaffList";
 const { TabPane } = Tabs;
 
 
@@ -70,7 +71,8 @@ const NurseryDashboard = ({currentUser, nursery}) => {
               />
             </TabPane>
             <TabPane tab="Staff" key="2">
-              some staff
+              <StaffList
+              nurseryId={nursery.id}/>
             </TabPane>
           </Tabs>
         </IonContent>
