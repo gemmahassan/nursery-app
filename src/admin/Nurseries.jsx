@@ -2,10 +2,13 @@ import React, {useEffect, useState} from "react";
 import NurseryDataService from '../services/nursery';
 import {Card, List} from "antd";
 import {CloseOutlined, EditOutlined} from "@ant-design/icons";
+import {IonAlert} from "@ionic/react";
 
 const Nurseries = () => {
   // const currentUser = AuthService.getCurrentUser();
   const [nurseries, setNurseries] = useState([]);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [currentNursery, setCurrentNursery] = useState({});
 
   useEffect(() => {
     NurseryDataService.getAllConfirmed()
@@ -17,8 +20,13 @@ const Nurseries = () => {
       });
   }, []);
 
-  const handleRemove = nursery => {
-    NurseryDataService.delete(nursery.id)
+  const handleClick = nursery => {
+    setCurrentNursery(nursery);
+    setShowConfirm(true);
+  };
+
+  const handleRemove = () => {
+    NurseryDataService.delete(currentNursery.id)
       .then(
         response => {
           console.log(response.data);
@@ -53,13 +61,35 @@ const Nurseries = () => {
               actions={[
                 <CloseOutlined
                   key="delete"
-                  onClick={() => handleRemove(nursery)}/>
+                  onClick={() => handleClick(nursery)}/>
               ]}
               title={nursery.name}
             >{nursery.town}</Card>
           </List.Item>
         )}
       />
+
+      {showConfirm &&
+      <IonAlert
+        isOpen={showConfirm}
+        onDidDismiss={() => setShowConfirm(false)}
+        header={`Confirm delete`}
+        message={`Do you want to delete this nursery?`}
+        buttons={[
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            cssClass: 'secondary',
+          },
+          {
+            text: 'OK',
+            handler: () => {
+              handleRemove();
+            }
+          }
+        ]}
+      />
+      }
     </>
   );
 };
