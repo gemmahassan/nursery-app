@@ -1,12 +1,12 @@
 import React from "react";
-import {Card} from "antd";
-import { ReadOutlined } from '@ant-design/icons';
+import {Card, List} from "antd";
+import {EditOutlined, ReadOutlined} from '@ant-design/icons';
 
 const ChildItem = ({id, firstName, image, surname}) => {
   return (
-    <li key={id}>
+    <List.Item>
       <Card
-        style={{width: 300, borderRadius: '25px'}}
+        // style={{width: 300, borderRadius: '25px'}}
         cover={
           <img
             src={image}
@@ -15,13 +15,16 @@ const ChildItem = ({id, firstName, image, surname}) => {
         }
         actions={[
           <ReadOutlined key="journal"
-          // onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}
+            // onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}
+          />,
+          <EditOutlined key="edit"
+            // onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}
           />
         ]}
         title={`${firstName} ${surname}`}
       >
       </Card>
-    </li>
+    </List.Item>
   );
 }
 

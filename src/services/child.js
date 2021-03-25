@@ -1,4 +1,5 @@
 import http from '../shared/http-common';
+import authHeader from "./auth-header";
 
 class ChildDataService {
   getAll() {
@@ -17,7 +18,7 @@ class ChildDataService {
   }
 
   create(data) {
-    return http.post('/children', data);
+    return http.post('/child/add', data, {headers: authHeader()});
   }
 
   update(id, data) {

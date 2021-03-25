@@ -16,6 +16,9 @@ import {
 import Logout from "../../../common/Logout";
 import ChildList from "../children/ChildList";
 import history from "../../../history";
+import {Tabs} from "antd";
+const { TabPane } = Tabs;
+
 
 const NurseryDashboard = ({currentUser, nursery}) => {
   return (
@@ -58,16 +61,18 @@ const NurseryDashboard = ({currentUser, nursery}) => {
           </IonToolbar>
         </IonHeader>
 
+
         <IonContent>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <ChildList
-                  nurseryId={nursery.id}
-                />
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+          <Tabs type="card">
+            <TabPane tab="Children" key="1">
+              <ChildList
+                nurseryId={nursery.id}
+              />
+            </TabPane>
+            <TabPane tab="Staff" key="2">
+              some staff
+            </TabPane>
+          </Tabs>
         </IonContent>
       </div>
     </div>
