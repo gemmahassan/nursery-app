@@ -16,7 +16,7 @@ import history from "../history";
 import {useParams} from "react-router-dom";
 import AuthService from "../services/auth";
 import DashboardContainer from "../nursery/components/dashboard/DashboardContainer";
-import Login from "../nursery/components/Login";
+import Login from "../common/Login";
 
 const NurseryHome = () => {
   const {nurseryId} = useParams();

@@ -12,9 +12,7 @@ const Nav = () => {
           </IonButton>
         </IonButtons>
         <IonTitle>NURSERY NAME</IonTitle>
-
       </IonToolbar>
-
     </ion-header>
   );
 };

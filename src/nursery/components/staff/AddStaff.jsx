@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../Nav";
+import Nav from "../../../common/Nav";
 import { IonContent, IonInput, IonItem, IonLabel, IonList} from '@ionic/react';
 
 const AddStaff = () => {

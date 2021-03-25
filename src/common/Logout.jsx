@@ -1,6 +1,6 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
-import AuthService from "../../services/auth";
+import AuthService from "../services/auth";
 import {IonButton} from "@ionic/react";
 
 const Logout = () => {

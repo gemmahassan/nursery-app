@@ -32,7 +32,7 @@ const Journal = ({children, role}) => {
   };
 
   async function getData() {
-    let generatedResponse = []
+    let generatedResponse = [];
     await Promise.all(children.map(async (child) => {
       try {
         const childJournal = await getJournal(activeDate, child.id, child.first_name);
