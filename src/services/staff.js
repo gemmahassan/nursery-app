@@ -14,8 +14,8 @@ class StaffDataService {
     return http.post('/staff/add', data, {headers: authHeader()});
   }
 
-  update(id, data) {
-    return http.put(`/staff/${id}`, data);
+  update(data) {
+    return http.put(`/staff/${data.staffId}/update`, data, {headers: authHeader()});
   }
 
   delete(id) {
