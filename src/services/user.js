@@ -1,7 +1,7 @@
 import http from '../shared/http-common';
 import authHeader from "./auth-header";
 
-class UserService {
+class UserDataService {
   getPublicHomepage() {
     return http.get("/home", {headers: authHeader()});
   }
@@ -17,6 +17,10 @@ class UserService {
   getCarerHomepage() {
     return http.get("/carer", {headers: authHeader()});
   }
+
+  create(data) {
+    return http.post('/user/add', data, {headers: authHeader()});
+  }
 }
 
-export default new UserService();
+export default new UserDataService();
