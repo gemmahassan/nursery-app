@@ -1,16 +1,20 @@
 import http from '../shared/http-common';
+import authHeader from "./auth-header";
 
 class JournalDataService {
-  create(data, nid) {
-    return http.post(`/nurseries/${nid}/journal/add`, data);
+  create(data, nurseryId) {
+    for (let [key, value] of data.entries()) {
+      console.log(key, value);
+    }
+    return http.post(`/nurseries/${nurseryId}/journal/add`, data, {headers: authHeader()});
   }
 
-  edit(data, cid, jid) {
-    return http.put(`/child/${cid}/journal/${jid}`, data);
+  edit(data, childId, journalId) {
+    return http.put(`/child/${childId}/journal/${journalId}`, data);
   }
 
-  delete(cid, jid) {
-    return http.delete(`/child/${cid}/journal/${jid}`);
+  delete(childId, journalId) {
+    return http.delete(`/child/${childId}/journal/${journalId}`);
   }
 }
 

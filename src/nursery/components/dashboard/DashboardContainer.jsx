@@ -8,6 +8,7 @@ import Warning from "../../../common/Warning";
 
 const DashboardContainer = () => {
   const currentUser = AuthService.getCurrentUser();
+  console.log("container: ", currentUser);
   const [nursery, setNursery] = useState({});
   const [authorised, setAuthorised] = useState(false);
 

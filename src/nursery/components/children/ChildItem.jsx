@@ -2,7 +2,7 @@ import React from "react";
 import {Card, List} from "antd";
 import {EditOutlined, ReadOutlined} from '@ant-design/icons';
 
-const ChildItem = ({child, editChild, showJournal}) => {
+const ChildItem = ({child, editChild, addJournal}) => {
   const {first_name, image, surname} = child;
 
   return (
@@ -18,7 +18,7 @@ const ChildItem = ({child, editChild, showJournal}) => {
         actions={[
           <ReadOutlined key="journal"
             onClick={() => {
-              showJournal(child);
+              addJournal(child);
             }}
           />,
           <EditOutlined key="edit"
