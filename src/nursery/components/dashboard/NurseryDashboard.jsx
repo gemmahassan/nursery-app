@@ -67,6 +67,7 @@ const NurseryDashboard = ({currentUser, nursery}) => {
           <Tabs type="card">
             <TabPane tab="Children" key="1">
               <ChildList
+                userId={currentUser.userId}
                 nurseryId={nursery.id}
               />
             </TabPane>

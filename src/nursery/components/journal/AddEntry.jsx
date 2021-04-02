@@ -6,31 +6,16 @@ import {
 } from '@ionic/react';
 import JournalTypeDataService from "../../../services/journal-type";
 import JournalDataService from "../../../services/journal";
-import NurseryDataService from "../../../services/nursery"
 import {useParams} from "react-router-dom";
 import {Button, Form, Input, Select} from "antd";
 
-const AddEntry = ({childId, showAddModal}) => {
+const AddEntry = ({child, showAddModal, userId}) => {
   const {nurseryId} = useParams();
-  const initialEntryState = {
-    id: null,
-    child_id: null,
-    type_id: null,
-    image: "",
-    text: "",
-    staff_id: null,
-    timestamp: "",
-  };
 
   const [journalTypes, setJournalTypes] = useState([]);
   const [children, setChildren] = useState([]);
-  const [entry, setEntry] = useState(initialEntryState);
   const [image, setImage] = useState();
-
-  const handleInputChange = event => {
-    const {name, value} = event.target;
-    setEntry({...entry, [name]: value});
-  };
+  const [addSuccess, setAddSuccess] = useState(false);
 
   const getJournalTypes = () => {
     JournalTypeDataService.getAll()
@@ -43,44 +28,26 @@ const AddEntry = ({childId, showAddModal}) => {
       });
   };
 
-  const getChildren = () => {
-    NurseryDataService.getChildren(nurseryId)
-      .then(response => {
-        setChildren(response.data);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
   useEffect(() => {
     getJournalTypes();
-    getChildren();
   }, []);
 
   const handleAddEntry = ({
-                            type_id,
-                            child_id,
+                            entryType,
                             text
                           }) => {
     const formData = new FormData();
-    formData.append('type_id', type_id);
-    formData.append('child_id', child_id);
-    formData.append('image', image, image.name);
+    formData.append('type_id', entryType);
+    formData.append('child_id', child.id);
     formData.append('text', text);
+    formData.append('user_id', userId);
+    if (image) {
+      formData.append('image', image, image.name);
+    }
 
     JournalDataService.create(formData, nurseryId)
       .then(response => {
-        setEntry({
-          id: response.data.id,
-          child_id: response.data.child_id,
-          type_id: response.data.type_id,
-          image: response.data.image,
-          text: response.data.text,
-          staff_id: response.data.staff_id,
-          timestamp: response.data.timestamp,
-        });
+        setAddSuccess(true);
         console.log(response.data);
       })
       .catch(e => {
@@ -95,6 +62,7 @@ const AddEntry = ({childId, showAddModal}) => {
           name="journal"
           initialValues={{remember: true}}
           onFinish={handleAddEntry}>
+          Add a Journal entry for {child.first_name}
           <Form.Item
             label="Entry Type"
             name="entryType"
@@ -107,16 +75,16 @@ const AddEntry = ({childId, showAddModal}) => {
             </Select>
           </Form.Item>
 
-          <Form.Item
-            label="Select Child"
-            name="child"
-            rules={[{required: true, message: 'Please select a child'}]}>
-            <Select name="child_id">
-              {children && children.map(child => (
-                <Select.Option value={child.id}>{child.first_name} {child.surname}</Select.Option>
-              ))}
-            </Select>
-          </Form.Item>
+          {/*<Form.Item*/}
+          {/*  label="Select Child"*/}
+          {/*  name="child"*/}
+          {/*  rules={[{required: true, message: 'Please select a child'}]}>*/}
+          {/*  <Select name="child_id">*/}
+          {/*    {children && children.map(child => (*/}
+          {/*      <Select.Option value={child.id}>{child.first_name} {child.surname}</Select.Option>*/}
+          {/*    ))}*/}
+          {/*  </Select>*/}
+          {/*</Form.Item>*/}
 
           <Form.Item
             name="image"
@@ -150,6 +118,9 @@ const AddEntry = ({childId, showAddModal}) => {
             </Button>
           </Form.Item>
         </Form>
+        {addSuccess && (
+          <p>Added!</p>
+        )}
       </IonModal>
     </IonContent>
   );

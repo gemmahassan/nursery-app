@@ -6,8 +6,6 @@ import {Button, Form, Input} from "antd";
 const AddStaff = ({nurseryId, showAddModal}) => {
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
-  const [newStaff, setNewStaff] = useState({});
-  const [userId, setUserId] = useState(0);
 
   const handleAddStaff = ({
                             first_name,
@@ -39,6 +37,7 @@ const AddStaff = ({nurseryId, showAddModal}) => {
           initialValues={{remember: true}}
           onFinish={handleAddStaff}
         >
+          Add a new staff member
           <Form.Item
             label="First Name"
             name="first_name"

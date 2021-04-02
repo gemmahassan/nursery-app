@@ -7,8 +7,10 @@ import AuthService from '../../../services/auth';
 import AddChild from "./AddChild";
 import Journal from "../journal/Journal";
 import EditChild from "./EditChild";
+import AddEntry from "../journal/AddEntry";
 
-const ChildList = ({nurseryId}) => {
+const ChildList = ({nurseryId, userId}) => {
+  console.log("childlist: ", userId);
   const [children, setChildren] = useState([]);
   const [currentNursery, setCurrentNursery] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
@@ -63,15 +65,17 @@ const ChildList = ({nurseryId}) => {
           renderItem={child => (
             <ChildItem
               child={child}
-              showJournal={(child) => setJournalData(child)}
+              addJournal={(child) => setJournalData(child)}
               editChild={(child) => setChildData(child)}
             />
           )}
         />
         {journalData &&
-          <Journal
-            children={[journalData]}
-            role={'staff'}/>
+          <AddEntry
+            child={journalData}
+            showAddModal={true}
+          userId={userId}
+          />
         }
         {childData &&
         <EditChild
