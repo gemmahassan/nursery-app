@@ -10,13 +10,17 @@ import {IonContent, IonPage} from "@ionic/react";
 
 const Login = (props) => {
   const [loginFailed, setLoginFailed] = useState(false);
+  const [changePassword, setChangePassword] = useState(false);
 
   const handleLogin = ({username, password}) => {
     AuthService.login(username, password).then(
       response => {
-        console.log(response.data);
-        props.history.push("/dashboard");
-        window.location.reload();
+        if (response.activated) {
+          props.history.push("/dashboard");
+          window.location.reload();
+        } else {
+          setChangePassword(true);
+        }
       })
       .catch(e => {
           setLoginFailed(true);
@@ -57,6 +61,10 @@ const Login = (props) => {
 
             {loginFailed && (
               <p>Incorrect username or password</p>
+            )}
+
+            {changePassword && (
+              <p>Please change your password</p>
             )}
 
             <Form.Item>

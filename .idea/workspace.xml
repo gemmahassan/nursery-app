@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/calendar/NurseryCalendar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/calendar/NurseryCalendarContainer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/calendar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Routes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Routes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/Applications.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/Applications.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/NurseryCalendar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/child.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +94,7 @@
       <workItem from="1616580816451" duration="3926000" />
       <workItem from="1616660087666" duration="10728000" />
       <workItem from="1616755352151" duration="8348000" />
-      <workItem from="1617302194093" duration="1786000" />
+      <workItem from="1617302194093" duration="4984000" />
     </task>
     <task id="LOCAL-00001" summary="[MP-42] Rename remaining .tsx files to .jsx">
       <created>1609874851247</created>
