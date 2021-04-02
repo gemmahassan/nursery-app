@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {IonContent, IonInput, IonItem, IonLabel, IonList, IonModal} from '@ionic/react';
 import UserDataService from "../../../services/user";
-import {Button, Form, Input} from "antd";
+import {Button, Form, Input, Modal} from "antd";
 
 const AddStaff = ({nurseryId, showAddModal}) => {
   const [image, setImage] = useState();
@@ -31,7 +31,7 @@ const AddStaff = ({nurseryId, showAddModal}) => {
 
   return (
     <IonContent>
-      <IonModal isOpen={showAddModal}>
+      <Modal visible={showAddModal}>
         <Form
           name="child"
           initialValues={{remember: true}}
@@ -91,7 +91,7 @@ const AddStaff = ({nurseryId, showAddModal}) => {
         {addSuccess && (
           <p>Added!</p>
         )}
-      </IonModal>
+      </Modal>
     </IonContent>
   );
 };

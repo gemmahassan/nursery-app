@@ -1,18 +1,17 @@
 import React, {useEffect, useState} from "react";
 import NurseryDataService from '../../../services/nursery';
 import ChildItem from "./ChildItem";
-import {Card, List} from "antd";
+import {List} from "antd";
 import {IonButton} from "@ionic/react";
 import AuthService from '../../../services/auth';
 import AddChild from "./AddChild";
 import EditChild from "./EditChild";
 import AddEntry from "../journal/AddEntry";
 
-const ChildList = ({nurseryId, userId}) => {
+const ChildList = ({nurseryId, userId, showJournal}) => {
   const [children, setChildren] = useState([]);
-  const [currentNursery, setCurrentNursery] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showAddChild, setAddChild] = useState(false);
   const [journalData, setJournalData] = useState(null);
   const [childData, setChildData] = useState(null);
 
@@ -39,7 +38,7 @@ const ChildList = ({nurseryId, userId}) => {
       {currentUser.role === "admin" &&
       <div>
         <IonButton
-          onClick={() => setShowAddModal(true)}
+          onClick={() => setAddChild(true)}
           shape="round">
           +
         </IonButton>
@@ -47,20 +46,16 @@ const ChildList = ({nurseryId, userId}) => {
       }
       <>
         <List
-          grid={{
-            gutter: 16,
-            xs: 1,
-            sm: 2,
-            md: 4,
-            lg: 4,
-            xl: 6,
-            xxl: 3,
-          }}
+          itemLayout="horizontal"
           dataSource={children}
           renderItem={child => (
             <ChildItem
               child={child}
-              addJournal={(child) => setJournalData(child)}
+              showJournal={(child) => showJournal(child)}
+              addJournal={(child) => {
+                setJournalData(child);
+                setShowAddModal(true);
+              }}
               editChild={(child) => setChildData(child)}
             />
           )}
@@ -68,8 +63,9 @@ const ChildList = ({nurseryId, userId}) => {
         {journalData &&
           <AddEntry
             child={journalData}
-            showAddModal={true}
-          userId={userId}
+            showAddModal={showAddModal}
+            hideAddModal={() => setShowAddModal(false)}
+            userId={userId}
           />
         }
         {childData &&
@@ -78,10 +74,11 @@ const ChildList = ({nurseryId, userId}) => {
           showAddModal={true}/>
         }
       </>
-      {showAddModal &&
+      {showAddChild &&
       <AddChild
         nurseryId={nurseryId}
-        showAddModal={showAddModal}
+        showAddModal={showAddChild}
+        refreshChildren={() => getChildren()}
       />
       }
     </>

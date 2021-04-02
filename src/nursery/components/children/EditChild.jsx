@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Button, Card, Form, Input, List, Select} from "antd";
+import React, {useState} from "react";
+import {Button, Form, Input} from "antd";
 import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
 
@@ -68,7 +68,7 @@ const EditChild = ({child, showAddModal}) => {
           >
             <input
               name="image" // name of input field or fieldName simply
-              enctype="multipart/form-data"
+              encType="multipart/form-data"
               type="file"
               onChange={(event) => {
                 // setState method with event.target.files[0] as argument
@@ -79,7 +79,7 @@ const EditChild = ({child, showAddModal}) => {
 
           <Form.Item>
             <Button
-              class="ion-float-right ion-padding"
+              className="ion-float-right ion-padding"
               size="large"
               color="medium"
               type="primary"

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 
 import {
   IonContent,
@@ -7,10 +7,12 @@ import {
 import JournalTypeDataService from "../../../services/journal-type";
 import JournalDataService from "../../../services/journal";
 import {useParams} from "react-router-dom";
-import {Button, Form, Input, Select} from "antd";
+import {Button, Form, Input, Modal, Select} from "antd";
 
-const AddEntry = ({child, showAddModal, userId}) => {
+const AddEntry = (props) => {
+  const {child, showAddModal, hideAddModal, userId} = props;
   const {nurseryId} = useParams();
+  const formElement = useRef();
 
   const [journalTypes, setJournalTypes] = useState([]);
   const [children, setChildren] = useState([]);
@@ -55,8 +57,17 @@ const AddEntry = ({child, showAddModal, userId}) => {
 
   return (
     <IonContent>
-      <IonModal isOpen={showAddModal}>
+      <Modal visible={showAddModal}
+             onOk={() => {
+               formElement.current && formElement.current.submit();
+             }}
+             onCancel={() => {
+               hideAddModal();
+             }}
+             okText="Save"
+             cancelText="Cancel">
         <Form
+          ref={formElement}
           name="journal"
           initialValues={{remember: true}}
           onFinish={handleAddEntry}>
@@ -90,7 +101,7 @@ const AddEntry = ({child, showAddModal, userId}) => {
           >
             <input
               name="image" // name of input field or fieldName simply
-              enctype="multipart/form-data"
+              encType="multipart/form-data"
               type="file"
               onChange={(event) => {
                 // setState method with event.target.files[0] as argument
@@ -105,21 +116,11 @@ const AddEntry = ({child, showAddModal, userId}) => {
             <Input/>
           </Form.Item>
 
-          <Form.Item>
-            <Button
-              class="ion-float-right ion-padding"
-              size="large"
-              color="medium"
-              type="primary"
-              htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
         </Form>
         {addSuccess && (
           <p>Added!</p>
         )}
-      </IonModal>
+      </Modal>
     </IonContent>
   );
 };

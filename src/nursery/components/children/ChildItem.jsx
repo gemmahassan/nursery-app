@@ -1,35 +1,30 @@
 import React from "react";
-import {Card, List} from "antd";
+import {Avatar, List} from "antd";
 import {EditOutlined, ReadOutlined} from '@ant-design/icons';
 
-const ChildItem = ({child, editChild, addJournal}) => {
+const ChildItem = ({child, editChild, addJournal, showJournal}) => {
   const {first_name, image, surname} = child;
 
   return (
-    <List.Item>
-      <Card
-        // style={{width: 300, borderRadius: '25px'}}
-        cover={
-          <img
-            src={image}
-            alt="child"
-          />
-        }
-        actions={[
-          <ReadOutlined key="journal"
-            onClick={() => {
-              addJournal(child);
-            }}
-          />,
-          <EditOutlined key="edit"
-            onClick={() => {
-             editChild(child);
-            }}
-          />
-        ]}
+    <List.Item actions={[
+      <ReadOutlined key="journal"
+                    onClick={() => {
+                      addJournal(child);
+                    }}
+      />,
+      <EditOutlined key="edit"
+                    onClick={() => {
+                      editChild(child);
+                    }}
+      />
+    ]}>
+      <List.Item.Meta
+        avatar={<Avatar src={image} />}
         title={`${first_name} ${surname}`}
-      >
-      </Card>
+        onClick={() => {
+          showJournal(child)
+        }}
+      />
     </List.Item>
   );
 }

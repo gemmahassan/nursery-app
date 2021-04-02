@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {
   IonAvatar, IonButton,
@@ -16,12 +16,18 @@ import {
 import Logout from "../../../common/Logout";
 import ChildList from "../children/ChildList";
 import history from "../../../history";
-import {Tabs} from "antd";
+import {Layout, Row, Tabs} from "antd";
 import StaffList from "../staff/StaffList";
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
+import '../../style.css';
+import Journal from "../journal/Journal";
 const { TabPane } = Tabs;
+const { Header, Footer, Sider, Content } = Layout;
+
 
 const NurseryDashboard = ({currentUser, nursery}) => {
+  const [journalContent, setJournalContent] = useState(null);
+
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">
@@ -61,26 +67,38 @@ const NurseryDashboard = ({currentUser, nursery}) => {
             </IonChip>
           </IonToolbar>
         </IonHeader>
-
-
         <IonContent>
-          <Tabs type="card">
-            <TabPane tab="Children" key="1">
-              <ChildList
-                userId={currentUser.userId}
-                nurseryId={nursery.id}
-              />
-            </TabPane>
-            <TabPane tab="Staff" key="2">
-              <StaffList
-              nurseryId={nursery.id}/>
-            </TabPane>
-            <TabPane tab="Calendar" key="3">
-              <NurseryCalendarContainer
-                nurseryId={nursery.id}
-              />
-            </TabPane>
-          </Tabs>
+          <Layout style={{ minHeight: '100vh' }}>
+            <Tabs type="card">
+              <TabPane tab="Children" key="1">
+                <Row>
+                  <Sider width={300} theme={'light'}>
+                    <ChildList
+                      userId={currentUser.userId}
+                      nurseryId={nursery.id}
+                      showJournal={(child) => setJournalContent(child)}
+                    />
+                  </Sider>
+                  <Content>
+                    {journalContent &&
+                      <Journal
+                        children={[journalContent]}
+                        role={'staff'} />
+                      }
+                  </Content>
+                </Row>
+              </TabPane>
+              <TabPane tab="Staff" key="2">
+                <StaffList
+                  nurseryId={nursery.id}/>
+              </TabPane>
+              <TabPane tab="Calendar" key="3">
+                <NurseryCalendarContainer
+                  nurseryId={nursery.id}
+                />
+              </TabPane>
+            </Tabs>
+          </Layout>
         </IonContent>
       </div>
     </div>

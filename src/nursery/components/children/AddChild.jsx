@@ -4,7 +4,7 @@ import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
 
 
-const AddChild = ({nurseryId, showAddModal}) => {
+const AddChild = ({nurseryId, showAddModal, refreshChildren}) => {
   const [children, setChildren] = useState([]);
   const [image, setImage] = useState();
 const [addSuccess, setAddSuccess] = useState(false);
@@ -28,6 +28,12 @@ const [addSuccess, setAddSuccess] = useState(false);
         console.log(e);
       });
   };
+
+  useEffect(() => {
+    if (addSuccess) {
+      refreshChildren();
+    }
+  }, [addSuccess])
 
   return (
     <IonContent>
@@ -58,7 +64,7 @@ const [addSuccess, setAddSuccess] = useState(false);
           >
             <input
               name="image" // name of input field or fieldName simply
-              enctype="multipart/form-data"
+              encType="multipart/form-data"
               type="file"
               onChange={(event) => {
                 // setState method with event.target.files[0] as argument
@@ -69,7 +75,7 @@ const [addSuccess, setAddSuccess] = useState(false);
 
           <Form.Item>
             <Button
-              class="ion-float-right ion-padding"
+              className="ion-float-right ion-padding"
               size="large"
               color="medium"
               type="primary"
