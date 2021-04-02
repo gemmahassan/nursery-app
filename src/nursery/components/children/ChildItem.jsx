@@ -5,6 +5,7 @@ import {EditOutlined, ReadOutlined} from '@ant-design/icons';
 const ChildItem = ({child, editChild, addJournal, showJournal}) => {
   const {first_name, image, surname} = child;
 
+  console.log(child);g
   return (
     <List.Item actions={[
       <ReadOutlined key="journal"

@@ -7,7 +7,6 @@ import JournalEntry from "./JournalEntry";
 import AddEntry from "./AddEntry";
 
 import 'antd/dist/antd.css';
-import AddChild from "../children/AddChild";
 
 const Journal = (props) => {
   const {children, role} = props;
