@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/Applications.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/Applications.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/staff/StaffList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/StaffList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/staff.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/child.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/child.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components/calendar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/nursery/components/children" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,9 +59,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/nursery/components/children" />
       <recent name="$PROJECT_DIR$/src/nursery/components/calendar" />
       <recent name="$PROJECT_DIR$/src/services" />
-      <recent name="$PROJECT_DIR$/src/nursery/components/children" />
       <recent name="$PROJECT_DIR$/src/admin" />
       <recent name="$PROJECT_DIR$/src/public/signup" />
     </key>

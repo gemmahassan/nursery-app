@@ -5,6 +5,7 @@ import {List} from "antd";
 import ChildItem from "../children/ChildItem";
 import AuthService from "../../../services/auth";
 import AddStaff from "./AddStaff";
+import StaffItem from "./StaffItem";
 
 const StaffList = ({nurseryId}) => {
   const [staff, setStaff] = useState([]);
@@ -49,7 +50,7 @@ const StaffList = ({nurseryId}) => {
         }}
         dataSource={staff}
         renderItem={staffMember => (
-          <ChildItem
+          <StaffItem
             id={staffMember.id}
             firstName={staffMember.first_name}
             surname={staffMember.surname}

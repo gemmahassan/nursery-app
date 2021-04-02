@@ -7,8 +7,11 @@ import {
 } from 'antd';
 import AuthService from "../services/auth";
 import {IonContent, IonPage} from "@ionic/react";
+import {useHistory} from "react-router";
 
-const Login = (props) => {
+const Login = () => {
+  let history = useHistory();
+
   const [loginFailed, setLoginFailed] = useState(false);
   const [changePassword, setChangePassword] = useState(false);
 
@@ -17,7 +20,7 @@ const Login = (props) => {
       response => {
         console.log("response ", response);
         if (response.activated) {
-          props.history.push("/dashboard");
+          history.push("/dashboard");
           window.location.reload();
         } else {
           setChangePassword(true);

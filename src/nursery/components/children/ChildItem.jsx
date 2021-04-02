@@ -2,7 +2,9 @@ import React from "react";
 import {Card, List} from "antd";
 import {EditOutlined, ReadOutlined} from '@ant-design/icons';
 
-const ChildItem = ({id, firstName, image, surname}) => {
+const ChildItem = ({child, editChild, showJournal}) => {
+  const {first_name, image, surname} = child;
+
   return (
     <List.Item>
       <Card
@@ -15,25 +17,21 @@ const ChildItem = ({id, firstName, image, surname}) => {
         }
         actions={[
           <ReadOutlined key="journal"
-            // onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}
+            onClick={() => {
+              showJournal(child);
+            }}
           />,
           <EditOutlined key="edit"
-            // onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}
+            onClick={() => {
+             editChild(child);
+            }}
           />
         ]}
-        title={`${firstName} ${surname}`}
+        title={`${first_name} ${surname}`}
       >
       </Card>
     </List.Item>
   );
 }
 
-{/*<IonButton*/
-}
-{/*  onClick={() => history.push(`/child/${id}/journal/${today}`, { firstName })}>*/
-}
-{/*  {`${firstName} ${surname}`}*/
-}
-{/*</IonButton>*/
-}
 export default ChildItem;

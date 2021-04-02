@@ -21,7 +21,6 @@ import StaffList from "../staff/StaffList";
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 const { TabPane } = Tabs;
 
-
 const NurseryDashboard = ({currentUser, nursery}) => {
   return (
     <div>
@@ -80,7 +79,6 @@ const NurseryDashboard = ({currentUser, nursery}) => {
                 nurseryId={nursery.id}
               />
             </TabPane>
-
           </Tabs>
         </IonContent>
       </div>

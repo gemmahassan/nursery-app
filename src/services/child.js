@@ -23,7 +23,7 @@ class ChildDataService {
   }
 
   update(id, data) {
-    return http.put(`/children/${id}`, data);
+    return http.put(`/children/${id}`, data, {headers: authHeader()});
   }
 
   delete(id) {

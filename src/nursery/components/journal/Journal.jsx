@@ -8,9 +8,11 @@ import AddEntry from "./AddEntry";
 
 import 'antd/dist/antd.css';
 
-const Journal = ({children, role}) => {
+const Journal = (props) => {
+  const {children, role} = props;
+  console.log("journal children: ", children);
   const [journal, setJournal] = useState([]);
-  const [activeDate, setActiveDate] = useState();
+  const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
   const [showAddModal, setShowAddModal] = useState(false);
 
   const getJournal = (date, id, name) => {
@@ -58,11 +60,14 @@ const Journal = ({children, role}) => {
   useEffect(() => {
     if (children.length) {
       setActiveDate(moment().format("YYYY-M-D"));
+      getData().then(data => {
+        setJournal(data);
+      });
     }
   }, [children]);
 
   return (
-    <IonContent>
+    <>
       <div className="ion-text-center">
         <DatePicker defaultValue={moment()} disabledDate={d => !d || d.isAfter(moment().format("YYYY-M-D"))}
                     onChange={onDateChange}/>
@@ -106,7 +111,7 @@ const Journal = ({children, role}) => {
           showAddModal={showAddModal}
         />
       }
-    </IonContent>
+    </>
   );
 }
 
