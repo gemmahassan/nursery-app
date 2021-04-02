@@ -21,7 +21,6 @@ const AddEntry = ({child, showAddModal, userId}) => {
     JournalTypeDataService.getAll()
       .then(response => {
         setJournalTypes(response.data);
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -48,7 +47,6 @@ const AddEntry = ({child, showAddModal, userId}) => {
     JournalDataService.create(formData, nurseryId)
       .then(response => {
         setAddSuccess(true);
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);

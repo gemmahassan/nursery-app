@@ -16,7 +16,6 @@ import Journal from "../journal/Journal";
 import Logout from "../../../common/Logout";
 
 const CarerDashboard = ({currentUser, nursery}) => {
-  console.log("dashboard nursery: ", nursery);
   const [children, setChildren] = useState([]);
 
   useEffect(() => {
@@ -27,7 +26,6 @@ const CarerDashboard = ({currentUser, nursery}) => {
     ChildDataService.getByCarerId(currentUser.userId)
       .then(response => {
         setChildren(response.data);
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);

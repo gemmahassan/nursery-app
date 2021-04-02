@@ -18,7 +18,6 @@ const Login = () => {
   const handleLogin = ({username, password}) => {
     AuthService.login(username, password).then(
       response => {
-        console.log("response ", response);
         if (response.activated) {
           history.push("/dashboard");
           window.location.reload();

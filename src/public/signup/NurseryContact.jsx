@@ -64,8 +64,6 @@ const NurseryContact = () => {
       data
     ).then(
       response => {
-        console.log(response.data);
-        console.log("signup successful");
         setShowSuccess(true);
       })
       .catch(e => {

@@ -16,7 +16,6 @@ const NurseryList = () => {
     NurseryDataService.getAllConfirmed()
       .then(response => {
         setNurseries(response.data);
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);

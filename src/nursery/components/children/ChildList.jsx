@@ -5,12 +5,10 @@ import {Card, List} from "antd";
 import {IonButton} from "@ionic/react";
 import AuthService from '../../../services/auth';
 import AddChild from "./AddChild";
-import Journal from "../journal/Journal";
 import EditChild from "./EditChild";
 import AddEntry from "../journal/AddEntry";
 
 const ChildList = ({nurseryId, userId}) => {
-  console.log("childlist: ", userId);
   const [children, setChildren] = useState([]);
   const [currentNursery, setCurrentNursery] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
@@ -27,7 +25,6 @@ const ChildList = ({nurseryId, userId}) => {
   }, [nurseryId]);
 
   const getChildren = () => {
-    console.log(nurseryId);
     NurseryDataService.getChildren(nurseryId)
       .then(response => {
         setChildren(response.data);
@@ -36,8 +33,6 @@ const ChildList = ({nurseryId, userId}) => {
         console.log(e);
       });
   };
-
-  console.log('journalData', journalData);
 
   return (
     <>

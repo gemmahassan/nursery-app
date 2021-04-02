@@ -2,40 +2,24 @@ import React, {useState} from "react";
 import moment from 'moment';
 import {IonAlert, IonButton, IonContent, IonImg, IonModal} from '@ionic/react';
 import EditEntry from "./EditEntry";
-import JournalDataService from "../../../services/journal";
+import {EditOutlined} from "@ant-design/icons";
 
-const JournalEntry = ({entry}) => {
-  const {childId, first_name, image, journalId, surname, text, timestamp, type, typeId, userId} = entry;
+const JournalEntry = ({entry, role}) => {
+  const {child_id, first_name, id, image, surname, text, timestamp, type, type_id, user_id} = entry;
   const time = moment(timestamp).format('h:mma');
 
   const [showEditModal, setShowEditModal] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-
-  const deleteEntry = () => {
-    JournalDataService.delete(childId, journalId)
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
-  console.log(journalId);
 
   return (
     <>
       <h2>
         {`${time} - ${type}`}
-        <IonButton
-          color="light"
-          onClick={() => setShowEditModal(true)}>
-          edit
-        </IonButton>
-        <IonButton
-          color="danger"
-          onClick={() => setShowDeleteAlert(true)}>
-          delete
-        </IonButton>
+
+        {role !== "carer" &&
+        <EditOutlined
+          onClick={() => setShowEditModal(true)}
+        />
+        }
       </h2>
 
       {image &&
@@ -47,36 +31,14 @@ const JournalEntry = ({entry}) => {
       {showEditModal &&
       <EditEntry
         showEditModal={showEditModal}
-        childId={childId}
-        journalId={journalId}
+        childId={child_id}
+        journalId={id}
         image={image}
-        userId={userId}
+        userId={user_id}
         text={text}
         timestamp={timestamp}
         type={type}
-        typeId={typeId}
-      />
-      }
-
-      {showDeleteAlert &&
-      <IonAlert
-        isOpen={showDeleteAlert}
-        onDidDismiss={() => setShowDeleteAlert(false)}
-        header={'Confirm Deletion'}
-        message={'Are you sure want to delete this journal entry?'}
-        buttons={[
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            cssClass: 'secondary',
-          },
-          {
-            text: 'Okay',
-            handler: () => {
-              deleteEntry();
-            }
-          }
-        ]}
+        typeId={type_id}
       />
       }
     </>
