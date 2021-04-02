@@ -14,38 +14,18 @@ const AddStaff = ({nurseryId, showAddModal}) => {
                             first_name,
                             surname,
                             email
-  }) => {
+                          }) => {
     const formData = new FormData();
     formData.append('first_name', first_name);
     formData.append('surname', surname);
     formData.append('email', email);
     formData.append('image', image, image.name);
     formData.append('nursery_id', nurseryId);
+    formData.append('role', 'staff');
 
-    StaffDataService.create(formData, nurseryId)
+    UserDataService.create(formData)
       .then(response => {
-        formData.append('role', 'staff');
-        formData.append('staff_id', response.data.id);
-        const staffId = response.data.id;
-        UserDataService.create({
-          email,
-          role: 'staff'
-        })
-          .then(response => {
-            StaffDataService.update({
-              'userId': response.data.id,
-              staffId
-            })
-              .then(response => {
-                setAddSuccess(true);
-              })
-              .catch(e => {
-                console.log(e);
-              })
-          })
-          .catch(e => {
-            console.log(e);
-          })
+        setAddSuccess(true);
       })
       .catch(e => {
         console.log(e);

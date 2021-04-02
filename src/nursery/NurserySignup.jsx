@@ -18,7 +18,7 @@ const NurserySignup = () => {
   // enabled flag in user db - if not enabled, prompt for password change to complete user registration
   // if enabled, log in as normal
   // same for staff, carers
-
+  const {nurseryId} = useParams();
 
   const [image, setImage] = useState();
   const [nursery, setNursery] = useState();
@@ -37,8 +37,6 @@ const NurserySignup = () => {
     "#cddc39",
     "#ff9800",
     "#607d8b"];
-
-  const {nurseryId} = useParams();
 
   useEffect(() => {
     console.log("calling useEffect");
@@ -81,7 +79,7 @@ const NurserySignup = () => {
         }
       );
   };
-console.log(color);
+
   const getLayout = () => {
     if (nursery) {
       if (nursery.pending === 2) {
