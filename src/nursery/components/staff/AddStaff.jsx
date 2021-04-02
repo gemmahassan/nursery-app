@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {IonContent, IonInput, IonItem, IonLabel, IonList, IonModal} from '@ionic/react';
-import StaffDataService from "../../../services/staff";
 import UserDataService from "../../../services/user";
 import {Button, Form, Input} from "antd";
 

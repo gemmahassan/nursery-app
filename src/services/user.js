@@ -21,6 +21,10 @@ class UserDataService {
   create(data) {
     return http.post('/user/add', data, {headers: authHeader()});
   }
+
+  getStaff(nurseryId) {
+    return http.get(`user/staff/${nurseryId}`);
+  }
 }
 
 export default new UserDataService();

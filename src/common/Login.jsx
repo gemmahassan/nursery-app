@@ -15,6 +15,7 @@ const Login = (props) => {
   const handleLogin = ({username, password}) => {
     AuthService.login(username, password).then(
       response => {
+        console.log("response ", response);
         if (response.activated) {
           props.history.push("/dashboard");
           window.location.reload();

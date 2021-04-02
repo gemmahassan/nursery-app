@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from "react";
-import StaffItem from "./StaffItem";
-import StaffDataService from '../../../services/staff';
-import NurseryDataService from "../../../services/nursery";
+import UserDataService from '../../../services/user';
 import {IonButton} from "@ionic/react";
 import {List} from "antd";
 import ChildItem from "../children/ChildItem";
-import AddChild from "../children/AddChild";
 import AuthService from "../../../services/auth";
 import AddStaff from "./AddStaff";
-
 
 const StaffList = ({nurseryId}) => {
   const [staff, setStaff] = useState([]);
@@ -21,7 +17,7 @@ const StaffList = ({nurseryId}) => {
   }, []);
 
   const getStaff = () => {
-    StaffDataService.getStaffByNurseryId(nurseryId)
+    UserDataService.getStaff(nurseryId)
       .then(response => {
         setStaff(response.data);
       })
