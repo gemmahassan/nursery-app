@@ -14,7 +14,7 @@ const AddStaff = ({nurseryId, showAddModal}) => {
                             first_name,
                             surname,
                             email
-                          }) => {
+  }) => {
     const formData = new FormData();
     formData.append('first_name', first_name);
     formData.append('surname', surname);
@@ -83,6 +83,7 @@ const AddStaff = ({nurseryId, showAddModal}) => {
           >
             <Input/>
           </Form.Item>
+
           <Form.Item
             name="image"
             label="Add an image"

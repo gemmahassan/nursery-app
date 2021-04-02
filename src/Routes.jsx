@@ -12,7 +12,7 @@ import EditEntry from "./nursery/components/journal/EditEntry";
 import Login from "./common/Login";
 import Profile from "./nursery/components/Profile";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
-import NurseryCalendar from "./nursery/NurseryCalendar";
+import NurseryCalendarContainer from "./nursery/components/calendar/NurseryCalendarContainer";
 import NurseryContact from "./public/signup/NurseryContact";
 import NurserySignup from "./nursery/NurserySignup";
 
@@ -32,7 +32,7 @@ const Routes = () => {
       <Route exact path="/nurseries/:nurseryId/journal/add" component={AddEntry}/>
       <Route exact path="/child/:childId/journal/:journalId/edit" component={EditEntry}/>
       <Route exact path="/child/:childId/journal/:date" component={Journal}/>
-      <Route exact path="/nursery/:nurseryId/calendar" component={NurseryCalendar}/>
+      <Route exact path="/nursery/:nurseryId/calendar" component={NurseryCalendarContainer}/>
     </Router>
   );
 };

@@ -14,6 +14,12 @@ const NurserySignup = () => {
   // admin should be able to add staff, children and carers - generate usernames and passwords
   // address of nursery to be used in google map based on user's location, shows nearest nurseries
   // only northern ireland postcodes
+  // on first login - change password prompt?
+  // enabled flag in user db - if not enabled, prompt for password change to complete user registration
+  // if enabled, log in as normal
+  // same for staff, carers
+
+
   const [image, setImage] = useState();
   const [nursery, setNursery] = useState();
   const [color, setColor] = useState();
@@ -60,7 +66,7 @@ const NurserySignup = () => {
     formData.append('image', image, image.name);
     formData.append('color', color);
 
-    NurseryDataService.approve(nurseryId, formData)
+    NurseryDataService.update(nurseryId, formData)
       .then(
         response => {
           setSignupSuccessful(true);

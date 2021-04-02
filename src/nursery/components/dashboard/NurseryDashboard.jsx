@@ -18,6 +18,7 @@ import ChildList from "../children/ChildList";
 import history from "../../../history";
 import {Tabs} from "antd";
 import StaffList from "../staff/StaffList";
+import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 const { TabPane } = Tabs;
 
 
@@ -74,6 +75,12 @@ const NurseryDashboard = ({currentUser, nursery}) => {
               <StaffList
               nurseryId={nursery.id}/>
             </TabPane>
+            <TabPane tab="Calendar" key="3">
+              <NurseryCalendarContainer
+                nurseryId={nursery.id}
+              />
+            </TabPane>
+
           </Tabs>
         </IonContent>
       </div>
