@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import NurseryDataService from '../services/nursery';
+import StaffDataService from '../services/staff';
 import {Button, Card, List} from "antd";
 import {CheckOutlined, CloseOutlined} from "@ant-design/icons";
 import http from '../shared/http-common';
 import {IonAlert} from "@ionic/react";
+import UserDataService from "../services/user";
 
 const Applications = () => {
   const [nurseries, setNurseries] = useState([]);
@@ -56,22 +58,48 @@ const Applications = () => {
     //   console.log(err)
     // })
 
+    //approve nursery
+    //create staff member u user using contact name, associate with nurseryser using contact name, associate with nursery
+    //
     NurseryDataService.approve(currentNursery.id)
       .then(
         response => {
-          console.log(response.data);
+          // StaffDataService.create({
+          //   first_name: currentNursery.contactName,
+          //   surname: currentNursery.contactName,
+          //   email: currentNursery.email,
+          //   nursery_id: currentNursery.id
+          // })
+          //   .then(response => {
+          //     const staffId = response.data.id;
+          //     UserDataService.create({
+          //       email: currentNursery.email,
+          //       role: 'admin'
+          //     })
+          //       .then(response => {
+          //         StaffDataService.update({
+          //           'userId': response.data.id,
+          //           staffId
+          //         })
+          //           .then(response => {
+          //             console.log("finished");
+          //           })
+          //           .catch(e => {
+          //             console.log(e);
+          //           })
+          //       })
+          //       .catch(e => {
+          //         console.log(e);
+          //       })
+          //   })
+          //   .catch(e => {
+          //     console.log(e);
+          //   })
         })
       .catch(e => {
-          const resMessage =
-            (e.response &&
-              e.response.data &&
-              e.response.data.message) ||
-            e.message ||
-            e.toString();
-        }
-      );
-  }
-
+        console.log(e);
+      })
+  };
 
   const confirmDecline = nursery => {
     // const name = 'person';
