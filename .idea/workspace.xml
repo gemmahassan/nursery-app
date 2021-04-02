@@ -6,22 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/EditEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/EditEntry.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/JournalEntry.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/NurseryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/NurseryList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/variables.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +203,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617375960299</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="workspace">
+      <created>1617385874544</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617385874544</updated>
+    </task>
+    <task id="LOCAL-00016" summary="workspace">
+      <created>1617386333760</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1617386333760</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
