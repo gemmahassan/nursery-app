@@ -1,11 +1,8 @@
 import React, {useEffect, useState} from "react";
 import NurseryDataService from '../services/nursery';
-import StaffDataService from '../services/staff';
 import {Button, Card, List} from "antd";
 import {CheckOutlined, CloseOutlined} from "@ant-design/icons";
-import http from '../shared/http-common';
 import {IonAlert} from "@ionic/react";
-import UserDataService from "../services/user";
 
 const Applications = () => {
   const [nurseries, setNurseries] = useState([]);

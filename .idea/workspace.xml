@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/admin/Applications.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/Applications.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/common/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/AddStaff.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/staff/StaffList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/staff/StaffList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/staff.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
