@@ -23,7 +23,6 @@ const [addSuccess, setAddSuccess] = useState(false);
     ChildDataService.create(formData, nurseryId)
       .then(response => {
         setAddSuccess(true);
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);

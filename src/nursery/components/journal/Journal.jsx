@@ -15,7 +15,6 @@ const Journal = (props) => {
   const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
   const [showAddModal, setShowAddModal] = useState(false);
 
-  console.log("JOURNAL: ", journal);
   const getJournal = (date, id, name) => {
     return new Promise((resolve, reject) => {
       ChildDataService.getJournal(date, id)
@@ -25,7 +24,6 @@ const Journal = (props) => {
             name,
             timeline: response.data
           });
-          console.log("getJournal response: ", response.data);
         })
         .catch(e => {
           console.log(e);
@@ -90,6 +88,7 @@ const Journal = (props) => {
                   <Timeline.Item key={entry.id}>
                     <JournalEntry
                       entry={entry}
+                      role={role}
                     />
                   </Timeline.Item>
                 )) : <p>No entries for {entry.name}</p>}

@@ -39,9 +39,7 @@ const NurserySignup = () => {
     "#607d8b"];
 
   useEffect(() => {
-    console.log("calling useEffect");
     getNursery();
-    console.log("nursery: ", nursery);
   }, []);
 
   const getNursery = () => {

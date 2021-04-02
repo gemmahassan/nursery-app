@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {
+  IonAlert,
   IonButton,
   IonContent,
   IonInput,
@@ -13,121 +14,165 @@ import {
 } from '@ionic/react';
 import JournalDataService from "../../../services/journal";
 import JournalTypeDataService from "../../../services/journal-type";
-import NurseryDataService from "../../../services/nursery";
+import {Button, Form, Input, Select} from "antd";
 
 const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, type, typeId}) => {
-  // const { nurseryId } = useParams();
-  const initialEntryState = {
-    id: journalId,
-    child_id: childId,
-    type_id: typeId,
-    image: "",
-    text: text,
-    user_id: userId,
-    timestamp: timestamp,
-  };
-  //
-  console.log(journalId);
-
-  const [journalTypes, setJournalTypes] = useState([]);
-  const [children, setChildren] = useState([]);
-  const [currentEntry, setCurrentEntry] = useState(initialEntryState);
-  //
-  const handleInputChange = event => {
-    const {name, value} = event.target;
-    setCurrentEntry({...currentEntry, [name]: value});
-    console.log(currentEntry);
-  };
-
-  const getJournalTypes = () => {
-    JournalTypeDataService.getAll()
-      .then(response => {
-        setJournalTypes(response.data);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  // const getChildren = () => {
-  //   NurseryDataService.getChildren(nurseryId)
-  //     .then(response => {
-  //       setChildren(response.data);
-  //       console.log(response.data);
-  //     })
-  //     .catch(e => {
-  //       console.log(e);
-  //     });
-  // };
-
-  useEffect(() => {
-    getJournalTypes();
-    // getChildren();
-  }, []);
-
-  const saveEntry = () => {
-    let data = {
-      type_id: currentEntry.type_id,
-      child_id: currentEntry.child_id,
-      image: currentEntry.image,
-      text: currentEntry.text,
+    // const { nurseryId } = useParams();
+    const initialEntryState = {
+      id: journalId,
+      child_id: childId,
+      type_id: typeId,
+      image: "",
+      text: text,
+      user_id: userId,
+      timestamp: timestamp,
     };
 
-    JournalDataService.edit(data, childId, journalId)
-      .then(response => {
-        setCurrentEntry({
-          id: response.data.id,
-          child_id: response.data.child_id,
-          type_id: response.data.type_id,
-          image: response.data.image,
-          text: response.data.text,
-          user_id: response.data.user_id,
-          timestamp: response.data.timestamp,
-        });
-        console.log("response: ", response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
+    const [journalTypes, setJournalTypes] = useState([]);
+    const [children, setChildren] = useState([]);
+    const [currentEntry, setCurrentEntry] = useState(initialEntryState);
+    const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+    const [image, setImage] = useState();
+    const [updateSuccess, setUpdateSuccess] = useState(false);
 
-  return (
-    <IonContent>
-      <IonModal isOpen={showEditModal}>
-        <IonList>
-          <IonItem>
-            <IonLabel>Journal Entry Type</IonLabel>
-            <IonSelect
+    const getJournalTypes = () => {
+      JournalTypeDataService.getAll()
+        .then(response => {
+          setJournalTypes(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    };
+
+    const deleteEntry = () => {
+      JournalDataService.delete(childId, journalId)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    }
+
+    useEffect(() => {
+      getJournalTypes();
+      // getChildren();
+    }, []);
+
+    const handleEditEntry = ({
+                               type_id,
+                               text,
+                             }) => {
+      const formData = new FormData();
+      formData.append('type_id', type_id);
+      formData.append('text', text);
+      formData.append('child_id', childId);
+      formData.append('user_id', userId);
+      if (image) {
+        formData.append('image', image, image.name);
+      }
+
+      JournalDataService.edit(formData, childId, journalId)
+        .then(response => {
+          setUpdateSuccess(true);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    };
+
+    return (
+      <IonContent>
+        <IonModal isOpen={showEditModal}>
+          <Form
+            name="editEntry"
+            initialValues={{type_id: currentEntry.type_id, text: currentEntry.text}}
+            onFinish={handleEditEntry}
+          >
+            Update Journal entry
+            <Form.Item
+              label="Entry Type"
               name="type_id"
-              onIonChange={handleInputChange}
             >
-              {journalTypes && journalTypes.map(type => (
-                <IonSelectOption value={type.id}>{type.type}</IonSelectOption>
-              ))}
-            </IonSelect>
-          </IonItem>
-          <IonLabel>Description</IonLabel>
-          <IonItem>
-            <IonInput
-              value={currentEntry.text}
-              onIonChange={handleInputChange}
+              <Select name="type_id">
+                {journalTypes && journalTypes.map(type => (
+                  <Select.Option value={type.id}>{type.type}</Select.Option>
+                ))}
+              </Select>
+            </Form.Item>
+
+            <Form.Item
+              name="image"
+              label="Add an image"
+            >
+              <input
+                name="image" // name of input field or fieldName simply
+                enctype="multipart/form-data"
+                type="file"
+                onChange={(event) => {
+                  // setState method with event.target.files[0] as argument
+                  setImage(event.target.files[0]);
+                }}
+              />
+            </Form.Item>
+            <Form.Item
+              label="Description"
               name="text"
-              clearInput
             >
-            </IonInput>
-          </IonItem>
-        </IonList>
-        <IonButton
-          class="ion-float-right ion-padding"
-          size="large"
-          color="medium"
-          onClick={saveEntry}>
-          Update
-        </IonButton>
-      </IonModal>
-    </IonContent>
-  );
-};
+              <Input
+                placeholder={currentEntry.text}
+              />
+            </Form.Item>
+
+            <Form.Item>
+              <Button
+                class="ion-float-right ion-padding"
+                size="large"
+                color="medium"
+                type="primary"
+                htmlType="submit">
+                Update
+              </Button>
+            </Form.Item>
+          </Form>
+          {updateSuccess && (
+            <p>Updated!</p>
+          )}
+
+          <Button
+            class="ion-float-right ion-padding"
+            size="large"
+            color="danger"
+            onClick={() => setShowDeleteAlert(true)}>
+            delete
+          </Button>
+
+          {showDeleteAlert &&
+          <IonAlert
+            isOpen={showDeleteAlert}
+            onDidDismiss={() => setShowDeleteAlert(false)}
+            header={'Confirm Deletion'}
+            message={'Are you sure want to delete this journal entry?'}
+            buttons={[
+              {
+                text: 'Cancel',
+                role: 'cancel',
+                cssClass: 'secondary',
+              },
+              {
+                text: 'Yes',
+                handler: () => {
+                  deleteEntry();
+                }
+              }
+            ]}
+          />
+          }
+        </IonModal>
+      </IonContent>
+    );
+  }
+;
 
 export default EditEntry;

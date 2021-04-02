@@ -5,7 +5,6 @@ import ChildDataService from '../../../services/child';
 
 
 const EditChild = ({child, showAddModal}) => {
-  console.log(child);
   const initialChildState = {
     id: child.id,
     firstName: child.first_name,
@@ -31,7 +30,6 @@ const EditChild = ({child, showAddModal}) => {
     ChildDataService.update(child.id, formData)
       .then(response => {
         setAddSuccess(true);
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);
