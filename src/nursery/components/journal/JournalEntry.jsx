@@ -4,7 +4,8 @@ import {IonAlert, IonButton, IonContent, IonImg, IonModal} from '@ionic/react';
 import EditEntry from "./EditEntry";
 import JournalDataService from "../../../services/journal";
 
-const JournalEntry = ({childId, journalId, image, staffId, text, timestamp, type, typeId}) => {
+const JournalEntry = ({entry}) => {
+  const {childId, first_name, image, journalId, surname, text, timestamp, type, typeId, userId} = entry;
   const time = moment(timestamp).format('h:mma');
 
   const [showEditModal, setShowEditModal] = useState(false);
@@ -41,6 +42,7 @@ const JournalEntry = ({childId, journalId, image, staffId, text, timestamp, type
       <IonImg src={image}/>
       }
       <p>{text}</p>
+      <p>Added by {first_name} {surname}</p>
 
       {showEditModal &&
       <EditEntry
@@ -48,7 +50,7 @@ const JournalEntry = ({childId, journalId, image, staffId, text, timestamp, type
         childId={childId}
         journalId={journalId}
         image={image}
-        staff={staffId}
+        userId={userId}
         text={text}
         timestamp={timestamp}
         type={type}

@@ -10,11 +10,12 @@ import 'antd/dist/antd.css';
 
 const Journal = (props) => {
   const {children, role} = props;
-  console.log("journal children: ", children);
+
   const [journal, setJournal] = useState([]);
   const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
   const [showAddModal, setShowAddModal] = useState(false);
 
+  console.log("JOURNAL: ", journal);
   const getJournal = (date, id, name) => {
     return new Promise((resolve, reject) => {
       ChildDataService.getJournal(date, id)
@@ -88,14 +89,7 @@ const Journal = (props) => {
                 {entry.timeline.length ? entry.timeline.map(entry => (
                   <Timeline.Item key={entry.id}>
                     <JournalEntry
-                      childId={entry.id}
-                      image={entry.image}
-                      journalId={entry.id}
-                      staff={entry.staff}
-                      text={entry.text}
-                      timestamp={entry.timestamp}
-                      type={entry.type}
-                      typeId={entry.type_id}
+                      entry={entry}
                     />
                   </Timeline.Item>
                 )) : <p>No entries for {entry.name}</p>}

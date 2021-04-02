@@ -15,7 +15,7 @@ import JournalDataService from "../../../services/journal";
 import JournalTypeDataService from "../../../services/journal-type";
 import NurseryDataService from "../../../services/nursery";
 
-const EditEntry = ({childId, journalId, showEditModal, staffId, text, timestamp, type, typeId}) => {
+const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, type, typeId}) => {
   // const { nurseryId } = useParams();
   const initialEntryState = {
     id: journalId,
@@ -23,7 +23,7 @@ const EditEntry = ({childId, journalId, showEditModal, staffId, text, timestamp,
     type_id: typeId,
     image: "",
     text: text,
-    staff_id: staffId,
+    user_id: userId,
     timestamp: timestamp,
   };
   //
@@ -82,7 +82,7 @@ const EditEntry = ({childId, journalId, showEditModal, staffId, text, timestamp,
           type_id: response.data.type_id,
           image: response.data.image,
           text: response.data.text,
-          staff_id: response.data.staff_id,
+          user_id: response.data.user_id,
           timestamp: response.data.timestamp,
         });
         console.log("response: ", response.data);
