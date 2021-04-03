@@ -25,6 +25,10 @@ class UserDataService {
   getStaff(nurseryId) {
     return http.get(`user/staff/${nurseryId}`);
   }
+
+  getChildren(userId) {
+    return http.get(`user/${userId}/children`);
+  }
 }
 
 export default new UserDataService();

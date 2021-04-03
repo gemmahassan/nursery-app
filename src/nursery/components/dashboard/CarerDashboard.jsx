@@ -11,7 +11,7 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/react";
-import ChildDataService from "../../../services/child";
+import UserDataService from "../../../services/user";
 import Journal from "../journal/Journal";
 import Logout from "../../../common/Logout";
 
@@ -23,7 +23,7 @@ const CarerDashboard = ({currentUser, nursery}) => {
   }, []);
 
   const getChildren = () => {
-    ChildDataService.getByCarerId(currentUser.userId)
+    UserDataService.getChildren(currentUser.userId)
       .then(response => {
         setChildren(response.data);
       })
@@ -63,7 +63,7 @@ const CarerDashboard = ({currentUser, nursery}) => {
               <IonAvatar>
                 <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"/>
               </IonAvatar>
-              <IonLabel>{currentUser.username}</IonLabel>
+              <IonLabel>{currentUser.firstName} {currentUser.surname}</IonLabel>
             </IonChip>
           </IonToolbar>
         </IonHeader>

@@ -33,7 +33,7 @@ const Journal = (props) => {
     let generatedResponse = [];
     await Promise.all(children.map(async (child) => {
       try {
-        const childJournal = await getJournal(activeDate, child.id, child.first_name);
+        const childJournal = await getJournal(activeDate, child.child_id, child.first_name);
         generatedResponse.push(childJournal)
       } catch (error) {
         console.log('error' + error);

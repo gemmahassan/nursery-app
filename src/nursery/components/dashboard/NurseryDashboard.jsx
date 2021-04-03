@@ -27,7 +27,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 const NurseryDashboard = ({currentUser, nursery}) => {
   const [journalContent, setJournalContent] = useState(null);
-
+console.log(currentUser);
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">
@@ -63,7 +63,7 @@ const NurseryDashboard = ({currentUser, nursery}) => {
               <IonAvatar>
                 <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"/>
               </IonAvatar>
-              <IonLabel>{currentUser.username}</IonLabel>
+              <IonLabel>{currentUser.firstName} {currentUser.surname}</IonLabel>
             </IonChip>
           </IonToolbar>
         </IonHeader>

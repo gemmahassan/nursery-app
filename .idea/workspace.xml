@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/EditEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/EditEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/NurseryList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/NurseryList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/Journal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +99,7 @@
       <workItem from="1616660087666" duration="10728000" />
       <workItem from="1616755352151" duration="8348000" />
       <workItem from="1617302194093" duration="4984000" />
-      <workItem from="1617442447004" duration="7670000" />
+      <workItem from="1617442447004" duration="10195000" />
     </task>
     <task id="LOCAL-00001" summary="[MP-42] Rename remaining .tsx files to .jsx">
       <created>1609874851247</created>
