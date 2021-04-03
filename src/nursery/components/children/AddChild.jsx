@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button, Card, Form, Input, List, Select} from "antd";
+import {Button, Card, Form, Input, List, Select, Switch} from "antd";
 import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
 
@@ -7,17 +7,21 @@ import ChildDataService from '../../../services/child';
 const AddChild = ({nurseryId, showAddModal, refreshChildren}) => {
   const [children, setChildren] = useState([]);
   const [image, setImage] = useState();
-const [addSuccess, setAddSuccess] = useState(false);
-
+  const [addSuccess, setAddSuccess] = useState(false);
+const [photoPermission, setPhotoPermission] = useState(false);
 
   const handleAddChild = ({
                             first_name,
-                            surname
+                            surname,
+                            permission,
                           }) => {
     const formData = new FormData();
     formData.append('first_name', first_name);
     formData.append('surname', surname);
-    formData.append('image', image, image.name);
+    formData.append('photo', permission);
+    if (image) {
+      formData.append('image', image, image.name);
+    }
     formData.append('nursery_id', nurseryId);
 
     ChildDataService.create(formData, nurseryId)
@@ -33,7 +37,7 @@ const [addSuccess, setAddSuccess] = useState(false);
     if (addSuccess) {
       refreshChildren();
     }
-  }, [addSuccess])
+  }, [addSuccess]);
 
   return (
     <IonContent>
@@ -58,20 +62,32 @@ const [addSuccess, setAddSuccess] = useState(false);
             <Input/>
           </Form.Item>
 
+
+
           <Form.Item
-            name="image"
-            label="Add an image"
+            name="permission"
+            label="Permission to share photos of this child?"
+            onClick={() => setPhotoPermission(!photoPermission)}
           >
-            <input
-              name="image" // name of input field or fieldName simply
-              encType="multipart/form-data"
-              type="file"
-              onChange={(event) => {
-                // setState method with event.target.files[0] as argument
-                setImage(event.target.files[0]);
-              }}
-            />
+            <Switch/>
           </Form.Item>
+
+          {photoPermission && (
+            <Form.Item
+              name="image"
+              label="Add an image"
+            >
+              <input
+                name="image" // name of input field or fieldName simply
+                encType="multipart/form-data"
+                type="file"
+                onChange={(event) => {
+                  // setState method with event.target.files[0] as argument
+                  setImage(event.target.files[0]);
+                }}
+              />
+            </Form.Item>
+          )}
 
           <Form.Item>
             <Button

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Form, Input} from "antd";
+import {Button, Form, Input, Switch} from "antd";
 import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
 
@@ -10,11 +10,12 @@ const EditChild = ({child, showAddModal}) => {
     firstName: child.first_name,
     surname: child.surname,
     image: "",
+    photo: child.photo,
   };
   const [currentChild, setCurrentChild] = useState(initialChildState);
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
-
+  const [photoPermission, setPhotoPermission] = useState(child.photo);
 
   const handleUpdateChild = ({
                                first_name,
@@ -63,6 +64,16 @@ const EditChild = ({child, showAddModal}) => {
           </Form.Item>
 
           <Form.Item
+            name="permission"
+            label="Permission to share photos of this child?"
+            onClick={() => setPhotoPermission(!photoPermission)}
+          >
+            <Switch
+              checked={currentChild.photo}/>
+          </Form.Item>
+
+          {photoPermission &&
+          <Form.Item
             name="image"
             label="Add an image"
           >
@@ -76,6 +87,7 @@ const EditChild = ({child, showAddModal}) => {
               }}
             />
           </Form.Item>
+          }
 
           <Form.Item>
             <Button
