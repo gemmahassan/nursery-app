@@ -57,15 +57,17 @@ const AddEntry = (props) => {
 
   return (
     <IonContent>
-      <Modal visible={showAddModal}
-             onOk={() => {
-               formElement.current && formElement.current.submit();
-             }}
-             onCancel={() => {
-               hideAddModal();
-             }}
-             okText="Save"
-             cancelText="Cancel">
+      <Modal
+        visible={showAddModal}
+        onOk={() => {
+          formElement.current && formElement.current.submit();
+        }}
+        onCancel={() => {
+          hideAddModal();
+        }}
+        okText="Save"
+        cancelText="Cancel"
+      >
         <Form
           ref={formElement}
           name="journal"

@@ -1,29 +1,30 @@
-import React, {useState} from "react";
-import {Button, Form, Input, Switch} from "antd";
+import React, {useEffect, useRef, useState} from "react";
+import {Button, Form, Input, Modal, Switch} from "antd";
 import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
 
 
-const EditChild = ({child, showAddModal}) => {
-  const initialChildState = {
-    id: child.id,
-    firstName: child.first_name,
-    surname: child.surname,
-    image: "",
-    photo: child.photo,
-  };
-  const [currentChild, setCurrentChild] = useState(initialChildState);
+const EditChild = ({child, hideEditModal, showEditModal}) => {
+  const formElement = useRef();
+
+  useEffect(() => {
+    setCurrentChild(child);
+  }, [child]);
+
+  const [currentChild, setCurrentChild] = useState(child);
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
-  const [photoPermission, setPhotoPermission] = useState(child.photo);
+  const [photoPermission, setPhotoPermission] = useState(currentChild.photo);
 
   const handleUpdateChild = ({
                                first_name,
-                               surname
+                               surname,
+                               permission
                              }) => {
     const formData = new FormData();
     formData.append('first_name', first_name);
     formData.append('surname', surname);
+    formData.append('permission', permission);
     if (image) {
       formData.append('image', image, image.name);
     }
@@ -39,10 +40,21 @@ const EditChild = ({child, showAddModal}) => {
 
   return (
     <IonContent>
-      <IonModal isOpen={showAddModal}>
+      <Modal
+        visible={showEditModal}
+        onOk={() => {
+          formElement.current && formElement.current.submit();
+        }}
+        onCancel={() => {
+          hideEditModal();
+        }}
+        okText="Save"
+        cancelText="Cancel"
+      >
         <Form
+          ref={formElement}
           name="child"
-          initialValues={{first_name: currentChild.firstName, surname: currentChild.surname}}
+          initialValues={{first_name: currentChild.first_name, surname: currentChild.surname}}
           onFinish={handleUpdateChild}>
           Update Child Info
           <Form.Item
@@ -68,8 +80,7 @@ const EditChild = ({child, showAddModal}) => {
             label="Permission to share photos of this child?"
             onClick={() => setPhotoPermission(!photoPermission)}
           >
-            <Switch
-              checked={currentChild.photo}/>
+            <Switch checked={photoPermission}/>
           </Form.Item>
 
           {photoPermission &&
@@ -89,21 +100,11 @@ const EditChild = ({child, showAddModal}) => {
           </Form.Item>
           }
 
-          <Form.Item>
-            <Button
-              className="ion-float-right ion-padding"
-              size="large"
-              color="medium"
-              type="primary"
-              htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
         </Form>
         {addSuccess && (
           <p>Added!</p>
         )}
-      </IonModal>
+      </Modal>
     </IonContent>
   );
 };

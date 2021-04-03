@@ -9,80 +9,90 @@ import EditChild from "./EditChild";
 import AddEntry from "../journal/AddEntry";
 
 const ChildList = ({nurseryId, userId, showJournal}) => {
-  const [children, setChildren] = useState([]);
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [showAddChild, setAddChild] = useState(false);
-  const [journalData, setJournalData] = useState(null);
-  const [childData, setChildData] = useState(null);
+    const [children, setChildren] = useState([]);
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [showAddChildModal, setShowAddChildModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [journalData, setJournalData] = useState(null);
+    const [childData, setChildData] = useState(null);
 
-  const currentUser = AuthService.getCurrentUser();
+    const currentUser = AuthService.getCurrentUser();
 
-  useEffect(() => {
-    if (nurseryId) {
-      getChildren();
-    }
-  }, [nurseryId]);
-
-  const getChildren = () => {
-    NurseryDataService.getChildren(nurseryId)
-      .then(response => {
-        setChildren(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  return (
-    <>
-      {currentUser.role === "admin" &&
-      <div>
-        <IonButton
-          onClick={() => setAddChild(true)}
-          shape="round">
-          +
-        </IonButton>
-      </div>
+    useEffect(() => {
+      if (nurseryId) {
+        getChildren();
       }
+    }, [nurseryId]);
+
+    const getChildren = () => {
+      NurseryDataService.getChildren(nurseryId)
+        .then(response => {
+          setChildren(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    };
+
+    return (
       <>
-        <List
-          itemLayout="horizontal"
-          dataSource={children}
-          renderItem={child => (
-            <ChildItem
-              child={child}
-              showJournal={(child) => showJournal(child)}
-              addJournal={(child) => {
-                setJournalData(child);
-                setShowAddModal(true);
-              }}
-              editChild={(child) => setChildData(child)}
-            />
-          )}
-        />
-        {journalData &&
+        {currentUser.role === "admin" &&
+        <div>
+          <IonButton
+            onClick={() => setShowAddChildModal(true)}
+            shape="round">
+            +
+          </IonButton>
+        </div>
+        }
+
+        <>
+          <List
+            itemLayout="horizontal"
+            dataSource={children}
+            renderItem={child => (
+              <ChildItem
+                child={child}
+                showJournal={(child) => showJournal(child)}
+                addJournal={(child) => {
+                  setJournalData(child);
+                  setShowAddModal(true);
+                }}
+                editChild={(child) => {
+                  setChildData(child);
+                  setShowEditModal(true);
+                }}
+              />
+            )}
+          />
+
+          {showAddModal &&
           <AddEntry
             child={journalData}
             showAddModal={showAddModal}
             hideAddModal={() => setShowAddModal(false)}
             userId={userId}
           />
-        }
-        {childData &&
-        <EditChild
-          child={childData}
-          showAddModal={true}/>
-        }
+          }
+
+          {showEditModal &&
+          <EditChild
+            child={childData}
+            showEditModal={showEditModal}
+            hideEditModal={() => setShowEditModal(false)}
+          />
+          }
+        </>
+
+        <AddChild
+          nurseryId={nurseryId}
+          showAddChildModal={showAddChildModal}
+          hideAddChildModal={() => setShowAddChildModal(false)}
+          refreshChildren={() => getChildren()}
+        />
       </>
-      {showAddChild &&
-      <AddChild
-        nurseryId={nurseryId}
-        showAddModal={showAddChild}
-        refreshChildren={() => getChildren()}
-      />
-      }
-    </>
-  );
-};
+    );
+  }
+;
 
 export default ChildList;

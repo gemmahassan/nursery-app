@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {Button, Card, Form, Input, List, Select, Switch} from "antd";
+import React, {useEffect, useRef, useState} from "react";
+import {Button, Card, Form, Input, List, Modal, Select, Switch} from "antd";
 import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
 
 
-const AddChild = ({nurseryId, showAddModal, refreshChildren}) => {
-  const [children, setChildren] = useState([]);
+const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChildren}) => {
+  const formElement = useRef();
+
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
-const [photoPermission, setPhotoPermission] = useState(false);
+  const [photoPermission, setPhotoPermission] = useState(false);
 
   const handleAddChild = ({
                             first_name,
@@ -41,8 +42,19 @@ const [photoPermission, setPhotoPermission] = useState(false);
 
   return (
     <IonContent>
-      <IonModal isOpen={showAddModal}>
+      <Modal
+        visible={showAddChildModal}
+        onCancel={() => {
+          hideAddChildModal();
+        }}
+        onOk={() => {
+          formElement.current && formElement.current.submit();
+        }}
+        okText="Save"
+        cancelText="Cancel"
+      >
         <Form
+          ref={formElement}
           name="child"
           initialValues={{remember: true}}
           onFinish={handleAddChild}>
@@ -61,8 +73,6 @@ const [photoPermission, setPhotoPermission] = useState(false);
           >
             <Input/>
           </Form.Item>
-
-
 
           <Form.Item
             name="permission"
@@ -88,22 +98,11 @@ const [photoPermission, setPhotoPermission] = useState(false);
               />
             </Form.Item>
           )}
-
-          <Form.Item>
-            <Button
-              className="ion-float-right ion-padding"
-              size="large"
-              color="medium"
-              type="primary"
-              htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
         </Form>
         {addSuccess && (
-          <p>Added!</p>
-        )}
-      </IonModal>
+            <p>Added!</p>
+          )}
+      </Modal>
     </IonContent>
   );
 };

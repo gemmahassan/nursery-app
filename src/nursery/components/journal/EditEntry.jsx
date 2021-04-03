@@ -17,7 +17,6 @@ import JournalTypeDataService from "../../../services/journal-type";
 import {Button, Form, Input, Select} from "antd";
 
 const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, type, typeId}) => {
-    // const { nurseryId } = useParams();
     const initialEntryState = {
       id: journalId,
       child_id: childId,
