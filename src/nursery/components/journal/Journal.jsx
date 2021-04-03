@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from "react";
 import ChildDataService from "../../../services/child";
 import {Timeline, DatePicker} from 'antd';
-import {IonButton, IonContent} from '@ionic/react';
 import moment from 'moment';
 import JournalEntry from "./JournalEntry";
-import AddEntry from "./AddEntry";
 
 import 'antd/dist/antd.css';
 
@@ -13,7 +11,6 @@ const Journal = (props) => {
 
   const [journal, setJournal] = useState([]);
   const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
-  const [showAddModal, setShowAddModal] = useState(false);
 
   const getJournal = (date, id, name) => {
     return new Promise((resolve, reject) => {
@@ -70,15 +67,7 @@ const Journal = (props) => {
       <div className="ion-text-center">
         <DatePicker defaultValue={moment()} disabledDate={d => !d || d.isAfter(moment().format("YYYY-M-D"))}
                     onChange={onDateChange}/>
-        {role !== "carer" &&
-        <div>
-          <IonButton
-            onClick={() => setShowAddModal(true)}
-            shape="round">
-            +
-          </IonButton>
-        </div>
-        }
+
         {journal.map(entry => {
           return (
             <div key={entry.id}>
@@ -98,13 +87,6 @@ const Journal = (props) => {
           )
         })}
       </div>
-      {showAddModal &&
-        <AddEntry
-          childId={null}
-          showAddModal={showAddModal}
-          hideAddModal={() => setShowAddModal(false)}
-        />
-      }
     </>
   );
 }

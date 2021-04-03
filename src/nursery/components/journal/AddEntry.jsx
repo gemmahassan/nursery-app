@@ -95,6 +95,7 @@ const AddEntry = (props) => {
           {/*  </Select>*/}
           {/*</Form.Item>*/}
 
+          {child.photo &&
           <Form.Item
             name="image"
             label="Add an image"
@@ -109,6 +110,7 @@ const AddEntry = (props) => {
               }}
             />
           </Form.Item>
+          }
 
           <Form.Item
             label="Description"

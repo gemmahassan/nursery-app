@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import NurseryDataService from '../services/nursery';
 import {IonContent} from "@ionic/react";
 import NurseryItem from "./NurseryItem";
+import Map from "./Map";
 
 const NurseryList = () => {
   const [nurseries, setNurseries] = useState([]);
@@ -35,6 +36,7 @@ const NurseryList = () => {
           </li>
         ))}
       </ul>
+      <Map />
     </IonContent>
 
   );
