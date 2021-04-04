@@ -3,9 +3,6 @@ import authHeader from "./auth-header";
 
 class JournalDataService {
   create(data, nurseryId) {
-    for (let [key, value] of data.entries()) {
-      console.log(key, value);
-    }
     return http.post(`/nurseries/${nurseryId}/journal/add`, data, {headers: authHeader()});
   }
 

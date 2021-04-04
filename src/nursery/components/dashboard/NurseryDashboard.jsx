@@ -21,13 +21,14 @@ import StaffList from "../staff/StaffList";
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 import '../../style.css';
 import Journal from "../journal/Journal";
-const { TabPane } = Tabs;
-const { Header, Footer, Sider, Content } = Layout;
+import CarerList from "../carers/CarerList";
 
+const {TabPane} = Tabs;
+const {Header, Footer, Sider, Content} = Layout;
 
 const NurseryDashboard = ({currentUser, nursery}) => {
   const [journalContent, setJournalContent] = useState(null);
-console.log(currentUser);
+
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">
@@ -41,9 +42,9 @@ console.log(currentUser);
             <IonItem>Staff</IonItem>
             <IonItem>Kids</IonItem>
             <IonItem
-            onClick={() => history.push(`/nursery/${nursery.id}/calendar`)}>
-            Calendar
-          </IonItem>
+              onClick={() => history.push(`/nursery/${nursery.id}/calendar`)}>
+              Calendar
+            </IonItem>
           </IonList>
         </IonContent>
       </IonMenu>
@@ -57,7 +58,7 @@ console.log(currentUser);
             <IonButtons slot="primary">
               <Logout/>
             </IonButtons>
-            <IonImg src={nursery.image} />
+            <IonImg src={nursery.image}/>
             <IonTitle>{`${nursery.name} Staff Dashboard`}</IonTitle>
             <IonChip slot="secondary">
               <IonAvatar>
@@ -68,7 +69,7 @@ console.log(currentUser);
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <Layout style={{ minHeight: '100vh' }}>
+          <Layout style={{minHeight: '100vh'}}>
             <Tabs type="card">
               <TabPane tab="Children" key="1">
                 <Row>
@@ -81,18 +82,22 @@ console.log(currentUser);
                   </Sider>
                   <Content>
                     {journalContent &&
-                      <Journal
-                        children={[journalContent]}
-                        role={'staff'} />
-                      }
+                    <Journal
+                      children={[journalContent]}
+                      role={'staff'}/>
+                    }
                   </Content>
                 </Row>
               </TabPane>
-              <TabPane tab="Staff" key="2">
+              <TabPane tab="Carers" key="2">
+                <CarerList
+                  nurseryId={nursery.id}/>
+              </TabPane>
+              <TabPane tab="Staff" key="3">
                 <StaffList
                   nurseryId={nursery.id}/>
               </TabPane>
-              <TabPane tab="Calendar" key="3">
+              <TabPane tab="Calendar" key="4">
                 <NurseryCalendarContainer
                   nurseryId={nursery.id}
                 />

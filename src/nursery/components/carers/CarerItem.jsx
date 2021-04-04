@@ -6,31 +6,31 @@ import {EditOutlined, ReadOutlined} from '@ant-design/icons';
 // The child's name is accompanied by an avatar and clickable icons to either
 // add a journal entry for that child, or edit the child's
 // personal details
-const ChildItem = ({child, editChild, addJournal, showJournal}) => {
-  const {first_name, image, surname} = child;
+const CarerItem = ({carer}) => {
+  const {first_name, image, surname} = carer;
 
   return (
     <List.Item actions={[
-      <ReadOutlined key="journal"
-                    onClick={() => {
-                      addJournal(child);
-                    }}
-      />,
+      // <ReadOutlined key="journal"
+      //               // onClick={() => {
+      //               //   addJournal(child);
+      //               // }}
+      // />,
       <EditOutlined key="edit"
-                    onClick={() => {
-                      editChild(child);
-                    }}
+                    // onClick={() => {
+                    //   editChild(child);
+                    // }}
       />
     ]}>
       <List.Item.Meta
         avatar={<Avatar src={image} />}
         title={`${first_name} ${surname}`}
         onClick={() => {
-          showJournal(child)
+          // showJournal(child)
         }}
       />
     </List.Item>
   );
 }
 
-export default ChildItem;
+export default CarerItem;

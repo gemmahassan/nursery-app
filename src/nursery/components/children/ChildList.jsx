@@ -8,6 +8,12 @@ import AddChild from "./AddChild";
 import EditChild from "./EditChild";
 import AddEntry from "../journal/AddEntry";
 
+// add carer from child menu
+// create carer, generate user id and password
+// email password to carer
+// add carer id and child to junction table
+
+//This component renders a list of children
 const ChildList = ({nurseryId, userId, showJournal}) => {
     const [children, setChildren] = useState([]);
     const [showAddModal, setShowAddModal] = useState(false);
@@ -16,6 +22,7 @@ const ChildList = ({nurseryId, userId, showJournal}) => {
     const [journalData, setJournalData] = useState(null);
     const [childData, setChildData] = useState(null);
 
+    // get the current user's details from the auth token
     const currentUser = AuthService.getCurrentUser();
 
     useEffect(() => {
@@ -24,6 +31,7 @@ const ChildList = ({nurseryId, userId, showJournal}) => {
       }
     }, [nurseryId]);
 
+    // get all children associated with the current nursery
     const getChildren = () => {
       NurseryDataService.getChildren(nurseryId)
         .then(response => {
@@ -36,6 +44,7 @@ const ChildList = ({nurseryId, userId, showJournal}) => {
 
     return (
       <>
+        {/*display a button to add a new child for admin users only*/}
         {currentUser.role === "admin" &&
         <div>
           <IonButton
@@ -50,6 +59,7 @@ const ChildList = ({nurseryId, userId, showJournal}) => {
           <List
             itemLayout="horizontal"
             dataSource={children}
+            // read round the list of children and create a list item for each one
             renderItem={child => (
               <ChildItem
                 child={child}
@@ -80,6 +90,7 @@ const ChildList = ({nurseryId, userId, showJournal}) => {
             child={childData}
             showEditModal={showEditModal}
             hideEditModal={() => setShowEditModal(false)}
+            refreshChildren={() => getChildren()}
           />
           }
         </>
