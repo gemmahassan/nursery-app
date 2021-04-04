@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import NurseryDataService from '../services/nursery';
-import {Button, Card, List} from "antd";
+import UserDataService from '../services/user';
+import {Card, List} from "antd";
 import {CheckOutlined, CloseOutlined} from "@ant-design/icons";
 import {IonAlert} from "@ionic/react";
+import http from '../shared/http-common';
 
 const Applications = () => {
   const [nurseries, setNurseries] = useState([]);
@@ -38,95 +40,67 @@ const Applications = () => {
   };
 
   const confirmApprove = () => {
-    // console.log(currentNursery);
-    // const name = 'person';
-    // const email = currentNursery.email;
-    // const subject = 'Nursery Journal - complete registration';
-    // const message = `Hi, to complete your Nursery Journal registration for ${currentNursery.name}, click the link below http://localhost:8081/signup/${currentNursery.id}`;
-    //
-    // http.post("/send", {
-    //   name,
-    //   email,
-    //   subject,
-    //   message
-    // }).then(res => {
-    //   alert(res)
-    // }).catch(err => {
-    //   console.log(err)
-    // })
-
-    //approve nursery
-    //create staff member u user using contact name, associate with nurseryser using contact name, associate with nursery
-    //
-    NurseryDataService.approve(currentNursery.id)
-      .then(
-        response => {
-          // StaffDataService.create({
-          //   first_name: currentNursery.contactName,
-          //   surname: currentNursery.contactName,
-          //   email: currentNursery.email,
-          //   nursery_id: currentNursery.id
-          // })
-          //   .then(response => {
-          //     const staffId = response.data.id;
-          //     UserDataService.create({
-          //       email: currentNursery.email,
-          //       role: 'admin'
-          //     })
-          //       .then(response => {
-          //         StaffDataService.update({
-          //           'userId': response.data.id,
-          //           staffId
-          //         })
-          //           .then(response => {
-          //             console.log("finished");
-          //           })
-          //           .catch(e => {
-          //             console.log(e);
-          //           })
-          //       })
-          //       .catch(e => {
-          //         console.log(e);
-          //       })
-          //   })
-          //   .catch(e => {
-          //     console.log(e);
-          //   })
-        })
-      .catch(e => {
-        console.log(e);
-      })
+    const formData = new FormData();
+    formData.append('first_name', currentNursery.contact_first_name);
+    formData.append('surname', currentNursery.contact_surname);
+    formData.append('email', currentNursery.email);
+    formData.append('nursery_id', currentNursery.id);
+    formData.append('role', 'admin');
+    UserDataService.create(formData)
+      .then(response => {
+        const nurseryName = currentNursery.name;
+        const firstName = currentNursery.contact_first_name;
+        const surname = currentNursery.contact_surname;
+        const email = currentNursery.email;
+        const password = response.data.password;
+        const subject = 'Nursery Journal - Registration complete!';
+        const message = `Hi ${firstName}, your registation for ${nurseryName} is complete.
+                                  Your username is your email address.
+                                  Your temporary password is ${password}. You will be prompted to change this
+                                   the first time you log in.`;
+        NurseryDataService.approve(currentNursery.id)
+          .then(
+            response => {
+              http.post("/send", {
+                firstName,
+                surname,
+                email,
+                subject,
+                message
+              }).then().catch(err => {
+                console.log(err)
+              })
+            })
+          .catch(e => {
+            console.log(e);
+          })
+      });
   };
 
   const confirmDecline = nursery => {
-    // const name = 'person';
-    // const email = currentNursery.email;
-    // const subject = 'Nursery Journal - registration declined';
-    // const message = `Hi, your application for registration of ${currentNursery.name} can not be completed at this time.`;
-    //
-    // http.post("/send", {
-    //   name,
-    //   email,
-    //   subject,
-    //   message
-    // }).then(res => {
-    //   alert(res)
-    // }).catch(err => {
-    //   console.log(err)
-    // })
+    const firstName = currentNursery.contact_first_name;
+    const surname = currentNursery.contact_surname;
+    const email = currentNursery.email;
+    const subject = 'Nursery Journal - registration declined';
+    const message = `Hi ${firstName}, your application for registration of ${currentNursery.name} can not be completed at this time.`;
 
     NurseryDataService.delete(currentNursery.id)
       .then(
         response => {
-          console.log(response.data);
+          http.post("/send", {
+            firstName,
+            surname,
+            email,
+            subject,
+            message
+          }).then(res => {
+            alert(res)
+          }).catch(err => {
+            console.log(err)
+          })
         })
       .catch(e => {
-          const resMessage =
-            (e.response &&
-              e.response.data &&
-              e.response.data.message) ||
-            e.message ||
-            e.toString();
+          console.log(e);
         }
       );
   };

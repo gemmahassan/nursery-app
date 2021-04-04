@@ -3,10 +3,15 @@ import {IonContent, IonPage} from '@ionic/react';
 import {Button, Form, Input,} from "antd";
 import NurseryDataService from "../../services/nursery";
 import Nav from "../Nav";
+import {CirclePicker} from "react-color";
 
 const NurseryContact = () => {
 
   const [showSuccess, setShowSuccess] = useState(false);
+  const [image, setImage] = useState();
+  const [color, setColor] = useState();
+  const [signupSuccessful, setSignupSuccessful] = useState(false);
+
   // TO DO: on submit, create nursery
   // create user? separate?
   // add admin role to db
@@ -14,6 +19,19 @@ const NurseryContact = () => {
   // address of nursery to be used in google map based on user's location, shows nearest nurseries
   // only northern ireland postcodes
   const apiKey = 'aDUOicMHl0-6XpwvlhUH4w30713';
+
+  const colors = [
+    "#e91e63",
+    "#9c27b0",
+    "#673ab7",
+    "#3f51b5",
+    "#2196f3",
+    "#00bcd4",
+    "#4caf50",
+    "#8bc34a",
+    "#cddc39",
+    "#ff9800",
+    "#607d8b"];
 
   // function debounce(func, wait) {
   //   let timeout;
@@ -45,7 +63,8 @@ const NurseryContact = () => {
                           addressLine2,
                           town,
                           county,
-                          postcode
+                          postcode,
+                          color,
                         }) => {
     const formData = new FormData();
     formData.append('name', name);
@@ -54,20 +73,18 @@ const NurseryContact = () => {
     formData.append('phone', phone);
     formData.append('addressLine1', addressLine1);
     formData.append('addressLine2', addressLine2);
+    formData.append('town', town);
     formData.append('county', county);
     formData.append('postcode', postcode);
+    formData.append('color', color);
+    formData.append('image', image, image.name);
 
     NurseryDataService.contact(formData).then(
       response => {
         setShowSuccess(true);
       })
       .catch(e => {
-          const resMessage =
-            (e.response &&
-              e.response.data &&
-              e.response.data.message) ||
-            e.message ||
-            e.toString();
+          console.log(e);
         }
       );
   };
@@ -115,7 +132,7 @@ const NurseryContact = () => {
                   </Form.Item>
 
                   <Form.Item
-                    label="SurName"
+                    label="Surname"
                     name="contactsurame"
                     rules={[{required: true, message: 'Please add a surname!'}]}
                   >
@@ -171,7 +188,28 @@ const NurseryContact = () => {
                     rules={[{required: true, message: 'Please add a postcode!'}]}
                   >
                     <Input placeholder="Postcode"
-                    // onChange={debounce=(handlePostcodeChange, 200)}
+                      // onChange={debounce=(handlePostcodeChange, 200)}
+                    />
+                  </Form.Item>
+
+                  <Form.Item
+                    name="image"
+                    label="Upload an image of your nursery"
+                  >
+                    <input
+                      name="image"
+                      encType="multipart/form-data"
+                      type="file"
+                      onChange={(event) => {
+                        setImage(event.target.files[0]);
+                      }}
+                    />
+                  </Form.Item>
+
+                  <Form.Item>
+                    <CirclePicker
+                      colors={colors}
+                      onChangeComplete={color => setColor(color.hex)}
                     />
                   </Form.Item>
 
@@ -185,7 +223,7 @@ const NurseryContact = () => {
             </>
           )}
           {showSuccess && (
-            <p>Thank you. Someone will be in touch soon to set up your account.</p>
+            <p>Thank you. Someone will be in touch soon to confirm your registration.</p>
           )}
         </IonContent>
       </IonPage>

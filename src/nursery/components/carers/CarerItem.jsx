@@ -11,11 +11,6 @@ const CarerItem = ({carer}) => {
 
   return (
     <List.Item actions={[
-      // <ReadOutlined key="journal"
-      //               // onClick={() => {
-      //               //   addJournal(child);
-      //               // }}
-      // />,
       <EditOutlined key="edit"
                     // onClick={() => {
                     //   editChild(child);

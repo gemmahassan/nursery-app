@@ -8,6 +8,7 @@ import 'antd/dist/antd.css';
 
 const Journal = (props) => {
   const {children, role} = props;
+  console.log("carer children", children);
 
   const [journal, setJournal] = useState([]);
   const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
@@ -31,9 +32,10 @@ const Journal = (props) => {
 
   async function getData() {
     let generatedResponse = [];
+    console.log("journal child: ", children);
     await Promise.all(children.map(async (child) => {
       try {
-        const childJournal = await getJournal(activeDate, child.child_id, child.first_name);
+        const childJournal = await getJournal(activeDate, child.id, child.first_name);
         generatedResponse.push(childJournal)
       } catch (error) {
         console.log('error' + error);
