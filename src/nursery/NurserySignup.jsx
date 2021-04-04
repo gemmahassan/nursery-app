@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {IonContent, IonPage} from '@ionic/react';
-import {Button, Form} from "antd";
+import {Button, Form, Input} from "antd";
 import NurseryDataService from "../services/nursery";
+import UserDataService from "../services/user";
 import Nav from "../public/Nav";
 import {useParams} from "react-router-dom";
 import {CirclePicker} from 'react-color';
@@ -62,20 +63,31 @@ const NurserySignup = () => {
     formData.append('image', image, image.name);
     formData.append('color', color);
 
-    NurseryDataService.update(nurseryId, formData)
+    console.log("nursery: ", nursery);
+
+    NurseryDataService.signup(nurseryId, formData)
       .then(
         response => {
-          setSignupSuccessful(true);
+          formData.append('email', nursery.email);
+          formData.append('first_name', nursery.contact_first_name);
+          formData.append('surname', nursery.contact_surname);
+          formData.append('nursery_id', nurseryId);
+          formData.append('role', 'admin');
+          for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+          }
+          UserDataService.create(formData)
+            .then(
+              response => {
+                setSignupSuccessful(true);
+              })
+            .catch(e => {
+              console.log(e);
+            })
         })
       .catch(e => {
-          const resMessage =
-            (e.response &&
-              e.response.data &&
-              e.response.data.message) ||
-            e.message ||
-            e.toString();
-        }
-      );
+        console.log(e);
+      });
   };
 
   const getLayout = () => {
@@ -123,6 +135,7 @@ const NurserySignup = () => {
                     onChangeComplete={color => setColor(color.hex)}
                   />
                 </Form.Item>
+
                 <Form.Item>
                   <Button type="primary" htmlType="submit">
                     Submit

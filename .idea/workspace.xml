@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/carers/AddCarer.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/carers/CarerItem.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nursery/components/carers/CarerList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/carer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/ChildList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/journal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/journal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/NurserySignup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
