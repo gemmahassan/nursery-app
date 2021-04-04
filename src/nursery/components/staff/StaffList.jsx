@@ -2,14 +2,16 @@ import React, {useEffect, useState} from "react";
 import UserDataService from '../../../services/user';
 import {IonButton} from "@ionic/react";
 import {List} from "antd";
-import ChildItem from "../children/ChildItem";
 import AuthService from "../../../services/auth";
 import AddStaff from "./AddStaff";
 import StaffItem from "./StaffItem";
+import EditStaff from "./EditStaff";
 
 const StaffList = ({nurseryId}) => {
   const [staff, setStaff] = useState([]);
-  const [showAddModal, setShowAddModal] = useState(false);
+  const [staffData, setStaffData] = useState(null);
+  const [showAddStaffModal, setShowAddStaffModal] = useState(false);
+  const [showEditStaffModal, setShowEditStaffModal] = useState(false);
 
   const currentUser = AuthService.getCurrentUser();
 
@@ -32,38 +34,44 @@ const StaffList = ({nurseryId}) => {
       {currentUser.role === "admin" &&
       <div>
         <IonButton
-          onClick={() => setShowAddModal(true)}
+          onClick={() => setShowAddStaffModal(true)}
           shape="round">
           +
         </IonButton>
       </div>
       }
-      <List
-        grid={{
-          gutter: 16,
-          xs: 1,
-          sm: 2,
-          md: 4,
-          lg: 4,
-          xl: 6,
-          xxl: 3,
-        }}
-        dataSource={staff}
-        renderItem={staffMember => (
-          <StaffItem
-            id={staffMember.id}
-            firstName={staffMember.first_name}
-            surname={staffMember.surname}
-            image={staffMember.image}
-          />
-        )}
-      />
-      {showAddModal &&
+
+      <>
+        <List
+          itemLayout="horizontal"
+          dataSource={staff}
+          renderItem={staffMember => (
+            <StaffItem
+              staff={staffMember}
+              editStaff={(staffMember) => {
+                setStaffData(staffMember);
+                setShowEditStaffModal(true);
+              }}
+            />
+          )}
+        />
+
+        {showEditStaffModal &&
+        <EditStaff
+          staff={staffData}
+          showEditStaffModal={showEditStaffModal}
+          hideEditStaffModal={() => setShowEditStaffModal(false)}
+          refreshStaff={() => getStaff()}
+        />
+        }
+      </>
+
       <AddStaff
         nurseryId={nurseryId}
-        showAddModal={showAddModal}
+        showAddStaffModal={showAddStaffModal}
+        hideAddStaffModal={() => setShowAddStaffModal(false)}
+        refreshStaff={() => getStaff()}
       />
-      }
     </>
   );
 };

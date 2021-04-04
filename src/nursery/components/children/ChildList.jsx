@@ -8,11 +8,6 @@ import AddChild from "./AddChild";
 import EditChild from "./EditChild";
 import AddEntry from "../journal/AddEntry";
 
-// add carer from child menu
-// create carer, generate user id and password
-// email password to carer
-// add carer id and child to junction table
-
 //This component renders a list of children
 const ChildList = ({nurseryId, userId, showJournal}) => {
     const [children, setChildren] = useState([]);

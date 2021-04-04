@@ -16,6 +16,7 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
                             surname,
                             permission,
                           }) => {
+
     const formData = new FormData();
     formData.append('first_name', first_name);
     formData.append('surname', surname);
