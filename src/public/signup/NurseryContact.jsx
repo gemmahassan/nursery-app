@@ -47,22 +47,17 @@ const NurseryContact = () => {
                           county,
                           postcode
                         }) => {
-    const url = name.replace(/\s+/g, '');
-    let data = {
-      name: name,
-      contactName: contactName,
-      email: email,
-      phone: phone,
-      addressLine1: addressLine1,
-      addressLine2: addressLine2,
-      town: town,
-      county: county,
-      postcode: postcode,
-      url: url
-    };
-    NurseryDataService.contact(
-      data
-    ).then(
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('contact_name', contactName);
+    formData.append('email', email);
+    formData.append('phone', phone);
+    formData.append('addressLine1', addressLine1);
+    formData.append('addressLine2', addressLine2);
+    formData.append('county', county);
+    formData.append('postcode', postcode);
+
+    NurseryDataService.contact(formData).then(
       response => {
         setShowSuccess(true);
       })
@@ -110,16 +105,25 @@ const NurseryContact = () => {
                     <Input/>
                   </Form.Item>
 
+                  Manager's Name
                   <Form.Item
-                    label="Contact Name"
-                    name="contactName"
-                    rules={[{required: true, message: 'Please add a contact name!'}]}
+                    label="First Name"
+                    name="contactFirstName"
+                    rules={[{required: true, message: 'Please add a first name!'}]}
                   >
                     <Input/>
                   </Form.Item>
 
                   <Form.Item
-                    label="Email"
+                    label="SurName"
+                    name="contactsurame"
+                    rules={[{required: true, message: 'Please add a surname!'}]}
+                  >
+                    <Input/>
+                  </Form.Item>
+
+                  <Form.Item
+                    label="Email - note that this will used to login to the nursery system once your account has been set up"
                     name="email"
                     rules={[{required: true, message: 'Please add an email address!'}]}
                   >
