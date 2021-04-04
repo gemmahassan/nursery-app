@@ -4,16 +4,12 @@ import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
 
 
-const EditChild = ({child, hideEditModal, showEditModal}) => {
+const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
   const formElement = useRef();
-
-  useEffect(() => {
-    setCurrentChild(child);
-  }, [child]);
 
   const [currentChild, setCurrentChild] = useState(child);
   const [image, setImage] = useState();
-  const [addSuccess, setAddSuccess] = useState(false);
+  const [editSuccess, setEditSuccess] = useState(false);
   const [photoPermission, setPhotoPermission] = useState(currentChild.photo);
 
   const handleUpdateChild = ({
@@ -31,12 +27,22 @@ const EditChild = ({child, hideEditModal, showEditModal}) => {
 
     ChildDataService.update(child.id, formData)
       .then(response => {
-        setAddSuccess(true);
+        setEditSuccess(true);
       })
       .catch(e => {
         console.log(e);
       });
   };
+
+  useEffect(() => {
+    setCurrentChild(child);
+  }, [child]);
+
+  useEffect(() => {
+    if (editSuccess) {
+      refreshChildren();
+    }
+  }, [editSuccess]);
 
   return (
     <IonContent>
@@ -101,8 +107,8 @@ const EditChild = ({child, hideEditModal, showEditModal}) => {
           }
 
         </Form>
-        {addSuccess && (
-          <p>Added!</p>
+        {editSuccess && (
+          <p>Updated!</p>
         )}
       </Modal>
     </IonContent>

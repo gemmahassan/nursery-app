@@ -49,6 +49,8 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
         }}
         onOk={() => {
           formElement.current && formElement.current.submit();
+          formElement.current && formElement.current.resetFields();
+          // hideAddChildModal();
         }}
         okText="Save"
         cancelText="Cancel"
@@ -56,7 +58,7 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
         <Form
           ref={formElement}
           name="child"
-          initialValues={{remember: true}}
+          // initialValues={{remember: true}}
           onFinish={handleAddChild}>
           <Form.Item
             label="First Name"
@@ -99,9 +101,9 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
             </Form.Item>
           )}
         </Form>
-        {addSuccess && (
-            <p>Added!</p>
-          )}
+        {addSuccess &&
+        <p>Added!</p>
+        }
       </Modal>
     </IonContent>
   );
