@@ -6,16 +6,16 @@ import AuthService from "../../../services/auth";
 import CarerItem from "./CarerItem";
 import AddChild from "../children/AddChild";
 import AddCarer from "./AddCarer";
+import EditStaff from "../staff/EditStaff";
+import EditCarer from "./EditCarer";
 
-const Carer = ({nurseryId}) => {
+const CarerList = ({nurseryId}) => {
   const [carers, setCarers] = useState([]);
+  const [carerData, setCarerData] = useState(null);
   const [showAddCarerModal, setShowAddCarerModal] = useState(false);
+  const [showEditCarerModal, setShowEditCarerModal] = useState(false);
 
   const currentUser = AuthService.getCurrentUser();
-
-  useEffect(() => {
-    getCarers();
-  }, []);
 
   const getCarers = () => {
     UserDataService.getCarers(nurseryId)
@@ -25,7 +25,11 @@ const Carer = ({nurseryId}) => {
       .catch(e => {
         console.log(e);
       });
-  }
+  };
+
+  useEffect(() => {
+    getCarers();
+  }, []);
 
   return (
     <>
@@ -40,14 +44,28 @@ const Carer = ({nurseryId}) => {
       }
       <>
         <List
-         itemLayout="horizontal"
+          itemLayout="horizontal"
           dataSource={carers}
           renderItem={carer => (
             <CarerItem
               carer={carer}
+              editCarer={(carer) => {
+                setCarerData(carer);
+                setShowEditCarerModal(true);
+              }}
             />
           )}
         />
+
+        {showEditCarerModal &&
+        <EditCarer
+          carer={carerData}
+          showEditCarerModal={showEditCarerModal}
+          hideEditCarerModal={() => setShowEditCarerModal(false)}
+          refreshCarer={() => getCarers()}
+          nurseryId={nurseryId}
+        />
+        }
       </>
 
       <AddCarer
@@ -56,15 +74,8 @@ const Carer = ({nurseryId}) => {
         hideAddCarerModal={() => setShowAddCarerModal(false)}
         refreshCarers={() => getCarers()}
       />
-
-      {/*{showAddModal &&*/}
-      {/*<AddStaff*/}
-      {/*  nurseryId={nurseryId}*/}
-      {/*  showAddModal={showAddModal}*/}
-      {/*/>*/}
-      {/*}*/}
     </>
   );
 };
 
-export default Carer;
+export default CarerList;

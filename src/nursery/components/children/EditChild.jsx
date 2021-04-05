@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {Button, Form, Input, Modal, Switch} from "antd";
 import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
+import JournalDataService from "../../../services/journal";
 
 
 const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
@@ -10,6 +11,7 @@ const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
   const [currentChild, setCurrentChild] = useState(child);
   const [image, setImage] = useState();
   const [editSuccess, setEditSuccess] = useState(false);
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [photoPermission, setPhotoPermission] = useState(currentChild.photo);
 
   const handleUpdateChild = ({
@@ -34,15 +36,25 @@ const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
       });
   };
 
+  const handleDelete = () => {
+    ChildDataService.delete(child.id)
+      .then(response => {
+        setDeleteSuccess(true);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
   useEffect(() => {
     setCurrentChild(child);
   }, [child]);
 
   useEffect(() => {
-    if (editSuccess) {
+    if (editSuccess || deleteSuccess) {
       refreshChildren();
     }
-  }, [editSuccess]);
+  }, [editSuccess, deleteSuccess]);
 
   return (
     <IonContent>
@@ -54,8 +66,29 @@ const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
         onCancel={() => {
           hideEditModal();
         }}
-        okText="Save"
-        cancelText="Cancel"
+        footer={[
+          <Button
+            key="cancel"
+            onClick={() => hideEditModal()}>
+            Cancel
+          </Button>,
+          <Button
+            key="save"
+            type="primary"
+            onClick={() => {
+            formElement.current && formElement.current.submit();
+          }}
+          >
+            Save
+          </Button>,
+          <Button
+            key="delete"
+            type="danger"
+            onClick={() => handleDelete()}
+          >
+            DELETE
+          </Button>,
+        ]}
       >
         <Form
           ref={formElement}
@@ -109,6 +142,10 @@ const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
         </Form>
         {editSuccess && (
           <p>Updated!</p>
+        )}
+
+        {deleteSuccess && (
+          <p>Deleted</p>
         )}
       </Modal>
     </IonContent>

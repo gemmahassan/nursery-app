@@ -15,10 +15,6 @@ const StaffList = ({nurseryId}) => {
 
   const currentUser = AuthService.getCurrentUser();
 
-  useEffect(() => {
-    getStaff();
-  }, []);
-
   const getStaff = () => {
     UserDataService.getStaff(nurseryId)
       .then(response => {
@@ -27,7 +23,11 @@ const StaffList = ({nurseryId}) => {
       .catch(e => {
         console.log(e);
       });
-  }
+  };
+
+  useEffect(() => {
+    getStaff();
+  }, []);
 
   return (
     <>

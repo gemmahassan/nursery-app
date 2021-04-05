@@ -11,7 +11,7 @@ class JournalDataService {
   }
 
   delete(childId, journalId) {
-    return http.delete(`/child/${childId}/journal/${journalId}`);
+    return http.delete(`/child/${childId}/journal/${journalId}`, {headers: authHeader()});
   }
 }
 
