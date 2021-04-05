@@ -33,6 +33,10 @@ class UserDataService {
   getCarers(nurseryId) {
     return http.get(`user/carers/${nurseryId}`);
   }
+
+  delete(id) {
+    return http.delete(`/user/${id}`, {headers: authHeader()});
+  }
 }
 
 export default new UserDataService();

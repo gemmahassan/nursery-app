@@ -133,7 +133,6 @@ const AddCarer = ({hideAddCarerModal, nurseryId, showAddCarerModal, refreshCarer
           <Form.Item
             label="child"
             name="child"
-            rules={[{required: true, message: 'Please add a surname'}]}
           >
             <Checkbox.Group options={getOptions()}/>
           </Form.Item>

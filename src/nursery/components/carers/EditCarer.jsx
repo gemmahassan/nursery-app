@@ -1,24 +1,26 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Button, Form, Input, Modal} from "antd";
+import {Button, Checkbox, Form, Input, Modal} from "antd";
 import {IonContent} from "@ionic/react";
 import UserDataService from '../../../services/user';
+import NurseryDataService from "../../../services/nursery";
 
-const EditStaff = ({staff, hideEditStaffModal, refreshStaff, showEditStaffModal}) => {
+const EditCarer = ({carer, hideEditCarerModal, nurseryId, refreshCarer, showEditCarerModal}) => {
   const formElement = useRef();
 
-  const [currentStaff, setCurrentStaff] = useState(staff);
+  const [currentCarer, setCurrentCarer] = useState(carer);
   const [editSuccess, setEditSuccess] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const [children, setChildren] = useState([]);
 
-  const handleUpdateStaff = ({
+  const handleUpdateCarer = ({
                                first_name,
                                surname
-  }) => {
+                             }) => {
     const formData = new FormData();
     formData.append('first_name', first_name);
     formData.append('surname', surname);
 
-    UserDataService.update(staff.id, formData)
+    UserDataService.update(carer.id, formData)
       .then(response => {
         setEditSuccess(true);
       })
@@ -28,40 +30,64 @@ const EditStaff = ({staff, hideEditStaffModal, refreshStaff, showEditStaffModal}
   };
 
   const handleDelete = () => {
-    UserDataService.delete(staff.id)
+    UserDataService.delete(carer.id)
       .then(response => {
         setDeleteSuccess(true);
-        hideEditStaffModal();
+        hideEditCarerModal();
       })
       .catch(e => {
         console.log(e);
       });
-  }
+  };
+
+  const getChildren = () => {
+    NurseryDataService.getChildren(nurseryId)
+      .then(response => {
+        setChildren(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  const getOptions = () => {
+    const options = children.map(child => {
+      return {
+        label: `${child.first_name} ${child.surname}`,
+        value: child.id,
+      }
+    });
+    return options;
+  };
 
   useEffect(() => {
-    setCurrentStaff(staff);
-  }, [staff]);
+    setCurrentCarer(carer);
+  }, [carer]);
 
   useEffect(() => {
     if (editSuccess || deleteSuccess) {
-      refreshStaff();
+      refreshCarer();
     }
   }, [editSuccess, deleteSuccess]);
+
+  useEffect(() => {
+    getChildren();
+  }, []);
 
   return (
     <IonContent>
       <Modal
-        visible={showEditStaffModal}
+        visible={showEditCarerModal}
         onOk={() => {
           formElement.current && formElement.current.submit();
         }}
         onCancel={() => {
-          hideEditStaffModal();
+          hideEditCarerModal();
         }}
         footer={[
           <Button
             key="cancel"
-            onClick={() => hideEditStaffModal()}>
+            onClick={() => hideEditCarerModal()}>
             Cancel
           </Button>,
           <Button
@@ -84,16 +110,16 @@ const EditStaff = ({staff, hideEditStaffModal, refreshStaff, showEditStaffModal}
       >
         <Form
           ref={formElement}
-          name="staff"
-          initialValues={{first_name: currentStaff.first_name, surname: currentStaff.surname}}
-          onFinish={handleUpdateStaff}>
-          Update Staff Info
+          name="carer"
+          initialValues={{first_name: currentCarer.first_name, surname: currentCarer.surname}}
+          onFinish={handleUpdateCarer}>
+          Update Carer Info
           <Form.Item
             label="First Name"
             name="first_name"
           >
             <Input
-              placeholder={currentStaff.first_name}
+              placeholder={currentCarer.first_name}
             />
           </Form.Item>
 
@@ -102,10 +128,16 @@ const EditStaff = ({staff, hideEditStaffModal, refreshStaff, showEditStaffModal}
             name="surname"
           >
             <Input
-              placeholder={currentStaff.surname}
+              placeholder={currentCarer.surname}
             />
           </Form.Item>
 
+          <Form.Item
+            label="child"
+            name="child"
+          >
+            <Checkbox.Group options={getOptions()}/>
+          </Form.Item>
         </Form>
 
         {editSuccess && (
@@ -115,9 +147,10 @@ const EditStaff = ({staff, hideEditStaffModal, refreshStaff, showEditStaffModal}
         {deleteSuccess && (
           <p>Deleted</p>
         )}
+
       </Modal>
     </IonContent>
   );
 };
 
-export default EditStaff;
+export default EditCarer;

@@ -2,19 +2,15 @@ import React from "react";
 import {Avatar, List} from "antd";
 import {EditOutlined, ReadOutlined} from '@ant-design/icons';
 
-// This component displays each individual child list item
-// The child's name is accompanied by an avatar and clickable icons to either
-// add a journal entry for that child, or edit the child's
-// personal details
-const CarerItem = ({carer}) => {
+const CarerItem = ({carer, editCarer}) => {
   const {first_name, image, surname} = carer;
 
   return (
     <List.Item actions={[
       <EditOutlined key="edit"
-                    // onClick={() => {
-                    //   editChild(child);
-                    // }}
+                    onClick={() => {
+                      editCarer(carer);
+                    }}
       />
     ]}>
       <List.Item.Meta

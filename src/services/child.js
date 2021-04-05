@@ -23,11 +23,11 @@ class ChildDataService {
   }
 
   update(id, data) {
-    return http.put(`/children/${id}`, data, {headers: authHeader()});
+    return http.put(`/child/${id}`, data, {headers: authHeader()});
   }
 
   delete(id) {
-    return http.delete(`/children/${id}`);
+    return http.delete(`/child/${id}`, {headers: authHeader()});
   }
 }
 
