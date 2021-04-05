@@ -47,6 +47,7 @@ const StaffList = ({nurseryId}) => {
           dataSource={staff}
           renderItem={staffMember => (
             <StaffItem
+              currentUser={currentUser}
               staff={staffMember}
               editStaff={(staffMember) => {
                 setStaffData(staffMember);

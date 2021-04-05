@@ -58,6 +58,7 @@ const ChildList = ({nurseryId, userId, showJournal}) => {
             renderItem={child => (
               <ChildItem
                 child={child}
+                currentUser={currentUser}
                 showJournal={(child) => showJournal(child)}
                 addJournal={(child) => {
                   setJournalData(child);

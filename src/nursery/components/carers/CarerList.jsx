@@ -49,6 +49,7 @@ const CarerList = ({nurseryId}) => {
           renderItem={carer => (
             <CarerItem
               carer={carer}
+              currentUser={currentUser}
               editCarer={(carer) => {
                 setCarerData(carer);
                 setShowEditCarerModal(true);

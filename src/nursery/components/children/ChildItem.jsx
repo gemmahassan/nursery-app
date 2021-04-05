@@ -6,24 +6,35 @@ import {EditOutlined, ReadOutlined} from '@ant-design/icons';
 // The child's name is accompanied by an avatar and clickable icons to either
 // add a journal entry for that child, or edit the child's
 // personal details
-const ChildItem = ({child, editChild, addJournal, showJournal}) => {
+const ChildItem = ({child, currentUser, editChild, addJournal, showJournal}) => {
   const {first_name, image, surname} = child;
 
-  return (
-    <List.Item actions={[
+  const getActions = () => {
+    const actions = [
       <ReadOutlined key="journal"
                     onClick={() => {
                       addJournal(child);
                     }}
-      />,
-      <EditOutlined key="edit"
-                    onClick={() => {
-                      editChild(child);
-                    }}
       />
-    ]}>
+    ];
+
+    if (currentUser.role === 'admin') {
+      actions.push(
+        <EditOutlined key="edit"
+                      onClick={() => {
+                        editChild(child);
+                      }}
+        />
+      );
+    }
+
+    return actions;
+  };
+
+  return (
+    <List.Item actions={getActions()}>
       <List.Item.Meta
-        avatar={<Avatar src={image} />}
+        avatar={<Avatar src={image}/>}
         title={`${first_name} ${surname}`}
         onClick={() => {
           showJournal(child)

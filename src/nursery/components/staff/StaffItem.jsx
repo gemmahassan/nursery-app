@@ -1,18 +1,24 @@
 import React from "react";
-import {EditOutlined} from "@ant-design/icons";
+import {EditOutlined, ReadOutlined} from "@ant-design/icons";
 import {Avatar, List} from "antd";
 
-const StaffItem = ({editStaff, staff}) => {
+const StaffItem = ({currentUser, editStaff, staff}) => {
   const {first_name, image, surname} = staff;
 
+  const getActions = () => {
+    if (currentUser.role === 'admin') {
+      return [<EditOutlined key="edit"
+                            onClick={() => {
+                              editStaff(staff);
+                            }}
+      />]
+    } else {
+      return []
+    }
+  };
+
   return (
-    <List.Item actions={[
-      <EditOutlined key="edit"
-                    onClick={() => {
-                      editStaff(staff);
-                    }}
-      />
-    ]}>
+    <List.Item actions={getActions()}>
       <List.Item.Meta
         avatar={<Avatar src={image}/>}
         title={`${first_name} ${surname}`}
