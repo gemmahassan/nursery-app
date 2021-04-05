@@ -10,10 +10,6 @@ class UserDataService {
     return http.get("/admin", {headers: authHeader()});
   }
 
-  getStaffDashboard() {
-    return http.get("/staff", {headers: authHeader()});
-  }
-
   getCarerHomepage() {
     return http.get("/carer", {headers: authHeader()});
   }
@@ -36,6 +32,18 @@ class UserDataService {
 
   delete(id) {
     return http.delete(`/user/${id}`, {headers: authHeader()});
+  }
+
+  getUser(token) {
+    return http.get(`/user/${token}`);
+  }
+
+  register(userId, password) {
+    return http.put(`/user/${userId}`, {password}, {headers: authHeader()});
+  }
+
+  update(userId, data) {
+    return http.put(`/user/${userId}/edit`, data, {headers: authHeader()});
   }
 }
 

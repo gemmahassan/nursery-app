@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import {IonContent, IonInput, IonItem, IonLabel, IonList, IonModal} from '@ionic/react';
+import {IonContent} from '@ionic/react';
 import UserDataService from "../../../services/user";
 import {Button, Form, Input, Modal} from "antd";
+import http from "../../../shared/http-common";
 
 const AddStaff = ({nurseryId, showAddModal}) => {
   const [image, setImage] = useState();
@@ -22,7 +23,21 @@ const AddStaff = ({nurseryId, showAddModal}) => {
 
     UserDataService.create(formData)
       .then(response => {
-        setAddSuccess(true);
+        const token = response.data.token;
+        const subject = 'Nursery Journal - You have been added as a staff member!';
+        const message = `Hi ${first_name}, you have been added as a staff member.
+                                  Please click on the link below to create a password and complete your registration
+                                  http://localhost:8081/register?token=${token}`;
+        http.post("/send", {
+          first_name,
+          email,
+          subject,
+          message
+        }).then(() => {
+          setAddSuccess(true);
+        }).catch(err => {
+          console.log(err)
+        })
       })
       .catch(e => {
         console.log(e);

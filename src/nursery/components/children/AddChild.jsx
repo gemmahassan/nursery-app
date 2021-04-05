@@ -16,7 +16,6 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
                             surname,
                             permission,
                           }) => {
-
     const formData = new FormData();
     formData.append('first_name', first_name);
     formData.append('surname', surname);
@@ -25,6 +24,9 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
       formData.append('image', image, image.name);
     }
     formData.append('nursery_id', nurseryId);
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
 
     ChildDataService.create(formData, nurseryId)
       .then(response => {
@@ -50,7 +52,7 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
         }}
         onOk={() => {
           formElement.current && formElement.current.submit();
-          formElement.current && formElement.current.resetFields();
+          // formElement.current && formElement.current.resetFields();
           // hideAddChildModal();
         }}
         okText="Save"

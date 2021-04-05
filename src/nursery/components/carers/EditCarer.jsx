@@ -3,6 +3,7 @@ import {Button, Checkbox, Form, Input, Modal} from "antd";
 import {IonContent} from "@ionic/react";
 import UserDataService from '../../../services/user';
 import NurseryDataService from "../../../services/nursery";
+import CarerDataService from "../../../services/carer";
 
 const EditCarer = ({carer, hideEditCarerModal, nurseryId, refreshCarer, showEditCarerModal}) => {
   const formElement = useRef();
@@ -14,19 +15,27 @@ const EditCarer = ({carer, hideEditCarerModal, nurseryId, refreshCarer, showEdit
 
   const handleUpdateCarer = ({
                                first_name,
-                               surname
+                               surname,
+                               child,
                              }) => {
+    console.log("clicked");
     const formData = new FormData();
     formData.append('first_name', first_name);
     formData.append('surname', surname);
+    const selectedChildren = child;
 
     UserDataService.update(carer.id, formData)
       .then(response => {
+        selectedChildren.forEach(child => {
+          CarerDataService.addCarer(carer.id, child)
+            .then(() => {
+              setEditSuccess(true);
+            })
+            .catch(e => console.log(e))
+        })
         setEditSuccess(true);
       })
-      .catch(e => {
-        console.log(e);
-      });
+      .catch(e => console.log(e));
   };
 
   const handleDelete = () => {
