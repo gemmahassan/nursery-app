@@ -23,6 +23,7 @@ const CarerDashboard = ({currentUser, nursery}) => {
   }, []);
 
   const getChildren = () => {
+    console.log("getting children");
     UserDataService.getChildren(currentUser.userId)
       .then(response => {
         setChildren(response.data);
@@ -32,6 +33,7 @@ const CarerDashboard = ({currentUser, nursery}) => {
       });
   };
 
+  console.log(children);
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">

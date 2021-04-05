@@ -65,9 +65,7 @@ const NurseryContact = () => {
                           town,
                           county,
                           postcode,
-                          color,
                         }) => {
-    console.log("color: ", color);
     const formData = new FormData();
     formData.append('name', name);
     formData.append('contact_first_name', contactFirstName);

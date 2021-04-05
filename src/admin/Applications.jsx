@@ -11,8 +11,9 @@ const Applications = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const [currentNursery, setCurrentNursery] = useState({});
   const [action, setAction] = useState('');
+  const [approveSuccess, setApproveSuccess] = useState(false);
 
-  useEffect(() => {
+  const getPendingNurseries = () => {
     NurseryDataService.getAllPending()
       .then(response => {
         setNurseries(response.data);
@@ -20,7 +21,18 @@ const Applications = () => {
       .catch(e => {
         console.log(e);
       });
+  };
+
+  useEffect(() => {
+    getPendingNurseries();
   }, [nurseries.length]);
+
+  useEffect(() => {
+    if (approveSuccess) {
+      getPendingNurseries();
+    }
+  }, [approveSuccess]);
+
 
   const handleClick = (nursery, action) => {
     setCurrentNursery(nursery);
@@ -41,8 +53,8 @@ const Applications = () => {
 
   const confirmApprove = () => {
     const formData = new FormData();
-    formData.append('contact_first_name', currentNursery.contact_first_name);
-    formData.append('contact_surname', currentNursery.contact_surname);
+    formData.append('first_name', currentNursery.contact_first_name);
+    formData.append('surname', currentNursery.contact_surname);
     formData.append('email', currentNursery.email);
     formData.append('nursery_id', currentNursery.id);
     formData.append('role', 'admin');
@@ -52,12 +64,11 @@ const Applications = () => {
         const firstName = currentNursery.contact_first_name;
         const surname = currentNursery.contact_surname;
         const email = currentNursery.email;
-        const password = response.data.password;
+        const token = response.data.token;
         const subject = 'Nursery Journal - Registration complete!';
-        const message = `Hi ${firstName}, your registation for ${nurseryName} is complete.
-                                  Your username is your email address.
-                                  Your temporary password is ${password}. You will be prompted to change this
-                                   the first time you log in.`;
+        const message = `Hi ${firstName}, your registration for ${nurseryName} is nearly complete!
+                                  Please click on the link below to create a password anc complete your registration
+                                  http://localhost:8001/register?token=${token}`;
         NurseryDataService.approve(currentNursery.id)
           .then(
             response => {
@@ -67,7 +78,9 @@ const Applications = () => {
                 email,
                 subject,
                 message
-              }).then().catch(err => {
+              }).then(() => {
+                setApproveSuccess(true);
+              }).catch(err => {
                 console.log(err)
               })
             })

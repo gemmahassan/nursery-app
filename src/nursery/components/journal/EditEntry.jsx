@@ -107,7 +107,7 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
             >
               <input
                 name="image" // name of input field or fieldName simply
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
                 type="file"
                 onChange={(event) => {
                   // setState method with event.target.files[0] as argument

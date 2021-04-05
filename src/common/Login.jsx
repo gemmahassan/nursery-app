@@ -16,8 +16,8 @@ const Login = () => {
   const [changePassword, setChangePassword] = useState(false);
 
   const handleLogin = ({username, password}) => {
-    AuthService.login(username, password).then(
-      response => {
+    AuthService.login(username, password)
+      .then(response => {
         if (response.activated) {
           history.push("/dashboard");
           window.location.reload();

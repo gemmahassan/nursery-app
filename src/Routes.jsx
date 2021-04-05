@@ -14,12 +14,14 @@ import Profile from "./nursery/components/Profile";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
 import NurseryCalendarContainer from "./nursery/components/calendar/NurseryCalendarContainer";
 import NurseryContact from "./public/signup/NurseryContact";
+import Register from "./public/signup/Register";
 
 const Routes = () => {
   return (
     <Router history={history}>
       <Route path="/" exact component={Home}/>
       <Route path="/staff" component={StaffList}/>
+      <Route path="/register" component={Register}/>
       <Route exact path="/nurseries" component={NurseryList}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/dashboard" component={DashboardContainer}/>
