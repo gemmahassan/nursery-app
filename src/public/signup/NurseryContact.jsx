@@ -56,7 +56,8 @@ const NurseryContact = () => {
 
   const handleSignup = ({
                           name,
-                          contactName,
+                          contactFirstName,
+                          contactSurname,
                           email,
                           phone,
                           addressLine1,
@@ -66,9 +67,11 @@ const NurseryContact = () => {
                           postcode,
                           color,
                         }) => {
+    console.log("color: ", color);
     const formData = new FormData();
     formData.append('name', name);
-    formData.append('contact_name', contactName);
+    formData.append('contact_first_name', contactFirstName);
+    formData.append('contact_surname', contactSurname);
     formData.append('email', email);
     formData.append('phone', phone);
     formData.append('addressLine1', addressLine1);
@@ -133,7 +136,7 @@ const NurseryContact = () => {
 
                   <Form.Item
                     label="Surname"
-                    name="contactsurame"
+                    name="contactSurname"
                     rules={[{required: true, message: 'Please add a surname!'}]}
                   >
                     <Input/>
@@ -206,7 +209,9 @@ const NurseryContact = () => {
                     />
                   </Form.Item>
 
-                  <Form.Item>
+                  <Form.Item
+                    name="color"
+                    label="Select a theme colour for your nursery">
                     <CirclePicker
                       colors={colors}
                       onChangeComplete={color => setColor(color.hex)}

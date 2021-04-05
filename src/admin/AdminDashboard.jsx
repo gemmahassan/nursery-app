@@ -18,7 +18,6 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/react";
-import history from "../history";
 import Logout from "../common/Logout";
 const { TabPane } = Tabs;
 

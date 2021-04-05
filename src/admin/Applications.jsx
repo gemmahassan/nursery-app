@@ -41,8 +41,8 @@ const Applications = () => {
 
   const confirmApprove = () => {
     const formData = new FormData();
-    formData.append('first_name', currentNursery.contact_first_name);
-    formData.append('surname', currentNursery.contact_surname);
+    formData.append('contact_first_name', currentNursery.contact_first_name);
+    formData.append('contact_surname', currentNursery.contact_surname);
     formData.append('email', currentNursery.email);
     formData.append('nursery_id', currentNursery.id);
     formData.append('role', 'admin');
@@ -77,7 +77,7 @@ const Applications = () => {
       });
   };
 
-  const confirmDecline = nursery => {
+  const confirmDecline = () => {
     const firstName = currentNursery.contact_first_name;
     const surname = currentNursery.contact_surname;
     const email = currentNursery.email;

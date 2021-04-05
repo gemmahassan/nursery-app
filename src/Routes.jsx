@@ -14,12 +14,10 @@ import Profile from "./nursery/components/Profile";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
 import NurseryCalendarContainer from "./nursery/components/calendar/NurseryCalendarContainer";
 import NurseryContact from "./public/signup/NurseryContact";
-import NurserySignup from "./nursery/NurserySignup";
 
 const Routes = () => {
   return (
     <Router history={history}>
-      <Route exact path={`/signup/:nurseryId`} component={NurserySignup}/>
       <Route path="/" exact component={Home}/>
       <Route path="/staff" component={StaffList}/>
       <Route exact path="/nurseries" component={NurseryList}/>
