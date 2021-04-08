@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
 import NurseryDataService from '../services/nursery';
 import {IonContent} from "@ionic/react";
+import { Col, Row } from 'antd';
 import NurseryItem from "./NurseryItem";
 import Map from "./Map";
 import Nav from "./Nav";
 
 const NurseryList = () => {
   const [nurseries, setNurseries] = useState([]);
-  const [currentNursery, setCurrentNursery] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
 
   useEffect(() => {
     getNurseries();
@@ -24,22 +23,28 @@ const NurseryList = () => {
       });
   };
 
+  console.log(nurseries);
+
   return (
     <>
-      <Nav />
+      <Nav/>
       <IonContent>
-        <ul>
-          {nurseries && nurseries.map(nursery => (
-            <li key={nursery.id}>
+        <div className="nursery-list-wrapper">
+          <h1>Our Nurseries</h1>
+          <Row gutter={16}>
+            {nurseries && nurseries.map(nursery => (
+            <Col span={6} key={nursery.id}>
               <NurseryItem
                 id={nursery.id}
                 image={nursery.image}
                 name={nursery.name}
+                town={nursery.town}
               />
-            </li>
-          ))}
-        </ul>
-        <Map />
+            </Col>
+            ))}
+          </Row>
+        <Map nurseries={nurseries} />
+        </div>
       </IonContent>
     </>
   );

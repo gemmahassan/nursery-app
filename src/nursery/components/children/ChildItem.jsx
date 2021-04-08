@@ -1,6 +1,6 @@
 import React from "react";
 import {Avatar, List} from "antd";
-import {EditOutlined, ReadOutlined} from '@ant-design/icons';
+import {EditOutlined, PlusOutlined} from '@ant-design/icons';
 
 // This component displays each individual child list item
 // The child's name is accompanied by an avatar and clickable icons to either
@@ -11,7 +11,8 @@ const ChildItem = ({child, currentUser, editChild, addJournal, showJournal}) => 
 
   const getActions = () => {
     const actions = [
-      <ReadOutlined key="journal"
+      <PlusOutlined key="journal"
+                    title="Add Journal Entry"
                     onClick={() => {
                       addJournal(child);
                     }}

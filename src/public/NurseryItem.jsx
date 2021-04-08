@@ -1,16 +1,16 @@
 import React from "react";
-import history from "../history";
-import {IonButton} from "@ionic/react";
+import {Card} from "antd";
 
-const NurseryItem = ({id, image, name }) => {
+const NurseryItem = ({id, image, name, town }) => {
+  const { Meta } = Card;
   return (
-    <li key={id}>
-      <IonButton
-        onClick={() => history.push(`nurseries/${id}`)}>
-        <img src={image} alt="nursery"/>
-        {name}
-      </IonButton>
-    </li>
+    <Card
+      key={id}
+      style={{ marginBottom: 20 }}
+      cover={<img alt={name} src={image} />}
+    >
+      <Meta title={name} description={town} />
+    </Card>
   );
 };
 

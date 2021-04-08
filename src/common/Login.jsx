@@ -8,6 +8,7 @@ import {
 import AuthService from "../services/auth";
 import {IonContent, IonPage} from "@ionic/react";
 import {useHistory} from "react-router";
+import Nav from "../public/Nav";
 
 const Login = () => {
   let history = useHistory();
@@ -33,6 +34,7 @@ const Login = () => {
 
   return (
     <IonPage>
+      <Nav />
       <IonContent>
         <div
           style={{'display': 'flex', 'flexDirection': 'column', 'padding': '50px', width: '100%', 'maxWidth': '600px'}}>

@@ -1,0 +1,37 @@
+.ant-carousel {
+    max-height: 400px;
+    height: auto;
+    overflow: hidden;
+    box-shadow: 0 0 5px #777;
+}
+.ant-carousel .slick-slide img {
+    width: 100%;
+    height: auto;
+    margin-top: -100px;
+}
+
+.nursery-list-wrapper {
+    padding: 0 30px;
+}
+
+.action-wrapper {
+    text-align: center;
+    margin: 24px 0;
+}
+
+.points-wrapper {
+    text-align: center;
+}
+
+.footer {
+    background: #ffffff;
+    margin-top: 24px;
+    padding: 24px;
+}
+
+.pin {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    color: blueviolet;
+}
