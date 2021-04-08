@@ -4,12 +4,17 @@ import {Button, Form, Input,} from "antd";
 import NurseryDataService from "../../services/nursery";
 import Nav from "../Nav";
 import {CirclePicker} from "react-color";
+import {debounce} from 'throttle-debounce';
+import register from "../images/register.jpeg";
+import '../styles.css';
 
 const NurseryContact = () => {
 
   const [showSuccess, setShowSuccess] = useState(false);
   const [image, setImage] = useState();
   const [color, setColor] = useState();
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
   const [signupSuccessful, setSignupSuccessful] = useState(false);
 
   // TO DO: on submit, create nursery
@@ -45,13 +50,20 @@ const NurseryContact = () => {
   //   };
   // }
 
-  // const handlePostcodeChange = event => {
-  //     fetch(`https://api.getAddress.io/find/${event.target.value}?api-key=${apiKey}`)
-  //       .then(res => res.json())
-  //       .then(response => {
-  //         console.log(response);
-  //       })
-  //       .catch(console.log)
+  const handlePostcodeChange = debounce(1000, (value) => {
+    console.log(value);
+    fetch(`https://api.getAddress.io/find/${value}?api-key=${apiKey}`)
+      .then(res => res.json())
+      .then(response => {
+        setLatitude(response.latitude);
+        setLongitude(response.longitude);
+        console.log(response);
+      })
+      .catch(console.log)
+  });
+
+  // const getPostcodeData = debounce(1000, postcode) => {
+  //   console.log(event);
   // }
 
   const handleSignup = ({
@@ -79,14 +91,12 @@ const NurseryContact = () => {
     formData.append('postcode', postcode);
     formData.append('color', color);
     formData.append('image', image, image.name);
+    formData.append('latitude', latitude);
+    formData.append('longitude', longitude);
 
     NurseryDataService.contact(formData).then(
-      response => {
-        setShowSuccess(true);
-      })
-      .catch(e => {
-          console.log(e);
-        }
+      () => setShowSuccess(true))
+      .catch(e => console.log(e)
       );
   };
 
@@ -96,22 +106,24 @@ const NurseryContact = () => {
         <Nav/>
         <IonContent>
           {!showSuccess && (
-            <>
-              If you are interested in signing your nursery up for this service, please enter your nursery name and an
-              administrator's contact details below. Someone from our team will be in touch within 24 hours to discuss
-              our
-              plans.
-
+            <div style={{
+              display: 'flex'
+            }}>
               <div
                 style={{
                   'display': 'flex',
                   'flexDirection': 'column',
-                  'padding': '50px',
+                  'padding': '0 50px 50px 50px',
                   width: '100%',
-                  'maxWidth': '600px'
+                  'maxWidth': '40%'
                 }}>
+                <h1>Join Us!</h1>
+                <p>If you are interested in signing your nursery up for this service, please enter your nursery name and an
+                  administrator's contact details below. Someone from our team will be in touch within 24 hours to discuss
+                  our plans.</p>
                 <Form
                   name="basic"
+                  layout={'vertical'}
                   initialValues={{remember: true}}
                   onFinish={handleSignup}
                 >
@@ -123,7 +135,7 @@ const NurseryContact = () => {
                     <Input/>
                   </Form.Item>
 
-                  Manager's Name
+                  <h2>Manager's Name</h2>
                   <Form.Item
                     label="First Name"
                     name="contactFirstName"
@@ -139,13 +151,14 @@ const NurseryContact = () => {
                   >
                     <Input/>
                   </Form.Item>
-
+                  <h2>Contact Information</h2>
                   <Form.Item
-                    label="Email - note that this will used to login to the nursery system once your account has been set up"
+                    label="Email"
                     name="email"
                     rules={[{required: true, message: 'Please add an email address!'}]}
                   >
                     <Input/>
+                    <span><i>Note that this will used to login to the nursery system once your account has been set up</i></span>
                   </Form.Item>
 
                   <Form.Item
@@ -189,7 +202,7 @@ const NurseryContact = () => {
                     rules={[{required: true, message: 'Please add a postcode!'}]}
                   >
                     <Input placeholder="Postcode"
-                      // onChange={debounce=(handlePostcodeChange, 200)}
+                           onChange={({target: {value}}) => handlePostcodeChange(value)}
                     />
                   </Form.Item>
 
@@ -223,7 +236,18 @@ const NurseryContact = () => {
                   </Form.Item>
                 </Form>
               </div>
-            </>
+              <div style={{
+                'backgroundImage': `url(${register})`,
+                'backgroundSize': 'cover',
+                position: 'fixed',
+                height: '100%',
+                width: '60%',
+                right: 0,
+                pointerEvents: 'none',
+                borderLeft: '10px solid pink'
+              }}>
+              </div>
+            </div>
           )}
           {showSuccess && (
             <p>Thank you. Someone will be in touch soon to confirm your registration.</p>

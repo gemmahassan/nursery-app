@@ -27,7 +27,6 @@ const Routes = () => {
       <Route exact path="/dashboard" component={DashboardContainer}/>
       <Route exact path="/profile" component={Profile}/>
       <Route exact path="/contact" component={NurseryContact}/>
-      <Route exact path="/nurseries/:nurseryId" component={NurseryHome}/>
       <Route exact path="/nurseries/:nurseryId/children" component={ChildList}/>
       <Route exact path="/nurseries/:nurseryId/journal/add" component={AddEntry}/>
       <Route exact path="/child/:childId/journal/:journalId/edit" component={EditEntry}/>
