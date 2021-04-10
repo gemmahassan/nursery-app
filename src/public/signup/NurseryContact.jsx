@@ -38,18 +38,6 @@ const NurseryContact = () => {
     "#ff9800",
     "#607d8b"];
 
-  // function debounce(func, wait) {
-  //   let timeout;
-  //   return function(...args) {
-  //     const context = this;
-  //     if (timeout) clearTimeout(timeout);
-  //     timeout = setTimeout(() => {
-  //       timeout = null;
-  //       func.apply(context, args);
-  //     }, wait);
-  //   };
-  // }
-
   const handlePostcodeChange = debounce(1000, (value) => {
     console.log(value);
     fetch(`https://api.getAddress.io/find/${value}?api-key=${apiKey}`)
@@ -61,10 +49,6 @@ const NurseryContact = () => {
       })
       .catch(console.log)
   });
-
-  // const getPostcodeData = debounce(1000, postcode) => {
-  //   console.log(event);
-  // }
 
   const handleSignup = ({
                           name,

@@ -99,6 +99,7 @@ const NurseryDashboard = ({currentUser, nursery}) => {
               </TabPane>
               <TabPane tab="Calendar" key="4">
                 <NurseryCalendarContainer
+                  nurseryName={nursery.name}
                   nurseryId={nursery.id}
                 />
               </TabPane>

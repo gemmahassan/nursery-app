@@ -1,20 +1,13 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import LocationPin from "./LocationPin";
-// import './map.css'
 
 const Map = ({nurseries}) => {
   const location = {
-    lat: 54.6079,
-    lng: -5.9264,
+    lat: 54.6418,
+    lng: -6.7444,
     address: '1 street',
   };
-
-  // const location = {
-  //   address: '1600 Amphitheatre Parkway, Mountain View, california.',
-  //   lat: 37.42216,
-  //   lng: -122.08427,
-  // }
 
   const getNurseryLocations = () => {
     const nurseryLocations = []
@@ -36,13 +29,8 @@ const Map = ({nurseries}) => {
         <GoogleMapReact
           bootstrapURLKeys={{key: 'AIzaSyCliTrjNK25GdtBIadSK75GdPhbHK4_kwI'}}
           defaultCenter={location}
-          defaultZoom={9}
+          defaultZoom={8}
         >
-          {/*<LocationPin*/}
-          {/*  lat={location.lat}*/}
-          {/*  lng={location.lng}*/}
-          {/*  text={location.address}*/}
-          {/*/>*/}
           {getNurseryLocations().map(nurseryLocation => {
             return (
               <LocationPin

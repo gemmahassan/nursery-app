@@ -2,14 +2,6 @@ import http from '../shared/http-common';
 import authHeader from "./auth-header";
 
 class ChildDataService {
-  getAll() {
-    return http.get('/children');
-  }
-
-  get(id) {
-    return http.get(`/children/${id}`);
-  }
-
   getByCarerId(carerId) {
     return http.get(`/children/${carerId}`)
   }
