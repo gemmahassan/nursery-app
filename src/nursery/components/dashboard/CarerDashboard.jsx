@@ -12,8 +12,8 @@ import {
   IonToolbar
 } from "@ionic/react";
 import UserDataService from "../../../services/user";
-import Journal from "../journal/Journal";
 import Logout from "../../../common/Logout";
+import JournalContainer from "../journal/JournalContainer";
 
 const CarerDashboard = ({currentUser, nursery}) => {
   const [children, setChildren] = useState([]);
@@ -71,7 +71,7 @@ const CarerDashboard = ({currentUser, nursery}) => {
         </IonHeader>
 
         <IonContent>
-          <Journal
+          <JournalContainer
             children={children}
             role={currentUser.role}/>
         </IonContent>

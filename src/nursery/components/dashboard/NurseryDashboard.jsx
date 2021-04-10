@@ -20,8 +20,8 @@ import {Layout, Row, Tabs} from "antd";
 import StaffList from "../staff/StaffList";
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 import '../../style.css';
-import Journal from "../journal/Journal";
 import CarerList from "../carers/CarerList";
+import JournalContainer from "../journal/JournalContainer";
 
 const {TabPane} = Tabs;
 const {Header, Footer, Sider, Content} = Layout;
@@ -82,9 +82,10 @@ const NurseryDashboard = ({currentUser, nursery}) => {
                   </Sider>
                   <Content>
                     {journalContent &&
-                    <Journal
+                    <JournalContainer
                       children={[journalContent]}
-                      role={'staff'}/>
+                      role={'staff'}
+                    />
                     }
                   </Content>
                 </Row>
