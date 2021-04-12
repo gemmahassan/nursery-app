@@ -39,7 +39,15 @@ class NurseryDataService {
   }
 
   delete(id) {
-    return http.delete(`admin/${id}/decline`, {headers: authHeader()});
+    return http.delete(`/admin/${id}/decline`, {headers: authHeader()});
+  }
+
+  purge() {
+    return http.delete(`/admin/purge`, {headers: authHeader()});
+  }
+
+  deactivate(id) {
+    return http.put(`/nurseries/${id}/deactivate`, {}, {headers: authHeader()});
   }
 }
 

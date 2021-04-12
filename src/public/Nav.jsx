@@ -1,4 +1,6 @@
 import React from "react";
+import {Link} from "react-router-dom";
+
 import history from "../history";
 import {
   IonToolbar,
@@ -12,15 +14,23 @@ const Nav = () => {
     <ion-header>
       <IonToolbar>
         <IonButtons slot="secondary">
-          <IonButton onClick={() => history.push('/nurseries')}>Our Nurseries</IonButton>
+          <IonButton>
+            <Link to="/nurseries">Nurseries</Link>
+          </IonButton>
         </IonButtons>
         <IonButtons slot="secondary">
-          <IonButton onClick={() => history.push('/contact')}>Contact Us</IonButton>
+          <IonButton>
+            <Link to="/contact">Contact Us</Link>
+          </IonButton>
         </IonButtons>
         <IonButtons slot="secondary">
-          <IonButton onClick={() => history.push('/login')}>Login</IonButton>
+          <IonButton>
+            <Link to="/login">Login</Link>
+          </IonButton>
         </IonButtons>
-        <IonTitle onClick={() => history.push('/')}>The Nursery Journal</IonTitle>
+        <IonTitle>
+          <Link to="/">Nursery Journal</Link>
+        </IonTitle>
       </IonToolbar>
     </ion-header>
   );

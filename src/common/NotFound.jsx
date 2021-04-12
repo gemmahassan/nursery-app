@@ -6,7 +6,7 @@ const Warning = () => {
     <>
       <Alert
         message="Error"
-        description="You do not have the correct permissions to view this page."
+        description="Page not found."
         type="error"
         showIcon
       />

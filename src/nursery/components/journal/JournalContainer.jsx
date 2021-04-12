@@ -13,7 +13,7 @@ const JournalContainer = (props) => {
   const {children, role} = props;
 
   const [journal, setJournal] = useState([]);
-  const [activeDate, setActiveDate] = useState();
+  const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
   const [notifyWhenNew, setNotifyWhenNew] = useState(false);
   const [speakWhenNew, setSpeakWhenNew] = useState(false);
   const [isToday, setIsToday] = useState(activeDate === moment().format("YYYY-M-D"));
@@ -77,7 +77,10 @@ const JournalContainer = (props) => {
 
   useEffect(() => {
     if (children.length > 0) {
-      setActiveDate(moment().format("YYYY-M-D"));
+      getData().then(data => {
+        setIsToday(activeDate === moment().format("YYYY-M-D"));
+        setJournal(data);
+      });
     }
   }, [children]);
 
@@ -122,6 +125,7 @@ const JournalContainer = (props) => {
     }, 10000);
   }
 
+  console.log("JOURNAL: ", journal);
   return (
     <Journal
       isToday={isToday}

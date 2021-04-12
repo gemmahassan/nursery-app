@@ -23,34 +23,6 @@ const Applications = () => {
       });
   };
 
-  useEffect(() => {
-    getPendingNurseries();
-  }, [nurseries.length]);
-
-  useEffect(() => {
-    if (approveSuccess) {
-      getPendingNurseries();
-    }
-  }, [approveSuccess]);
-
-
-  const handleClick = (nursery, action) => {
-    setCurrentNursery(nursery);
-    setAction(action);
-    setShowConfirm(true);
-  };
-
-  const handleConfirm = () => {
-    switch (action) {
-      case 'approve':
-        confirmApprove();
-        return;
-      case 'decline':
-        confirmDecline();
-        return;
-    }
-  };
-
   const confirmApprove = () => {
     const formData = new FormData();
     formData.append('first_name', currentNursery.contact_first_name);
@@ -117,6 +89,33 @@ const Applications = () => {
         }
       );
   };
+
+  const handleClick = (nursery, action) => {
+    setCurrentNursery(nursery);
+    setAction(action);
+    setShowConfirm(true);
+  };
+
+  const handleConfirm = () => {
+    switch (action) {
+      case 'approve':
+        confirmApprove();
+        return;
+      case 'decline':
+        confirmDecline();
+        return;
+    }
+  };
+
+  useEffect(() => {
+    getPendingNurseries();
+  }, [nurseries.length]);
+
+  useEffect(() => {
+    if (approveSuccess) {
+      getPendingNurseries();
+    }
+  }, [approveSuccess]);
 
   return (
     <>

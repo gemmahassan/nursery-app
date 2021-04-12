@@ -25,6 +25,7 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
       text: text,
       user_id: userId,
       timestamp: timestamp,
+      // nursery_id:
     };
 
     const [journalTypes, setJournalTypes] = useState([]);
@@ -68,6 +69,7 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
       formData.append('text', text);
       formData.append('child_id', childId);
       formData.append('user_id', userId);
+      formData.append("nursery_id", )
       if (image) {
         formData.append('image', image, image.name);
       }

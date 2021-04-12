@@ -15,7 +15,6 @@ const AddEntry = (props) => {
   const formElement = useRef();
 
   const [journalTypes, setJournalTypes] = useState([]);
-  const [children, setChildren] = useState([]);
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
 
@@ -42,6 +41,7 @@ const AddEntry = (props) => {
     formData.append('child_id', child.id);
     formData.append('text', text);
     formData.append('user_id', userId);
+    formData.append('nursery_id', child.nursery_id);
     if (image) {
       formData.append('image', image, image.name);
     }
@@ -112,7 +112,7 @@ const AddEntry = (props) => {
               }}
             />
           </Form.Item>
-          }
+          }X
 
           <Form.Item
             label="Description"

@@ -44,7 +44,7 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
   }, [addSuccess]);
 
   return (
-    <IonContent>
+    <>
       <Modal
         visible={showAddChildModal}
         onCancel={() => {
@@ -108,7 +108,7 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
         <p>Added!</p>
         }
       </Modal>
-    </IonContent>
+    </>
   );
 };
 

@@ -33,7 +33,6 @@ const CarerDashboard = ({currentUser, nursery}) => {
       });
   };
 
-  console.log(children);
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">

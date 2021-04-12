@@ -42,3 +42,26 @@
 .notes-month section {
     font-size: 28px;
 }
+
+ion-item:hover {
+    cursor:pointer;
+    color: #e87ad0;
+}
+
+.ant-list-item {
+    border-bottom: 1px solid #DEDEDE;
+    padding: 12px 6px;
+}
+
+.ant-list-item h4 {
+    margin: 6px 0 0 0;
+}
+
+.ant-list-split .ant-list-item:hover {
+    border-bottom: 1px solid #e87ad0;
+    cursor: pointer;
+}
+
+.ant-result-info .ant-result-icon > .anticon {
+    color: #e87ad0 !important;
+}

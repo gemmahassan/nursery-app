@@ -8,7 +8,6 @@ const Register = () => {
   const params = useLocation();
   const query = new URLSearchParams(params.search);
   const token = query.get('token'); // bar
-  console.log("token: ", token);
 
   const [registrationComplete, setRegistrationComplete] = useState(false);
   const [user, setUser] = useState();
@@ -33,7 +32,6 @@ const Register = () => {
   }, [token]);
 
 
-  console.log(user);
   return (
     <div>
       {(user && !registrationComplete) &&
