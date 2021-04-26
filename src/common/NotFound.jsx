@@ -1,17 +1,17 @@
 import React from "react";
-import {Alert} from "antd";
+import {Alert, Button, Result} from "antd";
 
-const Warning = () => {
+const NotFound = () => {
   return (
     <>
-      <Alert
-        message="Error"
-        description="Page not found."
-        type="error"
-        showIcon
-      />
+      <Result
+        status="404"
+        title="404"
+        subTitle="Sorry, the page you visited does not exist."
+        extra={<Button type="primary">Back Home</Button>}
+      />,
     </>
   );
 };
 
-export default Warning;
+export default NotFound;

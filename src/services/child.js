@@ -6,20 +6,24 @@ class ChildDataService {
     return http.get(`/children/${carerId}`)
   }
 
+  getById(childId) {
+    return http.get(`/children/${childId}`)
+  }
+
   getJournal(date, id) {
-    return http.get(`/child/${id}/journal/${date}`);
+    return http.get(`/children/${id}/journal/${date}`);
   }
 
   create(data) {
-    return http.post('/child/add', data, {headers: authHeader()});
+    return http.post('/children/add', data, {headers: authHeader()});
   }
 
   update(id, data) {
-    return http.put(`/child/${id}`, data, {headers: authHeader()});
+    return http.put(`/children/${id}`, data, {headers: authHeader()});
   }
 
   delete(id) {
-    return http.delete(`/child/${id}`, {headers: authHeader()});
+    return http.delete(`/children/${id}`, {headers: authHeader()});
   }
 }
 

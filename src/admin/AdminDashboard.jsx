@@ -1,11 +1,9 @@
 import React, {useState} from "react";
 import AuthService from '../services/auth';
-import {Button, Tabs} from "antd";
+import {Button, message, Popconfirm, Tabs} from "antd";
 import Applications from "./Applications";
 import Nurseries from "./Nurseries";
 import {
-  IonAlert,
-  IonAvatar,
   IonButtons, IonChip,
   IonContent,
   IonHeader,
@@ -20,9 +18,14 @@ import Logout from "../common/Logout";
 
 const {TabPane} = Tabs;
 
-const AdminDashboard = ({handlePurge, noRecords, purged}) => {
+const AdminDashboard = ({
+                          handlePurge,
+                          noRecords,
+                          setShowPopover,
+                          showPopover,
+                          purged
+                        }) => {
   const currentUser = AuthService.getCurrentUser();
-const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   return (
     <>
@@ -58,36 +61,24 @@ const [showConfirmModal, setShowConfirmModal] = useState(false);
         </IonHeader>
 
         <IonContent>
-          <Button
-            onClick={() => setShowConfirmModal(true)}
+          <Popconfirm
+            title="This action will permanently delete all archived data over 90 days old"
+            visible={showPopover}
+            onConfirm={handlePurge}
+            onCancel={() => {
+              message.error('Action cancelled');
+              setShowPopover(false);
+            }}
+            okText="Confirm"
+            cancelText="Cancel"
           >
-            Purge deactivated accounts?
-          </Button>
+            <Button
+              onClick={() => setShowPopover(true)}
+            >
+              Purge deactivated accounts and archived data?
+            </Button>
+          </Popconfirm>
 
-          {showConfirmModal &&
-          <IonAlert
-            isOpen={showConfirmModal}
-            onDidDismiss={() => setShowConfirmModal(false)}
-            header={`Confirm purge`}
-            message={`This action will permanently delete all archived data over 90 days old`}
-            buttons={[
-              {
-                text: 'Cancel',
-                role: 'cancel',
-                cssClass: 'secondary',
-              },
-              {
-                text: 'OK',
-                handler: () => {
-                  handlePurge();
-                }
-              }
-            ]}
-          />
-          }
-          {noRecords && (
-            <h1>No records to purge</h1>
-          )}
           {!purged && (
             <Tabs type="card">
               <TabPane tab="Applications" key="1">
@@ -97,9 +88,6 @@ const [showConfirmModal, setShowConfirmModal] = useState(false);
                 <Nurseries/>
               </TabPane>
             </Tabs>)}
-          {purged && (
-            <h1>all data over 90 days old has been purged</h1>
-          )}
         </IonContent>
       </div>
     </>

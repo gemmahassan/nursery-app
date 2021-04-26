@@ -5,7 +5,7 @@ import {
   Button,
   Checkbox,
 } from 'antd';
-import AuthService from "../services/auth";
+import UserDataService from "../services/user";
 import {IonContent, IonPage} from "@ionic/react";
 import {useHistory} from "react-router";
 import Nav from "../public/Nav";
@@ -17,7 +17,7 @@ const Login = () => {
   const [changePassword, setChangePassword] = useState(false);
 
   const handleLogin = ({username, password}) => {
-    AuthService.login(username, password)
+    UserDataService.login(username, password)
       .then(response => {
         if (response.activated) {
           history.push("/dashboard");

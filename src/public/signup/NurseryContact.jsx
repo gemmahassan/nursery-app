@@ -110,6 +110,7 @@ const NurseryContact = () => {
                   layout={'vertical'}
                   initialValues={{remember: true}}
                   onFinish={handleSignup}
+                  scrollToFirstError
                 >
                   <Form.Item
                     label="Nursery Name"
@@ -139,11 +140,20 @@ const NurseryContact = () => {
                   <Form.Item
                     label="Email"
                     name="email"
-                    rules={[{required: true, message: 'Please add an email address!'}]}
+                    rules={[
+                      {
+                        type: 'email',
+                        message: 'The input is not valid E-mail!',
+                      },
+                      {
+                        required: true,
+                        message: 'Please input your E-mail!',
+                      },
+                    ]}
                   >
                     <Input/>
-                    <span><i>Note that this will used to login to the nursery system once your account has been set up</i></span>
                   </Form.Item>
+                  <span><i>Note that this will used to login to the nursery system once your account has been set up</i></span>
 
                   <Form.Item
                     label="Phone Number"
@@ -228,7 +238,7 @@ const NurseryContact = () => {
                 width: '60%',
                 right: 0,
                 pointerEvents: 'none',
-                borderLeft: '10px solid pink'
+                borderLeft: '10px solid #ce72e8'
               }}>
               </div>
             </div>

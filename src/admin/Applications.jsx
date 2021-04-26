@@ -24,13 +24,13 @@ const Applications = () => {
   };
 
   const confirmApprove = () => {
-    const formData = new FormData();
-    formData.append('first_name', currentNursery.contact_first_name);
-    formData.append('surname', currentNursery.contact_surname);
-    formData.append('email', currentNursery.email);
-    formData.append('nursery_id', currentNursery.id);
-    formData.append('role', 'admin');
-    UserDataService.create(formData)
+    UserDataService.create({
+      first_name: currentNursery.contact_first_name,
+      surname: currentNursery.contact_surname,
+      email: currentNursery.email,
+      nursery_id: currentNursery.id,
+      role: 'admin',
+    })
       .then(response => {
         const nurseryName = currentNursery.name;
         const firstName = currentNursery.contact_first_name;

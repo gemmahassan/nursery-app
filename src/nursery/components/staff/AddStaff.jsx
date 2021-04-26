@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import {IonContent} from '@ionic/react';
 import UserDataService from "../../../services/user";
 import {Button, Form, Input, Modal} from "antd";
 import http from "../../../shared/http-common";
 
-const AddStaff = ({nurseryId, showAddModal}) => {
+const AddStaff = ({hideAddStaffModal, nurseryId, showAddStaffModal}) => {
+  const formElement = useRef();
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
 
@@ -17,7 +18,9 @@ const AddStaff = ({nurseryId, showAddModal}) => {
     formData.append('first_name', first_name);
     formData.append('surname', surname);
     formData.append('email', email);
-    formData.append('image', image, image.name);
+    if (image) {
+      formData.append('image', image, image.name);
+    }
     formData.append('nursery_id', nurseryId);
     formData.append('role', 'staff');
 
@@ -46,10 +49,33 @@ const AddStaff = ({nurseryId, showAddModal}) => {
 
   return (
     <IonContent>
-      <Modal visible={showAddModal}>
+      <Modal
+        visible={showAddStaffModal}
+        // onOK={() => {
+        //   formElement.current && formElement.current.submit();
+        // }}
+        // onCancel={() => hideAddStaffModal()}
+        okText="Save"
+        cancelText="Cancel"
+        footer={[
+          <Button
+            key="cancel"
+            onClick={() => hideAddStaffModal()}>
+            Cancel
+          </Button>,
+          <Button
+            key="save"
+            type="primary"
+            onClick={() => {
+              formElement.current && formElement.current.submit();
+            }}>
+            Save
+          </Button>,
+        ]}
+      >
         <Form
-          name="child"
-          initialValues={{remember: true}}
+          ref={formElement}
+          name="staff"
           onFinish={handleAddStaff}
         >
           Add a new staff member
@@ -90,17 +116,6 @@ const AddStaff = ({nurseryId, showAddModal}) => {
                 setImage(event.target.files[0]);
               }}
             />
-          </Form.Item>
-
-          <Form.Item>
-            <Button
-              class="ion-float-right ion-padding"
-              size="large"
-              color="medium"
-              type="primary"
-              htmlType="submit">
-              Submit
-            </Button>
           </Form.Item>
         </Form>
         {addSuccess && (

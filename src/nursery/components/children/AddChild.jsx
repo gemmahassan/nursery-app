@@ -47,13 +47,9 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
     <>
       <Modal
         visible={showAddChildModal}
-        onCancel={() => {
-          hideAddChildModal();
-        }}
+        onCancel={() => hideAddChildModal()}
         onOk={() => {
           formElement.current && formElement.current.submit();
-          // formElement.current && formElement.current.resetFields();
-          // hideAddChildModal();
         }}
         okText="Save"
         cancelText="Cancel"
@@ -61,8 +57,8 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
         <Form
           ref={formElement}
           name="child"
-          // initialValues={{remember: true}}
-          onFinish={handleAddChild}>
+          onFinish={handleAddChild}
+        >
           <Form.Item
             label="First Name"
             name="first_name"

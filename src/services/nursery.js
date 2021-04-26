@@ -6,28 +6,28 @@ class NurseryDataService {
     return http.get('/nurseries/confirmed');
   }
 
+  addJournalEntry(data, nurseryId) {
+    return http.post(`/nurseries/${nurseryId}/journal/add`, data, {headers: authHeader()});
+  }
+
   getAllPending() {
     return http.get('/nurseries/pending');
   }
 
-  getAll() {
-    return http.get('/nurseries');
-  }
-
   get(id) {
-    return http.get(`nurseries/${id}`);
+    return http.get(`/nurseries/${id}`);
   }
 
   getChildren(id) {
-    return http.get(`nurseries/${id}/children`);
+    return http.get(`/nurseries/${id}/children`);
   }
 
   contact(data) {
-    return http.post('/contact', data);
+    return http.post('nurseries/contact', data);
   }
 
   signup(id, data) {
-    return http.put(`/signup/${id}`, data);
+    return http.put(`/nurseries/signup/${id}`, data);
   }
 
   update(id, data) {
@@ -35,15 +35,15 @@ class NurseryDataService {
   }
 
   approve(id, data) {
-    return http.put(`/admin/${id}/approve`, data, {headers: authHeader()});
+    return http.put(`/nurseries/${id}/approve`, data, {headers: authHeader()});
   }
 
   delete(id) {
-    return http.delete(`/admin/${id}/decline`, {headers: authHeader()});
+    return http.delete(`/nurseries/${id}/decline`, {headers: authHeader()});
   }
 
   purge() {
-    return http.delete(`/admin/purge`, {headers: authHeader()});
+    return http.delete(`/nurseries/purge`, {headers: authHeader()});
   }
 
   deactivate(id) {

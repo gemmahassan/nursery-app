@@ -13,7 +13,7 @@ const Register = () => {
   const [user, setUser] = useState();
 
   const getUser = () => {
-    UserDataService.getUser(token)
+    UserDataService.getUserForSignup(token)
       .then(response => {
         setUser(response.data);
       })
@@ -21,7 +21,7 @@ const Register = () => {
   };
 
   const handleRegister = ({password}) => {
-    UserDataService.register(user[0].id, password)
+    UserDataService.completeRegistration(user[0].id, password)
       .then(() => {
         setRegistrationComplete(true);
       })

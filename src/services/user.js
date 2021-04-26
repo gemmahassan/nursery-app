@@ -2,6 +2,20 @@ import http from '../shared/http-common';
 import authHeader from "./auth-header";
 
 class UserDataService {
+  login(username, password) {
+    return http.post("/user/login", {
+      username,
+      password,
+    })
+      .then((response) => {
+        if (response.data.accessToken) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
+
+        return response.data;
+      });
+  }
+
   create(data) {
     return http.post('/users/add', data, {headers: authHeader()});
   }
@@ -10,28 +24,29 @@ class UserDataService {
     return http.get(`/users/staff/${nurseryId}`);
   }
 
-  getChildren(userId) {
-    return http.get(`/users/${userId}/children`);
-  }
-
   getCarers(nurseryId) {
     return http.get(`/users/carers/${nurseryId}`);
   }
 
-  delete(id) {
-    return http.delete(`/users/${id}`, {headers: authHeader()});
+  getChildrenOfCarer(userId) {
+    return http.get(`/users/${userId}/children`);
   }
 
-  getUser(token) {
+  delete(id) {
+    return http.put(`/users/${id}/delete`, {headers: authHeader()});
+  }
+
+  getUserForSignup(token) {
     return http.get(`/users/${token}`);
   }
 
-  register(userId, password) {
+  completeRegistration(userId, password) {
     return http.put(`/users/${userId}`, {password}, {headers: authHeader()});
   }
 
-  update(userId, data) {
-    return http.put(`/users/${userId}/edit`, data, {headers: authHeader()});
+  update(userId, firstName, surname) {
+    console.log("!!!!!!!", firstName);
+    return http.put(`/users/${userId}/edit`, {firstName, surname}, {headers: authHeader()});
   }
 }
 

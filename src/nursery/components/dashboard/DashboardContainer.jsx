@@ -5,6 +5,7 @@ import CarerDashboard from "./CarerDashboard";
 import NurseryDataService from "../../../services/nursery";
 import AdminDashboard from "../../../admin/AdminDashboard";
 import Unauthorised from "../../../common/Unauthorised";
+import {message} from 'antd';
 
 const DashboardContainer = () => {
   const currentUser = AuthService.getCurrentUser();
@@ -15,13 +16,20 @@ const DashboardContainer = () => {
   const [purged, setPurged] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [noRecords, setNoRecords] = useState(false);
+  const [showPopover, setShowPopover] = useState(false);
 
   const handlePurge = () => {
     NurseryDataService.purge()
-      .then(() => setPurged(true))
+      .then(() => {
+        setPurged(true);
+        message.success('All data has been purged!');
+        setShowPopover(false);
+      })
       .catch(e => {
         if (e.response.status === 404) {
           setNoRecords(true);
+          message.error('No data to purge');
+          setShowPopover(false);
         }
       });
   };
@@ -45,6 +53,8 @@ const DashboardContainer = () => {
           <AdminDashboard
             handlePurge={handlePurge}
             noRecords={noRecords}
+            setShowPopover={setShowPopover}
+            showPopover={showPopover}
             purged={purged}/>
         )
       case 'admin':
@@ -76,6 +86,8 @@ const DashboardContainer = () => {
       NurseryDataService.get(currentUser.nurseryId)
         .then(response => {
           setNursery(response.data);
+          const body = document.getElementById('body');
+          body.setAttribute('data-theme', response.data.color);
         })
         .catch(e => {
           console.log(e);

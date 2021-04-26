@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from "react";
 import {Button, Form, Input, Modal, Switch} from "antd";
 import {IonContent, IonModal} from "@ionic/react";
 import ChildDataService from '../../../services/child';
-import JournalDataService from "../../../services/journal";
 
 
 const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
@@ -132,7 +131,6 @@ const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
               encType="multipart/form-data"
               type="file"
               onChange={(event) => {
-                // setState method with event.target.files[0] as argument
                 setImage(event.target.files[0]);
               }}
             />

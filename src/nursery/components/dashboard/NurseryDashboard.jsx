@@ -32,6 +32,7 @@ const NurseryDashboard = ({
                           }) => {
   const [journalContent, setJournalContent] = useState(null);
   const [activeItem, setActiveItem] = useState('children');
+
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">

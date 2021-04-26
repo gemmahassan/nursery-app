@@ -109,13 +109,6 @@ const JournalContainer = (props) => {
     }
   }, [journal])
 
-  // useInterval(() => {
-  //   console.log("entered useInterval");
-  //   getData().then(data => {
-  //     setJournal(data);
-  //   });
-  // }, 3000);
-
   // call poller if today and no poller exists
   if (isToday && !dataPoller) {
     dataPoller = setInterval(() => {

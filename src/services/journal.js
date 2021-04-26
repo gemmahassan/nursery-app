@@ -3,15 +3,19 @@ import authHeader from "./auth-header";
 
 class JournalDataService {
   create(data, nurseryId) {
-    return http.post(`/nurseries/${nurseryId}/journal/add`, data, {headers: authHeader()});
+    return http.post(`/journal/${nurseryId}`, data, {headers: authHeader()});
   }
 
-  edit(data, childId, journalId) {
-    return http.put(`/child/${childId}/journal/${journalId}`, data);
+  edit(data, journalId) {
+    return http.put(`/journal/${journalId}`, data);
   }
 
-  delete(childId, journalId) {
-    return http.delete(`/child/${childId}/journal/${journalId}`, {headers: authHeader()});
+  delete(journalId) {
+    return http.put(`/journal/${journalId}/delete`, null,{headers: authHeader()});
+  }
+
+  getTypes() {
+    return http.get('/journal/types');
   }
 }
 

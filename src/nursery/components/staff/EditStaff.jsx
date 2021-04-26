@@ -14,11 +14,7 @@ const EditStaff = ({staff, hideEditStaffModal, refreshStaff, showEditStaffModal}
                                first_name,
                                surname
   }) => {
-    const formData = new FormData();
-    formData.append('first_name', first_name);
-    formData.append('surname', surname);
-
-    UserDataService.update(staff.id, formData)
+    UserDataService.update(staff.id, first_name, surname)
       .then(response => {
         setEditSuccess(true);
       })

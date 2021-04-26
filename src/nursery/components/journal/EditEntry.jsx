@@ -1,42 +1,33 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
-import {
-  IonAlert,
-  IonButton,
-  IonContent,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonModal,
-  IonSelect,
-  IonSelectOption,
-} from '@ionic/react';
+import {IonContent,} from '@ionic/react';
 import JournalDataService from "../../../services/journal";
-import JournalTypeDataService from "../../../services/journal-type";
-import {Button, Form, Input, Select} from "antd";
+import {Button, Form, Input, Modal, Select} from "antd";
 
-const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, type, typeId}) => {
-    const initialEntryState = {
+const EditEntry = ({child, hideEditModal, journalId, showEditModal, userId, text, timestamp, type, typeId}) => {
+  console.log("child: ", child);
+  const formElement = useRef();
+
+    const initialEntry = {
       id: journalId,
-      child_id: childId,
+      child_id: child.id,
       type_id: typeId,
       image: "",
       text: text,
       user_id: userId,
       timestamp: timestamp,
-      // nursery_id:
     };
 
     const [journalTypes, setJournalTypes] = useState([]);
-    const [children, setChildren] = useState([]);
-    const [currentEntry, setCurrentEntry] = useState(initialEntryState);
-    const [showDeleteAlert, setShowDeleteAlert] = useState(false);
     const [image, setImage] = useState();
     const [updateSuccess, setUpdateSuccess] = useState(false);
+    const [deleteSuccess, setDeleteSuccess] = useState(false);
+
+  const currentEntry = initialEntry;
+  const photoPermission = child.photo;
 
     const getJournalTypes = () => {
-      JournalTypeDataService.getAll()
+      JournalDataService.getTypes()
         .then(response => {
           setJournalTypes(response.data);
         })
@@ -45,8 +36,8 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
         });
     };
 
-    const deleteEntry = () => {
-      JournalDataService.delete(childId, journalId)
+    const handleDelete = () => {
+      JournalDataService.delete(journalId)
         .then(response => {
           console.log(response.data);
         })
@@ -67,14 +58,13 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
       const formData = new FormData();
       formData.append('type_id', type_id);
       formData.append('text', text);
-      formData.append('child_id', childId);
+      formData.append('child_id', child.id);
       formData.append('user_id', userId);
-      formData.append("nursery_id", )
       if (image) {
         formData.append('image', image, image.name);
       }
 
-      JournalDataService.edit(formData, childId, journalId)
+      JournalDataService.edit(formData, journalId)
         .then(response => {
           setUpdateSuccess(true);
         })
@@ -85,8 +75,37 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
 
     return (
       <IonContent>
-        <IonModal isOpen={showEditModal}>
+        <Modal
+          visible={showEditModal}
+          onOK={() => {
+            formElement.current && formElement.current.submit();
+          }}
+          onCancel={() => hideEditModal()}
+          footer={[
+            <Button
+              key="cancel"
+              onClick={() => hideEditModal()}>
+              Cancel
+            </Button>,
+            <Button
+              key="save"
+              type="primary"
+              onClick={() => {
+                formElement.current && formElement.current.submit();
+              }}>
+              Save
+            </Button>,
+            <Button
+              key="delete"
+              type="danger"
+              onClick={() => handleDelete()}
+            >
+              DELETE
+            </Button>
+          ]}
+        >
           <Form
+            ref={formElement}
             name="editEntry"
             initialValues={{type_id: currentEntry.type_id, text: currentEntry.text}}
             onFinish={handleEditEntry}
@@ -103,6 +122,7 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
               </Select>
             </Form.Item>
 
+            {photoPermission &&
             <Form.Item
               name="image"
               label="Add an image"
@@ -117,6 +137,8 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
                 }}
               />
             </Form.Item>
+            }
+
             <Form.Item
               label="Description"
               name="text"
@@ -126,51 +148,15 @@ const EditEntry = ({childId, journalId, showEditModal, userId, text, timestamp, 
               />
             </Form.Item>
 
-            <Form.Item>
-              <Button
-                class="ion-float-right ion-padding"
-                size="large"
-                color="medium"
-                type="primary"
-                htmlType="submit">
-                Update
-              </Button>
-            </Form.Item>
           </Form>
-          {updateSuccess && (
-            <p>Updated!</p>
-          )}
-
-          <Button
-            class="ion-float-right ion-padding"
-            size="large"
-            color="danger"
-            onClick={() => setShowDeleteAlert(true)}>
-            delete
-          </Button>
-
-          {showDeleteAlert &&
-          <IonAlert
-            isOpen={showDeleteAlert}
-            onDidDismiss={() => setShowDeleteAlert(false)}
-            header={'Confirm Deletion'}
-            message={'Are you sure want to delete this journal entry?'}
-            buttons={[
-              {
-                text: 'Cancel',
-                role: 'cancel',
-                cssClass: 'secondary',
-              },
-              {
-                text: 'Yes',
-                handler: () => {
-                  deleteEntry();
-                }
-              }
-            ]}
-          />
+          {updateSuccess &&
+          <p>Updated!</p>
           }
-        </IonModal>
+
+          {deleteSuccess &&
+          <p>Deleted</p>
+          }
+        </Modal>
       </IonContent>
     );
   }

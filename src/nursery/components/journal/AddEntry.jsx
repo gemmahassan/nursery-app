@@ -1,15 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react';
 
-import {
-  IonContent,
-  IonModal,
-} from '@ionic/react';
-import JournalTypeDataService from "../../../services/journal-type";
-import JournalDataService from "../../../services/journal";
+import {IonContent} from '@ionic/react';
+import JournalDataService from "../../../services/journal";import NurseryDataService from "../../../services/nursery";
 import {useParams} from "react-router-dom";
-import {Button, Form, Input, Modal, Select} from "antd";
+import {Form, Input, Modal, Select} from "antd";
 
-const AddEntry = (props) => {
+const AddEntry = props => {
   const {child, showAddModal, hideAddModal, userId} = props;
   const {nurseryId} = useParams();
   const formElement = useRef();
@@ -19,7 +15,7 @@ const AddEntry = (props) => {
   const [addSuccess, setAddSuccess] = useState(false);
 
   const getJournalTypes = () => {
-    JournalTypeDataService.getAll()
+    JournalDataService.getTypes()
       .then(response => {
         setJournalTypes(response.data);
       })
@@ -62,9 +58,7 @@ const AddEntry = (props) => {
         onOk={() => {
           formElement.current && formElement.current.submit();
         }}
-        onCancel={() => {
-          hideAddModal();
-        }}
+        onCancel={() => hideAddModal()}
         okText="Save"
         cancelText="Cancel"
       >
@@ -86,17 +80,6 @@ const AddEntry = (props) => {
             </Select>
           </Form.Item>
 
-          {/*<Form.Item*/}
-          {/*  label="Select Child"*/}
-          {/*  name="child"*/}
-          {/*  rules={[{required: true, message: 'Please select a child'}]}>*/}
-          {/*  <Select name="child_id">*/}
-          {/*    {children && children.map(child => (*/}
-          {/*      <Select.Option value={child.id}>{child.first_name} {child.surname}</Select.Option>*/}
-          {/*    ))}*/}
-          {/*  </Select>*/}
-          {/*</Form.Item>*/}
-
           {child.photo &&
           <Form.Item
             name="image"
@@ -107,7 +90,6 @@ const AddEntry = (props) => {
               encType="multipart/form-data"
               type="file"
               onChange={(event) => {
-                // setState method with event.target.files[0] as argument
                 setImage(event.target.files[0]);
               }}
             />

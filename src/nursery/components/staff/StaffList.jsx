@@ -34,7 +34,10 @@ const StaffList = ({nurseryId}) => {
       {currentUser.role === "admin" &&
       <div>
         <IonButton
-          onClick={() => setShowAddStaffModal(true)}
+          onClick={() => {
+            console.log('clicked');
+            setShowAddStaffModal(true);
+          }}
           shape="round">
           +
         </IonButton>

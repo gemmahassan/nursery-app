@@ -2,8 +2,7 @@ import React from "react";
 import {
   IonButton
 } from "@ionic/react";
-import {Button, Timeline, DatePicker, Layout, Tabs} from 'antd';
-import { NotificationOutlined } from '@ant-design/icons';
+import {Timeline, DatePicker, Layout, Tabs} from 'antd';
 import moment from 'moment';
 import JournalEntry from "./JournalEntry";
 import 'antd/dist/antd.css';

@@ -20,12 +20,12 @@ const Map = ({nurseries}) => {
     });
 
     return nurseryLocations;
-  }
+  };
 
   return (
     <>
       <h1>Find Our Nurseries</h1>
-      <div style={{ height: '600px', width: '100%', margin: '0 0 75px 0', border: '15px solid pink' }}>
+      <div style={{ height: '600px', width: '100%', margin: '0 0 75px 0', border: '15px solid #ce72e8' }}>
         <GoogleMapReact
           bootstrapURLKeys={{key: 'AIzaSyCliTrjNK25GdtBIadSK75GdPhbHK4_kwI'}}
           defaultCenter={location}
