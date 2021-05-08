@@ -32,9 +32,12 @@ const Journal = ({
                 }
               })
           }}>{notifyWhenNew && 'Dont '}Notify Me</IonButton>
-          <IonButton type={'primary'} onClick={() => {
-            setSpeakWhenNew(!speakWhenNew);
-          }}>{speakWhenNew && 'Dont '}Tell Me</IonButton>
+          <IonButton type={'primary'}
+                     onClick={() => {
+                       setSpeakWhenNew(!speakWhenNew);
+                     }}
+          >
+            {speakWhenNew && 'Dont '}Tell Me</IonButton>
           <br/>
         </>
         }
@@ -46,24 +49,24 @@ const Journal = ({
         <Layout style={{minHeight: '100vh'}}>
           {role === 'carer' ?
             <Tabs type="card">
-            {journal.map(entry => {
-              return (
-                <TabPane tab={entry.name} key={entry.id}>
-                  <h1>{entry.name}</h1>
-                  <Timeline mode="alternate">
-                    {entry.timeline.length ? entry.timeline.map(entry => (
-                      <Timeline.Item key={entry.id}>
-                        <JournalEntry
-                          entry={entry}
-                          role={role}
-                        />
-                      </Timeline.Item>
-                    )) : <p>No entries for {entry.name}</p>}
-                  </Timeline>
-                  <hr/>
+              {journal.map(entry => {
+                return (
+                  <TabPane tab={entry.name} key={entry.id}>
+                    <h1>{entry.name}</h1>
+                    <Timeline mode="alternate">
+                      {entry.timeline.length ? entry.timeline.map(entry => (
+                        <Timeline.Item key={entry.id}>
+                          <JournalEntry
+                            entry={entry}
+                            role={role}
+                          />
+                        </Timeline.Item>
+                      )) : <p>No entries for {entry.name}</p>}
+                    </Timeline>
+                    <hr/>
                   </TabPane>
-              )
-            })}
+                )
+              })}
             </Tabs> :
             <>
               {journal.map(entry => {

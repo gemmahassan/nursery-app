@@ -11,15 +11,15 @@ class NurseryDataService {
   }
 
   getAllPending() {
-    return http.get('/nurseries/pending');
+    return http.get('/nurseries/pending', {headers: authHeader()});
   }
 
   get(id) {
-    return http.get(`/nurseries/${id}`);
+    return http.get(`/nurseries/${id}`, {headers: authHeader()});
   }
 
   getChildren(id) {
-    return http.get(`/nurseries/${id}/children`);
+    return http.get(`/nurseries/${id}/children`, {headers: authHeader()});
   }
 
   contact(data) {
@@ -31,7 +31,7 @@ class NurseryDataService {
   }
 
   update(id, data) {
-    return http.put(`/nurseries/${id}`, data);
+    return http.put(`/nurseries/${id}`, data, {headers: authHeader()});
   }
 
   approve(id, data) {

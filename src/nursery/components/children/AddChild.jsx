@@ -29,9 +29,7 @@ const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChild
     }
 
     ChildDataService.create(formData, nurseryId)
-      .then(response => {
-        setAddSuccess(true);
-      })
+      .then(() => setAddSuccess(true))
       .catch(e => {
         console.log(e);
       });

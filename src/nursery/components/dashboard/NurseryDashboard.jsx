@@ -13,7 +13,7 @@ import {
   IonToolbar
 } from "@ionic/react";
 import {Result, Layout, Row, Col} from "antd";
-import { SmileOutlined } from '@ant-design/icons';
+import {SmileOutlined} from '@ant-design/icons';
 import Logout from "../../../common/Logout";
 import ChildList from "../children/ChildList";
 import StaffList from "../staff/StaffList";
@@ -30,7 +30,7 @@ const NurseryDashboard = ({
                             setShowConfirmModal,
                             showConfirmModal
                           }) => {
-  const [journalContent, setJournalContent] = useState(null);
+  const [journalChild, setJournalChild] = useState(null);
   const [activeItem, setActiveItem] = useState('children');
 
   return (
@@ -45,7 +45,7 @@ const NurseryDashboard = ({
           <IonList>
             <IonItem
               onClick={() => setActiveItem('children')}>
-            Children</IonItem>
+              Children</IonItem>
             <IonItem onClick={() => setActiveItem('staff')}>
               Staff</IonItem>
             <IonItem onClick={() => setActiveItem('carers')}>
@@ -115,39 +115,42 @@ const NurseryDashboard = ({
                   <ChildList
                     userId={currentUser.userId}
                     nurseryId={nursery.id}
-                    showJournal={(child) => setJournalContent(child)}
+                    showJournal={child => setJournalChild(child)}
                   />
                 </Col>
                 <Col span={18}>
-                  {journalContent ?
+                  {journalChild ?
                     <JournalContainer
-                      children={[journalContent]}
+                      children={[journalChild]}
                       role={'staff'}
                     /> : <Result
-                      icon={<SmileOutlined color={'#e87ad0'} />}
+                      icon={<SmileOutlined color={'#e87ad0'}/>}
                       title="Please select a child from the list to get started."
                     />
                   }
                 </Col>
               </Row>
               }
+
               {activeItem === 'carers' &&
               <CarerList
                 nurseryId={nursery.id}/>
               }
+
               {activeItem === 'staff' &&
               <StaffList
                 nurseryId={nursery.id}/>
               }
+
               {activeItem === 'calendar' &&
               <NurseryCalendarContainer
                 nurseryName={nursery.name}
                 nurseryId={nursery.id}
               />
               }
-          </Layout>
+            </Layout>
           </IonContent>
-          )}
+        )}
 
         {deactivated && (
           <h1>DEACTIVATED</h1>

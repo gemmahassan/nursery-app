@@ -1,6 +1,5 @@
 import React from "react";
-import {Router, Switch, Route} from "react-router-dom";
-import history from "./history";
+import {Switch, Route} from "react-router-dom";
 import NurseryList from "./public/NurseryList";
 import Home from "./public/Home";
 import Login from "./common/Login";
@@ -11,7 +10,6 @@ import NotFound from "./common/NotFound";
 
 const Routes = () => {
   return (
-    <Router history={history}>
       <Switch>
         <Route path="/register" component={Register}/>
         <Route exact path="/login" component={Login}/>
@@ -21,7 +19,6 @@ const Routes = () => {
         <Route path="/" exact component={Home}/>
         <Route component={NotFound} />
       </Switch>
-    </Router>
   );
 };
 

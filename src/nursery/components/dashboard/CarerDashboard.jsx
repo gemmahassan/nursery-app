@@ -71,7 +71,8 @@ const CarerDashboard = ({currentUser, nursery}) => {
         <IonContent>
           <JournalContainer
             children={children}
-            role={currentUser.role}/>
+            role={currentUser.role}
+          />
         </IonContent>
       </div>
     </div>

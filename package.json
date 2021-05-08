@@ -46,7 +46,8 @@
     "server": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress-open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -64,7 +65,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "2.4.2"
+    "@capacitor/cli": "2.4.2",
+    "cypress": "^7.2.0"
   },
   "description": "An Ionic project"
 }

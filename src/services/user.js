@@ -2,6 +2,7 @@ import http from '../shared/http-common';
 import authHeader from "./auth-header";
 
 class UserDataService {
+  // stores jwt in localStorage on successful login
   login(username, password) {
     return http.post("/user/login", {
       username,
@@ -11,7 +12,6 @@ class UserDataService {
         if (response.data.accessToken) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
-
         return response.data;
       });
   }

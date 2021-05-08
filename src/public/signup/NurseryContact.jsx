@@ -80,8 +80,7 @@ const NurseryContact = () => {
 
     NurseryDataService.contact(formData).then(
       () => setShowSuccess(true))
-      .catch(e => console.log(e)
-      );
+      .catch(e => console.log(e));
   };
 
   return (

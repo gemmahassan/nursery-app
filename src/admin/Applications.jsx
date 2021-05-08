@@ -15,12 +15,8 @@ const Applications = () => {
 
   const getPendingNurseries = () => {
     NurseryDataService.getAllPending()
-      .then(response => {
-        setNurseries(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setNurseries(response.data))
+      .catch(e => console.log(e));
   };
 
   const confirmApprove = () => {

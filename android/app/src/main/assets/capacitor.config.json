@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "nursery-app",
+  "appName": "Nursery Journal",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",

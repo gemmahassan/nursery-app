@@ -20,15 +20,14 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
-import Home from "./public/Home";
-import {Route} from "react-router-dom";
+
+import history from "./history";
 
 const App = () => (
   <IonApp>
-    <IonReactRouter>
+    <IonReactRouter history={history}>
       <IonRouterOutlet>
         <Routes/>
-        {/*<Route path="/" exact component={Home} />*/}
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
