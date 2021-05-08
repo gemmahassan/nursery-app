@@ -1,45 +1,16 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Button, Card, Form, Input, List, Modal, Select, Switch} from "antd";
-import {IonContent, IonModal} from "@ionic/react";
-import ChildDataService from '../../../services/child';
+import React, {useRef} from "react";
+import {Form, Input, Modal, Switch} from "antd";
 
-
-const AddChild = ({hideAddChildModal, nurseryId, showAddChildModal, refreshChildren}) => {
+const AddChild = ({
+                    addSuccess,
+                    handleAddChild,
+                    hideAddChildModal,
+                    photoPermission,
+                    setImage,
+                    setPhotoPermission,
+                    showAddChildModal
+                  }) => {
   const formElement = useRef();
-
-  const [image, setImage] = useState();
-  const [addSuccess, setAddSuccess] = useState(false);
-  const [photoPermission, setPhotoPermission] = useState(false);
-
-  const handleAddChild = ({
-                            first_name,
-                            surname,
-                            permission,
-                          }) => {
-    const formData = new FormData();
-    formData.append('first_name', first_name);
-    formData.append('surname', surname);
-    formData.append('photo', permission);
-    if (image) {
-      formData.append('image', image, image.name);
-    }
-    formData.append('nursery_id', nurseryId);
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}: ${value}`);
-    }
-
-    ChildDataService.create(formData, nurseryId)
-      .then(() => setAddSuccess(true))
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  useEffect(() => {
-    if (addSuccess) {
-      refreshChildren();
-    }
-  }, [addSuccess]);
 
   return (
     <>

@@ -1,88 +1,19 @@
-import React, {useState} from "react";
+import React from "react";
 import {IonContent, IonPage} from '@ionic/react';
 import {Button, Form, Input,} from "antd";
-import NurseryDataService from "../../services/nursery";
 import Nav from "../Nav";
 import {CirclePicker} from "react-color";
-import {debounce} from 'throttle-debounce';
 import register from "../images/register.jpeg";
 import '../styles.css';
 
-const NurseryContact = () => {
-
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [image, setImage] = useState();
-  const [color, setColor] = useState();
-  const [latitude, setLatitude] = useState();
-  const [longitude, setLongitude] = useState();
-  const [signupSuccessful, setSignupSuccessful] = useState(false);
-
-  // TO DO: on submit, create nursery
-  // create user? separate?
-  // add admin role to db
-  // admin should be able to add staff, children and carers - generate usernames and passwords
-  // address of nursery to be used in google map based on user's location, shows nearest nurseries
-  // only northern ireland postcodes
-  const apiKey = 'aDUOicMHl0-6XpwvlhUH4w30713';
-
-  const colors = [
-    "#e91e63",
-    "#9c27b0",
-    "#673ab7",
-    "#3f51b5",
-    "#2196f3",
-    "#00bcd4",
-    "#4caf50",
-    "#8bc34a",
-    "#cddc39",
-    "#ff9800",
-    "#607d8b"];
-
-  const handlePostcodeChange = debounce(1000, (value) => {
-    console.log(value);
-    fetch(`https://api.getAddress.io/find/${value}?api-key=${apiKey}`)
-      .then(res => res.json())
-      .then(response => {
-        setLatitude(response.latitude);
-        setLongitude(response.longitude);
-        console.log(response);
-      })
-      .catch(console.log)
-  });
-
-  const handleSignup = ({
-                          name,
-                          contactFirstName,
-                          contactSurname,
-                          email,
-                          phone,
-                          addressLine1,
-                          addressLine2,
-                          town,
-                          county,
-                          postcode,
+const NurseryContact = ({
+                          colors,
+                          handlePostcodeChange,
+                          handleSignup,
+                          showSuccess,
+                          setColor,
+                          setImage,
                         }) => {
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('contact_first_name', contactFirstName);
-    formData.append('contact_surname', contactSurname);
-    formData.append('email', email);
-    formData.append('phone', phone);
-    formData.append('addressLine1', addressLine1);
-    formData.append('addressLine2', addressLine2);
-    formData.append('town', town);
-    formData.append('county', county);
-    formData.append('postcode', postcode);
-    formData.append('color', color);
-    formData.append('image', image, image.name);
-    formData.append('latitude', latitude);
-    formData.append('longitude', longitude);
-
-    NurseryDataService.contact(formData).then(
-      () => setShowSuccess(true))
-      .catch(e => console.log(e));
-  };
-
   return (
     <>
       <IonPage>
@@ -101,8 +32,10 @@ const NurseryContact = () => {
                   'maxWidth': '40%'
                 }}>
                 <h1>Join Us!</h1>
-                <p>If you are interested in signing your nursery up for this service, please enter your nursery name and an
-                  administrator's contact details below. Someone from our team will be in touch within 24 hours to discuss
+                <p>If you are interested in signing your nursery up for this service, please enter your nursery name and
+                  an
+                  administrator's contact details below. Someone from our team will be in touch within 24 hours to
+                  discuss
                   our plans.</p>
                 <Form
                   name="basic"
@@ -242,9 +175,11 @@ const NurseryContact = () => {
               </div>
             </div>
           )}
+
           {showSuccess && (
             <p>Thank you. Someone will be in touch soon to confirm your registration.</p>
           )}
+
         </IonContent>
       </IonPage>
     </>

@@ -1,59 +1,20 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef} from "react";
 import {Button, Form, Input, Modal, Switch} from "antd";
-import {IonContent, IonModal} from "@ionic/react";
-import ChildDataService from '../../../services/child';
+import {IonContent} from "@ionic/react";
 
-
-const EditChild = ({child, hideEditModal, refreshChildren, showEditModal}) => {
+const EditChild = ({
+                     currentChild,
+                     deleteSuccess,
+                     editSuccess,
+                     handleDelete,
+                     handleUpdateChild,
+                     hideEditModal,
+                     photoPermission,
+                     setImage,
+                     setPhotoPermission,
+                     showEditModal
+}) => {
   const formElement = useRef();
-
-  const [currentChild, setCurrentChild] = useState(child);
-  const [image, setImage] = useState();
-  const [editSuccess, setEditSuccess] = useState(false);
-  const [deleteSuccess, setDeleteSuccess] = useState(false);
-  const [photoPermission, setPhotoPermission] = useState(currentChild.photo);
-
-  const handleUpdateChild = ({
-                               first_name,
-                               surname,
-                               permission
-                             }) => {
-    const formData = new FormData();
-    formData.append('first_name', first_name);
-    formData.append('surname', surname);
-    formData.append('permission', permission);
-    if (image) {
-      formData.append('image', image, image.name);
-    }
-
-    ChildDataService.update(child.id, formData)
-      .then(response => {
-        setEditSuccess(true);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  const handleDelete = () => {
-    ChildDataService.delete(child.id)
-      .then(response => {
-        setDeleteSuccess(true);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
-
-  useEffect(() => {
-    setCurrentChild(child);
-  }, [child]);
-
-  useEffect(() => {
-    if (editSuccess || deleteSuccess) {
-      refreshChildren();
-    }
-  }, [editSuccess, deleteSuccess]);
 
   return (
     <IonContent>

@@ -1,21 +1,21 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
-import NurseryList from "./public/NurseryList";
 import Home from "./public/Home";
-import Login from "./common/Login";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
-import NurseryContact from "./public/signup/NurseryContact";
-import Register from "./public/signup/Register";
 import NotFound from "./common/NotFound";
+import RegisterContainer from "./public/signup/RegisterContainer";
+import NurseryContactContainer from "./public/signup/NurseryContactContainer";
+import NurseryListContainer from "./public/nurseries/NurseryListContainer";
+import LoginContainer from "./public/login/LoginContainer";
 
 const Routes = () => {
   return (
       <Switch>
-        <Route path="/register" component={Register}/>
-        <Route exact path="/login" component={Login}/>
+        <Route path="/register" component={RegisterContainer}/>
+        <Route exact path="/login" component={LoginContainer}/>
         <Route exact path="/dashboard" component={DashboardContainer}/>
-        <Route exact path="/contact" component={NurseryContact}/>
-        <Route exact path="/nurseries" component={NurseryList}/>
+        <Route exact path="/contact" component={NurseryContactContainer}/>
+        <Route exact path="/nurseries" component={NurseryListContainer}/>
         <Route path="/" exact component={Home}/>
         <Route component={NotFound} />
       </Switch>

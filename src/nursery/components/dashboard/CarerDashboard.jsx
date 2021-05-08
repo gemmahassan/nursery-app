@@ -14,6 +14,7 @@ import {
 import UserDataService from "../../../services/user";
 import Logout from "../../../common/Logout";
 import JournalContainer from "../journal/JournalContainer";
+import LogoutContainer from "../../../common/LogoutContainer";
 
 const CarerDashboard = ({currentUser, nursery}) => {
   const [children, setChildren] = useState([]);
@@ -56,7 +57,7 @@ const CarerDashboard = ({currentUser, nursery}) => {
               <IonMenuButton/>
             </IonButtons>
             <IonButtons slot="primary">
-              <Logout />
+              <LogoutContainer />
             </IonButtons>
             <IonTitle>{nursery.name} Carer Dashboard</IonTitle>
             <IonChip slot="secondary">

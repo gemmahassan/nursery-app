@@ -1,35 +1,30 @@
-import React, {useEffect, useState} from "react";
-import moment from 'moment';
-import EditEntry from "./EditEntry";
+import React from "react";
 import {EditOutlined} from "@ant-design/icons";
-import ChildDataService from "../../../services/child";
 import {Image} from "antd";
+import EditEntryContainer from "./EditEntryContainer";
 
-const JournalEntry = ({entry, role}) => {
-  const {child_id, first_name, id, image, surname, text, timestamp, type, type_id, user_id} = entry;
-  const time = moment(timestamp).format('h:mma');
-
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [child, setChild] = useState({});
-
-  const getChild = () => {
-    ChildDataService.getById(child_id)
-      .then(response => {
-        setChild(response.data);
-      })
-      .catch(e => console.log(e));
-  };
-
-  useEffect(() => {
-    getChild();
-  }, []);
-
+const JournalEntry = ({
+                        child,
+                        firstName,
+                        id,
+                        image,
+                        showEditModal,
+                        setShowEditModal,
+                        role,
+                        surname,
+                        text,
+                        time,
+                        timestamp,
+                        type,
+                        typeId,
+                        userId
+                      }) => {
   return (
     <>
       <h2>
         {`${time} - ${type}`}
 
-        {role !== "carer" &&
+        {role === "admin" &&
         <EditOutlined
           onClick={() => setShowEditModal(!showEditModal)}
         />
@@ -40,20 +35,20 @@ const JournalEntry = ({entry, role}) => {
       <Image src={image}/>
       }
       <p>{text}</p>
-      <p>Added by {first_name} {surname}</p>
+      <p>Added by {firstName} {surname}</p>
 
       {showEditModal &&
-      <EditEntry
+      <EditEntryContainer
         showEditModal={showEditModal}
         hideEditModal={() => setShowEditModal(false)}
         child={child}
         journalId={id}
         image={image}
-        userId={user_id}
+        userId={userId}
         text={text}
         timestamp={timestamp}
         type={type}
-        typeId={type_id}
+        typeId={typeId}
       />
       }
     </>

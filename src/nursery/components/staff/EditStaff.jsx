@@ -1,48 +1,17 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef} from "react";
 import {Button, Form, Input, Modal} from "antd";
 import {IonContent} from "@ionic/react";
-import UserDataService from '../../../services/user';
 
-const EditStaff = ({staff, hideEditStaffModal, refreshStaff, showEditStaffModal}) => {
+const EditStaff = ({
+                     currentStaff,
+                     deleteSuccess,
+                     editSuccess,
+                     handleDelete,
+                     handleUpdateStaff,
+                     hideEditStaffModal,
+                     showEditStaffModal
+                   }) => {
   const formElement = useRef();
-
-  const [currentStaff, setCurrentStaff] = useState(staff);
-  const [editSuccess, setEditSuccess] = useState(false);
-  const [deleteSuccess, setDeleteSuccess] = useState(false);
-
-  const handleUpdateStaff = ({
-                               first_name,
-                               surname
-  }) => {
-    UserDataService.update(staff.id, first_name, surname)
-      .then(response => {
-        setEditSuccess(true);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  const handleDelete = () => {
-    UserDataService.delete(staff.id)
-      .then(response => {
-        setDeleteSuccess(true);
-        hideEditStaffModal();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
-
-  useEffect(() => {
-    setCurrentStaff(staff);
-  }, [staff]);
-
-  useEffect(() => {
-    if (editSuccess || deleteSuccess) {
-      refreshStaff();
-    }
-  }, [editSuccess, deleteSuccess]);
 
   return (
     <IonContent>

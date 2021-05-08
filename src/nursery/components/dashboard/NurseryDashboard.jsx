@@ -14,13 +14,15 @@ import {
 } from "@ionic/react";
 import {Result, Layout, Row, Col} from "antd";
 import {SmileOutlined} from '@ant-design/icons';
-import Logout from "../../../common/Logout";
-import ChildList from "../children/ChildList";
-import StaffList from "../staff/StaffList";
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
-import CarerList from "../carers/CarerList";
 import JournalContainer from "../journal/JournalContainer";
 import '../../style.css';
+import LogoutContainer from "../../../common/LogoutContainer";
+import CarerListContainer from "../carers/CarerListContainer";
+import ChildListContainer from "../children/ChildListContainer";
+import StaffListContainer from "../staff/StaffListContainer";
+import AuthService from '../../../services/auth';
+
 
 const NurseryDashboard = ({
                             currentUser,
@@ -71,7 +73,7 @@ const NurseryDashboard = ({
                 onClick={() => setShowConfirmModal(true)}>
                 Deactivate this account
               </IonButton>
-              <Logout/>
+              <LogoutContainer />
             </IonButtons>
             <IonTitle>{`${nursery.name} Staff Dashboard`}</IonTitle>
             <IonChip slot="secondary">
@@ -112,7 +114,7 @@ const NurseryDashboard = ({
               {activeItem === 'children' &&
               <Row>
                 <Col span={6}>
-                  <ChildList
+                  <ChildListContainer
                     userId={currentUser.userId}
                     nurseryId={nursery.id}
                     showJournal={child => setJournalChild(child)}
@@ -122,7 +124,7 @@ const NurseryDashboard = ({
                   {journalChild ?
                     <JournalContainer
                       children={[journalChild]}
-                      role={'staff'}
+                      role={currentUser.role}
                     /> : <Result
                       icon={<SmileOutlined color={'#e87ad0'}/>}
                       title="Please select a child from the list to get started."
@@ -133,12 +135,12 @@ const NurseryDashboard = ({
               }
 
               {activeItem === 'carers' &&
-              <CarerList
+              <CarerListContainer
                 nurseryId={nursery.id}/>
               }
 
               {activeItem === 'staff' &&
-              <StaffList
+              <StaffListContainer
                 nurseryId={nursery.id}/>
               }
 

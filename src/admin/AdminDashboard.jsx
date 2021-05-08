@@ -15,6 +15,7 @@ import {
   IonToolbar
 } from "@ionic/react";
 import Logout from "../common/Logout";
+import LogoutContainer from "../common/LogoutContainer";
 
 const {TabPane} = Tabs;
 
@@ -51,7 +52,7 @@ const AdminDashboard = ({
               <IonMenuButton/>
             </IonButtons>
             <IonButtons slot="primary">
-              <Logout/>
+              <LogoutContainer />
             </IonButtons>
             <IonTitle>Admin Dashboard</IonTitle>
             <IonChip slot="secondary">

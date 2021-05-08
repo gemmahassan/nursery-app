@@ -1,55 +1,17 @@
-import React, {useEffect, useState, useRef} from 'react';
-
+import React, {useRef} from 'react';
 import {IonContent} from '@ionic/react';
-import JournalDataService from "../../../services/journal";import NurseryDataService from "../../../services/nursery";
-import {useParams} from "react-router-dom";
 import {Form, Input, Modal, Select} from "antd";
 
-const AddEntry = props => {
-  const {child, showAddModal, hideAddModal, userId} = props;
-  const {nurseryId} = useParams();
+const AddEntry = ({
+                    addSuccess,
+                    child,
+                    handleAddEntry,
+                    hideAddModal,
+                    journalTypes,
+                    setImage,
+                    showAddModal
+                  }) => {
   const formElement = useRef();
-
-  const [journalTypes, setJournalTypes] = useState([]);
-  const [image, setImage] = useState();
-  const [addSuccess, setAddSuccess] = useState(false);
-
-  const getJournalTypes = () => {
-    JournalDataService.getTypes()
-      .then(response => {
-        setJournalTypes(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  useEffect(() => {
-    getJournalTypes();
-  }, []);
-
-  const handleAddEntry = ({
-                            entryType,
-                            text
-                          }) => {
-    const formData = new FormData();
-    formData.append('type_id', entryType);
-    formData.append('child_id', child.id);
-    formData.append('text', text);
-    formData.append('user_id', userId);
-    formData.append('nursery_id', child.nursery_id);
-    if (image) {
-      formData.append('image', image, image.name);
-    }
-
-    JournalDataService.create(formData, nurseryId)
-      .then(response => {
-        setAddSuccess(true);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
 
   return (
     <IonContent>

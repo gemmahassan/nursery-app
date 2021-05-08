@@ -7,7 +7,7 @@ class JournalDataService {
   }
 
   edit(data, journalId) {
-    return http.put(`/journal/${journalId}`, data);
+    return http.put(`/journal/${journalId}`, data, {headers: authHeader()});
   }
 
   delete(journalId) {

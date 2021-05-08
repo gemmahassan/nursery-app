@@ -1,34 +1,25 @@
-import React, {useEffect, useState} from "react";
-import UserDataService from '../../../services/user';
+import React from "react";
 import {IonButton} from "@ionic/react";
 import {List} from "antd";
-import AuthService from "../../../services/auth";
 import AddStaff from "./AddStaff";
 import StaffItem from "./StaffItem";
 import EditStaff from "./EditStaff";
+import StaffItemContainer from "./StaffItemContainer";
+import EditStaffContainer from "./EditStaffContainer";
+import AddStaffContainer from "./AddStaffContainer";
 
-const StaffList = ({nurseryId}) => {
-  const [staff, setStaff] = useState([]);
-  const [staffData, setStaffData] = useState(null);
-  const [showAddStaffModal, setShowAddStaffModal] = useState(false);
-  const [showEditStaffModal, setShowEditStaffModal] = useState(false);
-
-  const currentUser = AuthService.getCurrentUser();
-
-  const getStaff = () => {
-    UserDataService.getStaff(nurseryId)
-      .then(response => {
-        setStaff(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  useEffect(() => {
-    getStaff();
-  }, []);
-
+const StaffList = ({
+                     currentUser,
+                     getStaff,
+                     nurseryId,
+                     showAddStaffModal,
+                     showEditStaffModal,
+                     setShowAddStaffModal,
+                     setShowEditStaffModal,
+                     setStaffData,
+                     staff,
+                     staffData,
+                   }) => {
   return (
     <>
       {currentUser.role === "admin" &&
@@ -49,7 +40,7 @@ const StaffList = ({nurseryId}) => {
           itemLayout="horizontal"
           dataSource={staff}
           renderItem={staffMember => (
-            <StaffItem
+            <StaffItemContainer
               currentUser={currentUser}
               staff={staffMember}
               editStaff={(staffMember) => {
@@ -61,7 +52,7 @@ const StaffList = ({nurseryId}) => {
         />
 
         {showEditStaffModal &&
-        <EditStaff
+        <EditStaffContainer
           staff={staffData}
           showEditStaffModal={showEditStaffModal}
           hideEditStaffModal={() => setShowEditStaffModal(false)}
@@ -70,7 +61,7 @@ const StaffList = ({nurseryId}) => {
         }
       </>
 
-      <AddStaff
+      <AddStaffContainer
         nurseryId={nurseryId}
         showAddStaffModal={showAddStaffModal}
         hideAddStaffModal={() => setShowAddStaffModal(false)}

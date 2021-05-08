@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from "react";
 import NurseryDataService from '../services/nursery';
 import {Card, List} from "antd";
-import {CloseOutlined, EditOutlined} from "@ant-design/icons";
+import {CloseOutlined} from "@ant-design/icons";
 import {IonAlert} from "@ionic/react";
 
 const Nurseries = () => {
-  // const currentUser = AuthService.getCurrentUser();
   const [nurseries, setNurseries] = useState([]);
   const [showConfirm, setShowConfirm] = useState(false);
   const [currentNursery, setCurrentNursery] = useState({});

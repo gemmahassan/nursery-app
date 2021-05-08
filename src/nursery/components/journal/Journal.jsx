@@ -4,10 +4,8 @@ import {
 } from "@ionic/react";
 import {Timeline, DatePicker, Layout, Tabs} from 'antd';
 import moment from 'moment';
-import JournalEntry from "./JournalEntry";
 import 'antd/dist/antd.css';
-
-const {TabPane} = Tabs;
+import JournalEntryContainer from "./JournalEntryContainer";
 
 const Journal = ({
                    isToday,
@@ -17,12 +15,15 @@ const Journal = ({
                    speakWhenNew,
                    onDateChange,
                    journal,
-                   role
+  role
                  }) => {
+
+  const {TabPane} = Tabs;
+
   return (
     <>
       <div className="ion-text-center">
-        {isToday &&
+        {(isToday && role === 'carer') &&
         <>
           <IonButton onClick={() => {
             Notification.requestPermission()
@@ -31,7 +32,9 @@ const Journal = ({
                   setNotifyWhenNew(!notifyWhenNew);
                 }
               })
-          }}>{notifyWhenNew && 'Dont '}Notify Me</IonButton>
+          }}>
+
+            {notifyWhenNew && 'Dont '}Notify Me</IonButton>
           <IonButton type={'primary'}
                      onClick={() => {
                        setSpeakWhenNew(!speakWhenNew);
@@ -56,7 +59,7 @@ const Journal = ({
                     <Timeline mode="alternate">
                       {entry.timeline.length ? entry.timeline.map(entry => (
                         <Timeline.Item key={entry.id}>
-                          <JournalEntry
+                          <JournalEntryContainer
                             entry={entry}
                             role={role}
                           />
@@ -76,7 +79,7 @@ const Journal = ({
                     <Timeline mode="alternate">
                       {entry.timeline.length ? entry.timeline.map(entry => (
                         <Timeline.Item key={entry.id}>
-                          <JournalEntry
+                          <JournalEntryContainer
                             entry={entry}
                             role={role}
                           />

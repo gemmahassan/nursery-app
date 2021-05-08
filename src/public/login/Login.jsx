@@ -1,41 +1,21 @@
-import React, {useState} from "react";
+import React from "react";
 import {
   Input,
   Form,
   Button,
   Checkbox,
 } from 'antd';
-import UserDataService from "../services/user";
 import {IonContent, IonPage} from "@ionic/react";
-import {useHistory} from "react-router";
-import Nav from "../public/Nav";
+import Nav from "../Nav";
 
-const Login = () => {
-  let history = useHistory();
-
-  const [loginFailed, setLoginFailed] = useState(false);
-  const [changePassword, setChangePassword] = useState(false);
-
-  // call login route to validate username and password
-  // if successful, show relevant dashboard
-  // if unsuccessful, show login failure message
-  // if user has not completed sign up yet, prompt them to change their temporary password
-  const handleLogin = ({username, password}) => {
-    UserDataService.login(username, password)
-      .then(response => {
-        if (response.activated) {
-          history.push("/dashboard");
-          window.location.reload();
-        } else {
-          setChangePassword(true);
-        }
-      })
-      .catch(() => setLoginFailed(true));
-  };
-
+const Login = ({
+                 changePassword,
+                 handleLogin,
+                 loginFailed
+               }) => {
   return (
     <IonPage>
-      <Nav />
+      <Nav/>
       <IonContent>
         <div
           style={{'display': 'flex', 'flexDirection': 'column', 'padding': '50px', width: '100%', 'maxWidth': '600px'}}>

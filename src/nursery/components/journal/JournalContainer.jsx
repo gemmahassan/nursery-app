@@ -4,21 +4,22 @@ import moment from 'moment';
 import {Speak} from './Speech';
 import {usePrevious} from "../../../hooks/usePrevious";
 import 'antd/dist/antd.css';
-import Journal from "./Journal";
-import useInterval from "../../../hooks/useInterval";
+import Journal from './Journal';
 
 // holds reference to interval timer, must be outside component to avoid duplicates
 let dataPoller = null;
 
-const JournalContainer = (props) => {
+const JournalContainer = props => {
   const {children, role} = props;
+  console.log(role);
 
   const [journal, setJournal] = useState([]);
   const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
   const [isToday, setIsToday] = useState(activeDate === moment().format("YYYY-M-D"));
-  const previousJournalState = usePrevious(journal);
   const [notifyWhenNew, setNotifyWhenNew] = useState(false);
   const [speakWhenNew, setSpeakWhenNew] = useState(false);
+
+  const previousJournalState = usePrevious(journal);
 
   const getJournal = (date, id, name) => {
     // return resolved or rejected promise to the getData() function
@@ -41,7 +42,6 @@ const JournalContainer = (props) => {
 
   const getData = async () => {
     if (!activeDate) return;
-
     let journalEntries = [];
 
     // retrieve journal data for each child
@@ -91,13 +91,22 @@ const JournalContainer = (props) => {
         setIsToday(activeDate === moment().format("YYYY-M-D"));
         setJournal(data);
       });
+
+      // set up data poller if date is today and no poller already exists
+      if (isToday && !dataPoller) {
+        dataPoller = setInterval(() => {
+          getData().then(data => {
+            setJournal(data);
+          });
+        }, 10000);
+      }
     }
   }, [children]);
 
   useEffect(() => {
     // when notifications selected & journal is updated, loops over new journal,
     if (notifyWhenNew) {
-      journal.forEach((child) => {
+      journal.forEach(child => {
         //gets ref to child in previous state
         const getOldTimelineState = previousJournalState.find(item => item.id === child.id);
         if (getOldTimelineState) {
@@ -119,15 +128,6 @@ const JournalContainer = (props) => {
       })
     }
   }, [journal])
-
-  // call poller if date is today and no poller already exists
-  if (isToday && !dataPoller) {
-    dataPoller = setInterval(() => {
-      getData().then(data => {
-        setJournal(data);
-      })
-    }, 10000);
-  }
 
   return (
     <Journal

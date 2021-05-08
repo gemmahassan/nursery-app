@@ -1,36 +1,24 @@
-import React, {useEffect, useState} from "react";
-import UserDataService from '../../../services/user';
+import React from "react";
 import {IonButton} from "@ionic/react";
 import {List} from "antd";
-import AuthService from "../../../services/auth";
-import CarerItem from "./CarerItem";
-import AddChild from "../children/AddChild";
 import AddCarer from "./AddCarer";
-import EditStaff from "../staff/EditStaff";
 import EditCarer from "./EditCarer";
+import CarerItemContainer from "./CarerItemContainer";
+import EditCarerContainer from "./EditCarerContainer";
+import AddCarerContainer from "./AddCarerContainer";
 
-const CarerList = ({nurseryId}) => {
-  const [carers, setCarers] = useState([]);
-  const [carerData, setCarerData] = useState(null);
-  const [showAddCarerModal, setShowAddCarerModal] = useState(false);
-  const [showEditCarerModal, setShowEditCarerModal] = useState(false);
-
-  const currentUser = AuthService.getCurrentUser();
-
-  const getCarers = () => {
-    UserDataService.getCarers(nurseryId)
-      .then(response => {
-        setCarers(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  useEffect(() => {
-    getCarers();
-  }, []);
-
+const CarerList = ({
+                     carerData,
+                     carers,
+                     currentUser,
+                     getCarers,
+                     nurseryId,
+                     setCarerData,
+                     setShowAddCarerModal,
+                     setShowEditCarerModal,
+                     showAddCarerModal,
+                     showEditCarerModal
+                   }) => {
   return (
     <>
       {currentUser.role === "admin" &&
@@ -47,7 +35,7 @@ const CarerList = ({nurseryId}) => {
           itemLayout="horizontal"
           dataSource={carers}
           renderItem={carer => (
-            <CarerItem
+            <CarerItemContainer
               carer={carer}
               currentUser={currentUser}
               editCarer={(carer) => {
@@ -59,7 +47,7 @@ const CarerList = ({nurseryId}) => {
         />
 
         {showEditCarerModal &&
-        <EditCarer
+        <EditCarerContainer
           carer={carerData}
           showEditCarerModal={showEditCarerModal}
           hideEditCarerModal={() => setShowEditCarerModal(false)}
@@ -69,7 +57,7 @@ const CarerList = ({nurseryId}) => {
         }
       </>
 
-      <AddCarer
+      <AddCarerContainer
         nurseryId={nurseryId}
         showAddCarerModal={showAddCarerModal}
         hideAddCarerModal={() => setShowAddCarerModal(false)}

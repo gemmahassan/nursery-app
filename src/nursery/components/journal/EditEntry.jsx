@@ -1,77 +1,20 @@
-import React, {useEffect, useRef, useState} from 'react';
-
+import React, {useRef} from 'react';
 import {IonContent,} from '@ionic/react';
-import JournalDataService from "../../../services/journal";
 import {Button, Form, Input, Modal, Select} from "antd";
 
-const EditEntry = ({child, hideEditModal, journalId, showEditModal, userId, text, timestamp, type, typeId}) => {
-  console.log("child: ", child);
-  const formElement = useRef();
-
-    const initialEntry = {
-      id: journalId,
-      child_id: child.id,
-      type_id: typeId,
-      image: "",
-      text: text,
-      user_id: userId,
-      timestamp: timestamp,
-    };
-
-    const [journalTypes, setJournalTypes] = useState([]);
-    const [image, setImage] = useState();
-    const [updateSuccess, setUpdateSuccess] = useState(false);
-    const [deleteSuccess, setDeleteSuccess] = useState(false);
-
-  const currentEntry = initialEntry;
-  const photoPermission = child.photo;
-
-    const getJournalTypes = () => {
-      JournalDataService.getTypes()
-        .then(response => {
-          setJournalTypes(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    };
-
-    const handleDelete = () => {
-      JournalDataService.delete(journalId)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    }
-
-    useEffect(() => {
-      getJournalTypes();
-      // getChildren();
-    }, []);
-
-    const handleEditEntry = ({
-                               type_id,
-                               text,
-                             }) => {
-      const formData = new FormData();
-      formData.append('type_id', type_id);
-      formData.append('text', text);
-      formData.append('child_id', child.id);
-      formData.append('user_id', userId);
-      if (image) {
-        formData.append('image', image, image.name);
-      }
-
-      JournalDataService.edit(formData, journalId)
-        .then(response => {
-          setUpdateSuccess(true);
-        })
-        .catch(e => {
-          console.log(e);
-        });
-    };
+const EditEntry = ({
+                     currentEntry,
+                     deleteSuccess,
+                     handleDelete,
+                     handleEditEntry,
+                     hideEditModal,
+                     journalTypes,
+                     photoPermission,
+                     setImage,
+                     showEditModal,
+                     updateSuccess
+                   }) => {
+    const formElement = useRef();
 
     return (
       <IonContent>
