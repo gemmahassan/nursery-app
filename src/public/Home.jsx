@@ -42,19 +42,19 @@ const Home = () => {
         </div>
         <div className={'points-wrapper'}>
           <Row justify="space-around">
-            <Col span={4}>
+            <Col xs={12} sm={8} md={4} lg={4} xl={4}>
               <SecurityScanFilled style={{ fontSize: '48px' }} />
               <h2>Protect</h2>
             </Col>
-            <Col span={4}>
+            <Col xs={12} sm={8} md={4} lg={4} xl={4}>
               <GiftFilled style={{ fontSize: '48px' }} />
               <h2>Nurture</h2>
             </Col>
-            <Col span={4}>
+            <Col xs={12} sm={8} md={4} lg={4} xl={4}>
               <SmileFilled style={{ fontSize: '48px' }} />
               <h2>Teach</h2>
             </Col>
-            <Col span={4}>
+            <Col xs={12} sm={8} md={4} lg={4} xl={4}>
               <HeartFilled style={{ fontSize: '48px' }} />
               <h2>Care</h2>
             </Col>

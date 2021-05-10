@@ -6,8 +6,8 @@
 }
 .ant-carousel .slick-slide img {
     width: 100%;
-    height: auto;
-    margin-top: -100px;
+    height: 100%;
+    margin-top: 0;
 }
 
 .nursery-list-wrapper {
@@ -34,4 +34,45 @@
     align-items: center;
     width: 180px;
     color: blueviolet;
+}
+
+.title {
+    margin: 0 0 0 12px;
+    font-weight: bold;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px 50px 50px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.contact-image {
+    display: none;
+}
+
+.child-scroller {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+@media only screen and (min-width: 768px) {
+    .ant-carousel {
+        box-shadow: 0 0 5px #777;
+    }
+    .ant-carousel .slick-slide img {
+        margin-top: -100px;
+    }
+    .contact {
+        max-width: 40%;
+    }
+    .contact-image {
+        display: flex;
+    }
+    .child-scroller {
+        max-height: none;
+        overflow-y: auto;
+    }
 }

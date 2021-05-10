@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-
 import {
+  IonHeader,
   IonToolbar,
   IonTitle,
   IonButtons,
@@ -10,28 +10,24 @@ import {
 
 const Nav = () => {
   return (
-    <ion-header>
+    <IonHeader>
       <IonToolbar>
-        <IonButtons slot="secondary">
+        <h4 class={"title"}>
+          <Link to="/">Nursery Journal</Link>
+        </h4>
+        <IonButtons slot="primary">
           <IonButton>
             <Link to="/nurseries">Nurseries</Link>
           </IonButton>
-        </IonButtons>
-        <IonButtons slot="secondary">
           <IonButton>
             <Link to="/contact">Contact Us</Link>
           </IonButton>
-        </IonButtons>
-        <IonButtons slot="secondary">
           <IonButton>
             <Link to="/login">Login</Link>
           </IonButton>
         </IonButtons>
-        <IonTitle>
-          <Link to="/">Nursery Journal</Link>
-        </IonTitle>
       </IonToolbar>
-    </ion-header>
+    </IonHeader>
   );
 };
 

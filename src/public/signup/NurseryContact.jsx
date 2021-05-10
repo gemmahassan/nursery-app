@@ -6,7 +6,7 @@ import {CirclePicker} from "react-color";
 import register from "../images/register.jpeg";
 import '../styles.css';
 
-const NurseryContact = ({
+const  NurseryContact = ({
                           colors,
                           handlePostcodeChange,
                           handleSignup,
@@ -23,14 +23,7 @@ const NurseryContact = ({
             <div style={{
               display: 'flex'
             }}>
-              <div
-                style={{
-                  'display': 'flex',
-                  'flexDirection': 'column',
-                  'padding': '0 50px 50px 50px',
-                  width: '100%',
-                  'maxWidth': '40%'
-                }}>
+              <div class={'contact'}>
                 <h1>Join Us!</h1>
                 <p>If you are interested in signing your nursery up for this service, please enter your nursery name and
                   an
@@ -162,7 +155,7 @@ const NurseryContact = ({
                   </Form.Item>
                 </Form>
               </div>
-              <div style={{
+              <div class={"contact-image"} style={{
                 'backgroundImage': `url(${register})`,
                 'backgroundSize': 'cover',
                 position: 'fixed',

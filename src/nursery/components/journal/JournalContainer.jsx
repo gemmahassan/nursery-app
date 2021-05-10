@@ -11,7 +11,6 @@ let dataPoller = null;
 
 const JournalContainer = props => {
   const {children, role} = props;
-  console.log(role);
 
   const [journal, setJournal] = useState([]);
   const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
@@ -111,7 +110,12 @@ const JournalContainer = props => {
         const getOldTimelineState = previousJournalState.find(item => item.id === child.id);
         if (getOldTimelineState) {
           if (child.timeline.length > getOldTimelineState.timeline.length) { // something has been added
-            new Notification(`New Entry For ${child.name}`, {body: `${child.timeline[0].type} at ${moment(child.timeline[0].timestamp).format('h:mma')}`});
+            new Notification(`New Entry For ${child.name}`,
+              {
+                body:
+                  `${child.timeline[0].type} at ${moment(child.timeline[0].timestamp).format('h:mma')}`
+              }
+            );
           }
         }
       })

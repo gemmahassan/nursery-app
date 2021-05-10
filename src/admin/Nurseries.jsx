@@ -1,46 +1,15 @@
-import React, {useEffect, useState} from "react";
-import NurseryDataService from '../services/nursery';
+import React from "react";
 import {Card, List} from "antd";
 import {CloseOutlined} from "@ant-design/icons";
 import {IonAlert} from "@ionic/react";
 
-const Nurseries = () => {
-  const [nurseries, setNurseries] = useState([]);
-  const [showConfirm, setShowConfirm] = useState(false);
-  const [currentNursery, setCurrentNursery] = useState({});
-
-  useEffect(() => {
-    NurseryDataService.getAllConfirmed()
-      .then(response => {
-        setNurseries(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }, []);
-
-  const handleClick = nursery => {
-    setCurrentNursery(nursery);
-    setShowConfirm(true);
-  };
-
-  const handleRemove = () => {
-    NurseryDataService.delete(currentNursery.id)
-      .then(
-        response => {
-          console.log(response.data);
-        })
-      .catch(e => {
-          const resMessage =
-            (e.response &&
-              e.response.data &&
-              e.response.data.message) ||
-            e.message ||
-            e.toString();
-        }
-      );
-  };
-
+const Nurseries = ({
+                     handleClick,
+                     handleRemove,
+                     nurseries,
+                     setShowConfirm,
+                     showConfirm
+                   }) => {
   return (
     <>
       <List

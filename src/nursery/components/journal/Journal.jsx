@@ -15,7 +15,7 @@ const Journal = ({
                    speakWhenNew,
                    onDateChange,
                    journal,
-  role
+                   role
                  }) => {
 
   const {TabPane} = Tabs;

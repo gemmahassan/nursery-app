@@ -33,6 +33,7 @@ const ChildListContainer = ({nurseryId, userId, showJournal}) => {
         childData={childData}
         children={children}
         currentUser={currentUser}
+        getChildren={getChildren}
         journalData={journalData}
         setChildData={setChildData}
         setJournalData={setJournalData}

@@ -10,7 +10,8 @@ import {
   IonMenu, IonMenuButton,
   IonRouterOutlet,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonFooter
 } from "@ionic/react";
 import {Result, Layout, Row, Col} from "antd";
 import {SmileOutlined} from '@ant-design/icons';
@@ -45,6 +46,12 @@ const NurseryDashboard = ({
         </IonHeader>
         <IonContent>
           <IonList>
+            <IonChip slot="secondary">
+              <IonAvatar>
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"/>
+              </IonAvatar>
+              <IonLabel>{currentUser.firstName} {currentUser.surname}</IonLabel>
+            </IonChip>
             <IonItem
               onClick={() => setActiveItem('children')}>
               Children</IonItem>
@@ -55,6 +62,10 @@ const NurseryDashboard = ({
             <IonItem
               onClick={() => setActiveItem('calendar')}>
               Calendar
+            </IonItem>
+            <IonItem
+              onClick={() => setShowConfirmModal(true)}>
+              <b>Deactivate this account</b>
             </IonItem>
           </IonList>
         </IonContent>
@@ -67,21 +78,9 @@ const NurseryDashboard = ({
               <IonMenuButton/>
             </IonButtons>
             <IonButtons slot="primary">
-              <IonButton
-                type={"primary"}
-                shape={"round"}
-                onClick={() => setShowConfirmModal(true)}>
-                Deactivate this account
-              </IonButton>
               <LogoutContainer />
             </IonButtons>
             <IonTitle>{`${nursery.name} Staff Dashboard`}</IonTitle>
-            <IonChip slot="secondary">
-              <IonAvatar>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"/>
-              </IonAvatar>
-              <IonLabel>{currentUser.firstName} {currentUser.surname}</IonLabel>
-            </IonChip>
           </IonToolbar>
         </IonHeader>
 
@@ -113,14 +112,14 @@ const NurseryDashboard = ({
             <Layout>
               {activeItem === 'children' &&
               <Row>
-                <Col span={6}>
+                <Col xs={24} sm={24} md={6} lg={6} xl={6}>
                   <ChildListContainer
                     userId={currentUser.userId}
                     nurseryId={nursery.id}
                     showJournal={child => setJournalChild(child)}
                   />
                 </Col>
-                <Col span={18}>
+                <Col xs={24} sm={24} md={18} lg={18} xl={18}>
                   {journalChild ?
                     <JournalContainer
                       children={[journalChild]}

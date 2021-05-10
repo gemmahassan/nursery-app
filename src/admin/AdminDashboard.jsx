@@ -1,8 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import AuthService from '../services/auth';
 import {Button, message, Popconfirm, Tabs} from "antd";
-import Applications from "./Applications";
-import Nurseries from "./Nurseries";
 import {
   IonButtons, IonChip,
   IonContent,
@@ -14,14 +12,14 @@ import {
   IonTitle,
   IonToolbar
 } from "@ionic/react";
-import Logout from "../common/Logout";
 import LogoutContainer from "../common/LogoutContainer";
+import NurseriesContainer from "./NurseriesContainer";
+import ApplicationsContainer from "./ApplicationsContainer";
 
 const {TabPane} = Tabs;
 
 const AdminDashboard = ({
                           handlePurge,
-                          noRecords,
                           setShowPopover,
                           showPopover,
                           purged
@@ -30,20 +28,6 @@ const AdminDashboard = ({
 
   return (
     <>
-      <IonMenu side="start" menuId="first" contentId="my-content">
-        <IonHeader>
-          <IonToolbar color="primary">
-            <IonTitle>Nursery Admin Menu</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <IonList>
-            <IonItem>Staff</IonItem>
-            <IonItem>Kids</IonItem>
-          </IonList>
-        </IonContent>
-      </IonMenu>
-
       <IonRouterOutlet id="my-content"></IonRouterOutlet>
       <div className="ion-page" id="main-content">
         <IonHeader>
@@ -74,6 +58,7 @@ const AdminDashboard = ({
             cancelText="Cancel"
           >
             <Button
+              danger
               onClick={() => setShowPopover(true)}
             >
               Purge deactivated accounts and archived data?
@@ -83,10 +68,10 @@ const AdminDashboard = ({
           {!purged && (
             <Tabs type="card">
               <TabPane tab="Applications" key="1">
-                <Applications/>
+                <ApplicationsContainer />
               </TabPane>
               <TabPane tab="Confirmed Nurseries" key="2">
-                <Nurseries/>
+                <NurseriesContainer />
               </TabPane>
             </Tabs>)}
         </IonContent>

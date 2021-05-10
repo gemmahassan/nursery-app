@@ -1,10 +1,6 @@
 import React from "react";
-import ChildItem from "./ChildItem";
 import {List} from "antd";
 import {IonButton} from "@ionic/react";
-import AddChild from "./AddChild";
-import EditChild from "./EditChild";
-import AddEntry from "../journal/AddEntry";
 import AddChildContainer from "./AddChildContainer";
 import ChildItemContainer from "./ChildItemContainer";
 import EditChildContainer from "./EditChildContainer";
@@ -42,7 +38,7 @@ const ChildList = ({
         </div>
         }
 
-        <>
+        <div class={"child-scroller"}>
           <List
             itemLayout="horizontal"
             dataSource={children}
@@ -81,7 +77,7 @@ const ChildList = ({
             refreshChildren={() => getChildren()}
           />
           }
-        </>
+        </div>
 
         <AddChildContainer
           nurseryId={nurseryId}

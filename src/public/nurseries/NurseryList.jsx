@@ -14,7 +14,7 @@ const NurseryList = ({nurseries}) => {
           <h1>Our Nurseries</h1>
           <Row gutter={16}>
             {nurseries && nurseries.map(nursery => (
-            <Col span={6} key={nursery.id}>
+            <Col xs={24} sm={12} md={6} lg={6} xl={6} key={nursery.id}>
               <NurseryItem
                 id={nursery.id}
                 image={nursery.image}

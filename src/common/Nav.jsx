@@ -1,4 +1,4 @@
-import {IonAvatar, IonButton, IonButtons, IonChip, IonIcon, IonLabel, IonTitle, IonToolbar} from "@ionic/react";
+import {IonButton, IonButtons, IonIcon, IonTitle, IonToolbar} from "@ionic/react";
 import {ellipsisHorizontal, ellipsisVertical} from "ionicons/icons";
 import React from "react";
 

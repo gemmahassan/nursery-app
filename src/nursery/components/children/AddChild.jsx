@@ -58,13 +58,10 @@ const AddChild = ({
               label="Add an image"
             >
               <input
-                name="image" // name of input field or fieldName simply
+                name="image"
                 encType="multipart/form-data"
                 type="file"
-                onChange={(event) => {
-                  // setState method with event.target.files[0] as argument
-                  setImage(event.target.files[0]);
-                }}
+                onChange={(event) => setImage(event.target.files[0])}
               />
             </Form.Item>
           )}
