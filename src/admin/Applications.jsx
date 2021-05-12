@@ -1,10 +1,11 @@
 import React from "react";
-import {Card, List} from "antd";
-import {CheckOutlined, CloseOutlined} from "@ant-design/icons";
+import {Alert, Card, List} from "antd";
+import {CheckCircleTwoTone, CloseCircleTwoTone} from "@ant-design/icons";
 import {IonAlert} from "@ionic/react";
 
 const Applications = ({
                         action,
+                        duplicateUsername,
                         handleClick,
                         handleConfirm,
                         nurseries,
@@ -12,7 +13,7 @@ const Applications = ({
                         showConfirm
                       }) => {
   return (
-    <>
+    <div style={{margin: "20px"}}>
       <List
         grid={{
           gutter: 16,
@@ -28,10 +29,12 @@ const Applications = ({
           <List.Item>
             <Card
               actions={[
-                <CheckOutlined
+                <CheckCircleTwoTone
+                  twoToneColor="#52c41a"
                   key="approve"
                   onClick={() => handleClick(nursery, 'approve')}/>,
-                <CloseOutlined
+                <CloseCircleTwoTone
+                  twoToneColor="#eb2f96"
                   key="decline"
                   onClick={() => handleClick(nursery, 'decline')}/>,
               ]}
@@ -62,7 +65,14 @@ const Applications = ({
         ]}
       />
       }
-    </>
+
+      {duplicateUsername &&
+      <Alert
+        message="This username already exists. Please contact the nursery to resolve"
+        type="error"
+      />
+      }
+    </div>
   );
 };
 

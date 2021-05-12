@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import UserDataService from '../../services/user';
-import {Button, Form, Input} from "antd";
-import Login from "../login/Login";
 import Register from "./Register";
 
 const RegisterContainer = () => {
@@ -15,17 +13,13 @@ const RegisterContainer = () => {
 
   const getUser = () => {
     UserDataService.getUserForSignup(token)
-      .then(response => {
-        setUser(response.data);
-      })
+      .then(response => setUser(response.data))
       .catch(e => console.log(e));
   };
 
-  const handleRegister = ({password}) => {
+  const handleSetPassword = ({password}) => {
     UserDataService.completeRegistration(user[0].id, password)
-      .then(() => {
-        setRegistrationComplete(true);
-      })
+      .then(() => setRegistrationComplete(true))
   }
 
   useEffect(() => {
@@ -35,7 +29,7 @@ const RegisterContainer = () => {
 
   return (
     <Register
-      handleRegister={handleRegister}
+      handleSetPassword={handleSetPassword}
       registrationComplete={registrationComplete}
       user={user}
     />

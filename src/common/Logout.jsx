@@ -4,7 +4,7 @@ import {IonButton} from "@ionic/react";
 const Logout = ({handleLogout}) => {
   return (
     <IonButton
-      color="tertiary"
+      color="primary"
       onClick={handleLogout}
     >
       Logout

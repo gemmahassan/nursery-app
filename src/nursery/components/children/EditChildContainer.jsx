@@ -29,12 +29,8 @@ const EditChildContainer = ({child, hideEditModal, refreshChildren, showEditModa
 
   const handleDelete = () => {
     ChildDataService.delete(child.id)
-      .then(response => {
-        setDeleteSuccess(true);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(() => setDeleteSuccess(true))
+      .catch(e => console.log(e));
   }
 
   useEffect(() => {

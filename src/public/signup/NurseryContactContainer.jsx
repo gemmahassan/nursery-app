@@ -67,8 +67,8 @@ const NurseryContactContainer = () => {
     formData.append('latitude', latitude);
     formData.append('longitude', longitude);
 
-    NurseryDataService.contact(formData).then(
-      () => setShowSuccess(true))
+    NurseryDataService.contact(formData)
+      .then(() => setShowSuccess(true))
       .catch(e => console.log(e));
   };
 

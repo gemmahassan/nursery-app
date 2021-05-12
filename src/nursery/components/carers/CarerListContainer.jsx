@@ -20,12 +20,8 @@ const CarerListContainer = ({nurseryId}) => {
 
   const getCarers = () => {
     UserDataService.getCarers(nurseryId)
-      .then(response => {
-        setCarers(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setCarers(response.data))
+      .catch(e => console.log(e));
   };
 
   useEffect(() => {

@@ -5,9 +5,8 @@ import {
   IonButtons, IonChip,
   IonContent,
   IonHeader,
-  IonItem, IonLabel,
-  IonList,
-  IonMenu, IonMenuButton,
+  IonLabel,
+  IonMenuButton,
   IonRouterOutlet,
   IonTitle,
   IonToolbar
@@ -31,7 +30,7 @@ const AdminDashboard = ({
       <IonRouterOutlet id="my-content"></IonRouterOutlet>
       <div className="ion-page" id="main-content">
         <IonHeader>
-          <IonToolbar>
+          <IonToolbar color={'tertiary'}>
             <IonButtons slot="start">
               <IonMenuButton/>
             </IonButtons>
@@ -58,10 +57,11 @@ const AdminDashboard = ({
             cancelText="Cancel"
           >
             <Button
+              style={{margin: "20px"}}
               danger
               onClick={() => setShowPopover(true)}
             >
-              Purge deactivated accounts and archived data?
+              Purge deactivated accounts
             </Button>
           </Popconfirm>
 

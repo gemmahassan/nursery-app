@@ -89,9 +89,7 @@ const DashboardContainer = () => {
           const body = document.getElementById('body');
           body.setAttribute('data-theme', response.data.color);
         })
-        .catch(e => {
-          console.log(e);
-        });
+        .catch(e => console.log(e));
     }
   }, []);
 

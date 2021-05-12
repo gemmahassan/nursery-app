@@ -10,6 +10,7 @@ const ApplicationsContainer = () => {
   const [currentNursery, setCurrentNursery] = useState({});
   const [action, setAction] = useState('');
   const [approveSuccess, setApproveSuccess] = useState(false);
+  const [duplicateUsername, setDuplicateUsername] = useState(false);
 
   const getPendingNurseries = () => {
     NurseryDataService.getAllPending()
@@ -44,13 +45,15 @@ const ApplicationsContainer = () => {
                 email,
                 subject,
                 message
-              }).then(() => {
-                setApproveSuccess(true);
-              }).catch(err => {
-                console.log(err)
-              })
+              }).then(() => setApproveSuccess(true))
+                .catch(e => console.log(e))
             })
           .catch(e => console.log(e))
+      })
+      .catch(e => {
+        if (e.response.status === 400) {
+          setDuplicateUsername(true);
+        }
       });
   };
 
@@ -62,24 +65,17 @@ const ApplicationsContainer = () => {
     const message = `Hi ${firstName}, your application for registration of ${currentNursery.name} can not be completed at this time.`;
 
     NurseryDataService.delete(currentNursery.id)
-      .then(
-        response => {
-          http.post("/send", {
-            firstName,
-            surname,
-            email,
-            subject,
-            message
-          }).then(res => {
-            alert(res)
-          }).catch(err => {
-            console.log(err)
-          })
-        })
-      .catch(e => {
-          console.log(e);
-        }
-      );
+      .then(() => {
+        http.post("/send", {
+          firstName,
+          surname,
+          email,
+          subject,
+          message
+        }).then(res => alert(res))
+          .catch(err => console.log(err))
+      })
+      .catch(e => console.log(e));
   };
 
   const handleClick = (nursery, action) => {
@@ -112,6 +108,7 @@ const ApplicationsContainer = () => {
   return (
     <Applications
       action={action}
+      duplicateUsername={duplicateUsername}
       handleClick={handleClick}
       handleConfirm={handleConfirm}
       nurseries={nurseries}

@@ -15,17 +15,21 @@
 }
 
 .action-wrapper {
+    border-top: 5px solid #EFEFEF;
+    background-color: #ffffff;
+    padding: 24px 0;
     text-align: center;
-    margin: 24px 0;
 }
 
 .points-wrapper {
+    background-color: #ffffff;
     text-align: center;
+    padding: 24px 0;
+    border-top: 5px solid #EFEFEF;
+    border-bottom: 5px solid #EFEFEF;
 }
 
 .footer {
-    background: #ffffff;
-    margin-top: 24px;
     padding: 24px;
 }
 
@@ -38,7 +42,7 @@
 
 .title {
     margin: 0 0 0 12px;
-    font-weight: bold;
+    display: none;
 }
 
 .contact {
@@ -58,6 +62,11 @@
     overflow-y: scroll;
 }
 
+.anticon.home {
+    display: flex;
+    margin: 0 0 0 12px;
+}
+
 @media only screen and (min-width: 768px) {
     .ant-carousel {
         box-shadow: 0 0 5px #777;
@@ -74,5 +83,11 @@
     .child-scroller {
         max-height: none;
         overflow-y: auto;
+    }
+    .anticon.home {
+        display: none;
+    }
+    .title {
+        display: flex;
     }
 }

@@ -34,15 +34,10 @@ const AddStaffContainer = ({hideAddStaffModal, nurseryId, showAddStaffModal}) =>
           email,
           subject,
           message
-        }).then(() => {
-          setAddSuccess(true);
-        }).catch(err => {
-          console.log(err)
-        })
+        }).then(() => setAddSuccess(true))
+          .catch(err => console.log(err))
       })
-      .catch(e => {
-        console.log(e);
-      });
+      .catch(e => console.log(e));
   };
 
   return (

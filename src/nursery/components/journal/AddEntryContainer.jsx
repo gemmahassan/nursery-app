@@ -13,12 +13,8 @@ const AddEntryContainer = props => {
 
   const getJournalTypes = () => {
     JournalDataService.getTypes()
-      .then(response => {
-        setJournalTypes(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setJournalTypes(response.data))
+      .catch(e => console.log(e));
   };
 
   useEffect(() => {
@@ -40,12 +36,8 @@ const AddEntryContainer = props => {
     }
 
     JournalDataService.create(formData, nurseryId)
-      .then(response => {
-        setAddSuccess(true);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(() => setAddSuccess(true))
+      .catch(e => console.log(e));
   };
 
   return (

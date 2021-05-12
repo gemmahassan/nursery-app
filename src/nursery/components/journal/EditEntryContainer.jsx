@@ -32,20 +32,13 @@ const EditEntryContainer = ({
 
   const getJournalTypes = () => {
     JournalDataService.getTypes()
-      .then(response => {
-        setJournalTypes(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setJournalTypes(response.data))
+      .catch(e => console.log(e));
   };
 
   const handleDelete = () => {
     JournalDataService.delete(journalId)
-      .then(response => {
-        setDeleteSuccess(true);
-        console.log(response.data)
-      })
+      .then(() => setDeleteSuccess(true))
       .catch(e => console.log(e));
   }
 

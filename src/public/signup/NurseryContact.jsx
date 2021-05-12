@@ -1,6 +1,6 @@
 import React from "react";
 import {IonContent, IonPage} from '@ionic/react';
-import {Button, Form, Input,} from "antd";
+import {Button, Form, Input, Alert} from "antd";
 import Nav from "../Nav";
 import {CirclePicker} from "react-color";
 import register from "../images/register.jpeg";
@@ -23,7 +23,7 @@ const  NurseryContact = ({
             <div style={{
               display: 'flex'
             }}>
-              <div class={'contact'}>
+              <div className={'contact'}>
                 <h1>Join Us!</h1>
                 <p>If you are interested in signing your nursery up for this service, please enter your nursery name and
                   an
@@ -128,6 +128,7 @@ const  NurseryContact = ({
                   <Form.Item
                     name="image"
                     label="Upload an image of your nursery"
+                    rules={[{required: true, message: 'Please add an image of your nursery'}]}
                   >
                     <input
                       name="image"
@@ -155,7 +156,7 @@ const  NurseryContact = ({
                   </Form.Item>
                 </Form>
               </div>
-              <div class={"contact-image"} style={{
+              <div className={"contact-image"} style={{
                 'backgroundImage': `url(${register})`,
                 'backgroundSize': 'cover',
                 position: 'fixed',
@@ -170,7 +171,12 @@ const  NurseryContact = ({
           )}
 
           {showSuccess && (
-            <p>Thank you. Someone will be in touch soon to confirm your registration.</p>
+            <Alert
+              message="Thank You"
+              description="Someone will be in touch soon to confirm your registration.."
+              type="success"
+              showIcon
+            />
           )}
 
         </IonContent>

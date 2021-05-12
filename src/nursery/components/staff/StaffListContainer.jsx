@@ -13,12 +13,8 @@ const StaffListContainer = ({nurseryId}) => {
 
   const getStaff = () => {
     UserDataService.getStaff(nurseryId)
-      .then(response => {
-        setStaff(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setStaff(response.data))
+      .catch(e => console.log(e));
   };
 
   useEffect(() => {

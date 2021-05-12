@@ -12,12 +12,8 @@ const AddCarerContainer = ({hideAddCarerModal, nurseryId, showAddCarerModal, ref
 
     const getChildren = () => {
       NurseryDataService.getChildren(nurseryId)
-        .then(response => {
-          setChildren(response.data);
-        })
-        .catch(e => {
-          console.log(e);
-        });
+        .then(response => setChildren(response.data))
+        .catch(e => console.log(e));
     };
 
     const getOptions = () => {

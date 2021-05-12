@@ -30,7 +30,7 @@ const Login = ({
               name="username"
               rules={[{required: true, message: 'Please input your username!'}]}
             >
-              <Input/>
+              <Input autoCapitalize={false}/>
             </Form.Item>
 
             <Form.Item

@@ -12,12 +12,8 @@ const NurseryCalendarContainer = ({nurseryId, nurseryName}) => {
 
   useEffect(() => {
     CalendarDataService.getAllCalendarEntries(nurseryId)
-      .then(response => {
-        setEntries(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setEntries(response.data))
+      .catch(e => console.log(e));
   }, []);
 
   if (!entries) return null;

@@ -1,6 +1,6 @@
 import React from "react";
 import {Card, List} from "antd";
-import {CloseOutlined} from "@ant-design/icons";
+import {CloseCircleTwoTone} from "@ant-design/icons";
 import {IonAlert} from "@ionic/react";
 
 const Nurseries = ({
@@ -11,8 +11,8 @@ const Nurseries = ({
                      showConfirm
                    }) => {
   return (
-    <>
-      <List
+    <div style={{margin: "20px"}}>
+    <List
         grid={{
           gutter: 16,
           xs: 1,
@@ -27,7 +27,8 @@ const Nurseries = ({
           <List.Item>
             <Card
               actions={[
-                <CloseOutlined
+                <CloseCircleTwoTone
+                  twoToneColor="#eb2f96"
                   key="delete"
                   onClick={() => handleClick(nursery)}/>
               ]}
@@ -60,7 +61,7 @@ const Nurseries = ({
         ]}
       />
       }
-    </>
+    </div>
   );
 };
 

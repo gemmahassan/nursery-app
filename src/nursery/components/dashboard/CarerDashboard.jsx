@@ -25,12 +25,8 @@ const CarerDashboard = ({currentUser, nursery}) => {
 
   const getChildren = () => {
     UserDataService.getChildrenOfCarer(currentUser.userId)
-      .then(response => {
-        setChildren(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setChildren(response.data))
+      .catch(e => console.log(e));
   };
 
   return (

@@ -16,12 +16,8 @@ const NurseryListContainer = () => {
 
   const getNurseries = () => {
     NurseryDataService.getAllConfirmed()
-      .then(response => {
-        setNurseries(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setNurseries(response.data))
+      .catch(e => console.log(e));
   };
 
   return (

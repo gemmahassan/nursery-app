@@ -12,9 +12,7 @@ const JournalEntryContainer = ({entry, role}) => {
 
   const getChild = () => {
     ChildDataService.getById(child_id)
-      .then(response => {
-        setChild(response.data);
-      })
+      .then(response => setChild(response.data))
       .catch(e => console.log(e));
   };
 

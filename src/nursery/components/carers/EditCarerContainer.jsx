@@ -25,9 +25,7 @@ const EditCarerContainer = ({carer, hideEditCarerModal, nurseryId, refreshCarer,
       .then(() => {
         selectedChildren.forEach(child => {
           CarerDataService.addCarer(carer.id, child)
-            .then(() => {
-              setEditSuccess(true);
-            })
+            .then(() => setEditSuccess(true))
             .catch(e => console.log(e))
         })
         setEditSuccess(true);
@@ -37,23 +35,17 @@ const EditCarerContainer = ({carer, hideEditCarerModal, nurseryId, refreshCarer,
 
   const handleDelete = () => {
     UserDataService.delete(carer.id)
-      .then(response => {
+      .then(() => {
         setDeleteSuccess(true);
         hideEditCarerModal();
       })
-      .catch(e => {
-        console.log(e);
-      });
+      .catch(e => console.log(e));
   };
 
   const getChildren = () => {
     NurseryDataService.getChildren(nurseryId)
-      .then(response => {
-        setChildren(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+      .then(response => setChildren(response.data))
+      .catch(e => console.log(e));
   };
 
   const getOptions = () => {

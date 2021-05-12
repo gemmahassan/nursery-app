@@ -71,9 +71,9 @@ const NurseryDashboard = ({
         </IonContent>
       </IonMenu>
       <IonRouterOutlet id="my-content"></IonRouterOutlet>
-      <div className="ion-page" id="main-content">
+      <div className="ion-page" id="main-content" style={{color: "rgb(240, 242, 245)"}}>
         <IonHeader>
-          <IonToolbar>
+          <IonToolbar color="tertiary">
             <IonButtons slot="start">
               <IonMenuButton/>
             </IonButtons>
