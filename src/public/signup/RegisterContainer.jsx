@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import UserDataService from '../../services/user';
 import Register from "./Register";
+import {message} from "antd";
 
 const RegisterContainer = () => {
   const params = useLocation();
   const query = new URLSearchParams(params.search);
-  const token = query.get('token'); // bar
+  const token = query.get('token');
 
   const [registrationComplete, setRegistrationComplete] = useState(false);
   const [user, setUser] = useState();
