@@ -6,26 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="workspace">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/Applications.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/Applications.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/ApplicationsContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/ApplicationsContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/NurseriesContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/NurseriesContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/AddChild.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/AddChildContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/AddChildContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/EditChild.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/children/EditChildContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/children/EditChildContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/CarerDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/AddEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/EditEntry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/EditEntry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/journal/EditEntryContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/journal/EditEntryContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/map/LocationPin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/map/LocationPin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/map/Map.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/map/Map.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/map/MapContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/map/MapContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/signup/NurseryContact.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/signup/NurseryContactContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/signup/NurseryContactContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/public/signup/RegisterContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/public/signup/RegisterContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
