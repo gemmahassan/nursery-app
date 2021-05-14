@@ -1,29 +1,30 @@
 import React, {useState} from "react";
 import {
   IonAlert,
-  IonAvatar, IonButton,
-  IonButtons, IonChip,
+  IonAvatar,
+  IonButtons,
+  IonChip,
   IonContent,
   IonHeader,
-  IonItem, IonLabel,
+  IonItem,
+  IonLabel,
   IonList,
-  IonMenu, IonMenuButton,
+  IonMenu,
+  IonMenuButton,
   IonRouterOutlet,
   IonTitle,
   IonToolbar,
-  IonFooter
 } from "@ionic/react";
 import {Result, Layout, Row, Col} from "antd";
 import {SmileOutlined} from '@ant-design/icons';
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 import JournalContainer from "../journal/JournalContainer";
-import '../../style.css';
-import LogoutContainer from "../../../common/LogoutContainer";
 import CarerListContainer from "../carers/CarerListContainer";
 import ChildListContainer from "../children/ChildListContainer";
 import StaffListContainer from "../staff/StaffListContainer";
-import AuthService from '../../../services/auth';
 
+import '../../style.css';
+import LogoutContainer from "../../../common/LogoutContainer";
 
 const NurseryDashboard = ({
                             currentUser,

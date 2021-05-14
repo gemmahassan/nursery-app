@@ -12,12 +12,13 @@ import {
   IonToolbar
 } from "@ionic/react";
 import UserDataService from "../../../services/user";
-import Logout from "../../../common/Logout";
 import JournalContainer from "../journal/JournalContainer";
 import LogoutContainer from "../../../common/LogoutContainer";
+import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 
 const CarerDashboard = ({currentUser, nursery}) => {
   const [children, setChildren] = useState([]);
+  const [activeItem, setActiveItem] = useState('journal');
 
   useEffect(() => {
     getChildren();
@@ -39,9 +40,14 @@ const CarerDashboard = ({currentUser, nursery}) => {
         </IonHeader>
         <IonContent>
           <IonList>
-            <IonItem>Messages</IonItem>
-            <IonItem>Info</IonItem>
-            <IonItem>Children</IonItem>
+            <IonItem
+              onClick={() => setActiveItem('journal')}>
+              Journal
+            </IonItem>
+            <IonItem
+              onClick={() => setActiveItem('calendar')}>
+              Calendar
+            </IonItem>
           </IonList>
         </IonContent>
       </IonMenu>
@@ -66,10 +72,19 @@ const CarerDashboard = ({currentUser, nursery}) => {
         </IonHeader>
 
         <IonContent>
+          {activeItem === 'journal' &&
           <JournalContainer
             children={children}
             role={currentUser.role}
           />
+          }
+
+          {activeItem === 'calendar' &&
+          <NurseryCalendarContainer
+            nurseryName={nursery.name}
+            nurseryId={nursery.id}
+          />
+          }
         </IonContent>
       </div>
     </div>
