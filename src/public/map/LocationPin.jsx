@@ -1,9 +1,9 @@
-import React from 'react'
-import {HeartFilled} from "@ant-design/icons";
+import React from "react";
+import { HeartFilled } from "@ant-design/icons";
 
 const LocationPin = ({ text }) => (
-  <div className={'pin'}>
-    <HeartFilled className={'pin-icon'}>{text}</HeartFilled>
+  <div>
+    <HeartFilled style={{ fontSize: "4 rem" }}>{text}</HeartFilled>
   </div>
 );
 

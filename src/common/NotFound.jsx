@@ -1,6 +1,6 @@
 import React from "react";
 import history from "../history";
-import {Button, Result} from "antd";
+import { Button, Result } from "antd";
 
 const NotFound = () => {
   return (
@@ -10,14 +10,12 @@ const NotFound = () => {
         title="404"
         subTitle="Sorry, the page you visited does not exist."
         extra={
-          <Button
-            onClick={() => history.push('/')}
-            type="primary"
-          >
+          <Button onClick={() => history.push("/")} type="primary">
             Back Home
           </Button>
         }
-      />,
+      />
+      ,
     </>
   );
 };

@@ -1,17 +1,17 @@
-import React, {useRef} from "react";
-import {Button, Checkbox, Form, Input, Modal} from "antd";
-import {IonContent} from "@ionic/react";
+import React, { useRef } from "react";
+import { Button, Checkbox, Form, Input, Modal } from "antd";
+import { IonContent } from "@ionic/react";
 
 const EditCarer = ({
-                     currentCarer,
-                     deleteSuccess,
-                     editSuccess,
-                     getOptions,
-                     handleDelete,
-                     handleUpdateCarer,
-                     hideEditCarerModal,
-                     showEditCarerModal
-                   }) => {
+  currentCarer,
+  deleteSuccess,
+  editSuccess,
+  getOptions,
+  handleDelete,
+  handleUpdateCarer,
+  hideEditCarerModal,
+  showEditCarerModal,
+}) => {
   const formElement = useRef();
 
   return (
@@ -25,9 +25,7 @@ const EditCarer = ({
           hideEditCarerModal();
         }}
         footer={[
-          <Button
-            key="cancel"
-            onClick={() => hideEditCarerModal()}>
+          <Button key="cancel" onClick={() => hideEditCarerModal()}>
             Cancel
           </Button>,
           <Button
@@ -39,11 +37,7 @@ const EditCarer = ({
           >
             Save
           </Button>,
-          <Button
-            key="delete"
-            type="danger"
-            onClick={() => handleDelete()}
-          >
+          <Button key="delete" type="danger" onClick={() => handleDelete()}>
             DELETE
           </Button>,
         ]}
@@ -51,43 +45,27 @@ const EditCarer = ({
         <Form
           ref={formElement}
           name="carer"
-          initialValues={{first_name: currentCarer.first_name, surname: currentCarer.surname}}
-          onFinish={handleUpdateCarer}>
+          initialValues={{
+            first_name: currentCarer.first_name,
+            surname: currentCarer.surname,
+          }}
+          onFinish={handleUpdateCarer}
+        >
           Update Carer Info
-          <Form.Item
-            label="First Name"
-            name="first_name"
-          >
-            <Input
-              placeholder={currentCarer.first_name}
-            />
+          <Form.Item label="First Name" name="first_name">
+            <Input placeholder={currentCarer.first_name} />
           </Form.Item>
-
-          <Form.Item
-            label="Surname"
-            name="surname"
-          >
-            <Input
-              placeholder={currentCarer.surname}
-            />
+          <Form.Item label="Surname" name="surname">
+            <Input placeholder={currentCarer.surname} />
           </Form.Item>
-
-          <Form.Item
-            label="child"
-            name="child"
-          >
-            <Checkbox.Group options={getOptions()}/>
+          <Form.Item label="child" name="child">
+            <Checkbox.Group options={getOptions()} />
           </Form.Item>
         </Form>
 
-        {editSuccess && (
-          <p>Updated!</p>
-        )}
+        {editSuccess && <p>Updated!</p>}
 
-        {deleteSuccess && (
-          <p>Deleted</p>
-        )}
-
+        {deleteSuccess && <p>Deleted</p>}
       </Modal>
     </IonContent>
   );

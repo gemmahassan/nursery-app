@@ -1,19 +1,21 @@
-import React, {useEffect, useState} from "react";
-import UserDataService from '../../../services/user';
+import React, { useEffect, useState } from "react";
+import UserDataService from "../../../services/user";
 import EditStaff from "./EditStaff";
 
-const EditStaffContainer = ({staff, hideEditStaffModal, refreshStaff, showEditStaffModal}) => {
+const EditStaffContainer = ({
+  staff,
+  hideEditStaffModal,
+  refreshStaff,
+  showEditStaffModal,
+}) => {
   const [currentStaff, setCurrentStaff] = useState(staff);
   const [editSuccess, setEditSuccess] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState(false);
 
-  const handleUpdateStaff = ({
-                               first_name,
-                               surname
-                             }) => {
+  const handleUpdateStaff = ({ first_name, surname }) => {
     UserDataService.update(staff.id, first_name, surname)
       .then(() => setEditSuccess(true))
-      .catch(e => console.log(e));
+      .catch((e) => console.log(e));
   };
 
   const handleDelete = () => {
@@ -22,8 +24,8 @@ const EditStaffContainer = ({staff, hideEditStaffModal, refreshStaff, showEditSt
         setDeleteSuccess(true);
         hideEditStaffModal();
       })
-      .catch(e => console.log(e));
-  }
+      .catch((e) => console.log(e));
+  };
 
   useEffect(() => {
     setCurrentStaff(staff);

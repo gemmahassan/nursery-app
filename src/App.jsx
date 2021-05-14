@@ -1,6 +1,6 @@
 import React from "react";
-import {IonApp, IonRouterOutlet} from "@ionic/react";
-import {IonReactRouter} from "@ionic/react-router";
+import { IonApp, IonRouterOutlet } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
 
 import Routes from "./Routes";
 /* Core CSS required for Ionic components to work properly */
@@ -27,7 +27,7 @@ const App = () => (
   <IonApp>
     <IonReactRouter history={history}>
       <IonRouterOutlet>
-        <Routes/>
+        <Routes />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

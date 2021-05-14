@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Home from "./public/Home";
 import DashboardContainer from "./nursery/components/dashboard/DashboardContainer";
 import NotFound from "./common/NotFound";
@@ -10,15 +10,15 @@ import LoginContainer from "./public/login/LoginContainer";
 
 const Routes = () => {
   return (
-      <Switch>
-        <Route path="/register" component={RegisterContainer}/>
-        <Route exact path="/login" component={LoginContainer}/>
-        <Route exact path="/dashboard" component={DashboardContainer}/>
-        <Route exact path="/contact" component={NurseryContactContainer}/>
-        <Route exact path="/nurseries" component={NurseryListContainer}/>
-        <Route path="/" exact component={Home}/>
-        <Route component={NotFound} />
-      </Switch>
+    <Switch>
+      <Route path="/register" component={RegisterContainer} />
+      <Route exact path="/login" component={LoginContainer} />
+      <Route exact path="/dashboard" component={DashboardContainer} />
+      <Route exact path="/contact" component={NurseryContactContainer} />
+      <Route exact path="/nurseries" component={NurseryListContainer} />
+      <Route path="/" exact component={Home} />
+      <Route component={NotFound} />
+    </Switch>
   );
 };
 

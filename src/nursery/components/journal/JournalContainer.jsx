@@ -1,20 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ChildDataService from "../../../services/child";
-import moment from 'moment';
-import {Speak} from './Speech';
-import {usePrevious} from "../../../hooks/usePrevious";
-import 'antd/dist/antd.css';
-import Journal from './Journal';
+import moment from "moment";
+import { Speak } from "./Speech";
+import { usePrevious } from "../../../hooks/usePrevious";
+import "antd/dist/antd.css";
+import Journal from "./Journal";
 
 // holds reference to interval timer, must be outside component to avoid duplicates
 let dataPoller = null;
 
-const JournalContainer = props => {
-  const {children, role} = props;
+const JournalContainer = (props) => {
+  const { children, role } = props;
 
   const [journal, setJournal] = useState([]);
   const [activeDate, setActiveDate] = useState(moment().format("YYYY-M-D"));
-  const [isToday, setIsToday] = useState(activeDate === moment().format("YYYY-M-D"));
+  const [isToday, setIsToday] = useState(
+    activeDate === moment().format("YYYY-M-D")
+  );
   const [notifyWhenNew, setNotifyWhenNew] = useState(false);
   const [speakWhenNew, setSpeakWhenNew] = useState(false);
 
@@ -25,14 +27,14 @@ const JournalContainer = props => {
     return new Promise((resolve, reject) => {
       // get journal entries for specified child and date
       ChildDataService.getJournal(date, id)
-        .then(response => {
+        .then((response) => {
           resolve({
             id,
             name,
-            timeline: response.data
+            timeline: response.data,
           });
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
           reject(e);
         });
@@ -45,14 +47,20 @@ const JournalContainer = props => {
 
     // retrieve journal data for each child
     // wait until map has finished before returning the journal entries
-    await Promise.all(children.map(async (child) => {
-      try {
-        const childJournal = await getJournal(activeDate, child.id, child.first_name);
-        journalEntries.push(childJournal)
-      } catch (error) {
-        console.log('error' + error);
-      }
-    }));
+    await Promise.all(
+      children.map(async (child) => {
+        try {
+          const childJournal = await getJournal(
+            activeDate,
+            child.id,
+            child.first_name
+          );
+          journalEntries.push(childJournal);
+        } catch (error) {
+          console.log("error" + error);
+        }
+      })
+    );
 
     return journalEntries;
   };
@@ -76,7 +84,7 @@ const JournalContainer = props => {
     // check if selected date is today (to determine whether to show notification buttons)
     // set state with journal data
     if (activeDate) {
-      getData().then(data => {
+      getData().then((data) => {
         setIsToday(activeDate === moment().format("YYYY-M-D"));
         setJournal(data);
       });
@@ -86,7 +94,7 @@ const JournalContainer = props => {
   // get journal data each time children prop is updated
   useEffect(() => {
     if (children.length > 0) {
-      getData().then(data => {
+      getData().then((data) => {
         setIsToday(activeDate === moment().format("YYYY-M-D"));
         setJournal(data);
       });
@@ -94,7 +102,7 @@ const JournalContainer = props => {
       // set up data poller if date is today and no poller already exists
       if (isToday && !dataPoller) {
         dataPoller = setInterval(() => {
-          getData().then(data => {
+          getData().then((data) => {
             setJournal(data);
           });
         }, 10000);
@@ -105,33 +113,41 @@ const JournalContainer = props => {
   useEffect(() => {
     // when notifications selected & journal is updated, loops over new journal,
     if (notifyWhenNew) {
-      journal.forEach(child => {
+      journal.forEach((child) => {
         //gets ref to child in previous state
-        const getOldTimelineState = previousJournalState.find(item => item.id === child.id);
+        const getOldTimelineState = previousJournalState.find(
+          (item) => item.id === child.id
+        );
         if (getOldTimelineState) {
-          if (child.timeline.length > getOldTimelineState.timeline.length) { // something has been added
-            new Notification(`New Entry For ${child.name}`,
-              {
-                body:
-                  `${child.timeline[0].type} at ${moment(child.timeline[0].timestamp).format('h:mma')}`
-              }
-            );
+          if (child.timeline.length > getOldTimelineState.timeline.length) {
+            // something has been added
+            new Notification(`New Entry For ${child.name}`, {
+              body: `${child.timeline[0].type} at ${moment(
+                child.timeline[0].timestamp
+              ).format("h:mma")}`,
+            });
           }
         }
-      })
+      });
     }
 
     if (speakWhenNew) {
       journal.forEach((child) => {
-        const getOldTimelineState = previousJournalState.find(item => item.id === child.id);
+        const getOldTimelineState = previousJournalState.find(
+          (item) => item.id === child.id
+        );
         if (getOldTimelineState) {
           if (child.timeline.length > getOldTimelineState.timeline.length) {
-            Speak(`New Entry For ${child.name}. ${child.timeline[0].type} at ${moment(child.timeline[0].timestamp).format('h:mma')}`)
+            Speak(
+              `New Entry For ${child.name}. ${
+                child.timeline[0].type
+              } at ${moment(child.timeline[0].timestamp).format("h:mma")}`
+            );
           }
         }
-      })
+      });
     }
-  }, [journal])
+  }, [journal]);
 
   return (
     <Journal
@@ -145,6 +161,6 @@ const JournalContainer = props => {
       role={role}
     />
   );
-}
+};
 
 export default JournalContainer;

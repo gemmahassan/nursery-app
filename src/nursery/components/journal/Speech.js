@@ -3,10 +3,9 @@ const synth = speechSynthesis;
 
 // Speak
 export const Speak = (speech) => {
-
   // Check if speaking
   if (synth.speaking) {
-    console.error('Already speaking...');
+    console.error("Already speaking...");
     return;
   }
 
@@ -17,18 +16,18 @@ export const Speak = (speech) => {
   const speakText = new SpeechSynthesisUtterance(speech);
 
   // Speak end
-  speakText.onend = e => {
-    console.log('Done speaking...');
+  speakText.onend = (e) => {
+    console.log("Done speaking...");
   };
 
   // Speak error
-  speakText.onerror = e => {
-    console.error('Something went wrong');
+  speakText.onerror = (e) => {
+    console.error("Something went wrong");
   };
 
   // Loop through voices
-  voices.forEach(voice => {
-    if (voice.name === 'Google UK English Female') {
+  voices.forEach((voice) => {
+    if (voice.name === "Google UK English Female") {
       speakText.voice = voice;
     }
   });
@@ -38,5 +37,4 @@ export const Speak = (speech) => {
   speakText.pitch = 1;
   // Speak
   synth.speak(speakText);
-}
-
+};

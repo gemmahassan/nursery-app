@@ -1,57 +1,55 @@
 import React from "react";
-import {
-  Input,
-  Form,
-  Button,
-  Checkbox,
-} from 'antd';
-import {IonContent, IonPage} from "@ionic/react";
+import { Input, Form, Button, Checkbox } from "antd";
+import { IonContent, IonPage } from "@ionic/react";
 import Nav from "../Nav";
 
-const Login = ({
-                 changePassword,
-                 handleLogin,
-                 loginFailed
-               }) => {
+const Login = ({ changePassword, handleLogin, loginFailed }) => {
   return (
     <IonPage>
-      <Nav/>
+      <Nav />
       <IonContent>
         <div
-          style={{'display': 'flex', 'flexDirection': 'column', 'padding': '50px', width: '100%', 'maxWidth': '600px'}}>
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "50px",
+            width: "100%",
+            maxWidth: "600px",
+          }}
+        >
           <h1>Login</h1>
           <Form
             name="basic"
-            initialValues={{remember: true}}
+            initialValues={{ remember: true }}
             onFinish={handleLogin}
           >
             <Form.Item
               label="Username"
               name="username"
-              rules={[{required: true, message: 'Please input your username!'}]}
+              rules={[
+                { required: true, message: "Please input your username!" },
+              ]}
             >
-              <Input autoCapitalize={false}/>
+              <Input autoCapitalize={false} />
             </Form.Item>
 
             <Form.Item
               label="Password"
               name="password"
-              rules={[{required: true, message: 'Please input your password!'}]}
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
             >
-              <Input.Password/>
+              <Input.Password />
             </Form.Item>
 
             <Form.Item name="remember" valuePropName="checked">
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
 
-            {loginFailed && (
-              <p>Incorrect username or password</p>
-            )}
+            {loginFailed && <p>Incorrect username or password</p>}
 
-            {changePassword && (
-              <p>Please change your password</p>
-            )}
+            {changePassword && <p>Please change your password</p>}
 
             <Form.Item>
               <Button type="primary" htmlType="submit">

@@ -1,28 +1,29 @@
 import React from "react";
-import AuthService from '../services/auth';
-import {Button, message, Popconfirm, Tabs} from "antd";
+import AuthService from "../services/auth";
+import { Button, message, Popconfirm, Tabs } from "antd";
 import {
-  IonButtons, IonChip,
+  IonButtons,
+  IonChip,
   IonContent,
   IonHeader,
   IonLabel,
   IonMenuButton,
   IonRouterOutlet,
   IonTitle,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/react";
 import LogoutContainer from "../common/LogoutContainer";
 import NurseriesContainer from "./NurseriesContainer";
 import ApplicationsContainer from "./ApplicationsContainer";
 
-const {TabPane} = Tabs;
+const { TabPane } = Tabs;
 
 const AdminDashboard = ({
-                          handlePurge,
-                          setShowPopover,
-                          showPopover,
-                          purged
-                        }) => {
+  handlePurge,
+  setShowPopover,
+  showPopover,
+  purged,
+}) => {
   const currentUser = AuthService.getCurrentUser();
 
   return (
@@ -30,9 +31,9 @@ const AdminDashboard = ({
       <IonRouterOutlet id="my-content"></IonRouterOutlet>
       <div className="ion-page" id="main-content">
         <IonHeader>
-          <IonToolbar color={'tertiary'}>
+          <IonToolbar color={"tertiary"}>
             <IonButtons slot="start">
-              <IonMenuButton/>
+              <IonMenuButton />
             </IonButtons>
             <IonButtons slot="primary">
               <LogoutContainer />
@@ -50,14 +51,14 @@ const AdminDashboard = ({
             visible={showPopover}
             onConfirm={handlePurge}
             onCancel={() => {
-              message.error('Action cancelled');
+              message.error("Action cancelled");
               setShowPopover(false);
             }}
             okText="Confirm"
             cancelText="Cancel"
           >
             <Button
-              style={{margin: "20px"}}
+              style={{ margin: "20px" }}
               danger
               onClick={() => setShowPopover(true)}
             >
@@ -73,7 +74,8 @@ const AdminDashboard = ({
               <TabPane tab="Confirmed Nurseries" key="2">
                 <NurseriesContainer />
               </TabPane>
-            </Tabs>)}
+            </Tabs>
+          )}
         </IonContent>
       </div>
     </>

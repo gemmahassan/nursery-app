@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import UserDataService from "../../services/user";
-import {useHistory} from "react-router";
+import { useHistory } from "react-router";
 import Login from "./Login";
 
 const LoginContainer = () => {
@@ -13,9 +13,9 @@ const LoginContainer = () => {
   // if successful, show relevant dashboard
   // if unsuccessful, show login failure message
   // if user has not completed sign up yet, prompt them to change their temporary password
-  const handleLogin = ({username, password}) => {
+  const handleLogin = ({ username, password }) => {
     UserDataService.login(username, password)
-      .then(response => {
+      .then((response) => {
         if (response.activated) {
           history.push("/dashboard");
           window.location.reload();
@@ -30,7 +30,8 @@ const LoginContainer = () => {
     <Login
       changePassword={changePassword}
       handleLogin={handleLogin}
-      loginFailed={loginFailed}/>
+      loginFailed={loginFailed}
+    />
   );
 };
 

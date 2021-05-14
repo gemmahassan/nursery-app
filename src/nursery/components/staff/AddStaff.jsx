@@ -1,14 +1,14 @@
-import React, {useRef} from "react";
-import {IonContent} from '@ionic/react';
-import {Button, Form, Input, Modal} from "antd";
+import React, { useRef } from "react";
+import { IonContent } from "@ionic/react";
+import { Button, Form, Input, Modal } from "antd";
 
 const AddStaff = ({
-                    addSuccess,
-                    handleAddStaff,
-                    hideAddStaffModal,
-                    setImage,
-                    showAddStaffModal
-                  }) => {
+  addSuccess,
+  handleAddStaff,
+  hideAddStaffModal,
+  setImage,
+  showAddStaffModal,
+}) => {
   const formElement = useRef();
 
   return (
@@ -18,9 +18,7 @@ const AddStaff = ({
         okText="Save"
         cancelText="Cancel"
         footer={[
-          <Button
-            key="cancel"
-            onClick={() => hideAddStaffModal()}>
+          <Button key="cancel" onClick={() => hideAddStaffModal()}>
             Cancel
           </Button>,
           <Button
@@ -28,45 +26,36 @@ const AddStaff = ({
             type="primary"
             onClick={() => {
               formElement.current && formElement.current.submit();
-            }}>
+            }}
+          >
             Save
           </Button>,
         ]}
       >
-        <Form
-          ref={formElement}
-          name="staff"
-          onFinish={handleAddStaff}
-        >
+        <Form ref={formElement} name="staff" onFinish={handleAddStaff}>
           Add a new staff member
           <Form.Item
             label="First Name"
             name="first_name"
-            rules={[{required: true, message: 'Please add a first name'}]}
+            rules={[{ required: true, message: "Please add a first name" }]}
           >
-            <Input/>
+            <Input />
           </Form.Item>
-
           <Form.Item
             label="Surname"
             name="surname"
-            rules={[{required: true, message: 'Please add a surname'}]}
+            rules={[{ required: true, message: "Please add a surname" }]}
           >
-            <Input/>
+            <Input />
           </Form.Item>
-
           <Form.Item
             label="Email Address"
             name="email"
-            rules={[{required: true, message: 'Please add an email address'}]}
+            rules={[{ required: true, message: "Please add an email address" }]}
           >
-            <Input/>
+            <Input />
           </Form.Item>
-
-          <Form.Item
-            name="image"
-            label="Add an image"
-          >
+          <Form.Item name="image" label="Add an image">
             <input
               name="image" // name of input field or fieldName simply
               encType="multipart/form-data"
@@ -78,9 +67,7 @@ const AddStaff = ({
             />
           </Form.Item>
         </Form>
-        {addSuccess && (
-          <p>Added!</p>
-        )}
+        {addSuccess && <p>Added!</p>}
       </Modal>
     </IonContent>
   );

@@ -1,16 +1,16 @@
-import React, {useRef} from "react";
-import {Button, Form, Input, Modal} from "antd";
-import {IonContent} from "@ionic/react";
+import React, { useRef } from "react";
+import { Button, Form, Input, Modal } from "antd";
+import { IonContent } from "@ionic/react";
 
 const EditStaff = ({
-                     currentStaff,
-                     deleteSuccess,
-                     editSuccess,
-                     handleDelete,
-                     handleUpdateStaff,
-                     hideEditStaffModal,
-                     showEditStaffModal
-                   }) => {
+  currentStaff,
+  deleteSuccess,
+  editSuccess,
+  handleDelete,
+  handleUpdateStaff,
+  hideEditStaffModal,
+  showEditStaffModal,
+}) => {
   const formElement = useRef();
 
   return (
@@ -24,9 +24,7 @@ const EditStaff = ({
           hideEditStaffModal();
         }}
         footer={[
-          <Button
-            key="cancel"
-            onClick={() => hideEditStaffModal()}>
+          <Button key="cancel" onClick={() => hideEditStaffModal()}>
             Cancel
           </Button>,
           <Button
@@ -38,11 +36,7 @@ const EditStaff = ({
           >
             Save
           </Button>,
-          <Button
-            key="delete"
-            type="danger"
-            onClick={() => handleDelete()}
-          >
+          <Button key="delete" type="danger" onClick={() => handleDelete()}>
             DELETE
           </Button>,
         ]}
@@ -50,36 +44,24 @@ const EditStaff = ({
         <Form
           ref={formElement}
           name="staff"
-          initialValues={{first_name: currentStaff.first_name, surname: currentStaff.surname}}
-          onFinish={handleUpdateStaff}>
+          initialValues={{
+            first_name: currentStaff.first_name,
+            surname: currentStaff.surname,
+          }}
+          onFinish={handleUpdateStaff}
+        >
           Update Staff Info
-          <Form.Item
-            label="First Name"
-            name="first_name"
-          >
-            <Input
-              placeholder={currentStaff.first_name}
-            />
+          <Form.Item label="First Name" name="first_name">
+            <Input placeholder={currentStaff.first_name} />
           </Form.Item>
-
-          <Form.Item
-            label="Surname"
-            name="surname"
-          >
-            <Input
-              placeholder={currentStaff.surname}
-            />
+          <Form.Item label="Surname" name="surname">
+            <Input placeholder={currentStaff.surname} />
           </Form.Item>
-
         </Form>
 
-        {editSuccess && (
-          <p>Updated!</p>
-        )}
+        {editSuccess && <p>Updated!</p>}
 
-        {deleteSuccess && (
-          <p>Deleted</p>
-        )}
+        {deleteSuccess && <p>Deleted</p>}
       </Modal>
     </IonContent>
   );

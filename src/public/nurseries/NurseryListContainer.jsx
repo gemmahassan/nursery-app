@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import NurseryDataService from '../../services/nursery';
-import {IonContent} from "@ionic/react";
-import {Col, Row} from 'antd';
+import React, { useEffect, useState } from "react";
+import NurseryDataService from "../../services/nursery";
+import { IonContent } from "@ionic/react";
+import { Col, Row } from "antd";
 import NurseryItem from "./NurseryItem";
 import Nav from "../Nav";
 import MapContainer from "../map/MapContainer";
@@ -16,15 +16,11 @@ const NurseryListContainer = () => {
 
   const getNurseries = () => {
     NurseryDataService.getAllConfirmed()
-      .then(response => setNurseries(response.data))
-      .catch(e => console.log(e));
+      .then((response) => setNurseries(response.data))
+      .catch((e) => console.log(e));
   };
 
-  return (
-    <NurseryList
-      nurseries={nurseries}
-    />
-  );
+  return <NurseryList nurseries={nurseries} />;
 };
 
 export default NurseryListContainer;

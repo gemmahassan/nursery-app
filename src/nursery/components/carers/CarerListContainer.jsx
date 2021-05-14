@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
-import UserDataService from '../../../services/user';
-import {IonButton} from "@ionic/react";
-import {List} from "antd";
+import React, { useEffect, useState } from "react";
+import UserDataService from "../../../services/user";
+import { IonButton } from "@ionic/react";
+import { List } from "antd";
 import AuthService from "../../../services/auth";
 import CarerItem from "./CarerItem";
 import AddChild from "../children/AddChild";
@@ -10,7 +10,7 @@ import EditStaff from "../staff/EditStaff";
 import EditCarer from "./EditCarer";
 import CarerList from "./CarerList";
 
-const CarerListContainer = ({nurseryId}) => {
+const CarerListContainer = ({ nurseryId }) => {
   const [carers, setCarers] = useState([]);
   const [carerData, setCarerData] = useState(null);
   const [showAddCarerModal, setShowAddCarerModal] = useState(false);
@@ -20,8 +20,8 @@ const CarerListContainer = ({nurseryId}) => {
 
   const getCarers = () => {
     UserDataService.getCarers(nurseryId)
-      .then(response => setCarers(response.data))
-      .catch(e => console.log(e));
+      .then((response) => setCarers(response.data))
+      .catch((e) => console.log(e));
   };
 
   useEffect(() => {

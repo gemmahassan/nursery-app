@@ -1,11 +1,11 @@
 .events {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .site-layout-background {
-    background: #fff;
+  background: #fff;
 }
 
 /**
@@ -13,55 +13,58 @@
  */
 
 .ant-tabs-content-holder {
-    background: #FFFFFF;
+  background: #ffffff;
 }
 
 .ant-tabs-content-holder .ant-layout-content {
-    padding: 20px;
+  padding: 20px;
 }
 
 .ant-tabs {
-    flex: 1;
+  flex: 1;
 }
 
-.ant-tabs-top > .ant-tabs-nav, .ant-tabs-bottom > .ant-tabs-nav, .ant-tabs-top > div > .ant-tabs-nav, .ant-tabs-bottom > div > .ant-tabs-nav {
-    margin: 0 !important;
+.ant-tabs-top > .ant-tabs-nav,
+.ant-tabs-bottom > .ant-tabs-nav,
+.ant-tabs-top > div > .ant-tabs-nav,
+.ant-tabs-bottom > div > .ant-tabs-nav {
+  margin: 0 !important;
 }
 
 .events .ant-badge-status {
-    /*width: 100%;*/
-    /*overflow: hidden;*/
-    font-size: 12px;
-    /*white-space: nowrap;*/
-    /*text-overflow: ellipsis;*/
+  /*width: 100%;*/
+  /*overflow: hidden;*/
+  font-size: 12px;
+  /*white-space: nowrap;*/
+  /*text-overflow: ellipsis;*/
 }
 .notes-month {
-    font-size: 28px;
-    text-align: center;
+  font-size: 28px;
+  text-align: center;
 }
 .notes-month section {
-    font-size: 28px;
+  font-size: 28px;
 }
 
 ion-item:hover {
-    cursor:pointer;
-    color: #ce72e8;
+  cursor: pointer;
+  color: #ce72e8;
 }
 
 .ant-list-item {
-    border-bottom: 1px solid #DEDEDE;
-    padding: 12px 6px;
+  border-bottom: 1px solid #dedede;
+  padding: 12px 6px;
 }
 
 .ant-list-item h4 {
-    margin: 6px 0 0 0;
+  margin: 6px 0 0 0;
 }
 
 .ant-list-split .ant-list-item:hover {
-    border-bottom: 1px solid var(--ion-color-primary);
-    cursor: pointer;
+  border-bottom: 1px solid var(--ion-color-primary);
+  cursor: pointer;
 }
 
 .ant-result-info .ant-result-icon > .anticon {
-    color: var(--ion-color-primary) !important;
+  color: var(--ion-color-primary) !important;
 }

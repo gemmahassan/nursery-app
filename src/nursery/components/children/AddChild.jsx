@@ -1,15 +1,15 @@
-import React, {useRef} from "react";
-import {Form, Input, Modal, Switch} from "antd";
+import React, { useRef } from "react";
+import { Form, Input, Modal, Switch } from "antd";
 
 const AddChild = ({
-                    addSuccess,
-                    handleAddChild,
-                    hideAddChildModal,
-                    photoPermission,
-                    setImage,
-                    setPhotoPermission,
-                    showAddChildModal
-                  }) => {
+  addSuccess,
+  handleAddChild,
+  hideAddChildModal,
+  photoPermission,
+  setImage,
+  setPhotoPermission,
+  showAddChildModal,
+}) => {
   const formElement = useRef();
 
   return (
@@ -23,25 +23,21 @@ const AddChild = ({
         okText="Save"
         cancelText="Cancel"
       >
-        <Form
-          ref={formElement}
-          name="child"
-          onFinish={handleAddChild}
-        >
+        <Form ref={formElement} name="child" onFinish={handleAddChild}>
           <Form.Item
             label="First Name"
             name="first_name"
-            rules={[{required: true, message: 'Please add a first name'}]}
+            rules={[{ required: true, message: "Please add a first name" }]}
           >
-            <Input/>
+            <Input />
           </Form.Item>
 
           <Form.Item
             label="Surname"
             name="surname"
-            rules={[{required: true, message: 'Please add a surname'}]}
+            rules={[{ required: true, message: "Please add a surname" }]}
           >
-            <Input/>
+            <Input />
           </Form.Item>
 
           <Form.Item
@@ -49,14 +45,11 @@ const AddChild = ({
             label="Permission to share photos of this child?"
             onClick={() => setPhotoPermission(!photoPermission)}
           >
-            <Switch/>
+            <Switch />
           </Form.Item>
 
-          {photoPermission && (
-            <Form.Item
-              name="image"
-              label="Add an image"
-            >
+          {photoPermission === 0 && (
+            <Form.Item name="image" label="Add an image">
               <input
                 name="image"
                 encType="multipart/form-data"
@@ -66,9 +59,7 @@ const AddChild = ({
             </Form.Item>
           )}
         </Form>
-        {addSuccess &&
-        <p>Added!</p>
-        }
+        {addSuccess && <p>Added!</p>}
       </Modal>
     </>
   );

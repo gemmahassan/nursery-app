@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
-import UserDataService from '../../../services/user';
+import React, { useEffect, useState } from "react";
+import UserDataService from "../../../services/user";
 import AuthService from "../../../services/auth";
 import StaffList from "./StaffList";
 
-const StaffListContainer = ({nurseryId}) => {
+const StaffListContainer = ({ nurseryId }) => {
   const [staff, setStaff] = useState([]);
   const [staffData, setStaffData] = useState(null);
   const [showAddStaffModal, setShowAddStaffModal] = useState(false);
@@ -13,8 +13,8 @@ const StaffListContainer = ({nurseryId}) => {
 
   const getStaff = () => {
     UserDataService.getStaff(nurseryId)
-      .then(response => setStaff(response.data))
-      .catch(e => console.log(e));
+      .then((response) => setStaff(response.data))
+      .catch((e) => console.log(e));
   };
 
   useEffect(() => {

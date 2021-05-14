@@ -26,6 +26,7 @@
     "ionic": "^5.4.16",
     "ionicons": "^5.0.0",
     "moment": "^2.29.1",
+    "prettier": "^2.3.0",
     "react": "^16.13.0",
     "react-color": "^2.19.3",
     "react-cookie-consent": "^6.2.3",

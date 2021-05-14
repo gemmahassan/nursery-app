@@ -1,18 +1,19 @@
 import React from "react";
-import {EditOutlined} from '@ant-design/icons';
+import { EditOutlined } from "@ant-design/icons";
 import CarerItem from "./CarerItem";
 
-const CarerItemContainer = ({carer, currentUser, editCarer}) => {
-  const {first_name, image, surname} = carer;
+const CarerItemContainer = ({ carer, currentUser, editCarer }) => {
+  const { first_name, image, surname } = carer;
 
   const getActions = () => {
-    if (currentUser.role === 'admin') {
+    if (currentUser.role === "admin") {
       return [
-        <EditOutlined key="edit"
-                      onClick={() => {
-                        editCarer(carer);
-                      }}
-        />
+        <EditOutlined
+          key="edit"
+          onClick={() => {
+            editCarer(carer);
+          }}
+        />,
       ];
     } else {
       return [];
@@ -27,6 +28,6 @@ const CarerItemContainer = ({carer, currentUser, editCarer}) => {
       surname={surname}
     />
   );
-}
+};
 
 export default CarerItemContainer;

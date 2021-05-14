@@ -1,25 +1,23 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonButtons,
   IonButton,
-} from '@ionic/react';
-import {
-  HomeTwoTone
-} from '@ant-design/icons';
+} from "@ionic/react";
+import { HomeTwoTone } from "@ant-design/icons";
 
 const Nav = () => {
   return (
     <IonHeader>
-      <IonToolbar color={'tertiary'}>
+      <IonToolbar color={"tertiary"}>
         <h4 className={"title"}>
           <Link to="/">Nursery Journal</Link>
         </h4>
         <Link to="/">
-          <HomeTwoTone twoToneColor="#ce72e8" className={'home'} />
+          <HomeTwoTone twoToneColor="#ce72e8" className={"home"} />
         </Link>
         <IonButtons slot="primary">
           <IonButton>

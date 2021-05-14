@@ -1,15 +1,11 @@
 import React from "react";
-import {IonButton} from "@ionic/react";
+import { IonButton } from "@ionic/react";
 
-const Logout = ({handleLogout}) => {
+const Logout = ({ handleLogout }) => {
   return (
-    <IonButton
-      color="primary"
-      onClick={handleLogout}
-    >
+    <IonButton color="primary" onClick={handleLogout}>
       Logout
     </IonButton>
-
   );
 };
 

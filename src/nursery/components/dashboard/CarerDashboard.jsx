@@ -1,24 +1,27 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   IonAvatar,
-  IonButtons, IonChip,
+  IonButtons,
+  IonChip,
   IonContent,
   IonHeader,
-  IonItem, IonLabel,
+  IonItem,
+  IonLabel,
   IonList,
-  IonMenu, IonMenuButton,
+  IonMenu,
+  IonMenuButton,
   IonRouterOutlet,
   IonTitle,
-  IonToolbar
+  IonToolbar,
 } from "@ionic/react";
 import UserDataService from "../../../services/user";
 import JournalContainer from "../journal/JournalContainer";
 import LogoutContainer from "../../../common/LogoutContainer";
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 
-const CarerDashboard = ({currentUser, nursery}) => {
+const CarerDashboard = ({ currentUser, nursery }) => {
   const [children, setChildren] = useState([]);
-  const [activeItem, setActiveItem] = useState('journal');
+  const [activeItem, setActiveItem] = useState("journal");
 
   useEffect(() => {
     getChildren();
@@ -26,8 +29,8 @@ const CarerDashboard = ({currentUser, nursery}) => {
 
   const getChildren = () => {
     UserDataService.getChildrenOfCarer(currentUser.userId)
-      .then(response => setChildren(response.data))
-      .catch(e => console.log(e));
+      .then((response) => setChildren(response.data))
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -40,12 +43,16 @@ const CarerDashboard = ({currentUser, nursery}) => {
         </IonHeader>
         <IonContent>
           <IonList>
-            <IonItem
-              onClick={() => setActiveItem('journal')}>
-              Journal
-            </IonItem>
-            <IonItem
-              onClick={() => setActiveItem('calendar')}>
+            <IonChip slot="secondary">
+              <IonAvatar>
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+              </IonAvatar>
+              <IonLabel>
+                {currentUser.firstName} {currentUser.surname}
+              </IonLabel>
+            </IonChip>
+            <IonItem onClick={() => setActiveItem("journal")}>Journal</IonItem>
+            <IonItem onClick={() => setActiveItem("calendar")}>
               Calendar
             </IonItem>
           </IonList>
@@ -56,35 +63,26 @@ const CarerDashboard = ({currentUser, nursery}) => {
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonMenuButton/>
+              <IonMenuButton />
             </IonButtons>
             <IonButtons slot="primary">
               <LogoutContainer />
             </IonButtons>
             <IonTitle>{nursery.name} Carer Dashboard</IonTitle>
-            <IonChip slot="secondary">
-              <IonAvatar>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"/>
-              </IonAvatar>
-              <IonLabel>{currentUser.firstName} {currentUser.surname}</IonLabel>
-            </IonChip>
           </IonToolbar>
         </IonHeader>
 
         <IonContent>
-          {activeItem === 'journal' &&
-          <JournalContainer
-            children={children}
-            role={currentUser.role}
-          />
-          }
+          {activeItem === "journal" && (
+            <JournalContainer children={children} role={currentUser.role} />
+          )}
 
-          {activeItem === 'calendar' &&
-          <NurseryCalendarContainer
-            nurseryName={nursery.name}
-            nurseryId={nursery.id}
-          />
-          }
+          {activeItem === "calendar" && (
+            <NurseryCalendarContainer
+              nurseryName={nursery.name}
+              nurseryId={nursery.id}
+            />
+          )}
         </IonContent>
       </div>
     </div>

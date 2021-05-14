@@ -1,37 +1,40 @@
-import React, {useEffect, useRef, useState} from "react";
-import ChildDataService from '../../../services/child';
+import React, { useEffect, useRef, useState } from "react";
+import ChildDataService from "../../../services/child";
 import EditChild from "./EditChild";
 
-const EditChildContainer = ({child, hideEditModal, refreshChildren, showEditModal}) => {
+const EditChildContainer = ({
+  child,
+  hideEditModal,
+  refreshChildren,
+  showEditModal,
+}) => {
   const [currentChild, setCurrentChild] = useState(child);
   const [image, setImage] = useState();
   const [editSuccess, setEditSuccess] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState(false);
-  const [photoPermission, setPhotoPermission] = useState(currentChild.photo);
+  const [photoPermission, setPhotoPermission] = useState(
+    currentChild.photo_permission
+  );
 
-  const handleUpdateChild = ({
-                               first_name,
-                               surname,
-                               permission
-                             }) => {
+  const handleUpdateChild = ({ first_name, surname, permission }) => {
     const formData = new FormData();
-    formData.append('first_name', first_name);
-    formData.append('surname', surname);
-    formData.append('permission', permission);
+    formData.append("first_name", first_name);
+    formData.append("surname", surname);
+    formData.append("permission", permission);
     if (image) {
-      formData.append('image', image, image.name);
+      formData.append("image", image, image.name);
     }
 
     ChildDataService.update(child.id, formData)
       .then(() => setEditSuccess(true))
-      .catch(e => console.log(e));
+      .catch((e) => console.log(e));
   };
 
   const handleDelete = () => {
     ChildDataService.delete(child.id)
       .then(() => setDeleteSuccess(true))
-      .catch(e => console.log(e));
-  }
+      .catch((e) => console.log(e));
+  };
 
   useEffect(() => {
     setCurrentChild(child);

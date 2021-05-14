@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   IonAlert,
   IonAvatar,
@@ -15,27 +15,27 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import {Result, Layout, Row, Col} from "antd";
-import {SmileOutlined} from '@ant-design/icons';
+import { Result, Layout, Row, Col } from "antd";
+import { SmileOutlined } from "@ant-design/icons";
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 import JournalContainer from "../journal/JournalContainer";
 import CarerListContainer from "../carers/CarerListContainer";
 import ChildListContainer from "../children/ChildListContainer";
 import StaffListContainer from "../staff/StaffListContainer";
 
-import '../../style.css';
+import "../../style.css";
 import LogoutContainer from "../../../common/LogoutContainer";
 
 const NurseryDashboard = ({
-                            currentUser,
-                            deactivated,
-                            handleDeactivate,
-                            nursery,
-                            setShowConfirmModal,
-                            showConfirmModal
-                          }) => {
+  currentUser,
+  deactivated,
+  handleDeactivate,
+  nursery,
+  setShowConfirmModal,
+  showConfirmModal,
+}) => {
   const [journalChild, setJournalChild] = useState(null);
-  const [activeItem, setActiveItem] = useState('children');
+  const [activeItem, setActiveItem] = useState("children");
 
   return (
     <div>
@@ -49,34 +49,36 @@ const NurseryDashboard = ({
           <IonList>
             <IonChip slot="secondary">
               <IonAvatar>
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"/>
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
               </IonAvatar>
-              <IonLabel>{currentUser.firstName} {currentUser.surname}</IonLabel>
+              <IonLabel>
+                {currentUser.firstName} {currentUser.surname}
+              </IonLabel>
             </IonChip>
-            <IonItem
-              onClick={() => setActiveItem('children')}>
-              Children</IonItem>
-            <IonItem onClick={() => setActiveItem('staff')}>
-              Staff</IonItem>
-            <IonItem onClick={() => setActiveItem('carers')}>
-              Carers</IonItem>
-            <IonItem
-              onClick={() => setActiveItem('calendar')}>
+            <IonItem onClick={() => setActiveItem("children")}>
+              Children
+            </IonItem>
+            <IonItem onClick={() => setActiveItem("staff")}>Staff</IonItem>
+            <IonItem onClick={() => setActiveItem("carers")}>Carers</IonItem>
+            <IonItem onClick={() => setActiveItem("calendar")}>
               Calendar
             </IonItem>
-            <IonItem
-              onClick={() => setShowConfirmModal(true)}>
+            <IonItem onClick={() => setShowConfirmModal(true)}>
               <b>Deactivate this account</b>
             </IonItem>
           </IonList>
         </IonContent>
       </IonMenu>
       <IonRouterOutlet id="my-content"></IonRouterOutlet>
-      <div className="ion-page" id="main-content" style={{color: "rgb(240, 242, 245)"}}>
+      <div
+        className="ion-page"
+        id="main-content"
+        style={{ color: "rgb(240, 242, 245)" }}
+      >
         <IonHeader>
           <IonToolbar color="tertiary">
             <IonButtons slot="start">
-              <IonMenuButton/>
+              <IonMenuButton />
             </IonButtons>
             <IonButtons slot="primary">
               <LogoutContainer />
@@ -85,78 +87,75 @@ const NurseryDashboard = ({
           </IonToolbar>
         </IonHeader>
 
-
-        {showConfirmModal &&
-        <IonAlert
-          isOpen={showConfirmModal}
-          onDidDismiss={() => setShowConfirmModal(false)}
-          header={`Confirm deactivation`}
-          message={`Do you want to deactivate your account? You will have 90 days to reactivate your account before the data is permanently deleted`}
-          buttons={[
-            {
-              text: 'Cancel',
-              role: 'cancel',
-              cssClass: 'secondary',
-            },
-            {
-              text: 'Deactivate',
-              handler: () => {
-                handleDeactivate();
-              }
-            }
-          ]}
-        />
-        }
+        {showConfirmModal && (
+          <IonAlert
+            isOpen={showConfirmModal}
+            onDidDismiss={() => setShowConfirmModal(false)}
+            header={`Confirm deactivation`}
+            message={`Do you want to deactivate your account? You will have 90 days to reactivate your account before the data is permanently deleted`}
+            buttons={[
+              {
+                text: "Cancel",
+                role: "cancel",
+                cssClass: "secondary",
+              },
+              {
+                text: "Deactivate",
+                handler: () => {
+                  handleDeactivate();
+                },
+              },
+            ]}
+          />
+        )}
 
         {!deactivated && (
           <IonContent>
             <Layout>
-              {activeItem === 'children' &&
-              <Row>
-                <Col xs={24} sm={24} md={6} lg={6} xl={6}>
-                  <ChildListContainer
-                    userId={currentUser.userId}
-                    nurseryId={nursery.id}
-                    showJournal={child => setJournalChild(child)}
-                  />
-                </Col>
-                <Col xs={24} sm={24} md={18} lg={18} xl={18}>
-                  {journalChild ?
-                    <JournalContainer
-                      children={[journalChild]}
-                      role={currentUser.role}
-                    /> : <Result
-                      icon={<SmileOutlined color={'#e87ad0'}/>}
-                      title="Please select a child from the list to get started."
+              {activeItem === "children" && (
+                <Row>
+                  <Col xs={24} sm={24} md={6} lg={6} xl={6}>
+                    <ChildListContainer
+                      userId={currentUser.userId}
+                      nurseryId={nursery.id}
+                      showJournal={(child) => setJournalChild(child)}
                     />
-                  }
-                </Col>
-              </Row>
-              }
+                  </Col>
+                  <Col xs={24} sm={24} md={18} lg={18} xl={18}>
+                    {journalChild ? (
+                      <JournalContainer
+                        children={[journalChild]}
+                        role={currentUser.role}
+                      />
+                    ) : (
+                      <Result
+                        icon={<SmileOutlined color={"#e87ad0"} />}
+                        title="Please select a child from the list to get started."
+                      />
+                    )}
+                  </Col>
+                </Row>
+              )}
 
-              {activeItem === 'carers' &&
-              <CarerListContainer
-                nurseryId={nursery.id}/>
-              }
+              {activeItem === "carers" && (
+                <CarerListContainer nurseryId={nursery.id} />
+              )}
 
-              {activeItem === 'staff' &&
-              <StaffListContainer
-                nurseryId={nursery.id}/>
-              }
+              {activeItem === "staff" && (
+                <StaffListContainer nurseryId={nursery.id} />
+              )}
 
-              {activeItem === 'calendar' &&
-              <NurseryCalendarContainer
-                nurseryName={nursery.name}
-                nurseryId={nursery.id}
-              />
-              }
+              {activeItem === "calendar" && (
+                <NurseryCalendarContainer
+                  nurseryName={nursery.name}
+                  nurseryId={nursery.id}
+                />
+              )}
             </Layout>
           </IonContent>
         )}
 
-        {deactivated && (
-          <h1>DEACTIVATED</h1>
-        )}
+        {deactivated && <h1>DEACTIVATED</h1>}
       </div>
     </div>
   );

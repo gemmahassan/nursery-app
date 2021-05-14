@@ -1,65 +1,77 @@
 import React from "react";
-import {IonContent, IonPage} from '@ionic/react';
-import {Button, Form, Input, Alert} from "antd";
+import { IonContent, IonPage } from "@ionic/react";
+import { Button, Form, Input, Alert } from "antd";
 import Nav from "../Nav";
-import {CirclePicker} from "react-color";
+import { CirclePicker } from "react-color";
 import register from "../images/register.jpeg";
-import '../styles.css';
+import "../styles.css";
 
-const  NurseryContact = ({
-                          colors,
-                          handlePostcodeChange,
-                          handleSignup,
-                          showSuccess,
-                          setColor,
-                          setImage,
-                        }) => {
+const NurseryContact = ({
+  colors,
+  handlePostcodeChange,
+  handleSignup,
+  showSuccess,
+  setColor,
+  setImage,
+}) => {
   return (
     <>
       <IonPage>
-        <Nav/>
+        <Nav />
         <IonContent>
           {!showSuccess && (
-            <div style={{
-              display: 'flex'
-            }}>
-              <div className={'contact'}>
+            <div
+              style={{
+                display: "flex",
+              }}
+            >
+              <div className={"contact"}>
                 <h1>Join Us!</h1>
-                <p>If you are interested in signing your nursery up for this service, please enter your nursery name and
-                  an
-                  administrator's contact details below. Someone from our team will be in touch within 24 hours to
-                  discuss
-                  our plans.</p>
+                <p>
+                  If you are interested in signing your nursery up for this
+                  service, please enter your nursery name and an administrator's
+                  contact details below. Someone from our team will be in touch
+                  within 24 hours to discuss our plans.
+                </p>
                 <Form
                   name="basic"
-                  layout={'vertical'}
-                  initialValues={{remember: true}}
+                  layout={"vertical"}
+                  initialValues={{ remember: true }}
                   onFinish={handleSignup}
                   scrollToFirstError
                 >
                   <Form.Item
                     label="Nursery Name"
                     name="name"
-                    rules={[{required: true, message: 'Please input the nursery name!'}]}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input the nursery name!",
+                      },
+                    ]}
                   >
-                    <Input/>
+                    <Input />
                   </Form.Item>
 
                   <h2>Manager's Name</h2>
                   <Form.Item
                     label="First Name"
                     name="contactFirstName"
-                    rules={[{required: true, message: 'Please add a first name!'}]}
+                    rules={[
+                      { required: true, message: "Please add a first name!" },
+                    ]}
                   >
-                    <Input/>
+                    <Input />
                   </Form.Item>
 
                   <Form.Item
                     label="Surname"
                     name="contactSurname"
-                    rules={[{required: true, message: 'Please add a surname!'}]}
+                    rules={[
+                      { required: true, message: "Please add a surname!" },
+                    ]}
                   >
-                    <Input/>
+                    <Input />
                   </Form.Item>
                   <h2>Contact Information</h2>
                   <Form.Item
@@ -67,68 +79,87 @@ const  NurseryContact = ({
                     name="email"
                     rules={[
                       {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
+                        type: "email",
+                        message: "The input is not valid E-mail!",
                       },
                       {
                         required: true,
-                        message: 'Please input your E-mail!',
+                        message: "Please input your E-mail!",
                       },
                     ]}
                   >
-                    <Input/>
+                    <Input />
                   </Form.Item>
-                  <span><i>Note that this will used to login to the nursery system once your account has been set up</i></span>
+                  <span>
+                    <i>
+                      Note that this will used to login to the nursery system
+                      once your account has been set up
+                    </i>
+                  </span>
 
                   <Form.Item
                     label="Phone Number"
                     name="phone"
-                    rules={[{required: true, message: 'Please add a phone number'}]}
+                    rules={[
+                      { required: true, message: "Please add a phone number" },
+                    ]}
                   >
-                    <Input placeholder="Phone Number"/>
+                    <Input placeholder="Phone Number" />
                   </Form.Item>
 
                   <Form.Item
                     label="Nursery Address"
                     name="addressLine1"
-                    rules={[{required: true, message: 'Please add an address!'}]}
+                    rules={[
+                      { required: true, message: "Please add an address!" },
+                    ]}
                   >
-                    <Input placeholder="Line 1"/>
+                    <Input placeholder="Line 1" />
                   </Form.Item>
 
-                  <Form.Item
-                    name="addressLine2"
-                  >
-                    <Input placeholder="Line 2"/>
+                  <Form.Item name="addressLine2">
+                    <Input placeholder="Line 2" />
                   </Form.Item>
 
                   <Form.Item
                     name="town"
-                    rules={[{required: true, message: 'Please add a town!'}]}
+                    rules={[{ required: true, message: "Please add a town!" }]}
                   >
-                    <Input placeholder="Town"/>
+                    <Input placeholder="Town" />
                   </Form.Item>
 
                   <Form.Item
                     name="county"
-                    rules={[{required: true, message: 'Please add a county!'}]}
+                    rules={[
+                      { required: true, message: "Please add a county!" },
+                    ]}
                   >
-                    <Input placeholder="County"/>
+                    <Input placeholder="County" />
                   </Form.Item>
 
                   <Form.Item
                     name="postcode"
-                    rules={[{required: true, message: 'Please add a postcode!'}]}
+                    rules={[
+                      { required: true, message: "Please add a postcode!" },
+                    ]}
                   >
-                    <Input placeholder="Postcode"
-                           onChange={({target: {value}}) => handlePostcodeChange(value)}
+                    <Input
+                      placeholder="Postcode"
+                      onChange={({ target: { value } }) =>
+                        handlePostcodeChange(value)
+                      }
                     />
                   </Form.Item>
 
                   <Form.Item
                     name="image"
                     label="Upload an image of your nursery"
-                    rules={[{required: true, message: 'Please add an image of your nursery'}]}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please add an image of your nursery",
+                      },
+                    ]}
                   >
                     <input
                       name="image"
@@ -142,10 +173,11 @@ const  NurseryContact = ({
 
                   <Form.Item
                     name="color"
-                    label="Select a theme colour for your nursery">
+                    label="Select a theme colour for your nursery"
+                  >
                     <CirclePicker
                       colors={colors}
-                      onChangeComplete={color => setColor(color.hex)}
+                      onChangeComplete={(color) => setColor(color.hex)}
                     />
                   </Form.Item>
 
@@ -156,17 +188,19 @@ const  NurseryContact = ({
                   </Form.Item>
                 </Form>
               </div>
-              <div className={"contact-image"} style={{
-                'backgroundImage': `url(${register})`,
-                'backgroundSize': 'cover',
-                position: 'fixed',
-                height: '100%',
-                width: '60%',
-                right: 0,
-                pointerEvents: 'none',
-                borderLeft: '10px solid #ce72e8'
-              }}>
-              </div>
+              <div
+                className={"contact-image"}
+                style={{
+                  backgroundImage: `url(${register})`,
+                  backgroundSize: "cover",
+                  position: "fixed",
+                  height: "100%",
+                  width: "60%",
+                  right: 0,
+                  pointerEvents: "none",
+                  borderLeft: "10px solid #ce72e8",
+                }}
+              ></div>
             </div>
           )}
 
@@ -178,7 +212,6 @@ const  NurseryContact = ({
               showIcon
             />
           )}
-
         </IonContent>
       </IonPage>
     </>

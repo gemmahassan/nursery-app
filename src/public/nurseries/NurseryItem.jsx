@@ -1,7 +1,7 @@
 import React from "react";
-import {Card} from "antd";
+import { Card } from "antd";
 
-const NurseryItem = ({id, image, name, town }) => {
+const NurseryItem = ({ id, image, name, town }) => {
   const { Meta } = Card;
   return (
     <Card

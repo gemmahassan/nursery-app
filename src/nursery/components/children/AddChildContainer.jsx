@@ -1,34 +1,30 @@
-import React, {useEffect, useState} from "react";
-import ChildDataService from '../../../services/child';
+import React, { useEffect, useState } from "react";
+import ChildDataService from "../../../services/child";
 import AddChild from "./AddChild";
 
 const AddChildContainer = ({
-                             hideAddChildModal,
-                             nurseryId,
-                             showAddChildModal,
-                             refreshChildren
-                           }) => {
+  hideAddChildModal,
+  nurseryId,
+  showAddChildModal,
+  refreshChildren,
+}) => {
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
   const [photoPermission, setPhotoPermission] = useState(false);
 
-  const handleAddChild = ({
-                            first_name,
-                            surname,
-                            permission,
-                          }) => {
+  const handleAddChild = ({ first_name, surname, permission }) => {
     const formData = new FormData();
-    formData.append('first_name', first_name);
-    formData.append('surname', surname);
-    formData.append('photo', permission);
+    formData.append("first_name", first_name);
+    formData.append("surname", surname);
+    formData.append("photo_permission", permission);
     if (image) {
-      formData.append('image', image, image.name);
+      formData.append("image", image, image.name);
     }
-    formData.append('nursery_id', nurseryId);
+    formData.append("nursery_id", nurseryId);
 
     ChildDataService.create(formData, nurseryId)
       .then(() => setAddSuccess(true))
-      .catch(e => console.log(e));
+      .catch((e) => console.log(e));
   };
 
   useEffect(() => {
