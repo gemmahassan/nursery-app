@@ -6,7 +6,6 @@ const AddStaff = ({
   addSuccess,
   handleAddStaff,
   hideAddStaffModal,
-  setImage,
   showAddStaffModal,
 }) => {
   const formElement = useRef();
@@ -54,17 +53,6 @@ const AddStaff = ({
             rules={[{ required: true, message: "Please add an email address" }]}
           >
             <Input />
-          </Form.Item>
-          <Form.Item name="image" label="Add an image">
-            <input
-              name="image" // name of input field or fieldName simply
-              encType="multipart/form-data"
-              type="file"
-              onChange={(event) => {
-                // setState method with event.target.files[0] as argument
-                setImage(event.target.files[0]);
-              }}
-            />
           </Form.Item>
         </Form>
         {addSuccess && <p>Added!</p>}

@@ -17,8 +17,8 @@ class UserDataService {
       });
   }
 
-  create(data) {
-    return http.post("/users/add", data, { headers: authHeader() });
+  create(firstName, surname, child, email, nurseryId, role) {
+    return http.post("/users/add", {firstName, surname, child, email, nurseryId, role}, { headers: authHeader() });
   }
 
   getStaff(nurseryId) {
@@ -34,7 +34,7 @@ class UserDataService {
   }
 
   delete(id) {
-    return http.put(`/users/${id}/delete`, { headers: authHeader() });
+    return http.put(`/users/${id}/delete`, {}, { headers: authHeader() });
   }
 
   getUserForSignup(token) {
@@ -50,10 +50,9 @@ class UserDataService {
   }
 
   update(userId, firstName, surname) {
-    console.log("!!!!!!!", firstName);
     return http.put(
       `/users/${userId}/edit`,
-      { firstName, surname },
+      {firstName, surname},
       { headers: authHeader() }
     );
   }

@@ -36,7 +36,7 @@ const ChildList = ({
         </div>
       )}
 
-      <div class={"child-scroller"}>
+      <div className="child-scroller">
         <List
           itemLayout="horizontal"
           dataSource={children}

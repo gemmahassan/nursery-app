@@ -19,20 +19,15 @@ const EditCarerContainer = ({
   const handleUpdateCarer = ({ first_name, surname, child }) => {
     const selectedChildren = child;
 
-    const formData = new FormData();
-    formData.append("first_name", first_name);
-    formData.append("surname", surname);
-
-    UserDataService.update(carer.id, formData)
+    UserDataService.update(carer.id, first_name, surname)
       .then(() => {
         selectedChildren.forEach((child) => {
-          CarerDataService.addCarer(carer.id, child)
+          CarerDataService.addCarer(carer.id, child, nurseryId)
             .then(() => setEditSuccess(true))
             .catch((e) => console.log(e));
         });
         setEditSuccess(true);
-      })
-      .catch((e) => console.log(e));
+      }).catch((e) => console.log(e));
   };
 
   const handleDelete = () => {

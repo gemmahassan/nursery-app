@@ -1,8 +1,6 @@
 import React from "react";
 import { IonButton } from "@ionic/react";
 import { List } from "antd";
-import AddCarer from "./AddCarer";
-import EditCarer from "./EditCarer";
 import CarerItemContainer from "./CarerItemContainer";
 import EditCarerContainer from "./EditCarerContainer";
 import AddCarerContainer from "./AddCarerContainer";

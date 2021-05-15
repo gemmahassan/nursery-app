@@ -13,7 +13,7 @@ const ChildItemContainer = ({
   addJournal,
   showJournal,
 }) => {
-  const { first_name, image, surname } = child;
+  const { first_name, image, surname, photo_permission } = child;
 
   const getActions = () => {
     const actions = [
@@ -46,6 +46,7 @@ const ChildItemContainer = ({
       firstName={first_name}
       getActions={getActions}
       image={image}
+      photoPermission={photo_permission}
       showJournal={showJournal}
       surname={surname}
     />

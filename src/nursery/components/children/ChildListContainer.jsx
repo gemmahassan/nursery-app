@@ -14,7 +14,7 @@ const ChildListContainer = ({ nurseryId, userId, showJournal }) => {
 
   // get the current user's details from the auth token
   const currentUser = AuthService.getCurrentUser();
-
+console.log(nurseryId);
   useEffect(() => {
     if (nurseryId) {
       getChildren();
@@ -35,6 +35,7 @@ const ChildListContainer = ({ nurseryId, userId, showJournal }) => {
       currentUser={currentUser}
       getChildren={getChildren}
       journalData={journalData}
+      nurseryId={nurseryId}
       setChildData={setChildData}
       setJournalData={setJournalData}
       setShowAddChildModal={setShowAddChildModal}

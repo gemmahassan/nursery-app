@@ -3,7 +3,7 @@ import { Input, Form, Button, Checkbox } from "antd";
 import { IonContent, IonPage } from "@ionic/react";
 import Nav from "../Nav";
 
-const Login = ({ changePassword, handleLogin, loginFailed }) => {
+const Login = ({ handleLogin, loginFailed, noAccount }) => {
   return (
     <IonPage>
       <Nav />
@@ -30,7 +30,7 @@ const Login = ({ changePassword, handleLogin, loginFailed }) => {
                 { required: true, message: "Please input your username!" },
               ]}
             >
-              <Input autoCapitalize={false} />
+              <Input />
             </Form.Item>
 
             <Form.Item
@@ -43,14 +43,14 @@ const Login = ({ changePassword, handleLogin, loginFailed }) => {
               <Input.Password />
             </Form.Item>
 
-            <Form.Item name="remember" valuePropName="checked">
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
             {loginFailed && <p>Incorrect username or password</p>}
 
-            {changePassword && <p>Please change your password</p>}
-
+            {noAccount && (
+              <p>
+                No active account for this username. Check your email for an
+                activation link or contact your administrator
+              </p>
+            )}
             <Form.Item>
               <Button type="primary" htmlType="submit">
                 Submit

@@ -10,13 +10,14 @@ const ChildItem = ({
   firstName,
   getActions,
   image,
+  photoPermission,
   showJournal,
   surname,
 }) => {
   return (
     <List.Item actions={getActions()}>
       <List.Item.Meta
-        avatar={<Avatar src={image} />}
+        avatar={<Avatar src={photoPermission === 1 && image} />}
         title={`${firstName} ${surname}`}
         onClick={() => {
           showJournal(child);

@@ -22,14 +22,16 @@ const JournalEntry = ({
   return (
     <>
       <h2>
-        {`${time} - ${type}`}
+        {time} - {type}
 
         {role === "admin" && (
           <EditOutlined onClick={() => setShowEditModal(!showEditModal)} />
         )}
       </h2>
 
-      {image && <Image src={image} />}
+
+      {(image && child.photo_permission === 1) && <Image src={image} />}
+      {console.log(text)}
       <p>{text}</p>
       <p>
         Added by {firstName} {surname}

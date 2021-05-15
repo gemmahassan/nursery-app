@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChildDataService from "../../../services/child";
 import EditChild from "./EditChild";
 
@@ -16,11 +16,12 @@ const EditChildContainer = ({
     currentChild.photo_permission
   );
 
-  const handleUpdateChild = ({ first_name, surname, permission }) => {
+  const handleUpdateChild = ({ first_name, surname  }) => {
+    console.log(photoPermission);
     const formData = new FormData();
     formData.append("first_name", first_name);
     formData.append("surname", surname);
-    formData.append("permission", permission);
+    formData.append("permission", photoPermission);
     if (image) {
       formData.append("image", image, image.name);
     }

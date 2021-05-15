@@ -10,13 +10,13 @@ const AddChildContainer = ({
 }) => {
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
-  const [photoPermission, setPhotoPermission] = useState(false);
+  const [photoPermission, setPhotoPermission] = useState(0);
 
-  const handleAddChild = ({ first_name, surname, permission }) => {
+  const handleAddChild = ({ first_name, surname }) => {
     const formData = new FormData();
     formData.append("first_name", first_name);
     formData.append("surname", surname);
-    formData.append("photo_permission", permission);
+    formData.append("permission", photoPermission);
     if (image) {
       formData.append("image", image, image.name);
     }

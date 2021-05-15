@@ -37,6 +37,8 @@ const NurseryDashboard = ({
   const [journalChild, setJournalChild] = useState(null);
   const [activeItem, setActiveItem] = useState("children");
 
+  const nurseryId = nursery.id;
+  console.log(nurseryId);
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">
@@ -117,7 +119,7 @@ const NurseryDashboard = ({
                   <Col xs={24} sm={24} md={6} lg={6} xl={6}>
                     <ChildListContainer
                       userId={currentUser.userId}
-                      nurseryId={nursery.id}
+                      nurseryId={nurseryId}
                       showJournal={(child) => setJournalChild(child)}
                     />
                   </Col>

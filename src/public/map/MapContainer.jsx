@@ -6,7 +6,7 @@ const MapContainer = ({ nurseries }) => {
   const location = {
     lat: 54.6418,
     lng: -6.7444,
-    address: "1 street",
+    text: "",
   };
 
   // map all locations from the nursery array into a new location array

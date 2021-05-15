@@ -9,6 +9,7 @@ const JournalEntryContainer = ({ entry, role }) => {
     first_name,
     id,
     image,
+    photo_permission,
     surname,
     text,
     timestamp,

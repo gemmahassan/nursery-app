@@ -60,14 +60,17 @@ const EditChild = ({
           <Form.Item label="Surname" name="surname">
             <Input placeholder={currentChild.surname} />
           </Form.Item>
+          {/*toggle permission to 0 or 1 (database uses tinyint rather than boolean)
+          checked value is set to current value of photoPermission*/}
           <Form.Item
             name="permission"
             label="Permission to share photos of this child?"
-            onClick={() => setPhotoPermission(!photoPermission)}
+            onClick={() => setPhotoPermission(photoPermission === 1 ? 0 : 1)}
           >
             <Switch checked={photoPermission} />
           </Form.Item>
-          {photoPermission === 0 && (
+          {/*if permission is true (1) show the image uploader*/}
+          {photoPermission === 1 && (
             <Form.Item name="image" label="Add an image">
               <input
                 name="image" // name of input field or fieldName simply

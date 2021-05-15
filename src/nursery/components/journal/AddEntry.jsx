@@ -47,7 +47,7 @@ const AddEntry = ({
             </Select>
           </Form.Item>
           {/*only display photo upload if permission has been granted to share photos*/}
-          {child.photo_permission === 0 && (
+          {child.photo_permission === 1 && (
             <Form.Item name="image" label="Add an image">
               <input
                 name="image" // name of input field or fieldName simply

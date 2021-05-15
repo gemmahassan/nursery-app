@@ -7,7 +7,7 @@ const LoginContainer = () => {
   let history = useHistory();
 
   const [loginFailed, setLoginFailed] = useState(false);
-  const [changePassword, setChangePassword] = useState(false);
+  const [noAccount, setNoAccount] = useState(false);
 
   // call login route to validate username and password
   // if successful, show relevant dashboard
@@ -20,7 +20,7 @@ const LoginContainer = () => {
           history.push("/dashboard");
           window.location.reload();
         } else {
-          setChangePassword(true);
+          setNoAccount(true);
         }
       })
       .catch(() => setLoginFailed(true));
@@ -28,9 +28,9 @@ const LoginContainer = () => {
 
   return (
     <Login
-      changePassword={changePassword}
       handleLogin={handleLogin}
       loginFailed={loginFailed}
+      noAccount={noAccount}
     />
   );
 };

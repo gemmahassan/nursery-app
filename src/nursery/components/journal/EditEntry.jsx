@@ -60,7 +60,7 @@ const EditEntry = ({
                 ))}
             </Select>
           </Form.Item>
-          {photoPermission === 0 && (
+          {photoPermission === 1 && (
             <Form.Item name="image" label="Add an image">
               <input
                 name="image" // name of input field or fieldName simply

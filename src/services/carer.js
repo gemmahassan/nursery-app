@@ -2,10 +2,10 @@ import http from "../shared/http-common";
 import authHeader from "./auth-header";
 
 class CarerDataService {
-  addCarer(userId, childId) {
+  addCarer(userId, childId, nurseryId) {
     return http.post(
       "/carer/add",
-      { userId, childId },
+      { userId, childId, nurseryId },
       { headers: authHeader() }
     );
   }

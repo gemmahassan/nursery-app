@@ -11,7 +11,7 @@ const AddChild = ({
   showAddChildModal,
 }) => {
   const formElement = useRef();
-
+console.log(photoPermission)
   return (
     <>
       <Modal
@@ -24,6 +24,7 @@ const AddChild = ({
         cancelText="Cancel"
       >
         <Form ref={formElement} name="child" onFinish={handleAddChild}>
+          Add A Child
           <Form.Item
             label="First Name"
             name="first_name"
@@ -31,7 +32,6 @@ const AddChild = ({
           >
             <Input />
           </Form.Item>
-
           <Form.Item
             label="Surname"
             name="surname"
@@ -39,16 +39,17 @@ const AddChild = ({
           >
             <Input />
           </Form.Item>
-
+          {/*toggle permission to 0 or 1 (database uses tinyint rather than boolean)*/}
+          {console.log(photoPermission)}
           <Form.Item
             name="permission"
             label="Permission to share photos of this child?"
-            onClick={() => setPhotoPermission(!photoPermission)}
+            onClick={() => setPhotoPermission(photoPermission === 1 ? 0 : 1)}
           >
             <Switch />
           </Form.Item>
-
-          {photoPermission === 0 && (
+          {/*if permission is true (1) show the image uploader*/}
+          {photoPermission === 1 && (
             <Form.Item name="image" label="Add an image">
               <input
                 name="image"
