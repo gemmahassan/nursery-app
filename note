@@ -1,6 +1,11 @@
+to run app locally - npm start (make sure server is also running)
+to view on heroku - https://msc-nursery-app.herokuapp.com/
+
 ionic cap open ios
 ionic cap open android
 ionic serve - web
 
 ionic build - needed before a push to github
 ionic cap copy - updates ios/android after a build
+
+npm run build - before pushing to github

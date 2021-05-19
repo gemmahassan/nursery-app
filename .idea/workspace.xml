@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="faccc003-1a32-4677-95f5-f14dce94adce" name="Default Changelist" comment="workspace">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/admin/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin/AdminDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/DashboardContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/nursery/components/dashboard/NurseryDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/note" beforeDir="false" afterPath="$PROJECT_DIR$/note" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +126,7 @@
       <workItem from="1621363360657" duration="3500000" />
       <workItem from="1621405284588" duration="8518000" />
       <workItem from="1621447449205" duration="1002000" />
-      <workItem from="1621452500229" duration="1837000" />
+      <workItem from="1621452500229" duration="2206000" />
     </task>
     <task id="LOCAL-00001" summary="[MP-42] Rename remaining .tsx files to .jsx">
       <created>1609874851247</created>
