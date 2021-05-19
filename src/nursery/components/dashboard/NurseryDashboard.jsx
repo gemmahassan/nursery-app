@@ -117,62 +117,55 @@ const NurseryDashboard = ({
             ]}
           />
         )}
-
-        {/*if the nursery is still active, show the dashboard content*/}
-        {!deactivated && (
-          <IonContent>
-            <Layout>
-              {/*if children menu item is selected, render the list of children associated with the nursery*/}
-              {activeItem === "children" && (
-                <Row>
-                  <Col xs={24} sm={24} md={6} lg={6} xl={6}>
-                    <ChildListContainer
-                      userId={currentUser.userId}
-                      nurseryId={nurseryId}
-                      showJournal={(child) => setJournalChild(child)}
+        <IonContent>
+          <Layout>
+            {/*if children menu item is selected, render the list of children associated with the nursery*/}
+            {activeItem === "children" && (
+              <Row>
+                <Col xs={24} sm={24} md={6} lg={6} xl={6}>
+                  <ChildListContainer
+                    userId={currentUser.userId}
+                    nurseryId={nurseryId}
+                    showJournal={(child) => setJournalChild(child)}
+                  />
+                </Col>
+                <Col xs={24} sm={24} md={18} lg={18} xl={18}>
+                  {/*if a child is selected, render the journal view*/}
+                  {journalChild ? (
+                    <JournalContainer
+                      children={[journalChild]}
+                      role={currentUser.role}
                     />
-                  </Col>
-                  <Col xs={24} sm={24} md={18} lg={18} xl={18}>
-                    {/*if a child is selected, render the journal view*/}
-                    {journalChild ? (
-                      <JournalContainer
-                        children={[journalChild]}
-                        role={currentUser.role}
-                      />
-                    ) : (
-                      // if no child is selected, prompt the user to add or select a child
-                      <Result
-                        icon={<SmileOutlined color={"#e87ad0"} />}
-                        title="Please add or select a child to get started."
-                      />
-                    )}
-                  </Col>
-                </Row>
-              )}
+                  ) : (
+                    // if no child is selected, prompt the user to add or select a child
+                    <Result
+                      icon={<SmileOutlined color={"#e87ad0"} />}
+                      title="Please add or select a child to get started."
+                    />
+                  )}
+                </Col>
+              </Row>
+            )}
 
-              {/*if carers menu item is selected, show list of carers associated with the nursery*/}
-              {activeItem === "carers" && (
-                <CarerListContainer nurseryId={nursery.id} />
-              )}
+            {/*if carers menu item is selected, show list of carers associated with the nursery*/}
+            {activeItem === "carers" && (
+              <CarerListContainer nurseryId={nursery.id} />
+            )}
 
-              {/*if staff menu item is selected, show list of staff associated with the nursery*/}
-              {activeItem === "staff" && (
-                <StaffListContainer nurseryId={nursery.id} />
-              )}
+            {/*if staff menu item is selected, show list of staff associated with the nursery*/}
+            {activeItem === "staff" && (
+              <StaffListContainer nurseryId={nursery.id} />
+            )}
 
-              {/*if calendar menu is selected, show calendar (not implemented)*/}
-              {activeItem === "calendar" && (
-                <NurseryCalendarContainer
-                  nurseryName={nursery.name}
-                  nurseryId={nursery.id}
-                />
-              )}
-            </Layout>
-          </IonContent>
-        )}
-
-        {/*if nursery was deactivated, do not show any content*/}
-        {deactivated && <h1>DEACTIVATED</h1>}
+            {/*if calendar menu is selected, show calendar (not implemented)*/}
+            {activeItem === "calendar" && (
+              <NurseryCalendarContainer
+                nurseryName={nursery.name}
+                nurseryId={nursery.id}
+              />
+            )}
+          </Layout>
+        </IonContent>
       </div>
     </div>
   );

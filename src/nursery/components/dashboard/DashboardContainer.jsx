@@ -6,14 +6,15 @@ import NurseryDataService from "../../../services/nursery";
 import AdminDashboard from "../../../admin/AdminDashboard";
 import Unauthorised from "../../../common/Unauthorised";
 import { message } from "antd";
+import {useHistory} from "react-router";
 
 const DashboardContainer = () => {
+  let history = useHistory();
   // get current user details from JWT
   const currentUser = AuthService.getCurrentUser();
 
   const [nursery, setNursery] = useState({});
   const [authorised, setAuthorised] = useState(false);
-  const [deactivated, setDeactivated] = useState(false);
   const [purged, setPurged] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
@@ -38,7 +39,7 @@ const DashboardContainer = () => {
   // call API to deactivate current nursery
   const handleDeactivate = () => {
     NurseryDataService.deactivate(nursery.id)
-      .then(() => setDeactivated(true))
+      .then(() => history.push('/'))
       .catch((e) => console.log(e));
   };
 
@@ -65,7 +66,6 @@ const DashboardContainer = () => {
             showConfirmModal={showConfirmModal}
             setShowConfirmModal={setShowConfirmModal}
             currentUser={currentUser}
-            deactivated={deactivated}
             handleDeactivate={handleDeactivate}
             nursery={nursery}
           />

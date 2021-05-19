@@ -67,7 +67,7 @@ const AdminDashboard = ({
               danger
               onClick={() => setShowPopover(true)}
             >
-              Purge deactivated accounts
+              Purge expired data
             </Button>
           </Popconfirm>
 
