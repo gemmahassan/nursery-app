@@ -12,8 +12,10 @@ const EditCarer = ({
   hideEditCarerModal,
   showEditCarerModal,
 }) => {
+  // store reference to form
   const formElement = useRef();
 
+  // form to capture updated carer details
   return (
     <IonContent>
       <Modal

@@ -9,8 +9,10 @@ const AddCarer = ({
   hideAddCarerModal,
   showAddCarerModal,
 }) => {
+  // save a reference to the form
   const formElement = useRef();
 
+  // display a modal to add carer
   return (
     <IonContent>
       <Modal

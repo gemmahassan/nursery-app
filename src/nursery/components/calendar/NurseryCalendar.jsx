@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Calendar, Badge } from "antd";
-import { IonContent } from "@ionic/react";
-import moment from "moment";
-import CalendarDataService from "../../../services/calendar";
+import React from "react";
+import { Calendar } from "antd";
 import "../../style.css";
 
-const NurseryCalendar = ({ dateCellRender }) => {
+const NurseryCalendar = () => {
   return (
     <>
-      <Calendar dateCellRender={dateCellRender} />
+      <Calendar />
     </>
   );
 };

@@ -18,16 +18,19 @@ import ApplicationsContainer from "./ApplicationsContainer";
 
 const { TabPane } = Tabs;
 
+// displays a dashboard for superadmin user
 const AdminDashboard = ({
   handlePurge,
   setShowPopover,
   showPopover,
   purged,
 }) => {
+  // get the current user's details from JWT
   const currentUser = AuthService.getCurrentUser();
 
   return (
     <>
+      {/*navbar*/}
       <IonRouterOutlet id="my-content"></IonRouterOutlet>
       <div className="ion-page" id="main-content">
         <IonHeader>
@@ -45,6 +48,8 @@ const AdminDashboard = ({
           </IonToolbar>
         </IonHeader>
 
+        {/*display button to purge data
+        uses popconfirm component to ask for confirmation*/}
         <IonContent>
           <Popconfirm
             title="This action will permanently delete all archived data over 90 days old"
@@ -66,6 +71,7 @@ const AdminDashboard = ({
             </Button>
           </Popconfirm>
 
+          {/*display tabs for pending and confirmed nurseries*/}
           {!purged && (
             <Tabs type="card">
               <TabPane tab="Applications" key="1">

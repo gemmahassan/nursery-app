@@ -50,7 +50,7 @@ const AddEntry = ({
           {child.photo_permission === 1 && (
             <Form.Item name="image" label="Add an image">
               <input
-                name="image" // name of input field or fieldName simply
+                name="image"
                 encType="multipart/form-data"
                 type="file"
                 onChange={(event) => {

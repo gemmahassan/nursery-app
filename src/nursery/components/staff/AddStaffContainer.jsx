@@ -8,21 +8,14 @@ const AddStaffContainer = ({
   nurseryId,
   showAddStaffModal,
 }) => {
-  const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
 
+  // call API to create new staff user using data captured from form
+  // if successful, call API to send an email asking usee to complete registration
   const handleAddStaff = ({ first_name, surname, email }) => {
-    const formData = new FormData();
-    formData.append("first_name", first_name);
-    formData.append("surname", surname);
-    formData.append("email", email);
-    if (image) {
-      formData.append("image", image, image.name);
-    }
-    formData.append("nursery_id", nurseryId);
-    formData.append("role", "staff");
+    const userRole = "staff";
 
-    UserDataService.create(formData)
+    UserDataService.create(first_name, surname, email, nurseryId, userRole)
       .then((response) => {
         const token = response.data.token;
         const subject =
@@ -48,7 +41,6 @@ const AddStaffContainer = ({
       addSuccess={addSuccess}
       handleAddStaff={handleAddStaff}
       hideAddStaffModal={hideAddStaffModal}
-      setImage={setImage}
       showAddStaffModal={showAddStaffModal}
     />
   );

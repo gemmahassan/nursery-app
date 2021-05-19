@@ -17,7 +17,7 @@ class JournalDataService {
   }
 
   getTypes() {
-    return http.get("/journal/types");
+    return http.get("/journal/types", { headers: authHeader() });
   }
 }
 

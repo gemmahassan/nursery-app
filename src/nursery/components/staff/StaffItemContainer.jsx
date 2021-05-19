@@ -5,6 +5,8 @@ import StaffItem from "./StaffItem";
 const StaffItemContainer = ({ currentUser, editStaff, staff }) => {
   const { first_name, image, surname } = staff;
 
+  // set up edit action for staff items
+  // only admin users can see edit option
   const getActions = () => {
     if (currentUser.role === "admin") {
       return [

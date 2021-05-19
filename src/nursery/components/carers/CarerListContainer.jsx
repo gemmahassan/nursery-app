@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UserDataService from "../../../services/user";
-import { IonButton } from "@ionic/react";
-import { List } from "antd";
 import AuthService from "../../../services/auth";
-import CarerItem from "./CarerItem";
-import AddChild from "../children/AddChild";
-import AddCarer from "./AddCarer";
-import EditStaff from "../staff/EditStaff";
-import EditCarer from "./EditCarer";
 import CarerList from "./CarerList";
 
 const CarerListContainer = ({ nurseryId }) => {
@@ -16,18 +9,23 @@ const CarerListContainer = ({ nurseryId }) => {
   const [showAddCarerModal, setShowAddCarerModal] = useState(false);
   const [showEditCarerModal, setShowEditCarerModal] = useState(false);
 
+  // get current user details from JWT
   const currentUser = AuthService.getCurrentUser();
 
+  // call API to get a list of all carers associated with current nursery
+  // save in carers array
   const getCarers = () => {
     UserDataService.getCarers(nurseryId)
       .then((response) => setCarers(response.data))
       .catch((e) => console.log(e));
   };
 
+  // get list on page render
   useEffect(() => {
     getCarers();
   }, []);
 
+  // pass props to CarerList component
   return (
     <CarerList
       carerData={carerData}

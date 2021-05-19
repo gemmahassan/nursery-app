@@ -3,8 +3,9 @@ import { EditOutlined } from "@ant-design/icons";
 import CarerItem from "./CarerItem";
 
 const CarerItemContainer = ({ carer, currentUser, editCarer }) => {
-  const { first_name, image, surname } = carer;
+  const { first_name, surname } = carer;
 
+  // set up edit action - only available for admin users
   const getActions = () => {
     if (currentUser.role === "admin") {
       return [
@@ -20,11 +21,11 @@ const CarerItemContainer = ({ carer, currentUser, editCarer }) => {
     }
   };
 
+  // render carer item component
   return (
     <CarerItem
       firstName={first_name}
       getActions={getActions}
-      image={image}
       surname={surname}
     />
   );

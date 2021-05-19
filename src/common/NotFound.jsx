@@ -2,6 +2,7 @@ import React from "react";
 import history from "../history";
 import { Button, Result } from "antd";
 
+// renders a 404 Not Found page with a button to redirect user to homepage
 const NotFound = () => {
   return (
     <>

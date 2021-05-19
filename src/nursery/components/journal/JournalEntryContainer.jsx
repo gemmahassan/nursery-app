@@ -9,7 +9,6 @@ const JournalEntryContainer = ({ entry, role }) => {
     first_name,
     id,
     image,
-    photo_permission,
     surname,
     text,
     timestamp,
@@ -17,17 +16,20 @@ const JournalEntryContainer = ({ entry, role }) => {
     type_id,
     user_id,
   } = entry;
+  // extract the time from the timestamp
   const time = moment(timestamp).format("h:mma");
 
   const [showEditModal, setShowEditModal] = useState(false);
   const [child, setChild] = useState({});
 
+  // call API to get specific child's details
   const getChild = () => {
     ChildDataService.getById(child_id)
       .then((response) => setChild(response.data))
       .catch((e) => console.log(e));
   };
 
+  // get child details on render
   useEffect(() => {
     getChild();
   }, []);

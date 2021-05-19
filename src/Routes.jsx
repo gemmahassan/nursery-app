@@ -8,6 +8,9 @@ import NurseryContactContainer from "./public/signup/NurseryContactContainer";
 import NurseryListContainer from "./public/nurseries/NurseryListContainer";
 import LoginContainer from "./public/login/LoginContainer";
 
+// sets up routes for specific parts of the platform
+// links path to component
+// includes Not Found component for invalid link
 const Routes = () => {
   return (
     <Switch>

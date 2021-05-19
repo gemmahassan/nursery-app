@@ -16,8 +16,8 @@ const EditChildContainer = ({
     currentChild.photo_permission
   );
 
-  const handleUpdateChild = ({ first_name, surname  }) => {
-    console.log(photoPermission);
+  // call API with first name and surname captured from form, update child
+  const handleUpdateChild = ({ first_name, surname }) => {
     const formData = new FormData();
     formData.append("first_name", first_name);
     formData.append("surname", surname);
@@ -31,16 +31,19 @@ const EditChildContainer = ({
       .catch((e) => console.log(e));
   };
 
+  // call API to set deleted timestamp for selected child
   const handleDelete = () => {
     ChildDataService.delete(child.id)
       .then(() => setDeleteSuccess(true))
       .catch((e) => console.log(e));
   };
 
+  // store selected child in state every time selected child changes
   useEffect(() => {
     setCurrentChild(child);
   }, [child]);
 
+  // if a child has been edited or deleted, refresh the list of children
   useEffect(() => {
     if (editSuccess || deleteSuccess) {
       refreshChildren();

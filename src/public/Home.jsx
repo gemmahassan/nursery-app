@@ -17,6 +17,7 @@ import "./styles.css";
 import history from "../history";
 import CookieConsent from "react-cookie-consent";
 
+// renders homepage with image carousel and nav bar
 const Home = () => {
   return (
     <>

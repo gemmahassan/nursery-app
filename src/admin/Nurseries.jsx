@@ -3,6 +3,7 @@ import { Card, List } from "antd";
 import { CloseCircleTwoTone } from "@ant-design/icons";
 import { IonAlert } from "@ionic/react";
 
+// renders a list of confirmed nurseries
 const Nurseries = ({
   handleClick,
   handleRemove,

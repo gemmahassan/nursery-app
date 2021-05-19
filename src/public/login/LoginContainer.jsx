@@ -18,7 +18,6 @@ const LoginContainer = () => {
       .then((response) => {
         if (response.activated) {
           history.push("/dashboard");
-          window.location.reload();
         } else {
           setNoAccount(true);
         }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import UserDataService from "../../../services/user";
 import CarerDataService from "../../../services/carer";
 import NurseryDataService from "../../../services/nursery";
@@ -6,20 +6,23 @@ import http from "../../../shared/http-common";
 import AddCarer from "./AddCarer";
 
 const AddCarerContainer = ({
-                             hideAddCarerModal,
-                             nurseryId,
-                             showAddCarerModal,
-                             refreshCarers,
-                           }) => {
+  hideAddCarerModal,
+  nurseryId,
+  showAddCarerModal,
+  refreshCarers,
+}) => {
   const [addSuccess, setAddSuccess] = useState(false);
   const [children, setChildren] = useState([]);
 
+  // call API to get a list of children linked to current nursery
   const getChildren = () => {
     NurseryDataService.getChildren(nurseryId)
       .then((response) => setChildren(response.data))
       .catch((e) => console.log(e));
   };
 
+  // get options for checkboxes
+  // each checkbox is the child's name linked to their ID
   const getOptions = () => {
     const options = children.map((child) => {
       return {
@@ -30,11 +33,21 @@ const AddCarerContainer = ({
     return options;
   };
 
-  const handleAddCarer = ({first_name, surname, child, email}) => {
+  const handleAddCarer = ({ first_name, surname, child, email }) => {
+    // store all children selected via checkboxes
     const selectedChildren = child;
     const userRole = "carer";
 
-    UserDataService.create(first_name, surname, child, email, nurseryId, userRole).then((response) => {
+    // call API to create a new user and send the registration email
+    // if successful, map over selectedChildren array and call the API to add an entry
+    // to carer junction table for each carer-child relationship
+    UserDataService.create(
+      first_name,
+      surname,
+      email,
+      nurseryId,
+      userRole
+    ).then((response) => {
       const userId = response.data.id;
       const carerFirstName = response.data.first_name;
       const carerSurname = response.data.surname;
@@ -59,21 +72,26 @@ const AddCarerContainer = ({
               CarerDataService.addCarer(userId, child, nurseryId)
                 .then(() => setAddSuccess(true))
                 .catch((e) => console.log(e));
-            }).catch((e) => console.log(e));
-        }).catch((e) => console.log(e));
+            })
+            .catch((e) => console.log(e));
+        })
+        .catch((e) => console.log(e));
     });
   };
 
+  // if a carer has been added reload the list
   useEffect(() => {
     if (addSuccess) {
       refreshCarers();
     }
   }, [addSuccess]);
 
+  // get list of children on page re-render
   useEffect(() => {
     getChildren();
   }, []);
 
+  // render AddCarer modal
   return (
     <AddCarer
       addSuccess={addSuccess}

@@ -26,6 +26,7 @@ import StaffListContainer from "../staff/StaffListContainer";
 import "../../style.css";
 import LogoutContainer from "../../../common/LogoutContainer";
 
+// displays the dashboard for nursery users (admin and staff)
 const NurseryDashboard = ({
   currentUser,
   deactivated,
@@ -38,7 +39,7 @@ const NurseryDashboard = ({
   const [activeItem, setActiveItem] = useState("children");
 
   const nurseryId = nursery.id;
-  console.log(nurseryId);
+
   return (
     <div>
       <IonMenu side="start" menuId="first" contentId="my-content">
@@ -57,6 +58,7 @@ const NurseryDashboard = ({
                 {currentUser.firstName} {currentUser.surname}
               </IonLabel>
             </IonChip>
+            {/*display a side menu*/}
             <IonItem onClick={() => setActiveItem("children")}>
               Children
             </IonItem>
@@ -65,13 +67,17 @@ const NurseryDashboard = ({
             <IonItem onClick={() => setActiveItem("calendar")}>
               Calendar
             </IonItem>
-            <IonItem onClick={() => setShowConfirmModal(true)}>
-              <b>Deactivate this account</b>
-            </IonItem>
+            {/*only admins have the option to deactivate the nursery account*/}
+            {currentUser.role === "admin" && (
+              <IonItem onClick={() => setShowConfirmModal(true)}>
+                <b>Deactivate this account</b>
+              </IonItem>
+            )}
           </IonList>
         </IonContent>
       </IonMenu>
       <IonRouterOutlet id="my-content"></IonRouterOutlet>
+      {/*render main page with off-white background colour*/}
       <div
         className="ion-page"
         id="main-content"
@@ -89,6 +95,7 @@ const NurseryDashboard = ({
           </IonToolbar>
         </IonHeader>
 
+        {/*if user clicked on deactivate account menu item, show confirmation alert*/}
         {showConfirmModal && (
           <IonAlert
             isOpen={showConfirmModal}
@@ -111,9 +118,11 @@ const NurseryDashboard = ({
           />
         )}
 
+        {/*if the nursery is still active, show the dashboard content*/}
         {!deactivated && (
           <IonContent>
             <Layout>
+              {/*if children menu item is selected, render the list of children associated with the nursery*/}
               {activeItem === "children" && (
                 <Row>
                   <Col xs={24} sm={24} md={6} lg={6} xl={6}>
@@ -124,29 +133,34 @@ const NurseryDashboard = ({
                     />
                   </Col>
                   <Col xs={24} sm={24} md={18} lg={18} xl={18}>
+                    {/*if a child is selected, render the journal view*/}
                     {journalChild ? (
                       <JournalContainer
                         children={[journalChild]}
                         role={currentUser.role}
                       />
                     ) : (
+                      // if no child is selected, prompt the user to add or select a child
                       <Result
                         icon={<SmileOutlined color={"#e87ad0"} />}
-                        title="Please select a child from the list to get started."
+                        title="Please add or select a child to get started."
                       />
                     )}
                   </Col>
                 </Row>
               )}
 
+              {/*if carers menu item is selected, show list of carers associated with the nursery*/}
               {activeItem === "carers" && (
                 <CarerListContainer nurseryId={nursery.id} />
               )}
 
+              {/*if staff menu item is selected, show list of staff associated with the nursery*/}
               {activeItem === "staff" && (
                 <StaffListContainer nurseryId={nursery.id} />
               )}
 
+              {/*if calendar menu is selected, show calendar (not implemented)*/}
               {activeItem === "calendar" && (
                 <NurseryCalendarContainer
                   nurseryName={nursery.name}
@@ -157,6 +171,7 @@ const NurseryDashboard = ({
           </IonContent>
         )}
 
+        {/*if nursery was deactivated, do not show any content*/}
         {deactivated && <h1>DEACTIVATED</h1>}
       </div>
     </div>

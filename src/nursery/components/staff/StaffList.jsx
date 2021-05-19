@@ -1,9 +1,6 @@
 import React from "react";
 import { IonButton } from "@ionic/react";
 import { List } from "antd";
-import AddStaff from "./AddStaff";
-import StaffItem from "./StaffItem";
-import EditStaff from "./EditStaff";
 import StaffItemContainer from "./StaffItemContainer";
 import EditStaffContainer from "./EditStaffContainer";
 import AddStaffContainer from "./AddStaffContainer";
@@ -22,20 +19,16 @@ const StaffList = ({
 }) => {
   return (
     <>
+      {/*only show Add Staff button for admin users*/}
       {currentUser.role === "admin" && (
         <div>
-          <IonButton
-            onClick={() => {
-              console.log("clicked");
-              setShowAddStaffModal(true);
-            }}
-            shape="round"
-          >
+          <IonButton onClick={() => setShowAddStaffModal(true)} shape="round">
             +
           </IonButton>
         </div>
       )}
 
+      {/*map over each member of staff and display StaffItem component*/}
       <>
         <List
           itemLayout="horizontal"
@@ -52,6 +45,7 @@ const StaffList = ({
           )}
         />
 
+        {/*if edit staff was selected, show edit modal*/}
         {showEditStaffModal && (
           <EditStaffContainer
             staff={staffData}
@@ -62,6 +56,7 @@ const StaffList = ({
         )}
       </>
 
+      {/*show add staff modal based on showAddStaffModal*/}
       <AddStaffContainer
         nurseryId={nurseryId}
         showAddStaffModal={showAddStaffModal}

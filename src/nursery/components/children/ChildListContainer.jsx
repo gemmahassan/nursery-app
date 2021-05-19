@@ -14,14 +14,14 @@ const ChildListContainer = ({ nurseryId, userId, showJournal }) => {
 
   // get the current user's details from the auth token
   const currentUser = AuthService.getCurrentUser();
-console.log(nurseryId);
+  console.log(nurseryId);
   useEffect(() => {
     if (nurseryId) {
       getChildren();
     }
   }, [nurseryId]);
 
-  // get all children associated with the current nursery
+  // call API to get all children associated with the current nursery
   const getChildren = () => {
     NurseryDataService.getChildren(nurseryId)
       .then((response) => setChildren(response.data))

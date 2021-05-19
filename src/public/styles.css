@@ -67,6 +67,7 @@
   margin: 0 0 0 12px;
 }
 
+/*browser styling*/
 @media only screen and (min-width: 768px) {
   .ant-carousel {
     box-shadow: 0 0 5px #777;

@@ -8,6 +8,7 @@ const AddStaff = ({
   hideAddStaffModal,
   showAddStaffModal,
 }) => {
+  // store reference to form
   const formElement = useRef();
 
   return (

@@ -1,3 +1,7 @@
+// sets up axios
+// if the API is being called from Heroku, use the Heroku URL
+// otherwise use locahost
+// this isn't relevant as the database does not work with Heroku
 import axios from "axios";
 
 export default axios.create({

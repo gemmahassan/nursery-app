@@ -14,6 +14,7 @@ const EditChild = ({
   setPhotoPermission,
   showEditModal,
 }) => {
+  // store reference to form
   const formElement = useRef();
 
   return (
@@ -73,7 +74,7 @@ const EditChild = ({
           {photoPermission === 1 && (
             <Form.Item name="image" label="Add an image">
               <input
-                name="image" // name of input field or fieldName simply
+                name="image"
                 encType="multipart/form-data"
                 type="file"
                 onChange={(event) => {

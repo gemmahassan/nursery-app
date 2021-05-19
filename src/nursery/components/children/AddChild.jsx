@@ -10,8 +10,9 @@ const AddChild = ({
   setPhotoPermission,
   showAddChildModal,
 }) => {
+  //store reference to form
   const formElement = useRef();
-console.log(photoPermission)
+
   return (
     <>
       <Modal
@@ -40,7 +41,6 @@ console.log(photoPermission)
             <Input />
           </Form.Item>
           {/*toggle permission to 0 or 1 (database uses tinyint rather than boolean)*/}
-          {console.log(photoPermission)}
           <Form.Item
             name="permission"
             label="Permission to share photos of this child?"

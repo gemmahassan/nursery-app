@@ -5,6 +5,7 @@ import CarerItemContainer from "./CarerItemContainer";
 import EditCarerContainer from "./EditCarerContainer";
 import AddCarerContainer from "./AddCarerContainer";
 
+// renders a list of carers
 const CarerList = ({
   carerData,
   carers,
@@ -17,6 +18,7 @@ const CarerList = ({
   showAddCarerModal,
   showEditCarerModal,
 }) => {
+  // if user is admin, show the add carer option
   return (
     <>
       {currentUser.role === "admin" && (
@@ -27,6 +29,7 @@ const CarerList = ({
         </div>
       )}
       <>
+        {/*map over list of carers rendering an item component for each*/}
         <List
           itemLayout="horizontal"
           dataSource={carers}
@@ -42,6 +45,7 @@ const CarerList = ({
           )}
         />
 
+        {/*if edit button was clicked, show modal*/}
         {showEditCarerModal && (
           <EditCarerContainer
             carer={carerData}
@@ -53,6 +57,7 @@ const CarerList = ({
         )}
       </>
 
+      {/*show add carer modal based on showAddCarerModal*/}
       <AddCarerContainer
         nurseryId={nurseryId}
         showAddCarerModal={showAddCarerModal}

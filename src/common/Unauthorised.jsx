@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert } from "antd";
 
+// renders an alert warning user they do have authorisation to view selected page
 const Unauthorised = () => {
   return (
     <>

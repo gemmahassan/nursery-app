@@ -20,6 +20,7 @@ const JournalContainer = (props) => {
   const [notifyWhenNew, setNotifyWhenNew] = useState(false);
   const [speakWhenNew, setSpeakWhenNew] = useState(false);
 
+  // uses usePrevious hook to capture and store the current state for comparison later
   const previousJournalState = usePrevious(journal);
 
   const getJournal = (date, id, name) => {
@@ -131,6 +132,7 @@ const JournalContainer = (props) => {
       });
     }
 
+    // as for notifications, old and new state is compared and any updates spoken as needed
     if (speakWhenNew) {
       journal.forEach((child) => {
         const getOldTimelineState = previousJournalState.find(

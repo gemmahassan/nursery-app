@@ -17,12 +17,15 @@ const Journal = ({
 }) => {
   const { TabPane } = Tabs;
 
+  // if the selected date is the current date and the user is a carer, display notification buttons
+  // these will not display for staff users
   return (
     <>
       <div className="ion-text-center">
         {isToday && role === "carer" && (
           <>
             <IonButton
+              // request permission to display notifications
               onClick={() => {
                 Notification.requestPermission().then((permission) => {
                   if (permission === "granted") {
@@ -44,6 +47,10 @@ const Journal = ({
             <br />
           </>
         )}
+
+        {/*date picker component*/}
+        {/*default date is today*/}
+        {/*all future dates are disabled*/}
         <DatePicker
           defaultValue={moment()}
           format={"YYYY-M-D"}
@@ -51,13 +58,15 @@ const Journal = ({
           onChange={onDateChange}
         />
 
+        {/*if user is a carer, show tabs for each child associated with them
+        show the timeline component, map over each entry for each child and display*/}
         <Layout style={{ minHeight: "100vh" }}>
           {role === "carer" ? (
             <Tabs type="card">
               {journal.map((entry) => {
                 return (
                   <TabPane tab={entry.name} key={entry.id}>
-                    <h1>{entry.name}</h1>
+                    <h1>{entry.name}'s Day</h1>
                     <Timeline mode="alternate">
                       {entry.timeline.length ? (
                         entry.timeline.map((entry) => (
@@ -75,6 +84,7 @@ const Journal = ({
               })}
             </Tabs>
           ) : (
+            // if user is staff or admin, no tabs are shown as child selection is driven by selecting one child from a list
             <>
               {journal.map((entry) => {
                 return (

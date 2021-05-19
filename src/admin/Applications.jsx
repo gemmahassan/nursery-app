@@ -3,6 +3,7 @@ import { Alert, Card, List } from "antd";
 import { CheckCircleTwoTone, CloseCircleTwoTone } from "@ant-design/icons";
 import { IonAlert } from "@ionic/react";
 
+// renders a list of pending nurseries with options to accept or decline
 const Applications = ({
   action,
   duplicateUsername,
@@ -25,6 +26,8 @@ const Applications = ({
           xxl: 3,
         }}
         dataSource={nurseries}
+        // display a card for each nursery in the nurseries array
+        // include actions to approve or decline
         renderItem={(nursery) => (
           <List.Item>
             <Card
@@ -48,6 +51,7 @@ const Applications = ({
         )}
       />
 
+      {/*confirm user selection*/}
       {showConfirm && (
         <IonAlert
           isOpen={showConfirm}
@@ -70,6 +74,7 @@ const Applications = ({
         />
       )}
 
+      {/*if the username of the nursery admin already exists, prompt the admin to contact the nursery */}
       {duplicateUsername && (
         <Alert
           message="This username already exists. Please contact the nursery to resolve"

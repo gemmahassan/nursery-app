@@ -9,14 +9,17 @@ const StaffListContainer = ({ nurseryId }) => {
   const [showAddStaffModal, setShowAddStaffModal] = useState(false);
   const [showEditStaffModal, setShowEditStaffModal] = useState(false);
 
+  // get current user details from JWT
   const currentUser = AuthService.getCurrentUser();
 
+  // call API to get staff for current nursery
   const getStaff = () => {
     UserDataService.getStaff(nurseryId)
       .then((response) => setStaff(response.data))
       .catch((e) => console.log(e));
   };
 
+  // get staff on page render
   useEffect(() => {
     getStaff();
   }, []);

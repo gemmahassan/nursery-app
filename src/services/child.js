@@ -3,15 +3,17 @@ import authHeader from "./auth-header";
 
 class ChildDataService {
   getByCarerId(carerId) {
-    return http.get(`/children/${carerId}`);
+    return http.get(`/children/${carerId}`, { headers: authHeader() });
   }
 
   getById(childId) {
-    return http.get(`/children/${childId}`);
+    return http.get(`/children/${childId}`, { headers: authHeader() });
   }
 
   getJournal(date, id) {
-    return http.get(`/children/${id}/journal/${date}`);
+    return http.get(`/children/${id}/journal/${date}`, {
+      headers: authHeader(),
+    });
   }
 
   create(data) {

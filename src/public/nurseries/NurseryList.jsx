@@ -5,6 +5,8 @@ import NurseryItem from "./NurseryItem";
 import Nav from "../Nav";
 import MapContainer from "../map/MapContainer";
 
+// map over nurseries array displaying an item for each one
+// render map passing nurseries array as a prop
 const NurseryList = ({ nurseries }) => {
   return (
     <>

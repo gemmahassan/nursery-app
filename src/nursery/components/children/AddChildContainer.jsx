@@ -12,6 +12,8 @@ const AddChildContainer = ({
   const [addSuccess, setAddSuccess] = useState(false);
   const [photoPermission, setPhotoPermission] = useState(0);
 
+  // store form inputs in formData
+  // pass formData to API call to add a new child
   const handleAddChild = ({ first_name, surname }) => {
     const formData = new FormData();
     formData.append("first_name", first_name);
@@ -27,6 +29,7 @@ const AddChildContainer = ({
       .catch((e) => console.log(e));
   };
 
+  // if a new child has been added, refresh the child list
   useEffect(() => {
     if (addSuccess) {
       refreshChildren();

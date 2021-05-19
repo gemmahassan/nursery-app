@@ -2,10 +2,6 @@ import React from "react";
 import { EditOutlined, PlusOutlined } from "@ant-design/icons";
 import ChildItem from "./ChildItem";
 
-// This component displays each individual child list item
-// The child's name is accompanied by an avatar and clickable icons to either
-// add a journal entry for that child, or edit the child's
-// personal details
 const ChildItemContainer = ({
   child,
   currentUser,
@@ -15,6 +11,8 @@ const ChildItemContainer = ({
 }) => {
   const { first_name, image, surname, photo_permission } = child;
 
+  // sets up add and edit actions for each child item
+  // edit is only available to admin users
   const getActions = () => {
     const actions = [
       <PlusOutlined

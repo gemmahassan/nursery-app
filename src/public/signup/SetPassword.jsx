@@ -24,6 +24,10 @@ const SetPassword = ({ handleSetPassword, user }) => {
             label="Password"
             name="password"
             rules={[
+              {
+                min: 5,
+                message: "Password must have a minimum of 8 characters",
+              },
               { required: true, message: "Please enter a new password!" },
             ]}
           >

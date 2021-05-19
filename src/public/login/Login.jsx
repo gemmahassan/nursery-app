@@ -3,6 +3,7 @@ import { Input, Form, Button, Checkbox } from "antd";
 import { IonContent, IonPage } from "@ionic/react";
 import Nav from "../Nav";
 
+// render a login component to enter username and password
 const Login = ({ handleLogin, loginFailed, noAccount }) => {
   return (
     <IonPage>

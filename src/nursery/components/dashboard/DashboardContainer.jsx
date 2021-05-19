@@ -8,6 +8,7 @@ import Unauthorised from "../../../common/Unauthorised";
 import { message } from "antd";
 
 const DashboardContainer = () => {
+  // get current user details from JWT
   const currentUser = AuthService.getCurrentUser();
 
   const [nursery, setNursery] = useState({});
@@ -17,6 +18,8 @@ const DashboardContainer = () => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
 
+  // call API to purge deleted data over 90 days
+  // catch response error code - if 404, there was no data to purge
   const handlePurge = () => {
     NurseryDataService.purge()
       .then(() => {
@@ -32,12 +35,14 @@ const DashboardContainer = () => {
       });
   };
 
+  // call API to deactivate current nursery
   const handleDeactivate = () => {
     NurseryDataService.deactivate(nursery.id)
       .then(() => setDeactivated(true))
       .catch((e) => console.log(e));
   };
 
+  // return the layout depending on user type
   const getLayout = () => {
     if (!authorised) {
       return <Unauthorised />;
@@ -70,6 +75,11 @@ const DashboardContainer = () => {
     }
   };
 
+  // on page render:
+  // if user is logged in, they are authorised to view the dashboard as the correct layout will be displayed for them
+  // if they are not logged in and navigate to the /dashboard route, they will see the Unauthorised component
+  // if the user is not superadmin, get the details for their associated nursery
+  // set the data-theme for all body elements to the colour picked by the nursery admin when registering the account
   useEffect(() => {
     if (currentUser) {
       setAuthorised(true);

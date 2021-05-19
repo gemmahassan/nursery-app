@@ -14,6 +14,7 @@ const EditEntry = ({
   showEditModal,
   updateSuccess,
 }) => {
+  // store reference to form
   const formElement = useRef();
 
   return (
@@ -54,20 +55,22 @@ const EditEntry = ({
           Update Journal entry
           <Form.Item label="Entry Type" name="type_id">
             <Select name="type_id">
+              {/*display list of journal types retrieved from API call
+              map over journal types and display a selection for each*/}
               {journalTypes &&
                 journalTypes.map((type) => (
                   <Select.Option value={type.id}>{type.type}</Select.Option>
                 ))}
             </Select>
           </Form.Item>
+          {/*only show file picker if child has photo permission set to true*/}
           {photoPermission === 1 && (
             <Form.Item name="image" label="Add an image">
               <input
-                name="image" // name of input field or fieldName simply
+                name="image"
                 encType="multipart/form-data"
                 type="file"
                 onChange={(event) => {
-                  // setState method with event.target.files[0] as argument
                   setImage(event.target.files[0]);
                 }}
               />

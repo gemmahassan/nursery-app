@@ -1,14 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonButton,
-} from "@ionic/react";
+import { IonHeader, IonToolbar, IonButtons, IonButton } from "@ionic/react";
 import { HomeTwoTone } from "@ant-design/icons";
 
+// renders Nav bar with links
 const Nav = () => {
   return (
     <IonHeader>
@@ -24,7 +19,7 @@ const Nav = () => {
             <Link to="/nurseries">Nurseries</Link>
           </IonButton>
           <IonButton>
-            <Link to="/contact">Contact Us</Link>
+            <Link to="/contact">Register</Link>
           </IonButton>
           <IonButton>
             <Link to="/login">Login</Link>

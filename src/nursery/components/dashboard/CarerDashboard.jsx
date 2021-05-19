@@ -19,14 +19,17 @@ import JournalContainer from "../journal/JournalContainer";
 import LogoutContainer from "../../../common/LogoutContainer";
 import NurseryCalendarContainer from "../calendar/NurseryCalendarContainer";
 
+// display a dashboard for carers
 const CarerDashboard = ({ currentUser, nursery }) => {
   const [children, setChildren] = useState([]);
   const [activeItem, setActiveItem] = useState("journal");
 
+  // get the list of children on page render
   useEffect(() => {
     getChildren();
   }, []);
 
+  // call API to get children linked to current carer, save to an array as there may be multiple children
   const getChildren = () => {
     UserDataService.getChildrenOfCarer(currentUser.userId)
       .then((response) => setChildren(response.data))
@@ -51,6 +54,7 @@ const CarerDashboard = ({ currentUser, nursery }) => {
                 {currentUser.firstName} {currentUser.surname}
               </IonLabel>
             </IonChip>
+            {/*show menu with journal and calendar options*/}
             <IonItem onClick={() => setActiveItem("journal")}>Journal</IonItem>
             <IonItem onClick={() => setActiveItem("calendar")}>
               Calendar
@@ -72,11 +76,13 @@ const CarerDashboard = ({ currentUser, nursery }) => {
           </IonToolbar>
         </IonHeader>
 
+        {/*if the journal view is selected, render the journal*/}
         <IonContent>
           {activeItem === "journal" && (
             <JournalContainer children={children} role={currentUser.role} />
           )}
 
+          {/*if the calendar view is selected, render the calendar (not implemented)*/}
           {activeItem === "calendar" && (
             <NurseryCalendarContainer
               nurseryName={nursery.name}

@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "antd";
 
+// display a list of nurseries
 const NurseryItem = ({ id, image, name, town }) => {
   const { Meta } = Card;
   return (

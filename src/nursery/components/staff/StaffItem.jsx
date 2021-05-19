@@ -1,13 +1,11 @@
 import React from "react";
-import { Avatar, List } from "antd";
+import { List } from "antd";
 
-const StaffItem = ({ firstName, getActions, image, surname }) => {
+// render a list of staff
+const StaffItem = ({ firstName, getActions, surname }) => {
   return (
     <List.Item actions={getActions()}>
-      <List.Item.Meta
-        avatar={<Avatar src={image} />}
-        title={`${firstName} ${surname}`}
-      />
+      <List.Item.Meta title={`${firstName} ${surname}`} />
     </List.Item>
   );
 };

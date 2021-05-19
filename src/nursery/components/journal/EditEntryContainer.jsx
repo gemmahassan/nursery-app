@@ -12,6 +12,7 @@ const EditEntryContainer = ({
   timestamp,
   typeId,
 }) => {
+  // store current journal entry data as initial state
   const initialEntry = {
     id: journalId,
     child_id: child.id,
@@ -30,22 +31,21 @@ const EditEntryContainer = ({
   const currentEntry = initialEntry;
   const photoPermission = child.photo_permission;
 
+  // call APU to get all journal types
   const getJournalTypes = () => {
     JournalDataService.getTypes()
       .then((response) => setJournalTypes(response.data))
       .catch((e) => console.log(e));
   };
 
+  // call API to set deleted timestamp for selected journal entry
   const handleDelete = () => {
     JournalDataService.delete(journalId)
       .then(() => setDeleteSuccess(true))
       .catch((e) => console.log(e));
   };
 
-  useEffect(() => {
-    getJournalTypes();
-  }, []);
-
+  // call API to update selected journal entry with captured form data
   const handleEditEntry = ({ type_id, text }) => {
     const formData = new FormData();
     formData.append("type_id", type_id);
@@ -60,6 +60,11 @@ const EditEntryContainer = ({
       .then(() => setUpdateSuccess(true))
       .catch((e) => console.log(e));
   };
+
+  // get list of journal types on render
+  useEffect(() => {
+    getJournalTypes();
+  }, []);
 
   return (
     <EditEntry

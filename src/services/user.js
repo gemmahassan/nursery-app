@@ -17,20 +17,24 @@ class UserDataService {
       });
   }
 
-  create(firstName, surname, child, email, nurseryId, role) {
-    return http.post("/users/add", {firstName, surname, child, email, nurseryId, role}, { headers: authHeader() });
+  create(firstName, surname, email, nurseryId, userRole) {
+    return http.post(
+      "/users/add",
+      { firstName, surname, email, nurseryId, userRole },
+      { headers: authHeader() }
+    );
   }
 
   getStaff(nurseryId) {
-    return http.get(`/users/staff/${nurseryId}`);
+    return http.get(`/users/staff/${nurseryId}`, { headers: authHeader() });
   }
 
   getCarers(nurseryId) {
-    return http.get(`/users/carers/${nurseryId}`);
+    return http.get(`/users/carers/${nurseryId}`, { headers: authHeader() });
   }
 
   getChildrenOfCarer(userId) {
-    return http.get(`/users/${userId}/children`);
+    return http.get(`/users/${userId}/children`, { headers: authHeader() });
   }
 
   delete(id) {
@@ -52,7 +56,7 @@ class UserDataService {
   update(userId, firstName, surname) {
     return http.put(
       `/users/${userId}/edit`,
-      {firstName, surname},
+      { firstName, surname },
       { headers: authHeader() }
     );
   }

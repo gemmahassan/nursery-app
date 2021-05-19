@@ -2,23 +2,19 @@ import React, { useEffect, useState } from "react";
 import JournalDataService from "../../../services/journal";
 import AddEntry from "./AddEntry";
 
-const AddEntryContainer = (props) => {
-  const { child, showAddModal, hideAddModal, userId } = props;
-
+const AddEntryContainer = ({ child, hideAddModal, showAddModal, userId }) => {
   const [journalTypes, setJournalTypes] = useState([]);
   const [image, setImage] = useState();
   const [addSuccess, setAddSuccess] = useState(false);
 
+  // call API to get a list of all journal types - used to populate the dropdown in the Add Journal modal
   const getJournalTypes = () => {
     JournalDataService.getTypes()
       .then((response) => setJournalTypes(response.data))
       .catch((e) => console.log(e));
   };
 
-  useEffect(() => {
-    getJournalTypes();
-  }, []);
-
+  // call API with formData captured in modal
   const handleAddEntry = ({ entryType, text }) => {
     const formData = new FormData();
     formData.append("type_id", entryType);
@@ -36,6 +32,11 @@ const AddEntryContainer = (props) => {
       .then(() => setAddSuccess(true))
       .catch((e) => console.log(e));
   };
+
+  // get journal types on page render
+  useEffect(() => {
+    getJournalTypes();
+  }, []);
 
   return (
     <AddEntry

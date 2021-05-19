@@ -40,7 +40,7 @@ const ChildList = ({
         <List
           itemLayout="horizontal"
           dataSource={children}
-          // read round the list of children and create a list item for each one
+          // map over the array of children and create a list item for each one
           renderItem={(child) => (
             <ChildItemContainer
               child={child}
@@ -58,6 +58,7 @@ const ChildList = ({
           )}
         />
 
+        {/*if add button was clicked, show the modal*/}
         {showAddModal && (
           <AddEntryContainer
             child={journalData}
@@ -67,6 +68,7 @@ const ChildList = ({
           />
         )}
 
+        {/*if edit button was clicked, show the modal*/}
         {showEditModal && (
           <EditChildContainer
             child={childData}
@@ -77,6 +79,7 @@ const ChildList = ({
         )}
       </div>
 
+      {/*show add modal based on showAddChildModal*/}
       <AddChildContainer
         nurseryId={nurseryId}
         showAddChildModal={showAddChildModal}
