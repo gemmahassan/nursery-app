@@ -24,13 +24,13 @@ const ApplicationsContainer = () => {
   // if successful, set the nursery to confirmed
   // send an email to the user to complete registration of their user account
   const confirmApprove = () => {
-    UserDataService.create({
-      firstName: currentNursery.contact_first_name,
-      surname: currentNursery.contact_surname,
-      email: currentNursery.email,
-      nurseryId: currentNursery.id,
-      role: "admin",
-    })
+    UserDataService.create(
+      currentNursery.contact_first_name,
+      currentNursery.contact_surname,
+      currentNursery.email,
+      currentNursery.id,
+      "admin",
+    )
       .then((response) => {
         const nurseryName = currentNursery.name;
         const firstName = currentNursery.contact_first_name;
